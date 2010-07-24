@@ -27,6 +27,16 @@ namespace {
     template<typename T> typename __iadd_t__<T>::pointer
         __iadd__ () { return (&T::operator+=); }
 
+    template<typename T> struct __eq_t__
+        { typedef bool(T::*pointer)(const T&) const; };
+    template<typename T> typename __eq_t__<T>::pointer
+        __eq__ () { return (&T::operator==); }
+
+    template<typename T> struct __ne_t__
+        { typedef bool(T::*pointer)(const T&) const; };
+    template<typename T> typename __ne_t__<T>::pointer
+        __ne__ () { return (&T::operator!=); }
+
 }
 
 BOOST_PYTHON_MODULE(pyw32)
@@ -45,8 +55,8 @@ BOOST_PYTHON_MODULE(pyw32)
             .staticmethod("ia64")
         .def( "unknown", &w32::Architecture::unknown )
             .staticmethod("unknown")
-        .def( "__eq__", &w32::Architecture::operator == )
-        .def( "__ne__", &w32::Architecture::operator != )
+        .def( "__eq__", __eq__< w32::Architecture >() )
+        .def( "__ne__", __ne__< w32::Architecture >() )
         ;
 
     boost::python::class_< w32::Codepage >
@@ -60,8 +70,8 @@ BOOST_PYTHON_MODULE(pyw32)
         .def( "utf8", &w32::Codepage::utf8 )
             .staticmethod("utf8")
         .def( "valid", &w32::Codepage::valid )
-        .def( "__eq__", &w32::Codepage::operator == )
-        .def( "__ne__", &w32::Codepage::operator != )
+        .def( "__eq__", __eq__< w32::Codepage >() )
+        .def( "__ne__", __ne__< w32::Codepage >() )
         ;
 
     boost::python::class_< w32::Environment >
@@ -101,6 +111,8 @@ BOOST_PYTHON_MODULE(pyw32)
         .def( "__add__", __add__< w32::string >() )
         .def( "__iadd__", __iadd__< w32::string >(),
             boost::python::return_internal_reference<>() )
+         .def( "__eq__", __eq__< w32::string > () )
+         .def( "__ne__", __ne__< w32::string > () )
         //.def( "__getitem__", &w32::string::operator[] )
         .def( "swap", &w32::string::swap )
         ;
@@ -166,7 +178,7 @@ BOOST_PYTHON_MODULE(pyw32)
         .def( "major", &w32::Version::major )
         .def( "minor", &w32::Version::minor )
         .def( "build", &w32::Version::build )
-        .def( "__eq__", &w32::Version::operator == )
+        .def( "__eq__", __eq__< w32::Version >() )
         .def( "__lt__", &w32::Version::operator < )
         ;
 
@@ -191,8 +203,8 @@ BOOST_PYTHON_MODULE(pyw32)
                 .staticmethod( "astring" )
             .def( "bstring", &w32::Variant::Type::bstring )
                 .staticmethod( "bstring" )*/
-            .def( "__eq__", &w32::Variant::Type::operator == )
-            .def( "__ne__", &w32::Variant::Type::operator != )
+            .def( "__eq__", __eq__< w32::Variant::Type >() )
+            .def( "__ne__", __ne__< w32::Variant::Type >() )
             .def( "__hash__", &w32::Variant::Type::value )
             //.def( "__lt__", &w32::Variant::operator < )
             ;

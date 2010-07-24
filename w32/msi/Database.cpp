@@ -70,9 +70,20 @@ namespace w32 { namespace msi {
         return (myValue);
     }
 
-    const Database::State Database::State::read(MSIDBSTATE_READ);
-    const Database::State Database::State::write(MSIDBSTATE_WRITE);
-    const Database::State Database::State::error(MSIDBSTATE_ERROR);
+    const Database::State Database::State::read ()
+    {
+        return (MSIDBSTATE_READ);
+    }
+
+    const Database::State Database::State::write ()
+    {
+        return (MSIDBSTATE_WRITE);
+    }
+
+    const Database::State Database::State::error ()
+    {
+        return (MSIDBSTATE_ERROR);
+    }
 
     Database::State::State ( Value value )
         : myValue(value)

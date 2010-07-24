@@ -76,9 +76,9 @@ namespace w32 { namespace msi {
         {
             /* class data. */
         public:
-            static const State read;
-            static const State write;
-            static const State error;
+            static const State read ();
+            static const State write ();
+            static const State error ();
 
             /* nested types. */
         public:
