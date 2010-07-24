@@ -260,6 +260,16 @@ namespace w32 {
         return (*this);
     }
 
+    bool string::operator== ( const string& rhs ) const
+    {
+        return (std::wcscmp(data(), rhs.data()) == 0);
+    }
+
+    bool string::operator!= ( const string& rhs ) const
+    {
+        return (std::wcscmp(data(), rhs.data()) != 0);
+    }
+
     string& string::operator+= ( const string& rhs )
     {
         if ( length() == 0 ) {
@@ -291,16 +301,6 @@ namespace w32 {
         string result(*this);
         result += rhs;
         return (result);
-    }
-
-    bool operator== ( const string& lhs, const string& rhs )
-    {
-        return (std::wcscmp(lhs.data(), rhs.data()) == 0);
-    }
-
-    bool operator!= ( const string& lhs, const string& rhs )
-    {
-        return (std::wcscmp(lhs.data(), rhs.data()) != 0);
     }
 
     string operator+ ( const wchar_t * lhs, const string& rhs )

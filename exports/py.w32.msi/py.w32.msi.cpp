@@ -92,10 +92,15 @@ BOOST_PYTHON_MODULE(pyw32msi)
             // Define database opening/creationg mode class data.
         mode
             .def( "ReadOnly", msi::Database::Mode::readonly )
+                .staticmethod("ReadOnly")
             .def( "Transaction", msi::Database::Mode::transaction )
+                .staticmethod("Transaction")
             .def( "Create", msi::Database::Mode::create )
+                .staticmethod("Create")
             .def( "Direct", msi::Database::Mode::direct )
+                .staticmethod("Direct")
             .def( "CreateDirect", msi::Database::Mode::createdirect )
+                .staticmethod("CreateDirect")
             ;
 
             // Export database state class.
@@ -104,9 +109,12 @@ BOOST_PYTHON_MODULE(pyw32msi)
 
             // Define database state class data.
         state
-            .def_readonly( "Read", msi::Database::State::read )
-            .def_readonly( "Write", msi::Database::State::write )
-            .def_readonly( "Error", msi::Database::State::error )
+            .def( "Read", msi::Database::State::read )
+                .staticmethod("Read")
+            .def( "Write", msi::Database::State::write )
+                .staticmethod("Write")
+            .def( "Error", msi::Database::State::error )
+                .staticmethod("Error")
             ;
     }
 
@@ -149,7 +157,9 @@ BOOST_PYTHON_MODULE(pyw32msi)
             // Define column symbols.
         column
             .def( "Names", msi::View::Column::names )
+                .staticmethod("Names")
             .def( "Types", msi::View::Column::types )
+                .staticmethod("Types")
             ;
 
             // Export column information class.

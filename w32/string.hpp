@@ -97,17 +97,15 @@ namespace w32 {
 
         operator const std::wstring () const;
 
+        bool operator== ( const string& rhs ) const;
+        bool operator!= ( const string& rhs ) const;
+
         string& operator+= ( const string& rhs );
         string operator+ ( const string& rhs ) const;
 
         string& operator+= ( wchar_t rhs );
         string operator+ ( wchar_t rhs ) const;
     };
-
-    W32_CORE_EXPORT bool operator==
-        ( const string& lhs, const string& rhs );
-    W32_CORE_EXPORT bool operator!=
-        ( const string& lhs, const string& rhs );
 
     W32_CORE_EXPORT string operator+
         ( const wchar_t * lhs, const string& rhs );
