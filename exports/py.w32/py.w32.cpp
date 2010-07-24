@@ -92,8 +92,6 @@ BOOST_PYTHON_MODULE(pyw32)
             boost::python::return_internal_reference<>() )
         ;
 
-    typedef w32::string(w32::string::*StringAdd)(const w32::string&) const;
-    typedef w32::string&(w32::string::*StringIAdd)(const w32::string&);
     boost::python::class_< w32::string >
         ( "string" )
         .def( boost::python::init<const std::wstring&>() )
