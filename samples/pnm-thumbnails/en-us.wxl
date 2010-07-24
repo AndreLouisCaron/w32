@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!--
+    Copyright (c) Andre Caron, 2010
+
+    Localisation of the installer for English (US).
+  -->
+ <WixLocalization
+    Culture='en-us' Codepage='1252'
+    xmlns='http://schemas.microsoft.com/wix/2003/01/localization'>
+   <String Id='LANG'>1033</String>
+   <String Id='ProductName'>Pnm Image Thumbnail Preview</String>
+   <String Id='PackageDescription'>Shell extension for viewing PBM/PGM/PPM (PNM) image file thumbnails in Windows Explorer.</String>
+   <String Id='PackageComments'>This is free (as in speech *and* beer) software. Read accompanying license for details.</String>
+   <String Id='NotRunningElevated'>You need to be an administrator to install this product.</String>
+   <String Id='DesignedForWindows5'>This product is designed for Windows XP and Windows Server 2003 only!</String>
+ </WixLocalization>

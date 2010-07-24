@@ -1,0 +1,5 @@
+; Minimal exports list for a COM in-process server.
+
+EXPORTS
+    DllCanUnloadNow     PRIVATE
+    DllGetClassObject   PRIVATE

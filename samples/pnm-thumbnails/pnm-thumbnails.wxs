@@ -1,0 +1,290 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+// Copyright(c) Andre Caron, 2009-2010
+//
+// This document is covered by the Artistic License 2.0 (Open Source Initiative
+// approved license). A copy of the license should have been provided alongside
+// this software package (see "license.rtf"). If not, the license is available
+// online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
+  -->
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+
+  <?define Root='../../.build/$(var.Configuration)/'?>
+
+  <?define Manufacturer='Andre Caron'?>
+  <?define ProductCode='70A06F03-63A7-4016-828F-4C1EAB183958'?>
+  <?define ProductVersion='1.9.0'?>
+  <?define UpgradeCode='383D5BC6-079F-40D7-82E5-FCECDBF1F75E'?>
+  <?define PackageCode='*'?>
+
+  <!-- Uniquely identify what we're shipping. -->
+  <Product
+     Id="$(var.ProductCode)" Name="!(loc.ProductName)"
+     UpgradeCode="$(var.UpgradeCode)" Language="!(loc.LANG)"
+     Version="$(var.ProductVersion)" Manufacturer="$(var.Manufacturer)">
+
+    <Package
+       Id="$(var.PackageCode)" Manufacturer="$(var.Manufacturer)"
+       InstallerVersion='200' Description="!(loc.PackageDescription)"
+       Comments="!(loc.PackageComments)" Compressed='yes'
+       InstallPrivileges='elevated' InstallScope='perMachine'/>
+
+    <!-- Target Windows Vista and Windows Server 2005. -->
+    <!--Condition Message="!(loc.DesignedForWindows5)">
+      <![CDATA[VersionNT = 601 OR VersionNT = 602]]>
+    </Condition-->
+
+    <!-- Provide all media in a single bundle. -->
+    <Media Id='1' Cabinet='product.cab' EmbedCab='yes'/>
+
+    <!--
+        Primary directory structure: installs by default in
+        'C:\Program Files\<Manufacturer>\<Product>\' (localised) but allows the
+        user to change it to somewhere else on the computer if desired.
+      -->
+    <Directory Id='TARGETDIR' Name='SourceDir'>
+      <Directory Id='ProgramFilesFolder' Name='Program Files'>
+        <Directory Id='ManufacturerFolder' Name="$(var.Manufacturer)">
+          <Directory Id='ProductFolder' Name="!(loc.ProductName)">
+            <Directory Id='INSTALLDIR' Name='.'>
+
+              <!--
+                  Internal directory strucure, independant of location.
+                -->
+
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+
+      <!--
+          Define standard folder locations: these directories are pre-defined,
+          but WiX requires a valid XML element to link properly.
+        -->
+      <Directory Id='SystemFolder' Name='System'>
+        <Directory Id='LogFilesFolder' Name='LogFiles'/>
+      </Directory>
+      <Directory Id='ProgramMenuFolder' Name='Programs'/>
+
+    </Directory>
+
+    <!--
+        Define the feature tree and components to use in the application:
+          - there is a single feature;
+          - all components are always installed.
+      -->
+    <Feature
+       Id='MainProductFeature' Title='Main product' Level='1' Absent='disallow'>
+      <ComponentRef Id='License'/>
+      <ComponentRef Id='ShellExtensionComServer'/>
+      <ComponentRef Id='ShellExtensionComServerRegistration'/>
+      <ComponentRef Id='PnmFileThumbnailPreview'/>
+      <ComponentRef Id='ManufacturerStartMenu'/>
+      <ComponentRef Id='ProductStartMenu'/>
+    </Feature>
+
+    <!--
+        Define installation user interface:
+          - show the software usage and distribution license;
+          - allow the UI to change the installation directory.
+      -->
+    <Property Id='WIXUI_INSTALLDIR' Value='INSTALLDIR'/>
+    <WixVariable Id='WixUILicenseRtf' Value='license.rtf'/>
+    <UIRef Id='WixUI_InstallDir'/>
+
+    <!--
+        Install documentation files:
+           - software usage and distribution license;
+           - user's guide.
+      -->
+    <DirectoryRef Id='INSTALLDIR'>
+      <Component
+         Id='License' Guid='717F7189-C949-4078-B371-09C364C3E45C'>
+        <File
+           Id='BsdLicense' DiskId='1' KeyPath='yes'
+           Name="license.rtf" Source="license.rtf">
+          <Shortcut
+             Id='LicenseShortcut' Advertise='yes'
+             Directory='ProductMenu' Name="License" Icon='icon.rtf'>
+            <Icon Id='icon.rtf' SourceFile='copyright.ico'/>
+          </Shortcut>
+        </File>
+      </Component>
+    </DirectoryRef>
+
+    <!--
+        Define start menu for the application:
+          - create folder hierarchy in the start menu;
+          - create a registry key to have a 'key path' for the component.
+      -->
+    <DirectoryRef Id='ProgramMenuFolder'>
+      <Directory Id='ManufacturerMenu' Name="$(var.Manufacturer)">
+        <Directory Id='ProductMenu' Name="!(loc.ProductName)"/>
+      </Directory>
+    </DirectoryRef>
+
+    <DirectoryRef Id='ManufacturerMenu'>
+      <Component
+         Id='ManufacturerStartMenu' Guid='588BB23A-DD49-40C0-9BE1-EEB75BF8FA63'>
+        <RegistryValue
+           Root='HKMU' Key="SOFTWARE\$(var.Manufacturer)"
+           Type='string' Name="Uninstall" Value="" KeyPath='yes'/>
+        <RemoveFolder Id='ManufacturerStartMenuFolder' On='uninstall'/>
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id='ProductMenu'>
+      <Component
+         Id='ProductStartMenu' Guid='8CEC5CE0-EA1F-4457-BADB-C50E968F715B'>
+        <RegistryValue
+           Root='HKMU' Key="SOFTWARE\$(var.Manufacturer)\!(loc.ProductName)"
+           Type='string' Name="Uninstall" Value="" KeyPath='yes'/>
+        <RemoveFolder Id='ProductStartMenuFolder' On='uninstall'/>
+      </Component>
+    </DirectoryRef>
+
+    <!--
+        Install the shell extension COM server:
+          - install library binary and manifest;
+          - register COM server in registry;
+          - register COM server as a thumbnail provider.
+      -->
+    <?define ShellExtensionComServerGuid='7B280B72-B570-41AC-8A6E-EEBC97DCE37B'?>
+
+    <DirectoryRef Id='INSTALLDIR'>
+      <Component
+         Id='ShellExtensionComServer' Guid='B315E509-6324-4391-BB19-C6E3F0447B37'>
+        <File
+           Id='ShellExtensionComServerExecutable' Name="pnm-thumbnails.dll" DiskId='1'
+           Source="$(var.Root)pnm-thumbnails.dll" KeyPath='yes'>
+        </File>
+        <File
+        Id='ShellExtensionComServerExecutableDep1' Name="w32.dll" DiskId='1'
+        Source="$(var.Root)w32.dll" KeyPath='no'>
+        </File>
+        <File
+           Id='ShellExtensionComServerExecutableDep2' Name="w32.com.dll" DiskId='1'
+           Source="$(var.Root)w32.com.dll" KeyPath='no'>
+        </File>
+        <File
+           Id='ShellExtensionComServerExecutableDep3' Name="w32.dbg.dll" DiskId='1'
+           Source="$(var.Root)w32.dbg.dll" KeyPath='no'>
+        </File>
+        <File
+           Id='ShellExtensionComServerExecutableDep4' Name="w32.fs.dll" DiskId='1'
+           Source="$(var.Root)w32.fs.dll" KeyPath='no'>
+        </File>
+        <File
+           Id='ShellExtensionComServerExecutableDep5' Name="w32.gdi.dll" DiskId='1'
+           Source="$(var.Root)w32.gdi.dll" KeyPath='no'>
+        </File>
+        <File
+           Id='ShellExtensionComServerExecutableDep6' Name="w32.mt.dll" DiskId='1'
+           Source="$(var.Root)w32.mt.dll" KeyPath='no'>
+        </File>
+        <File
+           Id='ShellExtensionComServerExecutableDep7' Name="w32.rgs.dll" DiskId='1'
+           Source="$(var.Root)w32.rgs.dll" KeyPath='no'>
+        </File>
+        <File
+           Id='ShellExtensionComServerExecutableDep8' Name="w32.shl.dll" DiskId='1'
+           Source="$(var.Root)w32.shl.dll" KeyPath='no'>
+        </File>
+        <File
+           Id='ShellExtensionComServerExecutableDep9' Name="w32.shl.ext.dll" DiskId='1'
+           Source="$(var.Root)w32.shl.ext.dll" KeyPath='no'>
+        </File>
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id='INSTALLDIR'>
+      <Component
+         Id='ShellExtensionComServerRegistration' Guid='59F71082-0F2A-4B12-9CAA-9313382DE518'>
+        <RegistryKey
+           Action='createAndRemoveOnUninstall' Root='HKCR'
+           Key="CLSID\{$(var.ShellExtensionComServerGuid)}">
+          <RegistryValue Type='string' Value="Pnm Image Thumbnail Preview"/>
+          <RegistryKey Action='createAndRemoveOnUninstall' Key='InProcServer32'>
+            <RegistryValue Type='string' Value="[INSTALLDIR]pnm-thumbnails.dll"/>
+            <RegistryValue Type='string' Name="ThreadingModel" Value="Apartment"/>
+          </RegistryKey>
+        </RegistryKey>
+        <RegistryKey
+           Action='createAndRemoveOnUninstall'
+           Root='HKLM' Key="SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Approved">
+          <RegistryValue
+             Type='string'
+             Name="{$(var.ShellExtensionComServerGuid)}"
+             Value="Pnm Image Thumbnail Preview"/>
+        </RegistryKey>
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id='INSTALLDIR'>
+      <Component
+         Id='PnmFileThumbnailPreview' Guid='2F43AD36-255B-4AAA-B0D1-EC005A33413D'>
+
+        <RegistryKey Action='createAndRemoveOnUninstall' Root='HKCR' Key='.pbm'>
+          <RegistryValue Type='string' Value='PbmFile'/>
+        </RegistryKey>
+        <RegistryKey Action='createAndRemoveOnUninstall' Root='HKCR' Key="PbmFile">
+          <RegistryValue Type='string' Name='PerceivedType' Value="image"/>
+          <RegistryKey Action='createAndRemoveOnUninstall' Key='ShellEx'>
+            <RegistryKey
+               Action='createAndRemoveOnUninstall'
+               Key='{E357FCCD-A995-4576-B01F-234630154E96}' >
+              <RegistryValue
+                 Type='string' Value="{$(var.ShellExtensionComServerGuid)}"/>
+            </RegistryKey>
+          </RegistryKey>
+        </RegistryKey>
+
+        <RegistryKey Action='createAndRemoveOnUninstall' Root='HKCR' Key='.pgm'>
+          <RegistryValue Type='string' Value='PgmFile'/>
+        </RegistryKey>
+        <RegistryKey Action='createAndRemoveOnUninstall' Root='HKCR' Key="PgmFile">
+          <RegistryValue Type='string' Name='PerceivedType' Value="image"/>
+          <RegistryKey Action='createAndRemoveOnUninstall' Key='ShellEx'>
+            <RegistryKey
+               Action='createAndRemoveOnUninstall'
+               Key='{E357FCCD-A995-4576-B01F-234630154E96}' >
+              <RegistryValue
+                 Type='string' Value="{$(var.ShellExtensionComServerGuid)}"/>
+            </RegistryKey>
+          </RegistryKey>
+        </RegistryKey>
+
+        <RegistryKey Action='createAndRemoveOnUninstall' Root='HKCR' Key='.ppm'>
+          <RegistryValue Type='string' Value='PpmFile'/>
+        </RegistryKey>
+        <RegistryKey Action='createAndRemoveOnUninstall' Root='HKCR' Key="PpmFile">
+          <RegistryValue Type='string' Name='PerceivedType' Value="image"/>
+          <RegistryKey Action='createAndRemoveOnUninstall' Key='ShellEx'>
+            <RegistryKey
+               Action='createAndRemoveOnUninstall'
+               Key='{E357FCCD-A995-4576-B01F-234630154E96}' >
+              <RegistryValue
+                 Type='string' Value="{$(var.ShellExtensionComServerGuid)}"/>
+            </RegistryKey>
+          </RegistryKey>
+        </RegistryKey>
+
+        <RegistryKey Action='createAndRemoveOnUninstall' Root='HKCR' Key='.pnm'>
+          <RegistryValue Type='string' Value='PnmFile'/>
+        </RegistryKey>
+        <RegistryKey Action='createAndRemoveOnUninstall' Root='HKCR' Key="PnmFile">
+          <RegistryValue Type='string' Name='PerceivedType' Value="image"/>
+          <RegistryKey Action='createAndRemoveOnUninstall' Key='ShellEx'>
+            <RegistryKey
+               Action='createAndRemoveOnUninstall'
+               Key='{E357FCCD-A995-4576-B01F-234630154E96}' >
+              <RegistryValue
+                 Type='string' Value="{$(var.ShellExtensionComServerGuid)}"/>
+            </RegistryKey>
+          </RegistryKey>
+        </RegistryKey>
+
+      </Component>
+    </DirectoryRef>
+
+  </Product>
+</Wix>

@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+// Copyright(c) Andre Caron, 2009-2010
+//
+// This document is covered by the Artistic License 2.0 (Open Source Initiative
+// approved license). A copy of the license should have been provided alongside
+// this software package (see "license.rtf"). If not, the license is available
+// online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
+  -->
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+
+  <?define Root='../../.build/$(var.Configuration)/'?>
+
+  <?define Manufacturer='Andre Caron'?>
+  <?define ProductCode='E1525F70-532F-4DC0-B96C-1E5C7E8BD57B'?>
+  <?define ProductVersion='1.0.0'?>
+  <?define UpgradeCode='810A8598-238C-4d5E-8CDC-18977D519938'?>
+  <?define PackageCode='*'?>
+
+  <!-- Uniquely identify what we're shipping. -->
+  <Product
+     Id="$(var.ProductCode)" Name="!(loc.ProductName)"
+     UpgradeCode="$(var.UpgradeCode)" Language="!(loc.LANG)"
+     Version="$(var.ProductVersion)" Manufacturer="$(var.Manufacturer)">
+
+    <Package
+       Id="$(var.PackageCode)" Manufacturer="$(var.Manufacturer)"
+       InstallerVersion='200' Description="!(loc.PackageDescription)"
+       Comments="!(loc.PackageComments)" Compressed='yes'
+       InstallScope='perMachine'/>
+
+    <!-- Provide all media in a single bundle. -->
+    <Media Id='1' Cabinet='product.cab' EmbedCab='yes'/>
+
+    <!--
+        Primary directory structure: installs by default in
+        'C:\Program Files\<Manufacturer>\<Product>\' (localised) but allows the
+        user to change it to somewhere else on the computer if desired.
+      -->
+    <Directory Id='TARGETDIR' Name='SourceDir'>
+      <Directory Id='ProgramFilesFolder' Name='Program Files'>
+        <Directory Id='ManufacturerFolder' Name="$(var.Manufacturer)">
+          <Directory Id='ProductFolder' Name="!(loc.ProductName)">
+            <Directory Id='INSTALLDIR' Name='.'>
+
+              <!--
+                  Internal directory strucure, independant of location.
+                -->
+
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+
+      <!--
+          Define standard folder locations: these directories are pre-defined,
+          but WiX requires a valid XML element to link properly.
+        -->
+      <Directory Id='SystemFolder' Name='System'>
+        <Directory Id='LogFilesFolder' Name='LogFiles'/>
+      </Directory>
+      <Directory Id='ProgramMenuFolder' Name='Programs'>
+        <Directory Id='StartupFolder' Name='Startup'/>
+      </Directory>
+
+    </Directory>
+
+    <!--
+        Define the feature tree and components to use in the application:
+          - there is a single feature;
+          - all components are always installed.
+      -->
+    <Feature
+       Id='MainProductFeature' Title='Main product' Level='1' Absent='disallow'>
+      <ComponentRef Id='Application'/>
+      <ComponentRef Id='License'/>
+      <ComponentRef Id='Configuration'/>
+      <ComponentRef Id='ManufacturerStartMenu'/>
+      <ComponentRef Id='ProductStartMenu'/>
+      <ComponentRef Id='Autorun'/>
+    </Feature>
+
+    <!--
+        Define installation user interface:
+          - show the software usage and distribution license;
+          - allow the UI to change the installation directory.
+      -->
+    <Property Id='WIXUI_INSTALLDIR' Value='INSTALLDIR'/>
+    <WixVariable Id='WixUILicenseRtf' Value='license.rtf'/>
+    <UIRef Id='WixUI_InstallDir'/>
+
+    <!--
+        Install documentation files:
+           - software usage and distribution license;
+           - user's guide.
+      -->
+    <DirectoryRef Id='INSTALLDIR'>
+      <Component
+         Id='License' Guid='3D28AEE5-D82F-48b6-83DB-04D04D585D59'>
+        <File
+           Id='BsdLicense' DiskId='1' KeyPath='yes'
+           Name="license.rtf" Source="license.rtf">
+          <Shortcut
+             Id='LicenseShortcut' Advertise='yes'
+             Directory='ProductMenu' Name="License" Icon='icon.ico'>
+            <Icon Id='icon.ico' SourceFile='copyright.ico'/>
+          </Shortcut>
+        </File>
+      </Component>
+    </DirectoryRef>
+
+    <!--
+        Define start menu for the application:
+          - create folder hierarchy in the start menu;
+          - create a registry key to have a 'key path' for the component.
+      -->
+    <DirectoryRef Id='ProgramMenuFolder'>
+      <Directory Id='ManufacturerMenu' Name="$(var.Manufacturer)">
+        <Directory Id='ProductMenu' Name="!(loc.ProductName)"/>
+      </Directory>
+    </DirectoryRef>
+
+    <DirectoryRef Id='ManufacturerMenu'>
+      <Component
+         Id='ManufacturerStartMenu' Guid='2E6FC74C-9DB1-418C-823C-45725FC87AF8'>
+        <RegistryValue
+           Root='HKMU' Key="SOFTWARE\$(var.Manufacturer)"
+           Type='string' Name="Uninstall" Value="" KeyPath='yes'/>
+        <RemoveFolder Id='ManufacturerStartMenuFolder' On='uninstall'/>
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id='ProductMenu'>
+      <Component
+         Id='ProductStartMenu' Guid='147E4159-F60D-4895-AF05-DC23DB83A3BE'>
+        <RegistryValue
+           Root='HKMU' Key="SOFTWARE\$(var.Manufacturer)\!(loc.ProductName)"
+           Type='string' Name="Uninstall" Value="" KeyPath='yes'/>
+        <RemoveFolder Id='ProductStartMenuFolder' On='uninstall'/>
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id='StartupFolder'>
+      <Component
+         Id='Autorun' Guid='3D59B9D0-8FDB-4A58-890D-AFD1980F89B8'>
+        <RegistryKey
+           Action='none' Root='HKCU'
+           Key="SOFTWARE\$(var.Manufacturer)\!(loc.ProductName)">
+          <RegistryValue Type="string" Action="write" KeyPath="yes" Value=""/>
+        </RegistryKey>
+        <Shortcut
+           Id='AutorunShortcut' Advertise='no'
+           Directory='StartupFolder' Name="Wallpaper Swapper"
+           WorkingDirectory="INSTALLDIR" Icon='icon.exe'>
+        </Shortcut>
+      </Component>
+    </DirectoryRef>
+
+    <!--
+        Install the application:
+          - install executable file and manifest;
+          - create (advertised) shortcut in the start menu;
+          - create initial configuration in registry.
+      -->
+    <DirectoryRef Id='INSTALLDIR'>
+      <Component
+         Id='Application' Guid='B5F5ADA3-5AD6-44E3-A828-4A634FFF936D'>
+        <RegistryKey
+           Action='none' Root='HKCU'
+           Key="SOFTWARE\$(var.Manufacturer)\!(loc.ProductName)">
+          <RegistryValue Type="string" Action="write" KeyPath="yes" Value=""/>
+        </RegistryKey>
+        <File
+           Id='ApplicationIcon' Name="image.ico"
+           DiskId='1' Source="wallpaper-swapper.ico"
+           KeyPath='no'/>
+        <File
+           Id='Application' Name="wallpaper-swapper.exe" DiskId='1'
+           Source="$(var.Root)wallpaper-swapper.exe" KeyPath='no'>
+          <Shortcut
+             Id='ApplicationShortcut' Advertise='no'
+             Directory='ProductMenu' Name="Wallpaper Swapper"
+             WorkingDirectory="INSTALLDIR" Icon='icon.exe'>
+            <Icon Id='icon.exe' SourceFile='wallpaper-swapper.ico'/>
+          </Shortcut>
+        </File>
+        <File
+           Id='Dependancy1' Name="w32.dll" DiskId='1'
+           Source="$(var.Root)w32.dll" KeyPath='no'>
+        </File>
+        <File
+           Id='Dependancy2' Name="w32.com.dll" DiskId='1'
+           Source="$(var.Root)w32.com.dll" KeyPath='no'>
+        </File>
+        <File
+           Id='Dependancy3' Name="w32.dbg.dll" DiskId='1'
+           Source="$(var.Root)w32.dbg.dll" KeyPath='no'>
+        </File>
+        <File
+           Id='Dependancy4' Name="w32.fs.dll" DiskId='1'
+           Source="$(var.Root)w32.fs.dll" KeyPath='no'>
+        </File>
+        <File
+           Id='Dependancy5' Name="w32.gdi.dll" DiskId='1'
+           Source="$(var.Root)w32.gdi.dll" KeyPath='no'>
+        </File>
+        <File
+           Id='Dependancy6' Name="w32.mt.dll" DiskId='1'
+           Source="$(var.Root)w32.mt.dll" KeyPath='no'>
+        </File>
+        <File
+           Id='Dependancy7' Name="w32.rgs.dll" DiskId='1'
+           Source="$(var.Root)w32.rgs.dll" KeyPath='no'>
+        </File>
+        <File
+           Id='Dependancy8' Name="w32.shl.dll" DiskId='1'
+           Source="$(var.Root)w32.shl.dll" KeyPath='no'>
+        </File>
+        <File
+           Id='Dependancy9' Name="w32.shl.ext.dll" DiskId='1'
+           Source="$(var.Root)w32.shl.ext.dll" KeyPath='no'>
+        </File>
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id='INSTALLDIR'>
+      <Component
+         Id='Configuration' Guid='B82D0EC7-A092-4C35-8C21-0CDFA3131184'>
+        <RegistryKey
+           Action='createAndRemoveOnUninstall' Root='HKMU'
+           Key="SOFTWARE\$(var.Manufacturer)\!(loc.ProductName)">
+          <RegistryValue Type='string' Name="Library" Value=""/>
+        </RegistryKey>
+      </Component>
+    </DirectoryRef>
+
+  </Product>
+</Wix>
