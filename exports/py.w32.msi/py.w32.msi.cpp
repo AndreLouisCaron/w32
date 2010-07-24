@@ -70,7 +70,7 @@ namespace {
 
 }
 
-BOOST_PYTHON_MODULE(_msi)
+BOOST_PYTHON_MODULE(pyw32msi)
 {
         // Export general library exceptions.
     boost::python::register_exception_translator
