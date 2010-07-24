@@ -35,8 +35,8 @@ namespace w32 { namespace msi {
         {
             /* class data. */
         public:
-            static const Column names;
-            static const Column types;
+            static const Column names ();
+            static const Column types ();
 
             /* nested types. */
         public:
