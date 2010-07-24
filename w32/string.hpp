@@ -186,8 +186,8 @@ namespace w32 {
                 state |= std::wios::failbit;
             }
             in.setstate(state);
-            return (in);
         }
+        return (in);
     }
 
 }
