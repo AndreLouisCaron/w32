@@ -5,7 +5,7 @@
 // this software package (see "license.rtf"). If not, the license is available
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
-#include <w32/msi/ColumnInformation.hpp>
+#include <w32/msi/Columns.hpp>
 #include <w32/msi/Error.hpp>
 
 namespace {
