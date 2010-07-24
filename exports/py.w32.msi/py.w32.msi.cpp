@@ -1,25 +1,19 @@
-/*!
- * @file pymsi.cpp
- * @author Andre Louis Caron
- *
- * @brief Exports bindings to Python for Windows installer wrapper objects.
- */
-
-#include <windows/installer/Database.hpp>
-#include <windows/installer/ColumnInformation.hpp>
-#include <windows/installer/Hash.hpp>
-#include <windows/installer/Product.hpp>
-#include <windows/installer/Products.hpp>
-#include <windows/installer/UncheckedError.hpp>
-#include <windows/installer/View.hpp>
+// Copyright(c) Andre Caron, 2009-2010
+//
+// This document is covered by the Artistic License 2.0 (Open Source Initiative
+// approved license). A copy of the license should have been provided alongside
+// this software package (see "license.rtf"). If not, the license is available
+// online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
 #include <boost/python.hpp>
+#include <w32.hpp>
+#include <w32.msi.hpp>
 
-namespace msi = windows::installer;
+namespace msi = w32::msi;
 
 namespace {
 
-    void translate ( const msi::UncheckedError& )
+    void translate ( const msi::Error& )
     {
         PyErr_SetString(PyExc_RuntimeError,"Unchecked exception.");
     }
@@ -80,8 +74,8 @@ BOOST_PYTHON_MODULE(_msi)
 {
         // Export general library exceptions.
     boost::python::register_exception_translator
-        < msi::UncheckedError >(
-            (void(*)(const msi::UncheckedError&))translate
+        < msi::Error >(
+            (void(*)(const msi::Error&))translate
             );
 
         // Export database class.
@@ -97,11 +91,11 @@ BOOST_PYTHON_MODULE(_msi)
 
             // Define database opening/creationg mode class data.
         mode
-            .def_readonly( "ReadOnly", msi::Database::Mode::readonly )
-            .def_readonly( "Transaction", msi::Database::Mode::transaction )
-            .def_readonly( "Create", msi::Database::Mode::create )
-            .def_readonly( "Direct", msi::Database::Mode::direct )
-            .def_readonly( "CreateDirect", msi::Database::Mode::createdirect )
+            .def( "ReadOnly", msi::Database::Mode::readonly )
+            .def( "Transaction", msi::Database::Mode::transaction )
+            .def( "Create", msi::Database::Mode::create )
+            .def( "Direct", msi::Database::Mode::direct )
+            .def( "CreateDirect", msi::Database::Mode::createdirect )
             ;
 
             // Export database state class.
@@ -154,16 +148,16 @@ BOOST_PYTHON_MODULE(_msi)
 
             // Define column symbols.
         column
-            .def_readonly( "Names", msi::View::Column::names )
-            .def_readonly( "Types", msi::View::Column::types )
+            .def( "Names", msi::View::Column::names )
+            .def( "Types", msi::View::Column::types )
             ;
 
             // Export column information class.
         boost::python::class_<
-            msi::ColumnInformation,
+            msi::Columns,
                 boost::python::bases<msi::Record>, boost::noncopyable
-            > columninformation
-            ( "ColumnInformation",
+            > columns
+            ( "Columns",
               boost::python::init<const msi::View&,const msi::View::Column&>()
             );
     }
@@ -204,17 +198,19 @@ BOOST_PYTHON_MODULE(_msi)
     record
         .def( "__len__", &msi::Record::fields )
         .def( "sizeof", &msi::Record::size )
-        .def( "__getitem__", &msi::Record::wstring )
+        .def( "__getitem__", &msi::Record::string )
         ;
 
 }
 
-#include <windows/installer/ColumnInformation.cpp>
-#include <windows/installer/Database.cpp>
-#include <windows/installer/Handle.cpp>
-#include <windows/installer/Hash.cpp>
-#include <windows/installer/Record.cpp>
-#include <windows/installer/Product.cpp>
-#include <windows/installer/Products.cpp>
-#include <windows/installer/View.cpp>
-#include <win32c/diagnostics/UncheckedError.cpp>
+namespace w32 {
+
+        // Can't be "declspec(dllexport)"ed.
+    std::locale::id Error::Put::id;
+
+}
+
+    // Link automagically.
+#pragma comment ( lib, "w32.lib" )
+#pragma comment ( lib, "w32.dbg.lib" )
+#pragma comment ( lib, "w32.msi.lib" )

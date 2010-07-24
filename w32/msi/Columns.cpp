@@ -36,13 +36,8 @@ namespace {
 
 namespace w32 { namespace msi {
 
-    ColumnNames::ColumnNames ( const View& view )
-        : Record(columns(view.handle(),MSICOLINFO_NAMES))
-    {
-    }
-
-    ColumnTypes::ColumnTypes ( const View& view )
-        : Record(columns(view.handle(),MSICOLINFO_TYPES))
+    Columns::Columns ( const View& view, const View::Column& information )
+        : Record( ::columns(view.handle(), information.value() ))
     {
     }
 

@@ -16,7 +16,7 @@ namespace w32 {
 
     // Include all public headers.
 #include "../__compiler__.hpp"
-#   include <w32/msi/ColumnInformation.hpp>
+#   include <w32/msi/Columns.hpp>
 #   include <w32/msi/Database.hpp>
 #   include <w32/msi/Error.hpp>
 #   include <w32/msi/ErrorRecord.hpp>

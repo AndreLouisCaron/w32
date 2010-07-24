@@ -32,6 +32,16 @@ namespace {
 
 namespace w32 { namespace msi {
 
+    const View::Column View::Column::names ()
+    {
+        return (MSICOLINFO_NAMES);
+    }
+
+    const View::Column View::Column::types ()
+    {
+        return (MSICOLINFO_TYPES);
+    }
+
     View::Column::Column ( Value value )
         : myValue(value)
     {

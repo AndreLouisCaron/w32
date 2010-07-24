@@ -1,5 +1,5 @@
-#ifndef _w32_msi_ColumnInformation_hpp__
-#define _w32_msi_ColumnInformation_hpp__
+#ifndef _w32_msi_Columns_hpp__
+#define _w32_msi_Columns_hpp__
 
 // Copyright(c) Andre Caron, 2009-2010
 //
@@ -17,25 +17,14 @@ namespace w32 { namespace msi {
         /*!
          * @brief Extracts information about columns affected by an SQL query.
          */
-    class W32_MSI_EXPORT ColumnNames :
+    class W32_MSI_EXPORT Columns :
         public Record
     {
         /* construction. */
     public:
-        ColumnNames ( const View& view );
-    };
-
-        /*!
-         * @brief Extracts information about columns affected by an SQL query.
-         */
-    class W32_MSI_EXPORT ColumnTypes :
-        public Record
-    {
-        /* construction. */
-    public:
-        ColumnTypes ( const View& view );
+        Columns ( const View& view, const View::Column& information );
     };
 
 } }
 
-#endif /* _w32_msi_ColumnInformation_hpp__ */
+#endif /* _w32_msi_Columns_hpp__ */
