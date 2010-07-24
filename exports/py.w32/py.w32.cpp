@@ -17,6 +17,16 @@ namespace {
         PyErr_SetString(PyExc_RuntimeError, message.str().c_str());
     }
 
+    template<typename T> struct __add_t__
+        { typedef T(T::*pointer)(const T&) const; };
+    template<typename T> typename __add_t__<T>::pointer
+        __add__ () { return (&T::operator+); }
+
+    template<typename T> struct __iadd_t__
+        { typedef T&(T::*pointer)(const T&); };
+    template<typename T> typename __iadd_t__<T>::pointer
+        __iadd__ () { return (&T::operator+=); }
+
 }
 
 BOOST_PYTHON_MODULE(pyw32)
@@ -82,17 +92,18 @@ BOOST_PYTHON_MODULE(pyw32)
             boost::python::return_internal_reference<>() )
         ;
 
+    typedef w32::string(w32::string::*StringAdd)(const w32::string&) const;
+    typedef w32::string&(w32::string::*StringIAdd)(const w32::string&);
     boost::python::class_< w32::string >
         ( "string" )
         .def( boost::python::init<const std::wstring&>() )
         .def( "__len__", &w32::string::length )
         .def( "__unicode__", &w32::string::operator const std::wstring )
         .def( "__repr__", &w32::string::operator const std::wstring )
-        .def( "__add__", &w32::string::operator+ )
-        .def( "__iadd__", &w32::string::operator+=,
+        .def( "__add__", __add__< w32::string >() )
+        .def( "__iadd__", __iadd__< w32::string >(),
             boost::python::return_internal_reference<>() )
         //.def( "__getitem__", &w32::string::operator[] )
-        //.def( "__add__", &w32::string::operator+ )
         .def( "swap", &w32::string::swap )
         ;
 
