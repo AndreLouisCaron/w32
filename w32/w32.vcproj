@@ -201,6 +201,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\currentdirectory.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Environment.cpp"
 				>
 			</File>
@@ -308,6 +312,10 @@
 			</File>
 			<File
 				RelativePath=".\Console.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\currentdirectory.hpp"
 				>
 			</File>
 			<File

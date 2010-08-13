@@ -18,6 +18,7 @@ namespace w32 {}
 #   include <w32/bstring.hpp>
 #   include <w32/CodePage.hpp>
 #   include <w32/computername.hpp>
+#   include <w32/currentdirectory.hpp>
 #   include <w32/Console.hpp>
 #   include <w32/Environment.hpp>
 #   include <w32/Error.hpp>
