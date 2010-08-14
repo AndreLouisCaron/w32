@@ -14,6 +14,10 @@ __tests__ = os.path.dirname(os.path.join(os.getcwd(), __file__))
 __build__ = os.path.join(__tests__, '..', '.build', 'opt')
 sys.path.append(__build__)
 
+  # Load python extension modules.
+import pyw32
+import pyw32msi
+
 def fail ( command ):
     print '  (( Unkown command: "%s". ))' % command
     sys.exit(1)
