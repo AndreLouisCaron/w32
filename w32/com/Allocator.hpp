@@ -64,6 +64,20 @@ namespace w32{ namespace com {
         return (allocator.release(block));
     }
 
+    inline void * malloc ( std::size_t bytes )
+    {
+        void *const result = ::CoTaskMemAlloc(bytes);
+        if ( result == 0 ) {
+            throw (std::bad_alloc());
+        }
+        return (result);
+    }
+
+    inline void free ( void * block )
+    {
+        ::CoTaskMemFree(block);
+    }
+
 } }
 
 #endif /* _com_Allocator_hpp__ */
