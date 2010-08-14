@@ -29,16 +29,16 @@ namespace w32 { namespace com {
     }
 
     template<typename Interface> inline
-    Ptr< ::IUnknown > instantiate ( const Guid& guid )
+    Ptr< Interface > instantiate ( const Guid& guid )
     {
         void * instance = 0;
         const Result result = ::CoCreateInstance(
-            guid.value(), 0, CLS_CTX_ALL, guidof<Interface>().value(), &instance
+            guid.value(), 0, CLSCTX_INPROC_SERVER, guidof<Interface>().value(), &instance
             );
         if ( result.bad() ) {
             UNCHECKED_COM_ERROR(void, CoCreateInstance, result);
         }
-        return (manage(reinterpret_cast< ::Interface* >(instance)));
+        return (manage(reinterpret_cast< Interface* >(instance)));
     }
 
 } }
