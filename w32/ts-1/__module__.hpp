@@ -14,13 +14,13 @@ namespace w32 {
     namespace dbg {}
 }
 
-#include "../__compiler__.hpp"
+#include "../__compiler-intro__.hpp"
 #   include <w32/ts-1/Editor.hpp>
 #   include <w32/ts-1/Scheduler.hpp>
 #   include <w32/ts-1/Status.hpp>
 #   include <w32/ts-1/Task.hpp>
 #   include <w32/ts-1/Tasks.hpp>
 #   include <w32/ts-1/Trigger.hpp>
-#include "../__compiler__.hpp"
+#include "../__compiler-outro__.hpp"
 
 #endif /* _w32_ts_hpp__ */

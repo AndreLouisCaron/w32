@@ -14,9 +14,9 @@ namespace w32 {
     namespace dbg {}
 }
 
-#include "../__compiler__.hpp"
+#include "../__compiler-intro__.hpp"
 #   include <w32/dbg/Log.hpp>
 #   include <w32/dbg/StructuredException.hpp>
-#include "../__compiler__.hpp"
+#include "../__compiler-outro__.hpp"
 
 #endif /* _w32_dbg_hpp__ */

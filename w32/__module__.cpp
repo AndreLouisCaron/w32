@@ -6,7 +6,6 @@
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
     // Make sure header compiles standalone.
-#include "__compiler__.hpp"
 #include "__module__.hpp"
 
 namespace w32 {

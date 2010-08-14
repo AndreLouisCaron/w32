@@ -14,7 +14,7 @@ namespace w32 {
     namespace net {}
 }
 
-#include "../__compiler__.hpp"
+#include "../__compiler-intro__.hpp"
 #   include <w32/net/Buffer.hpp>
 #   include <w32/net/Context.hpp>
 #   include <w32/net/Event.hpp>
@@ -26,6 +26,6 @@ namespace w32 {
 #   include <w32/net/ipv6/Address.hpp>
 #   include <w32/net/tcp/Listener.hpp>
 #   include <w32/net/tcp/Stream.hpp>
-#include "../__compiler__.hpp"
+#include "../__compiler-outro__.hpp"
 
 #endif /* _w32_net_hpp__ */

@@ -12,7 +12,7 @@
 
 #ifdef __building_w32_mt__
 #   define W32_MT_EXPORT __declspec(dllexport)
-#   include "../__compiler__.hpp"
+#   include "../__compiler-intro__.hpp"
 #else
 #   define W32_MT_EXPORT __declspec(dllimport)
 #endif

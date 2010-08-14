@@ -12,7 +12,7 @@
 
 namespace w32 {}
 
-#include "../__compiler__.hpp"
+#include "../__compiler-intro__.hpp"
 #   include <w32/shl/Attributes.hpp>
 #   include <w32/shl/Browser.hpp>
 #   include <w32/shl/Data.hpp>
@@ -28,6 +28,6 @@ namespace w32 {}
 #   include <w32/shl/streambuf.hpp>
 #   include <w32/shl/TaskbarIcon.hpp>
 #   include <w32/shl/wallpaper.hpp>
-#include "../__compiler__.hpp"
+#include "../__compiler-outro__.hpp"
 
 #endif /* _w32_shl_hpp__ */

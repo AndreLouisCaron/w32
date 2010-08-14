@@ -12,7 +12,7 @@
 
 namespace w32 {}
 
-#include "__compiler__.hpp"
+#include "__compiler-intro__.hpp"
 #   include <w32/Architecture.hpp>
 #   include <w32/astring.hpp>
 #   include <w32/bstring.hpp>
@@ -34,6 +34,6 @@ namespace w32 {}
 #   include <w32/Version.hpp>
 #   include <w32/Waitable.hpp>
 #   include <w32/Variant.hpp>
-#include "__compiler__.hpp"
+#include "__compiler-outro__.hpp"
 
 #endif /* _w32_hpp__ */

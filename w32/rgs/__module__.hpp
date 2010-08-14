@@ -14,7 +14,7 @@ namespace w32 {
     namespace rgs {}
 }
 
-#include "../__compiler__.hpp"
+#include "../__compiler-intro__.hpp"
 #   include <w32/rgs/Access.hpp>
 #   include <w32/rgs/clean.hpp>
 #   include <w32/rgs/Key.hpp>
@@ -22,6 +22,6 @@ namespace w32 {
 #   include <w32/rgs/Value.hpp>
 #   include <w32/rgs/Values.hpp>
 #   include <w32/rgs/Type.hpp>
-#include "../__compiler__.hpp"
+#include "../__compiler-outro__.hpp"
 
 #endif /* _w32_rgs_hpp__ */

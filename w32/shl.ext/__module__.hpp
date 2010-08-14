@@ -12,7 +12,7 @@
 
 namespace w32 {}
 
-#include "../__compiler__.hpp"
+#include "../__compiler-intro__.hpp"
 #   include <w32/shl.ext/BasicExtension.hpp>
 #   include <w32/shl.ext/ColumnProvider.hpp>
 #   include <w32/shl.ext/ContextMenu.hpp>
@@ -24,6 +24,6 @@ namespace w32 {}
 #   include <w32/shl.ext/ThumbnailHandler.hpp>
 #   include <w32/shl.ext/ThumbnailProvider.hpp>
 #   include <w32/shl.ext/Tooltip.hpp>
-#include "../__compiler__.hpp"
+#include "../__compiler-outro__.hpp"
 
 #endif /* _w32_shl_ext_hpp__ */

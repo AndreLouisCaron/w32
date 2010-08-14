@@ -14,7 +14,7 @@ namespace w32 {
     namespace io {}
 }
 
-#include "../__compiler__.hpp"
+#include "../__compiler-intro__.hpp"
 #   include <w32/io/AnonymousPipe.hpp>
 #   include <w32/io/Channel.hpp>
 #   include <w32/io/CompletionPort.hpp>
@@ -32,6 +32,6 @@ namespace w32 {
 #   include <w32/io/Stream.hpp>
 #   include <w32/io/streambuf.hpp>
 #   include <w32/io/Transfer.hpp>
-#include "../__compiler__.hpp"
+#include "../__compiler-outro__.hpp"
 
 #endif /* _w32_io_hpp__ */

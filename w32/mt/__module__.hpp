@@ -15,7 +15,7 @@ namespace w32 {
 }
 
 
-#include "../__compiler__.hpp"
+#include "../__compiler-intro__.hpp"
 #   include <w32/mt/AutoResetEvent.hpp>
 #   include <w32/mt/CriticalSection.hpp>
 #   include <w32/mt/ManualResetEvent.hpp>
@@ -27,6 +27,6 @@ namespace w32 {
 #       include <w32/mt/ConditionVariable.hpp>
 #       include <w32/mt/ReadWriteLock.hpp>
 #   endif
-#include "../__compiler__.hpp"
+#include "../__compiler-outro__.hpp"
 
 #endif /* _w32_mt_hpp__ */

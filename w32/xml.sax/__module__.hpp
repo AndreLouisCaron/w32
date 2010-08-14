@@ -14,7 +14,7 @@ namespace w32 { namespace xml {
     namespace sax {}
 } }
 
-#include "../__compiler__.hpp"
+#include "../__compiler-intro__.hpp"
 #   include <w32/xml.sax/Attributes.hpp>
 #   include <w32/xml.sax/ContentHandler.hpp>
 #   include <w32/xml.sax/DtdHandler.hpp>
@@ -22,6 +22,6 @@ namespace w32 { namespace xml {
 #   include <w32/xml.sax/LexicalHandler.hpp>
 #   include <w32/xml.sax/Locator.hpp>
 #   include <w32/xml.sax/Reader.hpp>
-#include "../__compiler__.hpp"
+#include "../__compiler-outro__.hpp"
 
 #endif /* _w32_xml_sax_hpp__ */

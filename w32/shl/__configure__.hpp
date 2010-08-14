@@ -12,7 +12,7 @@
 
 #ifdef __building_w32_shl__
 #   define W32_SHL_EXPORT __declspec(dllexport)
-#   include "../__compiler__.hpp"
+#   include "../__compiler-intro__.hpp"
 #else
 #   define W32_SHL_EXPORT __declspec(dllimport)
 #endif

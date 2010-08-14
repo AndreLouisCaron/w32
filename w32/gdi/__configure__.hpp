@@ -12,7 +12,7 @@
 
 #ifdef __building_w32_gdi__
 #   define W32_GDI_EXPORT __declspec(dllexport)
-#   include "../__compiler__.hpp"
+#   include "../__compiler-intro__.hpp"
 #   ifdef _MSC_VER
 #       pragma comment ( lib, "ComCtl32.lib" )
 #       pragma comment ( lib, "OpenGL32.lib" )

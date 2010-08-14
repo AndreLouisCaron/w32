@@ -14,7 +14,7 @@ namespace w32 {
     namespace gdi {}
 }
 
-#include "../__compiler__.hpp"
+#include "../__compiler-intro__.hpp"
 #   include <w32/gdi/Application.hpp>
 #   include <w32/gdi/Atom.hpp>
 #   include <w32/gdi/Bitmap.hpp>
@@ -69,6 +69,6 @@ namespace w32 {
 #   include <w32/gdi/Window.hpp>
 #   include <w32/gdi/UpDown.hpp>
 #   include <w32/gdi/Window.Handler.hpp>
-#include "../__compiler__.hpp"
+#include "../__compiler-outro__.hpp"
 
 #endif /* _w32_gdi_hpp__ */

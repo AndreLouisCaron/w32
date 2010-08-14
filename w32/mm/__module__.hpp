@@ -14,7 +14,7 @@ namespace w32 {
     namespace mm {}
 }
 
-#include "../__compiler__.hpp"
+#include "../__compiler-intro__.hpp"
 #   include <w32/mm/Aligned.hpp>
 #   include <w32/mm/Global.hpp>
 #   include <w32/mm/Heap.hpp>
@@ -22,6 +22,6 @@ namespace w32 {
 #   include <w32/mm/Mapping.hpp>
 #   include <w32/mm/Shared.hpp>
 #   include <w32/mm/Virtual.hpp>
-#include "../__compiler__.hpp"
+#include "../__compiler-outro__.hpp"
 
 #endif /* _w32_mm_hpp__ */

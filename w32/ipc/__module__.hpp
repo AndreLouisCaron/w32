@@ -14,9 +14,9 @@ namespace w32 {
     namespace ipc {}
 }
 
-#include "../__compiler__.hpp"
+#include "../__compiler-intro__.hpp"
 #   include <w32/ipc/Job.hpp>
 #   include <w32/ipc/Process.hpp>
-#include "../__compiler__.hpp"
+#include "../__compiler-outro__.hpp"
 
 #endif /* _w32_ipc_hpp__ */

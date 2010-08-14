@@ -12,7 +12,7 @@
 
 #ifdef __building_w32_net__
 #   define W32_NET_EXPORT __declspec(dllexport)
-#   include "../__compiler__.hpp"
+#   include "../__compiler-intro__.hpp"
 #   ifdef _MSC_VER
 #       pragma comment ( lib, "WS2_32.lib" )
 #   endif

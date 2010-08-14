@@ -12,7 +12,7 @@
 
 #ifdef __building_w32_ts__
 #   define W32_TS_EXPORT __declspec(dllexport)
-#   include "../__compiler__.hpp"
+#   include "../__compiler-intro__.hpp"
 #   ifdef _MSC_VER
 #       pragma comment ( lib, "mstask.lib" )
 #   endif
@@ -23,8 +23,10 @@
 #include <mstask.h>
 #include <msterr.h>
 
-#include <w32/string.hpp>
-#include <w32/types.hpp>
+#include "../__compiler-intro__.hpp"
+#   include <w32/string.hpp>
+#   include <w32/types.hpp>
+#include "../__compiler-outro__.hpp"
 
     // Yet another COM-based Windows API!
 #include <w32.com.hpp>

@@ -14,7 +14,7 @@ namespace w32 { namespace xml {
     namespace dom {}
 } }
 
-#include "../__compiler__.hpp"
+#include "../__compiler-intro__.hpp"
 #   include <w32/xml.dom/Attribute.hpp>
 #   include <w32/xml.dom/Attributes.hpp>
 #   include <w32/xml.dom/CData.hpp>
@@ -28,6 +28,6 @@ namespace w32 { namespace xml {
 #   include <w32/xml.dom/Text.hpp>
 #   include <w32/xml.dom/Visitor.hpp>
 #   include <w32/xml.dom/walk.hpp>
-#include "../__compiler__.hpp"
+#include "../__compiler-outro__.hpp"
 
 #endif /* _w32_xml_dom_hpp__ */

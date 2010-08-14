@@ -12,7 +12,7 @@
 
 #ifdef __building_w32_xml_dom__
 #   define W32_XML_DOM_EXPORT __declspec(dllexport)
-#   include "../__compiler__.hpp"
+#   include "../__compiler-intro__.hpp"
 #   ifdef _MSC_VER
 #       pragma comment ( lib, "msxml6.lib" )
 #   endif

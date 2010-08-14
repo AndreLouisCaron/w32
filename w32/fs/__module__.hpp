@@ -14,7 +14,7 @@ namespace w32 {
     namespace fs {}
 }
 
-#include "../__compiler__.hpp"
+#include "../__compiler-intro__.hpp"
 #   include <w32/fs/Attributes.hpp>
 #   include <w32/fs/Changes.hpp>
 #   include <w32/fs/copy.hpp>
@@ -28,6 +28,6 @@ namespace w32 {
 #   include <w32/fs/symlink.hpp>
 #   include <w32/fs/Time.hpp>
 #   include <w32/fs/unlink.hpp>
-#include "../__compiler__.hpp"
+#include "../__compiler-outro__.hpp"
 
 #endif /* _w32_fs_hpp__ */

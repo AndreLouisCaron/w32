@@ -14,7 +14,7 @@ namespace w32 {
     namespace ts {}
 }
 
-#include "../__compiler__.hpp"
+#include "../__compiler-intro__.hpp"
 #   include <w32/ts-2/Action.hpp>
 #   include <w32/ts-2/Actions.hpp>
 #   include <w32/ts-2/Definition.hpp>
@@ -28,6 +28,6 @@ namespace w32 {
 #   include <w32/ts-2/Registrations.hpp>
 #   include <w32/ts-2/Service.hpp>
 #   include <w32/ts-2/State.hpp>
-#include "../__compiler__.hpp"
+#include "../__compiler-outro__.hpp"
 
 #endif /* _w32_ts_hpp__ */

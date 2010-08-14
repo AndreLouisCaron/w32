@@ -15,7 +15,7 @@ namespace w32{
 }
 
 
-#include "../__compiler__.hpp"
+#include "../__compiler-intro__.hpp"
 #   include <w32/com/Allocator.hpp>
 #   include <w32/com/cast.hpp>
 #   include <w32/com/Error.hpp>
@@ -27,6 +27,6 @@ namespace w32{
 #   include <w32/com/Object.hpp>
 #   include <w32/com/Ptr.hpp>
 #   include <w32/com/Result.hpp>
-#include "../__compiler__.hpp"
+#include "../__compiler-outro__.hpp"
 
 #endif /* _com_hpp__ */

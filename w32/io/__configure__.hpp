@@ -12,11 +12,7 @@
 
 #ifdef __building_w32_io__
 #   define W32_IO_EXPORT __declspec(dllexport)
-#   ifdef _MSC_VER
-#       pragma warning ( push )
-#       pragma warning ( disable : 4250 ) // Mixins.
-#       pragma warning ( disable : 4251 ) // DLL-exported templates.
-#   endif
+#   include "../__compiler-intro__.hpp"
 #else
 #   define W32_IO_EXPORT __declspec(dllimport)
 #endif

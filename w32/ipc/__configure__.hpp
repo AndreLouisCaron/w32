@@ -12,10 +12,8 @@
 
 #ifdef __building_w32_ipc__
 #   define W32_IPC_EXPORT __declspec(dllexport)
+#   include "../__compiler-intro__.hpp"
 #   ifdef _MSC_VER
-#       pragma warning ( push )
-#       pragma warning ( disable : 4250 ) // Mixins.
-#       pragma warning ( disable : 4251 ) // DLL-exported templates.
 #       pragma comment ( lib, "PSApi.lib" )
 #   endif
 #else
