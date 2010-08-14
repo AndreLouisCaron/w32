@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="w32.shl"
-	ProjectGUID="{C9DC3625-64E4-4D20-9CDD-C56B3A811B94}"
-	RootNamespace="w32shl"
+	Name="shell-ls"
+	ProjectGUID="{2BC2262C-72C8-4433-ABEA-17CF113AE66C}"
+	RootNamespace="shellls"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -19,7 +19,7 @@
 			Name="dbg|Win32"
 			OutputDirectory="$(SolutionDir)..\.build\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\.build\$(ConfigurationName)\$(ProjectName)"
-			ConfigurationType="2"
+			ConfigurationType="1"
 			CharacterSet="2"
 			>
 			<Tool
@@ -40,13 +40,11 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				PreprocessorDefinitions="__building_w32_shl__; _SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				WarningLevel="3"
 				DebugInformationFormat="4"
-				DisableSpecificWarnings="4251"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -88,7 +86,7 @@
 			Name="opt|Win32"
 			OutputDirectory="$(SolutionDir)..\.build\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\.build\$(ConfigurationName)\$(ProjectName)"
-			ConfigurationType="2"
+			ConfigurationType="1"
 			CharacterSet="2"
 			WholeProgramOptimization="1"
 			>
@@ -111,12 +109,10 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				PreprocessorDefinitions="__building_w32_shl__; _SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
 				DebugInformationFormat="3"
-				DisableSpecificWarnings="4251"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -160,128 +156,10 @@
 	<References>
 	</References>
 	<Files>
-		<Filter
-			Name="Source Files"
-			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
-			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
+		<File
+			RelativePath=".\shell-ls.cpp"
 			>
-			<File
-				RelativePath=".\shl\__module__.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl\Browser.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl\Data.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl\Dropping.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl\Folder.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl\Item.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl\Listing.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl\Location.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl\Path.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl\Stream.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl\streambuf.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl\TaskbarIcon.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl\wallpaper.cpp"
-				>
-			</File>
-		</Filter>
-		<Filter
-			Name="Header Files"
-			Filter="h;hpp;hxx;hm;inl;inc;xsd"
-			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
-			>
-			<File
-				RelativePath=".\shl\__configure__.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl\__module__.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl\Browser.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl\Data.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl\Dropping.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl\Item.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl\Listing.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl\Location.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl\Path.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl\Stream.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl\streambuf.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl\TaskbarIcon.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl\wallpaper.hpp"
-				>
-			</File>
-		</Filter>
-		<Filter
-			Name="Resource Files"
-			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
-			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
-			>
-		</Filter>
+		</File>
 	</Files>
 	<Globals>
 	</Globals>

@@ -43,6 +43,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "com-instantiate", "com-inst
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wallpaper-swapper", "wallpaper-swapper\wallpaper-swapper.vcproj", "{55EBD099-B316-4D3A-89E0-B70D4D0859ED}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "shell-ls", "shell-ls\shell-ls.vcproj", "{2BC2262C-72C8-4433-ABEA-17CF113AE66C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		dbg|Win32 = dbg|Win32
@@ -219,6 +221,14 @@ Global
 		{55EBD099-B316-4D3A-89E0-B70D4D0859ED}.opt|Win32.Build.0 = opt|Win32
 		{55EBD099-B316-4D3A-89E0-B70D4D0859ED}.Release|Win32.ActiveCfg = opt|Win32
 		{55EBD099-B316-4D3A-89E0-B70D4D0859ED}.Release|Win32.Build.0 = opt|Win32
+		{2BC2262C-72C8-4433-ABEA-17CF113AE66C}.dbg|Win32.ActiveCfg = dbg|Win32
+		{2BC2262C-72C8-4433-ABEA-17CF113AE66C}.dbg|Win32.Build.0 = dbg|Win32
+		{2BC2262C-72C8-4433-ABEA-17CF113AE66C}.Debug|Win32.ActiveCfg = dbg|Win32
+		{2BC2262C-72C8-4433-ABEA-17CF113AE66C}.Debug|Win32.Build.0 = dbg|Win32
+		{2BC2262C-72C8-4433-ABEA-17CF113AE66C}.opt|Win32.ActiveCfg = opt|Win32
+		{2BC2262C-72C8-4433-ABEA-17CF113AE66C}.opt|Win32.Build.0 = opt|Win32
+		{2BC2262C-72C8-4433-ABEA-17CF113AE66C}.Release|Win32.ActiveCfg = opt|Win32
+		{2BC2262C-72C8-4433-ABEA-17CF113AE66C}.Release|Win32.Build.0 = opt|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

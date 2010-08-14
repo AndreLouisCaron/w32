@@ -1,5 +1,5 @@
-#ifndef _w32_shl_Folder_hpp__
-#define _w32_shl_Folder_hpp__
+#ifndef _w32_shl_Item_hpp__
+#define _w32_shl_Item_hpp__
 
 // Copyright(c) Andre Caron, 2009-2010
 //
@@ -9,30 +9,26 @@
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
 #include "__configure__.hpp"
+#include <w32/string.hpp>
 #include <w32/com/Wrapper.hpp>
+#include <w32/shl/Path.hpp>
 
 namespace w32 { namespace shl {
 
-    class Item;
-
-    class W32_SHL_EXPORT Folder :
-        public com::Wrapper< ::IShellFolder >
+    class W32_SHL_EXPORT Item :
+        public com::Wrapper< ::IShellItem >
     {
         /* construction. */
     public:
-        explicit Folder ( ::IShellFolder * object );
-        explicit Folder ( const Item& item );
+        explicit Item ( ::IShellItem * object );
+        Item ( const Path& path );
 
         /* methods. */
     public:
+        Item parent () const;
+        string name () const;
     };
 
 } }
 
-template<> inline w32::com::Guid
-    w32::com::guidof< ::IShellFolder > ()
-{
-    return (IID_IShellFolder);
-}
-
-#endif /* _w32_shl_Folder_hpp__ */
+#endif /* _w32_shl_Item_hpp__ */

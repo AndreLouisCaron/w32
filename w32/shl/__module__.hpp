@@ -16,8 +16,9 @@ namespace w32 {}
 #   include <w32/shl/Browser.hpp>
 #   include <w32/shl/Data.hpp>
 #   include <w32/shl/Dropping.hpp>
-//#   include <w32/shl/Folder.hpp>
-//#   include <w32/shl/Link.hpp>
+#   include <w32/shl/Folder.hpp>
+#   include <w32/shl/Item.hpp>
+#   include <w32/shl/Listing.hpp>
 #   include <w32/shl/Location.hpp>
 #   include <w32/shl/Path.hpp>
 #   include <w32/shl/Stream.hpp>
