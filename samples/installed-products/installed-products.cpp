@@ -32,6 +32,7 @@ namespace {
     }
     catch ( const w32::msi::Error& error ) {
         std::cerr << error.what() << std::endl << std::endl;
+        return (EXIT_FAILURE);
     }
 
 }
