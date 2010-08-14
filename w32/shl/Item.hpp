@@ -11,9 +11,12 @@
 #include "__configure__.hpp"
 #include <w32/string.hpp>
 #include <w32/com/Wrapper.hpp>
-#include <w32/shl/Path.hpp>
 
 namespace w32 { namespace shl {
+
+    class Attributes;
+    class Folder;
+    class Path;
 
     class W32_SHL_EXPORT Item :
         public com::Wrapper< ::IShellItem >
@@ -22,12 +25,25 @@ namespace w32 { namespace shl {
     public:
         explicit Item ( ::IShellItem * object );
         Item ( const Path& path );
+        Item ( const Folder& folder, const Path& path );
 
         /* methods. */
     public:
         Item parent () const;
         string name () const;
+        Attributes attributes () const;
+        Attributes attributes ( Attributes mask ) const;
+        int compare ( const Item& rhs ) const;
+
+        /* operators. */
+    public:
+        bool operator== ( const Item& rhs ) const;
+        bool operator!= ( const Item& rhs ) const;
     };
+
+    W32_SHL_EXPORT Item root ();
+
+    W32_SHL_EXPORT Path abspath ( const Item& item );
 
 } }
 

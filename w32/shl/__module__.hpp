@@ -13,6 +13,7 @@
 namespace w32 {}
 
 #include "../__compiler__.hpp"
+#   include <w32/shl/Attributes.hpp>
 #   include <w32/shl/Browser.hpp>
 #   include <w32/shl/Data.hpp>
 #   include <w32/shl/Dropping.hpp>
@@ -21,6 +22,8 @@ namespace w32 {}
 #   include <w32/shl/Listing.hpp>
 #   include <w32/shl/Location.hpp>
 #   include <w32/shl/Path.hpp>
+#   include <w32/shl/Stat.hpp>
+#   include <w32/shl/Storage.hpp>
 #   include <w32/shl/Stream.hpp>
 #   include <w32/shl/streambuf.hpp>
 #   include <w32/shl/TaskbarIcon.hpp>

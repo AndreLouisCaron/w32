@@ -170,6 +170,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\shl\Attributes.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\shl\Binding.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\shl\Browser.cpp"
 				>
 			</File>
@@ -199,6 +207,14 @@
 			</File>
 			<File
 				RelativePath=".\shl\Path.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\shl\Stat.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\shl\Storage.cpp"
 				>
 			</File>
 			<File
@@ -232,6 +248,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\shl\Attributes.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\shl\Binding.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\shl\Browser.hpp"
 				>
 			</File>
@@ -257,6 +281,14 @@
 			</File>
 			<File
 				RelativePath=".\shl\Path.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\shl\Stat.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\shl\Storage.hpp"
 				>
 			</File>
 			<File

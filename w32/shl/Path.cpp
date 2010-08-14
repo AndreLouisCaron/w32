@@ -105,6 +105,14 @@ namespace w32 { namespace shl {
         return (iterator(ILNext(ILFindLastID(myBackend))));
     }
 
+    void Path::pop ()
+    {
+        const ::BOOL result = ::ILRemoveLastID(myBackend);
+        if ( result == 0 ) {
+            UNCHECKED_WIN32C_ERROR(ILRemoveLastID, 0);
+        }
+    }
+
     Path& Path::operator= ( const Path& other )
     {
         Path(other).swap(*this);

@@ -1,5 +1,5 @@
-#ifndef _win_Stream_hpp__
-#define _win_Stream_hpp__
+#ifndef _w32_shl_Stream_hpp__
+#define _w32_shl_Stream_hpp__
 
 // Copyright(c) Andre Caron, 2009-2010
 //
@@ -9,9 +9,11 @@
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
 #include "__configure__.hpp"
-#include <w32/shl/Path.hpp>
 
 namespace w32 { namespace shl {
+
+    class Item;
+    class Path;
 
     class W32_SHL_EXPORT Stream :
         public com::Wrapper< ::IStream >
@@ -23,6 +25,7 @@ namespace w32 { namespace shl {
         /* construction. */
     public:
         explicit Stream ( const Ptr& backend );
+        explicit Stream ( const Item& item );
 
         /* methods. */
     public:
@@ -33,10 +36,10 @@ namespace w32 { namespace shl {
 } }
 
 template<> inline w32::com::Guid
-    w32::com::guidof<::IStream> ()
+    w32::com::guidof< ::IStream > ()
 {
     return (IID_IStream);
 }
 
 
-#endif /* _win_Stream_hpp__ */
+#endif /* _w32_shl_Stream_hpp__ */

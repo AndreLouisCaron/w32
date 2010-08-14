@@ -176,6 +176,8 @@ namespace w32 { namespace shl {
 
         bool empty () const;
 
+        void pop ();
+
             /*!
              * @brief Obtains the number of components in the path.
              */

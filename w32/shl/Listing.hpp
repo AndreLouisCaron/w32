@@ -13,11 +13,10 @@
 
 namespace w32 { namespace shl {
 
-    class Folder;
-    class Path;
+    class Item;
 
     class W32_SHL_EXPORT Listing :
-        public com::Wrapper< ::IEnumIDList >
+        public com::Wrapper< ::IEnumShellItems >
     {
         /* nested types. */
     public:
@@ -25,23 +24,23 @@ namespace w32 { namespace shl {
 
         /* construction. */
     public:
-        explicit Listing ( ::IEnumIDList * object );
-        Listing ( const Folder& folder );
+        explicit Listing ( ::IEnumShellItems * object );
+        Listing ( const Item& item );
 
         /* methods. */
     public:
         Listing clone () const;
         void reset () const;
-        Path next () const;
+        bool next ( Item& next );
         void skip ( size_type count ) const;
     };
 
 } }
 
 template<> inline w32::com::Guid
-    w32::com::guidof< ::IEnumIDList > ()
+    w32::com::guidof< ::IEnumShellItems > ()
 {
-    return (IID_IEnumIDList);
+    return (IID_IEnumShellItems);
 }
 
 #endif /* _w32_shl_Listing_hpp__ */
