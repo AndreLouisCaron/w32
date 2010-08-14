@@ -60,11 +60,12 @@ namespace {
             return (EXIT_FAILURE);
         }
         
-        if ( argv[1] == w32::string(L"--version") ) {
+        const w32::string option(argv[1]);
+        if ( option == w32::string(L"--version") ) {
             std::cerr << version << std::endl;
             return (EXIT_FAILURE);
         }
-        if ( argv[1] == w32::string(L"--help") ) {
+        if ( option == w32::string(L"--help") ) {
             std::cerr << usage << std::endl;
             return (EXIT_FAILURE);
         }

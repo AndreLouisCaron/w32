@@ -93,28 +93,29 @@ namespace {
             return (EXIT_FAILURE);
         }
         
-        if ((argc == 2) && (argv[1] == w32::string(L"--help"))) {
+        const w32::string option(argv[1]);
+        if ((argc == 2) && (option == w32::string(L"--help"))) {
             std::cout << usage << std::endl;
             return (EXIT_FAILURE);
         }
-        if ((argc == 2) && (argv[1] == w32::string(L"--version"))) {
+        if ((argc == 2) && (option == w32::string(L"--version"))) {
             std::cout << version << std::endl;
             return (EXIT_FAILURE);
         }
         
-        if ((argc == 2) && (argv[1] == w32::string(L"-l")))
+        if ((argc == 2) && (option == w32::string(L"-l")))
         {
                 // Print names of all registered tasks.
             TaskNamePrinter names;
             names();
         }
-        else if ((argc == 2) && (argv[1] == w32::string(L"-ld")))
+        else if ((argc == 2) && (option == w32::string(L"-ld")))
         {
                 // Print details for all registered tasks.
             TaskDetailPrinter details;
             details();
         }
-        else if ((argc > 2) && (argv[1] == w32::string(L"-r")))
+        else if ((argc > 2) && (option == w32::string(L"-r")))
         {
             TaskRemover remove;
                 // Remove all listed tasks.
@@ -131,7 +132,7 @@ namespace {
                 }
             }
         }
-        else if ((argc > 2) && (argv[1] == w32::string(L"-d")))
+        else if ((argc > 2) && (option == w32::string(L"-d")))
         {
             TaskDetailPrinter details;
                 // Print details for all listed tasks.
@@ -148,7 +149,7 @@ namespace {
                 }
             }
         }
-        else if ((argc > 2) && (argv[1] == w32::string(L"-n")))
+        else if ((argc > 2) && (option == w32::string(L"-n")))
         {
             TaskCreator create(argv[2]);
                 // Parse and set properties.
@@ -160,7 +161,7 @@ namespace {
                 // Save the task.
             create();
         }
-        else if ((argc > 2) && (argv[1] == w32::string(L"-t")))
+        else if ((argc > 2) && (option == w32::string(L"-t")))
         {
             TriggerCreator trigger(argv[2]);
                 // Parse and set properties.
