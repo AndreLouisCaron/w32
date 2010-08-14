@@ -45,6 +45,7 @@
 				RuntimeLibrary="3"
 				WarningLevel="3"
 				DebugInformationFormat="4"
+				DisableSpecificWarnings="4251"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -115,6 +116,7 @@
 				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
 				DebugInformationFormat="3"
+				DisableSpecificWarnings="4251"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -173,7 +175,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Compiling WIX Installer"
-					CommandLine="candle -nologo -out $(IntDir)\$(InputName).wixobj -dConfiguration=$(ConfigurationName) $(InputPath)"
+					CommandLine="candle -nologo -out $(IntDir)\$(InputName).wixobj -dConfiguration=$(ConfigurationName) $(InputPath)&#x0D;&#x0A;"
 					AdditionalDependencies="en-us.wxl"
 					Outputs="$(IntDir)\$(InputName).wixobj"
 				/>
@@ -184,7 +186,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Compiling WIX Installer"
-					CommandLine="candle -nologo -out $(IntDir)\$(InputName).wixobj -dConfiguration=$(ConfigurationName) $(InputPath)"
+					CommandLine="candle -nologo -out $(IntDir)\$(InputName).wixobj -dConfiguration=$(ConfigurationName) $(InputPath)&#x0D;&#x0A;"
 					AdditionalDependencies="en-us.wxl"
 					Outputs="$(IntDir)\$(InputName).wixobj"
 				/>
