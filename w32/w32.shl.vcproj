@@ -198,6 +198,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\shl\Link.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\shl\Listing.cpp"
 				>
 			</File>
@@ -269,6 +273,10 @@
 			</File>
 			<File
 				RelativePath=".\shl\Item.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Link.hpp"
 				>
 			</File>
 			<File

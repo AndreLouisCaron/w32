@@ -1,65 +1,45 @@
-#ifndef _windows_ShellLink_HPP__
-#define _windows_ShellLink_HPP__
+#ifndef _w32_shl_Link_hpp__
+#define _w32_shl_Link_hpp__
 
-#include <win32com/Object.hpp>
-#include <shlobj.h>
+// Copyright(c) Andre Caron, 2009-2010
+//
+// This document is covered by the Artistic License 2.0 (Open Source Initiative
+// approved license). A copy of the license should have been provided alongside
+// this software package (see "license.rtf"). If not, the license is available
+// online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
-namespace windows {
+#include "__configure__.hpp"
+#include <w32/com/Wrapper.hpp>
 
-    class ShellLink : public win32com::Object<::IShellLinkA>
-    {
-        /* construction. */
-    protected:
-        ShellLink ( ::IShellLinkA* object )
-            : win32com::Object<::IShellLinkA>(object)
-        {}
-    };
+namespace w32 {
 
-    class NewShellLink : public ShellLink
-    {
-        /* class methods. */
-    private:
-        static ::IShellLinkA* create ()
-        {
-            ::IShellLinkA* value = 0;
-            const win32com::Result result = ::CoCreateInstance(
-                CLSID_ShellLink, 0, CLSCTX_INPROC_SERVER,
-                IID_IShellLink, (void**)&value
-                );
-            if ( result.bad() ) {
-                throw (std::exception("Could not create shell link."));
-            }
-            return (value);
-        }
-
-        /* construction. */
-    public:
-        NewShellLink ( const win32com::Context& )
-            : ShellLink(create())
-        {}
-
-    public:
-        void target ( const char * path )
-        {
-            get().SetPath(path);
-        }
-
-        void arguments ( const char * value )
-        {
-            get().SetArguments(value);
-        }
-
-        void description ( const char * value )
-        {
-            get().SetDescription(value);
-        }
-
-        void icon ( const char * path )
-        {
-            get().SetIconLocation(path,0);
-        }
-    };
+    class string;
 
 }
 
-#endif /* _windows_ShellLink_HPP__ */
+namespace w32 { namespace shl {
+
+    class Path;
+
+    class W32_SHL_EXPORT Link :
+        public com::Wrapper< ::IShellLinkW >
+    {
+        /* construction. */
+    public:
+        explicit Link ( ::IShellLinkW * object );
+        Link ();
+
+    public:
+        void target ( const Path& path );
+        Path target () const;
+        void arguments ( const string& value );
+        string arguments () const;
+        void description ( const string& value );
+        string description () const;
+        void icon ( const string& path, int index=0 );
+        string icon ( int& index ) const;
+    };
+
+} }
+
+#endif /* _w32_shl_Link_hpp__ */
