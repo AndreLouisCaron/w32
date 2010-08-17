@@ -55,6 +55,9 @@ namespace w32 {
         bool operator! () const { return (true); }
     } const null;
 
+    typedef ::HRESULT hresult;
+    typedef ::HWND hwnd;
+
 }
 
 #endif /* _w32_types_hpp__ */

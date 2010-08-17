@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="w32.shl.ext"
-	ProjectGUID="{6640235D-42D6-45F4-9DC7-5ED3A50E35FD}"
-	RootNamespace="w32shlext"
+	Name="namespace-tester"
+	ProjectGUID="{05467BE3-8B9C-4834-96EB-36A24A9354A7}"
+	RootNamespace="namespacetester"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -19,7 +19,7 @@
 			Name="dbg|Win32"
 			OutputDirectory="$(SolutionDir)..\.build\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\.build\$(ConfigurationName)\$(ProjectName)"
-			ConfigurationType="2"
+			ConfigurationType="1"
 			CharacterSet="2"
 			>
 			<Tool
@@ -40,13 +40,11 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				PreprocessorDefinitions="__building_w32_shl_ext__; _SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				WarningLevel="3"
 				DebugInformationFormat="4"
-				DisableSpecificWarnings="4251"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -59,6 +57,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				ModuleDefinitionFile=""
 				GenerateDebugInformation="true"
 				TargetMachine="1"
 			/>
@@ -88,7 +87,7 @@
 			Name="opt|Win32"
 			OutputDirectory="$(SolutionDir)..\.build\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\.build\$(ConfigurationName)\$(ProjectName)"
-			ConfigurationType="2"
+			ConfigurationType="1"
 			CharacterSet="2"
 			WholeProgramOptimization="1"
 			>
@@ -111,12 +110,10 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				PreprocessorDefinitions="__building_w32_shl_ext__; _SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
 				DebugInformationFormat="3"
-				DisableSpecificWarnings="4251"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -129,6 +126,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				ModuleDefinitionFile=""
 				GenerateDebugInformation="true"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -160,128 +158,10 @@
 	<References>
 	</References>
 	<Files>
-		<Filter
-			Name="Source Files"
-			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
-			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
+		<File
+			RelativePath=".\namespace-tester.cpp"
 			>
-			<File
-				RelativePath=".\shl.ext\__module__.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl.ext\ColumnProvider.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl.ext\ContextMenu.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl.ext\DropTarget.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl.ext\Extension.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl.ext\IconHandler.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl.ext\IconOverlay.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl.ext\Namespace.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl.ext\PropertySheet.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl.ext\ThumbnailHandler.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl.ext\ThumbnailProvider.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl.ext\Tooltip.cpp"
-				>
-			</File>
-		</Filter>
-		<Filter
-			Name="Header Files"
-			Filter="h;hpp;hxx;hm;inl;inc;xsd"
-			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
-			>
-			<File
-				RelativePath=".\shl.ext\__configure__.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl.ext\__module__.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl.ext\BasicExtension.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl.ext\ColumnProvider.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl.ext\ContextMenu.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl.ext\DropTarget.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl.ext\Extension.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl.ext\IconHandler.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl.ext\IconOverlay.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl.ext\Namespace.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl.ext\PropertySheet.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl.ext\ThumbnailHandler.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl.ext\ThumbnailProvider.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\shl.ext\Tooltip.hpp"
-				>
-			</File>
-		</Filter>
-		<Filter
-			Name="Resource Files"
-			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
-			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
-			>
-		</Filter>
+		</File>
 	</Files>
 	<Globals>
 	</Globals>

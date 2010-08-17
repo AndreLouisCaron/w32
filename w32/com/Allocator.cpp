@@ -80,4 +80,12 @@ namespace w32 { namespace com {
         return (backend().GetSize(const_cast<void*>(block)));
     }
 
+    wchar_t * strdup ( const wchar_t * source )
+    {
+        const size_t length = ::wcslen(source);
+        wchar_t *const clone =
+            (wchar_t*)com::malloc(length*sizeof(wchar_t));
+        return (::wcscpy(clone, source));
+    }
+
 } }

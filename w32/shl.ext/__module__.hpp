@@ -20,6 +20,7 @@ namespace w32 {}
 #   include <w32/shl.ext/Extension.hpp>
 #   include <w32/shl.ext/IconHandler.hpp>
 #   include <w32/shl.ext/IconOverlay.hpp>
+#   include <w32/shl.ext/Namespace.hpp>
 #   include <w32/shl.ext/PropertySheet.hpp>
 #   include <w32/shl.ext/ThumbnailHandler.hpp>
 #   include <w32/shl.ext/ThumbnailProvider.hpp>
