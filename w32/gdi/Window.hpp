@@ -20,7 +20,6 @@
 #include <w32/gdi/Font.hpp>
 #include <w32/gdi/Rectangle.hpp>
 #include <w32/gdi/Region.hpp>
-#include <os.hpp>
 
 namespace w32 { namespace gdi {
 
@@ -326,9 +325,9 @@ namespace w32 { namespace gdi {
         {
             myStandard &= ~WS_POPUP;
             myStandard |= WS_CHILD;
-            #if (MICROSOFT_WINDOWS >= MICROSOFT_WINDOWS_2000)
+            #if (_WIN32_WINNT >= WIN32_WINNT_WIN2K)
                 myExtended &= ~WS_EX_LAYERED;
-            #endif /* (MICROSOFT_WINDOWS >= MICROSOFT_WINDOWS_2000) */
+            #endif
         }
 
         void clipChildren ()
@@ -511,17 +510,17 @@ namespace w32 { namespace gdi {
             myExtended |= WS_EX_WINDOWEDGE;
         }
 
-        #if (MICROSOFT_WINDOWS >= MICROSOFT_WINDOWS_2000)
+        #if (_WIN32_WINNT >= _WIN32_WINNT_WIN2K)
             void layered () {
                 myExtended |= WS_EX_LAYERED;
             }
-        #endif /* (MICROSOFT_WINDOWS >= MICROSOFT_WINDOWS_2000) */
+        #endif
 
-        #if (MICROSOFT_WINDOWS >= MICROSOFT_WINDOWS_XP)
+        #if (_WIN32_WINNT >= _WIN32_WINNT_WINXP)
             void composited () {
                 myExtended |= WS_EX_COMPOSITED;
             }
-        #endif /* (MICROSOFT_WINDOWS >= MICROSOFT_WINDOWS_XP) */
+        #endif
     };
 
 } }
