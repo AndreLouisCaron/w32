@@ -5,7 +5,7 @@
 // this software package (see "license.rtf"). If not, the license is available
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
-#include <com/Threading.hpp>
+#include <w32/com/Threading.hpp>
 
 namespace w32{ namespace com {
 

@@ -5,7 +5,7 @@
 // this software package (see "license.rtf"). If not, the license is available
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
-#include <com/Guid.hpp>
+#include <w32/com/Guid.hpp>
 #include <w32/string.hpp>
 #include <iostream>
 #include <string>
