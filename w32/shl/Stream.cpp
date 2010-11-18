@@ -9,6 +9,7 @@
 #include <w32/shl/Binding.hpp>
 #include <w32/shl/Item.hpp>
 #include <w32/shl/Path.hpp>
+#include <w32/shl/Stat.hpp>
 #include <iostream>
 
 namespace {
@@ -67,7 +68,7 @@ namespace w32 { namespace shl {
             UNCHECKED_COM_ERROR(IStream, Read, result);
         }
         return (read);
-    };
+    }
 
     ulong Stream::write ( const void * buffer, ulong bytes )
     {
@@ -77,6 +78,15 @@ namespace w32 { namespace shl {
             UNCHECKED_COM_ERROR(IStream, Write, result);
         }
         return (written);
-    };
+    }
+
+    void Stream::stat ( Stat& info ) const
+    {
+        info.clear();
+        const com::Result result = ptr()->Stat(&info.data(), STATFLAG_DEFAULT);
+        if ( result.bad() ) {
+            UNCHECKED_COM_ERROR(IStream, Stat, result);
+        }
+    }
 
 } }

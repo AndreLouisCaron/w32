@@ -14,6 +14,7 @@ namespace w32 { namespace shl {
 
     class Item;
     class Path;
+    class Stat;
 
     class W32_SHL_EXPORT Stream :
         public com::Wrapper< ::IStream >
@@ -31,6 +32,7 @@ namespace w32 { namespace shl {
     public:
         ulong read ( void * buffer, ulong bytes );
         ulong write ( const void * buffer, ulong bytes );
+        void stat ( Stat& info ) const;
     };
 
 } }
