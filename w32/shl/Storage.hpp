@@ -35,12 +35,18 @@ namespace w32 { namespace shl {
         /* construction. */
     public:
         explicit Storage ( ::IStorage * object );
+        explicit Storage ( const com::Ptr< ::IStorage >& object );
         explicit Storage ( const Item& item );
         Storage ( const Folder& folder, const Path& path );
 
         /* methods. */
     public:
         Stream open ( const string& child ) const;
+        Stream create ( const string& child );
+        void destroy ( const string& child );
+        void rename ( const string& from, const string& to );
+        void stat ( Stat& info ) const;
+        Storage branch ( const string& child );
     };
 
     class W32_SHL_EXPORT Storage::Listing :
@@ -58,9 +64,9 @@ namespace w32 { namespace shl {
         /* methods. */
     public:
         Listing clone () const;
-        void reset () const;
-        Stat next () const;
-        void skip ( size_type count ) const;
+        void reset ();
+        bool next ( Stat& item );
+        void skip ( size_type count );
     };
 
 } }
