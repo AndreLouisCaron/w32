@@ -1,108 +1,114 @@
-#ifndef _w32_security_Token_hpp__
-#define _w32_security_Token_hpp__
+#ifndef _w32_sy_Token_hpp__
+#define _w32_sy_Token_hpp__
 
-/*!
- * @file w32/sct/Token.hpp
- * @author Andre Caron
- */
+// Copyright(c) Andre Caron, 2009-2010
+//
+// This document is covered by the Artistic License 2.0 (Open Source Initiative
+// approved license). A copy of the license should have been provided alongside
+// this software package (see "license.rtf"). If not, the license is available
+// online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
-#include "../__configure__.hpp"
+#include "__configure__.hpp"
 #include <w32/Object.hpp>
 #include <w32/types.hpp>
 
-namespace w32 { namespace sct {
+namespace w32 { namespace sy {
 
-        /*!
-         * @brief Access token.
-         */
-    class Token :
-        virtual public Object
+    class W32_SY_EXPORT Token :
+        public Object
     {
         /* nested types. */
     public:
-        class Type
-        {
-            /* class data. */
-        public:
-            static const Type primary;
-            static const Type impersonation;
+        class Type;
+        class Access;
 
-            /* nested types. */
-        public:
-            typedef ::TOKEN_TYPE Value;
-
-            /* data. */
-        private:
-            Value myValue;
-
-            /* construction. */
-        private:
-            explicit Type ( Value value );
-
-            /* class methods. */
-        public:
-            static Type of ( const Token& token );
-
-            /* methods. */
-        public:
-            Value value () const;
-
-            /* operators. */
-        public:
-            bool operator== ( const Type& other ) const;
-            bool operator!= ( const Type& other ) const;
-        };
-
-        class Access
-        {
-            /* class data. */
-        public:
-            static const Access adjustdefault;
-            static const Access adjustgroups;
-            static const Access adjustprivileges;
-            static const Access adjustsession;
-            static const Access assignprimary;
-            static const Access duplicate;
-            static const Access execute;
-            static const Access impersonate;
-            static const Access query;
-            static const Access querysource;
-            static const Access read;
-            static const Access write;
-            static const Access all;
-            static const Access none;
-
-            /* nested types. */
-        public:
-            typedef dword Value;
-
-            /* data. */
-        private:
-            Value myValue;
-
-            /* construction. */
-        private:
-            explicit Access ( Value value );
-
-            /* methods. */
-        public:
-            Value value () const;
-
-            /* operators. */
-        public:
-            bool operator== ( const Access& other ) const;
-            bool operator!= ( const Access& other ) const;
-            Access operator| ( const Access& other ) const;
-            Access& operator|= ( const Access& other );
-            Access operator& ( const Access& other ) const;
-            Access& operator&= ( const Access& other );
-        };
+        /* construction. */
+    public:
+        explicit Token ( const Handle& handle );
 
         /* methods. */
     public:
         bool restricted () const;
     };
 
+    class W32_SY_EXPORT Token::Type
+    {
+        /* class data. */
+    public:
+        static const Type primary ();
+        static const Type impersonation ();
+
+        /* nested types. */
+    public:
+        typedef ::TOKEN_TYPE Value;
+
+        /* data. */
+    private:
+        Value myValue;
+
+        /* construction. */
+    private:
+        Type ( Value value );
+
+        /* class methods. */
+    public:
+        static Type of ( const Token& token );
+
+        /* methods. */
+    public:
+        Value value () const;
+
+        /* operators. */
+    public:
+        bool operator== ( const Type& other ) const;
+        bool operator!= ( const Type& other ) const;
+    };
+
+    class W32_SY_EXPORT Token::Access
+    {
+        /* class data. */
+    public:
+        static const Access adjustdefault ();
+        static const Access adjustgroups ();
+        static const Access adjustprivileges ();
+        static const Access adjustsession ();
+        static const Access assignprimary ();
+        static const Access duplicate ();
+        static const Access execute ();
+        static const Access impersonate ();
+        static const Access query ();
+        static const Access querysource ();
+        static const Access read ();
+        static const Access write ();
+        static const Access all ();
+        static const Access none ();
+
+        /* nested types. */
+    public:
+        typedef dword Value;
+
+        /* data. */
+    private:
+        Value myValue;
+
+        /* construction. */
+    private:
+        Access ( Value value );
+
+        /* methods. */
+    public:
+        Value value () const;
+
+        /* operators. */
+    public:
+        bool operator== ( const Access& other ) const;
+        bool operator!= ( const Access& other ) const;
+        Access operator| ( const Access& other ) const;
+        Access& operator|= ( const Access& other );
+        Access operator& ( const Access& other ) const;
+        Access& operator&= ( const Access& other );
+    };
+
 } }
 
-#endif /* _w32_security_Token_hpp__ */
+#endif /* _w32_sy_Token_hpp__ */
