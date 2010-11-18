@@ -89,7 +89,7 @@ namespace w32 { namespace net {
     {
         const const_iterator match =
             std::find(begin(), end(), socket.handle());
-        return (match == end());
+        return (match != end());
     }
 
     void Set::remove ( const Socket& socket )
