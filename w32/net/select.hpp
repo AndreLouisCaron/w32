@@ -21,6 +21,9 @@ namespace w32 { namespace net {
     bool W32_NET_EXPORT select
         ( Set& read, Set& write, Set& errors, const Timespan& timeout );
 
+    bool W32_NET_EXPORT readable ( const Socket& socket );
+    bool W32_NET_EXPORT writable ( const Socket& socket );
+
 } }
 
 #endif /*  _w32_net_select_hpp__ */

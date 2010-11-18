@@ -23,9 +23,41 @@ namespace w32 { namespace net {
     bool select ( Set& read, Set& write, Set& errors, const Timespan& timeout )
     {
         const int result = ::select(
-            0, &read.data(), &write.data(), &errors.data(), 0
+            0, &read.data(), &write.data(), &errors.data(), &timeout.value()
             );
-        if ( result == 0 ) {
+        if ( result == SOCKET_ERROR ) {
+            UNCHECKED_WIN32C_ERROR(select, ::WSAGetLastError());
+        }
+        
+            // Check if call timed-out!
+        return (result > 0);
+    }
+
+    bool readable ( const Socket& socket )
+    {
+        Set set; set.add(socket);
+        const Timespan timeout;
+        
+        const int result = ::select(
+            0, &set.data(), 0, 0, &timeout.value()
+            );
+        if ( result == SOCKET_ERROR ) {
+            UNCHECKED_WIN32C_ERROR(select, ::WSAGetLastError());
+        }
+        
+            // Check if call timed-out!
+        return (result > 0);
+    }
+
+    bool writable ( const Socket& socket )
+    {
+        Set set; set.add(socket);
+        const Timespan timeout;
+        
+        const int result = ::select(
+            0, 0, &set.data(), 0, &timeout.value()
+            );
+        if ( result == SOCKET_ERROR ) {
             UNCHECKED_WIN32C_ERROR(select, ::WSAGetLastError());
         }
         
