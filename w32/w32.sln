@@ -109,6 +109,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "w32.ts-2", "w32.ts-2.vcproj
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "w32.sy", "w32.sy.vcproj", "{2D570876-4D0D-427F-B84D-C752D4304E74}"
+	ProjectSection(ProjectDependencies) = postProject
+		{61011C09-083A-410A-93AF-5E6CD4775865} = {61011C09-083A-410A-93AF-5E6CD4775865}
+		{85854619-D795-43A2-B8E7-157FA92C3402} = {85854619-D795-43A2-B8E7-157FA92C3402}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

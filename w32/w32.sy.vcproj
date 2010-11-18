@@ -19,7 +19,7 @@
 			Name="dbg|Win32"
 			OutputDirectory="$(SolutionDir)..\.build\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\.build\$(ConfigurationName)\$(ProjectName)"
-			ConfigurationType="1"
+			ConfigurationType="2"
 			CharacterSet="2"
 			>
 			<Tool
@@ -87,7 +87,7 @@
 			Name="opt|Win32"
 			OutputDirectory="$(SolutionDir)..\.build\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\.build\$(ConfigurationName)\$(ProjectName)"
-			ConfigurationType="1"
+			ConfigurationType="2"
 			CharacterSet="2"
 			WholeProgramOptimization="1"
 			>
