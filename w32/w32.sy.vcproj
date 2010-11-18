@@ -168,6 +168,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\sy\Identifier.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\sy\Impersonation.cpp"
 				>
 			</File>
@@ -187,6 +191,10 @@
 			</File>
 			<File
 				RelativePath=".\sy\__module__.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\sy\Identifier.hpp"
 				>
 			</File>
 			<File

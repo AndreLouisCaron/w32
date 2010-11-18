@@ -1,22 +1,22 @@
-#ifndef _w32_security_Identifier_hpp__
-#define _w32_security_Identifier_hpp__
+#ifndef _w32_sy_Identifier_hpp__
+#define _w32_sy_Identifier_hpp__
 
-/*!
- * @file w32/sct/Identifier.hpp
- * @author Andre Caron
- */
+// Copyright(c) Andre Caron, 2009-2010
+//
+// This document is covered by the Artistic License 2.0 (Open Source Initiative
+// approved license). A copy of the license should have been provided alongside
+// this software package (see "license.rtf"). If not, the license is available
+// online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
-#include "../__configure__.hpp"
+#include "__configure__.hpp"
 #include <w32/NotCopyable.hpp>
 #include <w32/types.hpp>
-#include <w32/sct/Token.hpp>
 
-namespace w32 { namespace sct {
+namespace w32 { namespace sy {
 
-        /*!
-         * @brief Security identifier.
-         */
-    class Identifier
+    class Token;
+
+    class W32_SY_EXPORT Identifier
     {
         /* nested types. */
     public:
@@ -27,10 +27,6 @@ namespace w32 { namespace sct {
         Handle myHandle;
 
         /* construction. */
-    private:
-            // Placeholder: not sure how to create these...
-        Identifier ();
-
     public:
         Identifier ( const Identifier& other );
         ~Identifier();
@@ -51,4 +47,4 @@ namespace w32 { namespace sct {
 
 } }
 
-#endif /* _w32_security_Identifier_hpp__ */
+#endif /* _w32_sy_Identifier_hpp__ */
