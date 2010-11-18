@@ -50,7 +50,7 @@ namespace w32 { namespace net {
 
     void Socket::blocking ( bool blocking )
     {
-        ::u_long value = blocking? 1 : 0;
+        ::u_long value = blocking? 0 : 1;
         const int result = ::ioctlsocket(handle(), FIONBIO, &value);
         if ( result == SOCKET_ERROR )
         {
