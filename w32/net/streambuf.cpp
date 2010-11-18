@@ -42,7 +42,7 @@ namespace w32 { namespace net {
         }
             // Adjust input buffer and peek at the first character.
         setg(myGBuf,myGBuf,myGBuf+count);
-        return (*gptr());
+        return (traits_type::to_int_type(*gptr()));
     }
 
     int streambuf::sync ()
