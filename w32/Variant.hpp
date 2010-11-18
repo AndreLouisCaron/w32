@@ -12,6 +12,7 @@
 #include <w32/bstring.hpp>
 #include <w32/astring.hpp>
 #include <w32/string.hpp>
+#include <w32/types.hpp>
 
 namespace w32 {
 
@@ -71,7 +72,8 @@ namespace w32 {
         Variant& operator= ( ::IUnknown * value );
         Variant& operator= ( ::BSTR value );
 
-        operator bstring() const;
+        operator bstring () const;
+        operator int32 () const;
     };
 
     class W32_CORE_EXPORT Variant::Type

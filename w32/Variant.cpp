@@ -183,7 +183,7 @@ namespace w32 {
         return (*this);
     }
 
-    Variant::operator bstring() const
+    Variant::operator bstring () const
     {
             // Extract directly if of proper type.
         if ( type() == Type::string() ) {
@@ -191,6 +191,16 @@ namespace w32 {
         }
             // Coerce if required.
         return (Variant(*this, Type::string()).value().bstrVal);
+    }
+
+    Variant::operator int32 () const
+    {
+            // Extract directly if of proper type.
+        if ( type() == Type::integer() ) {
+            return (value().lVal);
+        }
+            // Coerce if required.
+        return (Variant(*this, Type::integer()).value().lVal);
     }
 
     const Variant::Type Variant::Type::empty ()
