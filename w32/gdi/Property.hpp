@@ -42,7 +42,7 @@ namespace w32 { namespace gdi {
              */
         void set ( void * value )
         {
-            const ::BOOL result = ::SetProp(
+            const ::BOOL result = ::SetPropA(
                 myOwner.handle(), name(), value
                 );
             if ( result == FALSE ) {
@@ -57,7 +57,7 @@ namespace w32 { namespace gdi {
              * effectivly 0 or that the property does not exist.
              */
         void * get () const {
-            return (::GetProp(myOwner.handle(), name()));
+            return (::GetPropA(myOwner.handle(), name()));
         }
 
             /*!
@@ -67,7 +67,7 @@ namespace w32 { namespace gdi {
              * effectivly 0 or that the property did not exist.
              */
         void * remove () {
-            return (::RemoveProp(myOwner.handle(), name()));
+            return (::RemovePropA(myOwner.handle(), name()));
         }
     };
 
