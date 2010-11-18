@@ -10,6 +10,7 @@
 #include <w32/shl/Folder.hpp>
 #include <w32/shl/Location.hpp>
 #include <w32/shl/Path.hpp>
+#include <ntquery.h>
 
 namespace {
 
@@ -127,6 +128,30 @@ namespace w32 { namespace shl {
             // todo: stop on something better than an exception!
         catch ( ... ) {}
         return (Path());
+    }
+
+    Item2::Item2 ( ::IShellItem2 * object )
+        : com::Wrapper< ::IShellItem2 >(object)
+    {
+    }
+
+    Item2::Item2 ( const Item& item )
+        : com::Wrapper< ::IShellItem2 >
+              ( com::cast< ::IShellItem2 >(item.ptr().value()) )
+    {
+    }
+
+    qword Item2::size () const
+    {
+        const ::GUID storage = { 0xB725F130, 0x47EF, 0x101A,
+            0xA5, 0xF1, 0x02, 0x60, 0x8C, 0x9E, 0xEB, 0xAC};
+        const ::SHCOLUMNID PKEY_Size = {storage, PID_STG_SIZE};
+        ::ULONGLONG size = 0;
+        const com::Result result = ptr()->GetUInt64(PKEY_Size, &size);
+        if ( result.bad() ) {
+            UNCHECKED_COM_ERROR(IShellItem2, GetUInt64, result);
+        }
+        return (size);
     }
 
 } }

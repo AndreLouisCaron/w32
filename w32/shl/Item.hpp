@@ -10,6 +10,7 @@
 
 #include "__configure__.hpp"
 #include <w32/string.hpp>
+#include <w32/types.hpp>
 #include <w32/com/Wrapper.hpp>
 
 namespace w32 { namespace shl {
@@ -45,6 +46,31 @@ namespace w32 { namespace shl {
 
     W32_SHL_EXPORT Path abspath ( const Item& item );
 
+    class W32_SHL_EXPORT Item2 :
+        public com::Wrapper< ::IShellItem2 >
+    {
+        /* construction. */
+    public:
+        explicit Item2 ( ::IShellItem2 * object );
+        Item2 ( const Item& item );
+
+        /* methods. */
+    public:
+        qword size () const;
+    };
+
 } }
+
+template<> inline w32::com::Guid
+    w32::com::guidof< ::IShellItem > ()
+{
+    return (IID_IShellItem);
+}
+
+template<> inline w32::com::Guid
+    w32::com::guidof< ::IShellItem2 > ()
+{
+    return (IID_IShellItem2);
+}
 
 #endif /* _w32_shl_Item_hpp__ */
