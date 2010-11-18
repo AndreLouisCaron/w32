@@ -23,20 +23,16 @@ namespace w32 { namespace shl {
         const std::streamsize count = myStream.write(
             pbase(), ::ULONG(pptr()-pbase())
             );
-        const char_type value = traits_type::to_int_type(character);
         if ( count == 0 ) {
             return (traits_type::eof());
         }
-
             // Output overflowing character.
+        const char_type value = traits_type::to_int_type(character);
         if ( myStream.write(&value,1) == 0 ) {
             return (traits_type::eof());
         }
-
             // Adjust put buffer pointers.
         setp(myPutBuffer,myPutBuffer+PutBufferSize);
-
-            // Indicate success.
         return (traits_type::not_eof(character));
     }
 
@@ -47,12 +43,10 @@ namespace w32 { namespace shl {
         if ( count == 0 ) {
             return (traits_type::eof());
         }
-
             // Adjust get buffer pointers.
         setg(myGetBuffer,myGetBuffer,myGetBuffer+count);
-
             // Peek at the first character.
-        return (traits_type::not_eof(*gptr()));
+        return (traits_type::to_int_type(*gptr()));
     }
 
     int streambuf::sync ()
@@ -61,10 +55,8 @@ namespace w32 { namespace shl {
         const std::streamsize count = myStream.write(
             pbase(), ::ULONG(pptr()-pbase())
             );
-
             // Adjust put buffer pointers.
         setp(pptr(),epptr());
-
             // Indicate status (failure/success).
         return ((count == 0)? 0 : 1);
     }
