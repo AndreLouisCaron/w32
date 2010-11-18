@@ -11,6 +11,7 @@
 #include "__configure__.hpp"
 #include <w32/string.hpp>
 #include <w32/types.hpp>
+#include <w32/NotCopyable.hpp>
 
 namespace w32 { namespace shl {
 
@@ -27,17 +28,17 @@ namespace w32 { namespace shl {
         /* data. */
     private:
         Data myData;
-        string myName;
 
         /* construction. */
     public:
         Stat ();
-        Stat ( const Stat& other );
+        ~Stat ();
 
         /* methods. */
     public:
         Data& data ();
         const Data& data () const;
+        void clear ();
 
         string name () const;
         qword size () const;

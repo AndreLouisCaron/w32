@@ -15,10 +15,9 @@ namespace w32 { namespace shl {
         ::ZeroMemory(&myData, sizeof(myData));
     }
 
-    Stat::Stat ( const Stat& other )
-        : myName(other.myName)
+    Stat::~Stat ()
     {
-        ::CopyMemory(&myData, &other.myData, sizeof(myData));
+        clear();
     }
 
     Stat::Data& Stat::data ()
@@ -31,9 +30,17 @@ namespace w32 { namespace shl {
         return (myData);
     }
 
+    void Stat::clear ()
+    {
+        if ( myData.pwcsName != 0 ) {
+            com::free(myData.pwcsName);
+        }
+        ::ZeroMemory(&myData, sizeof(myData));
+    }
+
     string Stat::name () const
     {
-        return (myName);
+        return (myData.pwcsName);
     }
 
     qword Stat::size () const
