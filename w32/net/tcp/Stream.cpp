@@ -21,9 +21,29 @@ namespace {
     }
 
         // Waits for a connection attempt from a client.
+    ::SOCKET allocate ( ::SOCKET listener, ::sockaddr * peer, int * len )
+    {
+        const ::SOCKET result = ::accept(listener, peer, len);
+        if ( result == INVALID_SOCKET ) {
+            UNCHECKED_WIN32C_ERROR(accept,::WSAGetLastError());
+        }
+        return (result);
+    }
+
+    ::SOCKET allocate ( ::SOCKET listener, ::sockaddr_in& peer )
+    {
+        peer.sin_family = AF_INET; int len = sizeof(peer);
+        const ::SOCKET result = ::accept(
+            listener, reinterpret_cast<::sockaddr*>(&peer), &len);
+        if ( result == INVALID_SOCKET ) {
+            UNCHECKED_WIN32C_ERROR(accept,::WSAGetLastError());
+        }
+        return (result);
+    }
+
     ::SOCKET allocate ( ::SOCKET listener )
     {
-        const ::SOCKET result = ::accept(listener,0,0);
+        const ::SOCKET result = ::accept(listener, 0, 0);
         if ( result == INVALID_SOCKET ) {
             UNCHECKED_WIN32C_ERROR(accept,::WSAGetLastError());
         }
@@ -36,6 +56,13 @@ namespace w32 { namespace net { namespace tcp {
 
     Stream::Stream ( Listener& listener )
         : StreamSocket(claim( ::allocate(listener.handle()) ))
+    {
+    }
+
+    Stream::Stream ( Listener& listener, ipv4::EndPoint& peer )
+        : StreamSocket(claim(
+            ::allocate(listener.handle(), peer.data())
+            ))
     {
     }
 

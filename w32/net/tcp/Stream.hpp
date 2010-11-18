@@ -25,6 +25,7 @@ namespace w32 { namespace net { namespace tcp {
              * @brief Wait for a connection (server side).
              */
         Stream ( Listener& listener );
+        Stream ( Listener& listener, ipv4::EndPoint& peer );
 
             /*!
              * @brief Connect to a server (client side).
