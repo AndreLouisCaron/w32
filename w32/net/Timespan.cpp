@@ -9,6 +9,11 @@
 
 namespace w32 { namespace net {
 
+    Timespan::Timespan ()
+    {
+        ::ZeroMemory(&myValue, sizeof(myValue));
+    }
+
     Timespan::Timespan ( const Value& value )
         : myValue(value)
     {

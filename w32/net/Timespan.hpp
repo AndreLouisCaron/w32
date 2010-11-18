@@ -26,8 +26,9 @@ namespace w32 { namespace net {
 
         /* construction. */
     public:
+        Timespan ();
         Timespan ( const Value& value );
-        Timespan ( long seconds = 0, long microseconds = 0 );
+        Timespan ( long seconds, long microseconds = 0 );
 
         /* methods. */
     public:
