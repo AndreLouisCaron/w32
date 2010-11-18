@@ -20,7 +20,10 @@ namespace w32 {
 #   include <w32/net/Event.hpp>
 #   include <w32/net/Host.hpp>
 #   include <w32/net/integers.hpp>
+#   include <w32/net/select.hpp>
+#   include <w32/net/Set.hpp>
 #   include <w32/net/sockstream.hpp>
+#   include <w32/net/Timespan.hpp>
 #   include <w32/net/ipv4/Address.hpp>
 #   include <w32/net/ipv4/EndPoint.hpp>
 #   include <w32/net/ipv6/Address.hpp>
