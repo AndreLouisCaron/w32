@@ -66,6 +66,11 @@ namespace w32 { namespace net { namespace ipv4 {
         return (lhs.value().S_un.S_addr == rhs.value().S_un.S_addr);
     }
 
+    bool operator< ( const Address& lhs, const Address& rhs )
+    {
+        return (lhs.value().S_un.S_addr < rhs.value().S_un.S_addr);
+    }
+
     bool operator!= ( const Address& lhs, const Address& rhs )
     {
         return (lhs.value().S_un.S_addr != rhs.value().S_un.S_addr);

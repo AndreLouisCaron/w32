@@ -51,6 +51,9 @@ namespace w32 { namespace net { namespace ipv4 {
     W32_NET_EXPORT bool operator!=
         ( const Address& lhs, const Address& rhs );
 
+    W32_NET_EXPORT bool operator<
+        ( const Address& lhs, const Address& rhs );
+
     W32_NET_EXPORT std::istream& operator<<
         ( std::istream& in, Address& address );
 
