@@ -11,6 +11,7 @@
 #include <w32/shl/Path.hpp>
 #include <w32/shl/Stream.hpp>
 #include <w32/string.hpp>
+#include <w32/Variant.hpp>
 
 namespace {
 
@@ -112,6 +113,32 @@ namespace w32 { namespace shl {
     Item Folder::child ( const Path& path ) const
     {
         return (Item(*this, path));
+    }
+
+    Folder2::Folder2 ( ::IShellFolder2 * object )
+        : com::Wrapper< ::IShellFolder2 >(object)
+    {
+    }
+
+    Folder2::Folder2 ( const Folder& folder )
+        : com::Wrapper< ::IShellFolder2 >
+              ( com::cast< ::IShellFolder2 >(folder.ptr().value()) )
+    {
+    }
+
+    qword Folder2::size ( const Path& path ) const
+    {
+        const ::GUID storage = {0xB725F130, 0x47EF, 0x101A,
+            0xA5, 0xF1, 0x02, 0x60, 0x8C, 0x9E, 0xEB, 0xAC};
+        const ::SHCOLUMNID column = {storage, 12};
+        
+        Variant size;
+        const com::Result result = ptr()->GetDetailsEx
+            (path.backend(), &column, &size.value());
+        if ( result.bad() ) {
+            UNCHECKED_COM_ERROR(IShellFolder, GetDetailsEx, result);
+        }
+        return (size);
     }
 
     Folder::Listing::Listing ( ::IEnumIDList * object )

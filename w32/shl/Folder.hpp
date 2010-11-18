@@ -44,6 +44,19 @@ namespace w32 { namespace shl {
         Item child ( const Path& path ) const;
     };
 
+    class W32_SHL_EXPORT Folder2 :
+        public com::Wrapper< ::IShellFolder2 >
+    {
+        /* construction. */
+    public:
+        explicit Folder2 ( ::IShellFolder2 * object );
+        Folder2 ( const Folder& folder );
+
+        /* methods. */
+    public:
+        qword size ( const Path& path ) const;
+    };
+
     class W32_SHL_EXPORT Folder::Listing :
         public com::Wrapper< ::IEnumIDList >
     {
@@ -70,6 +83,12 @@ template<> inline w32::com::Guid
     w32::com::guidof< ::IShellFolder > ()
 {
     return (IID_IShellFolder);
+}
+
+template<> inline w32::com::Guid
+    w32::com::guidof< ::IShellFolder2 > ()
+{
+    return (IID_IShellFolder2);
 }
 
 template<> inline w32::com::Guid
