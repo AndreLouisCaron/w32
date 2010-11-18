@@ -34,9 +34,13 @@ namespace w32 { namespace net { namespace ipv4 {
         EndPoint ( uint32 address, uint16 port );
         EndPoint ( uint8 b1, uint8 b2, uint8 b3, uint8 b4, uint16 port );
         EndPoint ( const Address& address, uint16 port );
+        EndPoint ( const EndPoint& other );
 
         /* methods. */
     public:
+        int size () const;
+        ::sockaddr * raw ();
+        const ::sockaddr * raw () const;
         Data& data ();
         const Data& data () const;
         uint16 port () const;
