@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual C++ Express 2008
+# Visual Studio 2008
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ftp-client", "ftp-client\ftp-client.vcproj", "{93E12B5A-ABC1-4768-843C-C3628E640840}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "screen-capture", "screen-capture\screen-capture.vcproj", "{A3CD3142-0584-4F41-8B10-CABB6EA9BF57}"
@@ -50,6 +50,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "namespace-tester", "namespace-tester\namespace-tester.vcproj", "{05467BE3-8B9C-4834-96EB-36A24A9354A7}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "thread-pools", "thread-pools\thread-pools.vcproj", "{477C0AF8-76F0-4690-BE47-A3C7B8B4E2DB}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "key-generation", "key-generation\key-generation.vcproj", "{01473104-1FF5-4219-9E58-0F4A615C74F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -259,6 +261,14 @@ Global
 		{477C0AF8-76F0-4690-BE47-A3C7B8B4E2DB}.opt|Win32.Build.0 = opt|Win32
 		{477C0AF8-76F0-4690-BE47-A3C7B8B4E2DB}.Release|Win32.ActiveCfg = opt|Win32
 		{477C0AF8-76F0-4690-BE47-A3C7B8B4E2DB}.Release|Win32.Build.0 = opt|Win32
+		{01473104-1FF5-4219-9E58-0F4A615C74F1}.dbg|Win32.ActiveCfg = dbg|Win32
+		{01473104-1FF5-4219-9E58-0F4A615C74F1}.dbg|Win32.Build.0 = dbg|Win32
+		{01473104-1FF5-4219-9E58-0F4A615C74F1}.Debug|Win32.ActiveCfg = dbg|Win32
+		{01473104-1FF5-4219-9E58-0F4A615C74F1}.Debug|Win32.Build.0 = dbg|Win32
+		{01473104-1FF5-4219-9E58-0F4A615C74F1}.opt|Win32.ActiveCfg = opt|Win32
+		{01473104-1FF5-4219-9E58-0F4A615C74F1}.opt|Win32.Build.0 = opt|Win32
+		{01473104-1FF5-4219-9E58-0F4A615C74F1}.Release|Win32.ActiveCfg = opt|Win32
+		{01473104-1FF5-4219-9E58-0F4A615C74F1}.Release|Win32.Build.0 = opt|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
