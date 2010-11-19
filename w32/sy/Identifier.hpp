@@ -12,6 +12,12 @@
 #include <w32/NotCopyable.hpp>
 #include <w32/types.hpp>
 
+namespace w32 {
+
+    class string;
+
+}
+
 namespace w32 { namespace sy {
 
     class Token;
@@ -28,6 +34,8 @@ namespace w32 { namespace sy {
 
         /* construction. */
     public:
+        Identifier ( const string& value );
+        Identifier ( ::PSID data, ::DWORD size );
         Identifier ( const Identifier& other );
         ~Identifier();
 
@@ -35,7 +43,7 @@ namespace w32 { namespace sy {
     public:
         Handle handle () const;
         bool valid () const;
-        dword length () const;
+        dword size () const;
 
         bool in ( const Token& token ) const;
 
@@ -43,7 +51,11 @@ namespace w32 { namespace sy {
     public:
         bool operator== ( const Identifier& other ) const;
         bool operator!= ( const Identifier& other ) const;
+
+        operator string () const;
     };
+
+    Identifier lookup ( const string& system, const string& account );
 
 } }
 

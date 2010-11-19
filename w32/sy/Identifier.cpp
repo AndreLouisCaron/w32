@@ -7,6 +7,7 @@
 
 #include <w32/sy/Identifier.hpp>
 #include <w32/Error.hpp>
+#include <w32/string.hpp>
 #include <w32/sy/Token.hpp>
 
 namespace {
@@ -20,12 +21,34 @@ namespace {
         return (duplicate);
     }
 
+    ::PSID parse ( const ::WCHAR * value )
+    {
+        ::PSID handle = 0;
+        const ::BOOL result = ::ConvertStringSidToSidW(value, &handle);
+        if ( result != FALSE )
+        {
+            const ::DWORD error = ::GetLastError();
+            UNCHECKED_WIN32C_ERROR(ConvertStringSidToSid, error);
+        }
+        return (handle);
+    }
+
 }
 
 namespace w32 { namespace sy {
 
+    Identifier::Identifier ( const string& value )
+        : myHandle(::parse(value.data()))
+    {
+    }
+
+    Identifier::Identifier ( ::PSID data, ::DWORD size )
+        : myHandle( ::copy(size, data) )
+    {
+    }
+
     Identifier::Identifier ( const Identifier& other )
-        : myHandle(copy(other.length(),other.handle()))
+        : myHandle( ::copy(other.size(),other.handle()) )
     {
     }
 
@@ -46,7 +69,7 @@ namespace w32 { namespace sy {
         return ( (handle() != 0) && (::IsValidSid(handle())) );
     }
 
-    dword Identifier::length () const
+    dword Identifier::size () const
     {
         if ( !valid() ) {
             return (0);
@@ -75,6 +98,35 @@ namespace w32 { namespace sy {
     bool Identifier::operator!= ( const Identifier& other ) const
     {
         return ( !((*this) == other) );
+    }
+
+    Identifier::operator string () const
+    {
+        ::WCHAR * value = 0;
+        const ::BOOL result = ::ConvertSidToStringSidW(handle(), &value);
+        if ( result != FALSE )
+        {
+            const ::DWORD error = ::GetLastError();
+            UNCHECKED_WIN32C_ERROR(ConvertSidToStringSid, error);
+        }
+        const string sid(value);
+        ::LocalFree(value);
+        return (sid);
+    }
+
+    Identifier lookup ( const string& system, const string& account )
+    {
+        ::SID identifier; ::ZeroMemory(&identifier, sizeof(identifier));
+        ::DWORD size = 0; ::SID_NAME_USE type = SidTypeUnknown;
+        const ::BOOL result = ::LookupAccountNameW(
+            system.data(), account.data(), &identifier, &size, 0, 0, &type
+            );
+        if ( result != FALSE )
+        {
+            const ::DWORD error = ::GetLastError();
+            UNCHECKED_WIN32C_ERROR(LookupAccountName, error);
+        }
+        return (Identifier(&identifier, size));
     }
 
 } }

@@ -17,4 +17,6 @@
 #   define W32_SY_EXPORT __declspec(dllimport)
 #endif
 
+#include <Sddl.h>
+
 #endif /* _w32_configure_hpp__ */
