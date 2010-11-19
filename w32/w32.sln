@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual C++ Express 2008
+# Visual Studio 2008
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "w32", "w32.vcproj", "{61011C09-083A-410A-93AF-5E6CD4775865}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "w32.fs", "w32.fs.vcproj", "{61627339-BCDA-47EA-9033-285B2B208345}"
@@ -112,6 +112,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "w32.sy", "w32.sy.vcproj", "
 	ProjectSection(ProjectDependencies) = postProject
 		{61011C09-083A-410A-93AF-5E6CD4775865} = {61011C09-083A-410A-93AF-5E6CD4775865}
 		{85854619-D795-43A2-B8E7-157FA92C3402} = {85854619-D795-43A2-B8E7-157FA92C3402}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "w32.cr", "w32.cr.vcproj", "{017CF0B7-2826-4F0B-8AAA-EE66D9FC26EE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{61011C09-083A-410A-93AF-5E6CD4775865} = {61011C09-083A-410A-93AF-5E6CD4775865}
 	EndProjectSection
 EndProject
 Global
@@ -282,6 +287,14 @@ Global
 		{2D570876-4D0D-427F-B84D-C752D4304E74}.opt|Win32.Build.0 = opt|Win32
 		{2D570876-4D0D-427F-B84D-C752D4304E74}.Release|Win32.ActiveCfg = opt|Win32
 		{2D570876-4D0D-427F-B84D-C752D4304E74}.Release|Win32.Build.0 = opt|Win32
+		{017CF0B7-2826-4F0B-8AAA-EE66D9FC26EE}.dbg|Win32.ActiveCfg = dbg|Win32
+		{017CF0B7-2826-4F0B-8AAA-EE66D9FC26EE}.dbg|Win32.Build.0 = dbg|Win32
+		{017CF0B7-2826-4F0B-8AAA-EE66D9FC26EE}.Debug|Win32.ActiveCfg = dbg|Win32
+		{017CF0B7-2826-4F0B-8AAA-EE66D9FC26EE}.Debug|Win32.Build.0 = dbg|Win32
+		{017CF0B7-2826-4F0B-8AAA-EE66D9FC26EE}.opt|Win32.ActiveCfg = opt|Win32
+		{017CF0B7-2826-4F0B-8AAA-EE66D9FC26EE}.opt|Win32.Build.0 = opt|Win32
+		{017CF0B7-2826-4F0B-8AAA-EE66D9FC26EE}.Release|Win32.ActiveCfg = opt|Win32
+		{017CF0B7-2826-4F0B-8AAA-EE66D9FC26EE}.Release|Win32.Build.0 = opt|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
