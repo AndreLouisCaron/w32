@@ -178,6 +178,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\mt\Cleanup.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\mt\ConditionVariable.cpp"
 				>
 			</File>
@@ -195,6 +199,14 @@
 			</File>
 			<File
 				RelativePath=".\mt\Mutex.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\mt\Pool.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\mt\Queue.cpp"
 				>
 			</File>
 			<File
@@ -232,6 +244,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\mt\Cleanup.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\mt\ConditionVariable.hpp"
 				>
 			</File>
@@ -249,6 +265,14 @@
 			</File>
 			<File
 				RelativePath=".\mt\Mutex.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\mt\Pool.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\mt\Queue.hpp"
 				>
 			</File>
 			<File

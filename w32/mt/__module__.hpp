@@ -26,6 +26,9 @@ namespace w32 {
 #   if (_WIN32_WINNT >= 0x600)
 #       include <w32/mt/ConditionVariable.hpp>
 #       include <w32/mt/ReadWriteLock.hpp>
+#       include <w32/mt/Pool.hpp>
+#       include <w32/mt/Queue.hpp>
+#       include <w32/mt/Cleanup.hpp>
 #   endif
 #include "../__compiler-outro__.hpp"
 
