@@ -6,6 +6,7 @@
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
 #include <w32/cr/Blob.hpp>
+#include <w32/cr/Provider.hpp>
 #include <w32/Error.hpp>
 #include <w32/string.hpp>
 #include <algorithm>
@@ -164,6 +165,17 @@ namespace w32 { namespace cr {
             UNCHECKED_WIN32C_ERROR(CryptHashData, error);
         }
         return (lhs);
+    }
+
+    void random ( const Provider& provider, void * data, dword size )
+    {
+        const ::BOOL result = ::CryptGenRandom(
+            provider.handle(), size, static_cast<::BYTE*>(data));
+        if ( result == FALSE )
+        {
+            const ::DWORD error = ::GetLastError();
+            UNCHECKED_WIN32C_ERROR(CryptGenRandom, error);
+        }
     }
 
 } }

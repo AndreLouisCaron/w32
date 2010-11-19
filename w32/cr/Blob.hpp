@@ -19,6 +19,8 @@ namespace w32 {
 
 namespace w32 { namespace cr {
 
+    class Provider;
+
     class W32_CR_EXPORT Blob
     {
         /* data. */
@@ -84,6 +86,27 @@ namespace w32 { namespace cr {
         ( const Blob& rhs, const Format& format=Format::hexraw() );
     W32_CR_EXPORT Blob convert
         ( const string& rhs, const Format& format=Format::hexraw() );
+
+    W32_CR_EXPORT void random
+        ( const Provider& provider, void * data, dword size );
+
+    inline void random ( const Provider& provider, Blob& blob )
+    {
+        random(provider, blob.data(), blob.size());
+    }
+
+    inline Blob random ( const Provider& provider, dword size )
+    {
+        Blob blob(size); random(provider, blob); return (blob);
+    }
+
+    template<typename Number>
+    inline void random ( const Provider& provider )
+    {
+        Number number;
+        random(provider, &number, sizeof(number));
+        return (number);
+    }
 
 } }
 
