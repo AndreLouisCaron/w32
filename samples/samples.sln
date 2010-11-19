@@ -49,6 +49,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "namespace-ftp", "namespace-
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "namespace-tester", "namespace-tester\namespace-tester.vcproj", "{05467BE3-8B9C-4834-96EB-36A24A9354A7}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "thread-pools", "thread-pools\thread-pools.vcproj", "{477C0AF8-76F0-4690-BE47-A3C7B8B4E2DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		dbg|Win32 = dbg|Win32
@@ -249,6 +251,14 @@ Global
 		{05467BE3-8B9C-4834-96EB-36A24A9354A7}.opt|Win32.Build.0 = opt|Win32
 		{05467BE3-8B9C-4834-96EB-36A24A9354A7}.Release|Win32.ActiveCfg = opt|Win32
 		{05467BE3-8B9C-4834-96EB-36A24A9354A7}.Release|Win32.Build.0 = opt|Win32
+		{477C0AF8-76F0-4690-BE47-A3C7B8B4E2DB}.dbg|Win32.ActiveCfg = dbg|Win32
+		{477C0AF8-76F0-4690-BE47-A3C7B8B4E2DB}.dbg|Win32.Build.0 = dbg|Win32
+		{477C0AF8-76F0-4690-BE47-A3C7B8B4E2DB}.Debug|Win32.ActiveCfg = dbg|Win32
+		{477C0AF8-76F0-4690-BE47-A3C7B8B4E2DB}.Debug|Win32.Build.0 = dbg|Win32
+		{477C0AF8-76F0-4690-BE47-A3C7B8B4E2DB}.opt|Win32.ActiveCfg = opt|Win32
+		{477C0AF8-76F0-4690-BE47-A3C7B8B4E2DB}.opt|Win32.Build.0 = opt|Win32
+		{477C0AF8-76F0-4690-BE47-A3C7B8B4E2DB}.Release|Win32.ActiveCfg = opt|Win32
+		{477C0AF8-76F0-4690-BE47-A3C7B8B4E2DB}.Release|Win32.Build.0 = opt|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
