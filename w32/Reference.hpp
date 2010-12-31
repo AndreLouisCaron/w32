@@ -115,6 +115,11 @@ namespace w32 {
         {
             return (myResource);
         }
+
+        Resource operator-> () const
+        {
+            return (myResource);
+        }
     };
 
 }
