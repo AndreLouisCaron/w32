@@ -33,10 +33,32 @@ namespace w32 { namespace net {
         return (result > 0);
     }
 
+    void select ( Set& sockets )
+    {
+        select(sockets, Timespan());
+    }
+
+    bool select ( Set& sockets, const Timespan& timeout )
+    {
+        const int result = ::select(
+            0, &sockets.data(), 0, 0, &timeout.value()
+            );
+        if ( result == SOCKET_ERROR ) {
+            UNCHECKED_WIN32C_ERROR(select, ::WSAGetLastError());
+        }
+        
+            // Check if call timed-out!
+        return (result > 0);
+    }
+
     bool readable ( const Socket& socket )
     {
+        return (readable(socket, Timespan()));
+    }
+
+    bool readable ( const Socket& socket, const Timespan& timeout )
+    {
         Set set; set.add(socket);
-        const Timespan timeout;
         
         const int result = ::select(
             0, &set.data(), 0, 0, &timeout.value()
