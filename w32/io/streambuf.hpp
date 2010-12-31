@@ -1,5 +1,5 @@
-#ifndef _w32_net_streambuf_hpp__
-#define _w32_net_streambuf_hpp__
+#ifndef _w32_io_streambuf_hpp__
+#define _w32_io_streambuf_hpp__
 
 // Copyright(c) Andre Caron, 2009-2010
 //
@@ -154,4 +154,4 @@ namespace w32 { namespace io {
 
 } }
 
-#endif /* _w32_net_streambuf_hpp__ */
+#endif /* _w32_io_streambuf_hpp__ */
