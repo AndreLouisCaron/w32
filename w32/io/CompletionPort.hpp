@@ -22,17 +22,18 @@ namespace w32 { namespace io {
     {
         /* nested types. */
     public:
-        typedef dword Key;
         typedef dword Size;
+        typedef ulongptr Key;
 
         /* construction. */
     public:
-        explicit CompletionPort ( Size threads = 0 );
-        CompletionPort ( const Stream& stream, Key key, Size threads = 0 );
+        explicit CompletionPort ( dword threads = 0 );
+        CompletionPort ( const Stream& stream, Key key, dword threads = 0 );
 
         /* methods. */
     public:
         void bind ( const Stream& stream, Key key );
+        void bind ( const Stream& stream, void * key );
         void get ( Size& bytes, Key& key, Transfer *& transfer );
         bool get ( Size& bytes, Key& key, Transfer *& transfer, Timespan timeout );
         void put ( Size bytes, Key key, Transfer * transfer );

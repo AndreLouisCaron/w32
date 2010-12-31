@@ -37,12 +37,12 @@ namespace w32 { namespace io {
     }
 
     CompletionPort::CompletionPort
-        ( const Stream& stream, ulongptr key, dword threads )
+        ( const Stream& stream, Key key, dword threads )
         : Object(claim( ::allocate(threads, stream.handle(), key) ))
     {
     }
 
-    void CompletionPort::bind ( const Stream& stream, ulongptr key )
+    void CompletionPort::bind ( const Stream& stream, Key key )
     {
         const ::HANDLE result = ::CreateIoCompletionPort
             (stream.handle(), handle(), key, 0);
@@ -51,6 +51,11 @@ namespace w32 { namespace io {
             const ::DWORD error = ::GetLastError();
             UNCHECKED_WIN32C_ERROR(CreateIoCompletionPort, error);
         }
+    }
+
+    void CompletionPort::bind ( const Stream& stream, void * key )
+    {
+        bind(stream, reinterpret_cast<Key>(key));
     }
 
     void CompletionPort::get ( Size& bytes, Key& key, Transfer *& transfer )
@@ -63,7 +68,8 @@ namespace w32 { namespace io {
         {
             const ::DWORD error = ::GetLastError();
             if ((error == ERROR_NETNAME_DELETED   )||
-                (error == ERROR_CONNECTION_ABORTED))
+                (error == ERROR_CONNECTION_ABORTED)||
+                (error == ERROR_HANDLE_EOF        ))
             {
                 bytes = 0; key = 0; transfer = 0; return;
             }
@@ -83,7 +89,8 @@ namespace w32 { namespace io {
             const ::DWORD error = ::GetLastError();
             //if ( error != !?WHAT_IS_THE_TIMEOUT_CODE?! ) {}
             if ((error == ERROR_NETNAME_DELETED   )||
-                (error == ERROR_CONNECTION_ABORTED))
+                (error == ERROR_CONNECTION_ABORTED)||
+                (error == ERROR_HANDLE_EOF        ))
             {
                 bytes = 0; key = 0; transfer = 0; return (true);
             }
