@@ -101,11 +101,6 @@ namespace w32 { namespace cr {
         return (CRYPT_STRING_HEXASCII);
     }
 
-    const Format Format::asn1 ()
-    {
-        return (CRYPT_STRING_STRICT);
-    }
-
     const Format Format::base64 ()
     {
         return (CRYPT_STRING_BASE64);
@@ -126,6 +121,12 @@ namespace w32 { namespace cr {
         return (CRYPT_STRING_BASE64X509CRLHEADER);
     }
 
+#if _WIN32_WINNT > 0x0600
+    const Format Format::asn1 ()
+    {
+        return (CRYPT_STRING_STRICT);
+    }
+#endif
 
     Format::Format ( Value value )
         : myValue(value)

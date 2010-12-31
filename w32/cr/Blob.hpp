@@ -63,11 +63,13 @@ namespace w32 { namespace cr {
         static const Format hex ();
         static const Format hexraw ();
         static const Format hexascii ();
-        static const Format asn1 ();
         static const Format base64 ();
         static const Format base64certificate ();
         static const Format base64request ();
         static const Format base64x509 ();
+#if _WIN32_WINNT > 0x0600
+        static const Format asn1 ();
+#endif
 
         /* data. */
     private:
