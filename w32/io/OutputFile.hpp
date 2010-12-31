@@ -23,7 +23,7 @@ namespace w32 { namespace io {
     {
         /* nested types. */
     public:
-        class Mode
+        class W32_IO_EXPORT Mode
         {
             /* nested types. */
         public:
@@ -53,7 +53,7 @@ namespace w32 { namespace io {
         /* construction. */
     public:
         explicit OutputFile (
-            const string& path, const Mode& mode=Mode::replace()
+            const string& path, const Mode& mode=Mode::squash()
             );
     };
 
