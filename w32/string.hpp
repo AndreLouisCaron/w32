@@ -125,7 +125,7 @@ namespace w32 {
     }
 
     inline string::string ( const std::wstring& other )
-        : mySize(other.size()), myData(new wchar_t[mySize])
+        : mySize(other.size()), myData(new wchar_t[mySize+1])
     {
         *std::copy(other.begin(), other.end(), begin()) = L'\0';
     }
