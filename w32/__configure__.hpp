@@ -21,6 +21,9 @@
 #endif
 
     // API headers.
+#ifndef _WINSOCK2API_
+#   include <WinSock2.h>
+#endif
 #ifndef _WINDOWS_
 #   include <Windows.h>
 #endif
