@@ -20,9 +20,9 @@ namespace {
         std::cout << "bar(0x" << context << ")" << std::endl;
         
             // Re-schedule indefinitely.
-        w32::mt::Queue& queue = *static_cast<w32::mt::Queue*>(context);
+        /*w32::mt::Queue& queue = *static_cast<w32::mt::Queue*>(context);
         const w32::Timespan bardelai( 250);
-        queue.submit(w32::mt::Queue::adapt<void*,&bar>(), bardelai, &queue);
+        queue.submit(w32::mt::Queue::adapt<void*,&bar>(), bardelai, &queue);*/
     }
 
     void __stdcall meh ( void * object, void * cleanup )
@@ -45,7 +45,7 @@ namespace {
         
             // Pretty please, with sugar on top, clean the fucking car.
         w32::mt::Cleanup cleanup;
-        queue.cleanup(cleanup, &::meh);
+        //queue.cleanup(cleanup, &::meh);
         
             // Dummy context.
         int a = 0; int b = 1; int c = 2;
@@ -59,7 +59,7 @@ namespace {
         queue.submit(w32::mt::Queue::adapt<void*,&::bar>(), bardelai, &queue);
         
             // Wait for 'foo()' to finish, but not 'bar()'.
-        w32::mt::sleep(w32::Timespan(1000));
+        w32::mt::sleep(w32::Timespan(3000));
         
             // Pretty please, with sugar on top, clean the fucking car.
         cleanup.close(true, &c);

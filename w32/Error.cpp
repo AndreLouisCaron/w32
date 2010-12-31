@@ -16,7 +16,6 @@ namespace w32 {
     Error::Error ( Code code ) throw ()
         : myCode(code)
     {
-        std::cerr << "Error: " << code << "." << std::endl;
     }
 
     Error::Code Error::code () const throw ()
