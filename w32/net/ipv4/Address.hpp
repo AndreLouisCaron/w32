@@ -27,6 +27,7 @@ namespace w32 { namespace net { namespace ipv4 {
         static const Address none ();
         static const Address any ();
         static const Address broadcast ();
+        static const Address local ();
 
         /* data. */
     private:
@@ -43,6 +44,10 @@ namespace w32 { namespace net { namespace ipv4 {
         /* methods. */
     public:
         const Value& value () const;
+        uint8 _1 () const;
+        uint8 _2 () const;
+        uint8 _3 () const;
+        uint8 _4 () const;
     };
 
     W32_NET_EXPORT bool operator==

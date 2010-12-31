@@ -28,6 +28,11 @@ namespace w32 { namespace net { namespace ipv4 {
         return (INADDR_BROADCAST);
     }
 
+    const Address Address::local ()
+    {
+        return (Address(127,0,0,1));
+    }
+
     Address::Address ()
     {
         myValue.S_un.S_addr = ::inet_addr(0);
@@ -59,6 +64,26 @@ namespace w32 { namespace net { namespace ipv4 {
     const Address::Value& Address::value () const
     {
         return (myValue);
+    }
+
+    uint8 Address::_1 () const
+    {
+        return (myValue.S_un.S_un_b.s_b1);
+    }
+
+    uint8 Address::_2 () const
+    {
+        return (myValue.S_un.S_un_b.s_b2);
+    }
+
+    uint8 Address::_3 () const
+    {
+        return (myValue.S_un.S_un_b.s_b3);
+    }
+
+    uint8 Address::_4 () const
+    {
+        return (myValue.S_un.S_un_b.s_b4);
     }
 
     bool operator== ( const Address& lhs, const Address& rhs )
