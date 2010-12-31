@@ -21,6 +21,7 @@ namespace w32 {
 namespace w32 { namespace cr {
 
     class Blob;
+    class Key;
     class Provider;
 
     class W32_CR_EXPORT Hash
@@ -49,10 +50,12 @@ namespace w32 { namespace cr {
         const Handle& handle () const;
 
         void put ( const void * data, dword size );
+        void put ( const Key& key );
 
         const Type type () const;
         dword size () const;
         Blob data () const;
+        bool verify ( const Key& key, const Blob& signature );
     };
 
     class W32_CR_EXPORT Hash::Type

@@ -7,6 +7,7 @@
 
 #include <w32/cr/Hash.hpp>
 #include <w32/cr/Blob.hpp>
+#include <w32/cr/Key.hpp>
 #include <w32/cr/Provider.hpp>
 #include <w32/Error.hpp>
 #include <w32/astring.hpp>
@@ -98,6 +99,16 @@ namespace w32 { namespace cr {
         }
     }
 
+    void Hash::put ( const Key& key )
+    {
+        const ::BOOL result = ::CryptHashSessionKey(handle(), key.handle(), 0);
+        if ( result == FALSE )
+        {
+            const ::DWORD error = ::GetLastError();
+            UNCHECKED_WIN32C_ERROR(CryptHashSessionKey, error);
+        }
+    }
+
     Blob Hash::data () const
     {
         Blob lhs(::getsize(handle(), HP_HASHVAL));
@@ -123,6 +134,22 @@ namespace w32 { namespace cr {
         ::DWORD size = 0;
         ::getdata(handle(), HP_HASHSIZE, &size, 4);
         return (size);
+    }
+
+    bool Hash::verify ( const Key& key, const Blob& signature )
+    {
+        const ::BOOL result = ::CryptVerifySignatureW(
+            handle(), signature.data(), signature.size(), key.handle(), 0, 0
+            );
+        if ( result == FALSE )
+        {
+            const ::DWORD error = ::GetLastError();
+            if ( error == NTE_BAD_SIGNATURE ) {
+                return (false);
+            }
+            UNCHECKED_WIN32C_ERROR(CryptHashData, error);
+        }
+        return (true);
     }
 
     const Hash::Type Hash::Type::md5 ()
