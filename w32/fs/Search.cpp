@@ -34,6 +34,11 @@ namespace {
 
 namespace w32 { namespace fs {
 
+    const Search::Handle Search::claim ( ::HANDLE object )
+    {
+        return (Handle(object, &::release));
+    }
+
     Search::Search ( const string& pattern, Result& result )
         : Object(claim(::find(pattern.data(), result.data())))
     {

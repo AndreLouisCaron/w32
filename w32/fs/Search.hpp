@@ -24,6 +24,10 @@ namespace w32 { namespace fs {
     public:
         class Result;
 
+        /* class methods. */
+    public:
+        static const Handle claim ( ::HANDLE object );
+
         /* construction. */
     public:
         Search ( const string& pattern, Result& result );
