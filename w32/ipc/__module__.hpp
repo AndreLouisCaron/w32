@@ -16,6 +16,7 @@ namespace w32 {
 
 #include "../__compiler-intro__.hpp"
 #   include <w32/ipc/Job.hpp>
+#   include <w32/ipc/Modules.hpp>
 #   include <w32/ipc/Process.hpp>
 #include "../__compiler-outro__.hpp"
 
