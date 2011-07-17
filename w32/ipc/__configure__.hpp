@@ -17,12 +17,15 @@
 #       pragma comment ( lib, "PSApi.lib" )
 #   endif
 #else
-#   define W32_ICP_EXPORT __declspec(dllimport)
+#   define W32_IPC_EXPORT __declspec(dllimport)
 #endif
 
     // API headers.
 #ifndef _PSAPI_H_
 #   include <PSApi.h>
+#endif
+#ifndef _INC_TOOLHELP32
+#   include <TlHelp32.h>
 #endif
 
 #endif /* _w32_ipc_configure_hpp__ */
