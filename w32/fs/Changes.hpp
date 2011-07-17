@@ -19,7 +19,7 @@ namespace w32 { namespace fs {
          * @brief Mechanism for notification of changes on the file-system.
          */
     class W32_FS_EXPORT Changes :
-        public Waitable
+        public Object
     {
         /* nested types. */
     public:
@@ -35,7 +35,7 @@ namespace w32 { namespace fs {
     public:
         void next () const;
 
-        // handle is waitable...
+        operator Waitable () const;
     };
 
     class W32_FS_EXPORT Changes::Filter

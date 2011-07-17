@@ -31,7 +31,7 @@ namespace w32 { namespace mt {
          * for impersonating clients.
          */
     class W32_MT_EXPORT Thread :
-        public Waitable
+        public Object
     {
         /* nested types. */
     public:
@@ -197,6 +197,10 @@ namespace w32 { namespace mt {
 
         void join () const;
         bool join ( const Timespan& timeout ) const;
+
+        /* operators. */
+    public:
+        operator Waitable () const;
     };
 
         // "Full-fledged" case.

@@ -35,7 +35,7 @@ namespace w32 { namespace mt {
         : mySemaphore(mutex)
     {
         if ( !mySemaphore.acquire(timeout) ) {
-            throw (Timeout());
+            throw (Waitable::Timeout());
         }
     }
 
@@ -51,12 +51,12 @@ namespace w32 { namespace mt {
 
     void Semaphore::acquire ()
     {
-        wait();
+        Waitable(*this).wait();
     }
 
     bool Semaphore::acquire ( const Timespan& timeout )
     {
-        return (wait(timeout));
+        return (Waitable(*this).wait(timeout));
     }
 
     long Semaphore::release ( long count )
@@ -68,6 +68,11 @@ namespace w32 { namespace mt {
             UNCHECKED_WIN32C_ERROR(CloseHandle, error);
         }
         return (oldcount);
+    }
+
+    Semaphore::operator Waitable () const
+    {
+        return Waitable(handle());
     }
 
 } }

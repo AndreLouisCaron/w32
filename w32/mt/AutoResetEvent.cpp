@@ -67,4 +67,9 @@ namespace w32 { namespace mt {
         }
     }
 
+    AutoResetEvent::operator Waitable () const
+    {
+        return Waitable(handle());
+    }
+
 } }

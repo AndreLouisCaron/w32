@@ -56,6 +56,21 @@ namespace w32 {
         return (::wait(set.data(), set.size(), TRUE, timeout.ticks()));
     }
 
+    Waitable::Waitable ( const Handle& handle )
+        : Object(handle)
+    {
+    }
+
+    void Waitable::wait () const
+    {
+        const ::DWORD result = ::WaitForSingleObject(handle(), INFINITE);
+        if ( result == WAIT_FAILED )
+        {
+            const ::DWORD error = ::GetLastError();
+            UNCHECKED_WIN32C_ERROR(WaitForSingleObject, error);
+        }
+    }
+
     bool Waitable::wait ( const Timespan& timeout ) const
     {
         const ::DWORD result = ::WaitForSingleObject(

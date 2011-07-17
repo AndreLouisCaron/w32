@@ -16,7 +16,7 @@
 namespace w32 {
 
     class W32_CORE_EXPORT Waitable :
-        virtual public Object
+        public Object
     {
         /* nested types. */
     public:
@@ -30,9 +30,14 @@ namespace w32 {
         static dword all ( const Set& set );
         static dword all ( const Set& set, const w32::Timespan& timeout );
 
+        /* construction. */
+    public:
+        explicit Waitable ( const Handle& handle );
+
         /* methods. */
-    protected:
-        bool wait ( const Timespan& timeout = Timespan::infinite() ) const;
+    public:
+        void wait () const;
+        bool wait ( const Timespan& timeout ) const;
         bool test () const;
     };
 

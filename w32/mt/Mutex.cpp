@@ -46,7 +46,7 @@ namespace w32 { namespace mt {
         : myMutex(mutex)
     {
         if ( !myMutex.acquire(timeout) ) {
-            throw (Timeout());
+            throw (Waitable::Timeout());
         }
     }
 
@@ -78,12 +78,12 @@ namespace w32 { namespace mt {
 
     void Mutex::acquire ()
     {
-        wait();
+        Waitable(*this).wait();
     }
 
     bool Mutex::acquire ( const Timespan& timeout )
     {
-        return (wait(timeout));
+        return (Waitable(*this).wait(timeout));
     }
 
     void Mutex::release ()
@@ -94,6 +94,11 @@ namespace w32 { namespace mt {
             const ::DWORD error = ::GetLastError();
             UNCHECKED_WIN32C_ERROR(ReleaseMutex, error);
         }
+    }
+
+    Mutex::operator Waitable () const
+    {
+        return Waitable(handle());
     }
 
 } }

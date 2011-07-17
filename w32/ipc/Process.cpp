@@ -165,12 +165,17 @@ namespace w32 { namespace ipc {
 
     void Process::join () const
     {
-        wait();
+        Waitable(*this).wait();
     }
 
     bool Process::join ( const Timespan& timeout ) const
     {
-        return (wait(timeout));
+        return (Waitable(*this).wait(timeout));
+    }
+
+    bool Process::test () const
+    {
+        return (Waitable(*this).test());
     }
 
     const Process::Priority Process::Priority::higher ()
@@ -235,6 +240,11 @@ namespace w32 { namespace ipc {
     void exit ( dword code )
     {
         ::ExitProcess(code);
+    }
+
+    Process::operator Waitable () const
+    {
+        return Waitable(handle());
     }
 
 } }

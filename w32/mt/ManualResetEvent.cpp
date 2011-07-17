@@ -71,9 +71,24 @@ namespace w32 { namespace mt {
         }
     }
 
-    bool ManualResetEvent::signaled () const
+    void ManualResetEvent::wait () const
     {
-        return (wait(Timespan()));
+        Waitable(*this).wait();
+    }
+
+    bool ManualResetEvent::wait ( const Timespan& timeout ) const
+    {
+        return (Waitable(*this).wait(timeout));
+    }
+
+    bool ManualResetEvent::test () const
+    {
+        return (Waitable(*this).test());
+    }
+
+    ManualResetEvent::operator Waitable () const
+    {
+        return Waitable(handle());
     }
 
 } }

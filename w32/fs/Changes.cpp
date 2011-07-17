@@ -61,6 +61,11 @@ namespace w32 { namespace fs {
         // results with ReadDirectoryChangesW()...
     }
 
+    Changes::operator Waitable () const
+    {
+        return Waitable(handle());
+    }
+
     const Changes::Filter Changes::Filter::filename ()
     {
         return (FILE_NOTIFY_CHANGE_FILE_NAME);

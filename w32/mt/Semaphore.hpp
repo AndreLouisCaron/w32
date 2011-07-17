@@ -16,7 +16,7 @@
 namespace w32 { namespace mt {
 
     class W32_MT_EXPORT Semaphore :
-        public Waitable
+        public Object
     {
         /* nested types. */
     public:
@@ -62,6 +62,10 @@ namespace w32 { namespace mt {
              * @param Number of available shares, after the release operation.
              */
         long release ( long count = 1 );
+
+        /* operators. */
+    public:
+        operator Waitable () const;
     };
 
 } }

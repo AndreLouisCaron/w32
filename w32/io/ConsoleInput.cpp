@@ -30,4 +30,9 @@ namespace w32 { namespace io {
     {
     }
 
+    ConsoleInput::operator Waitable () const
+    {
+        return Waitable(handle());
+    }
+
 } }

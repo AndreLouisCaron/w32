@@ -15,7 +15,7 @@
 namespace w32 { namespace mt {
 
     class W32_MT_EXPORT AutoResetEvent :
-        public Waitable
+        public Object
     {
         /* class methods. */
     public:
@@ -32,6 +32,10 @@ namespace w32 { namespace mt {
         /* methods. */
     public:
         void set ();
+
+        /* operators. */
+    public:
+        operator Waitable () const;
     };
 
 } }

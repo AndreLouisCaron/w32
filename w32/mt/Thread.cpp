@@ -132,12 +132,17 @@ namespace w32 { namespace mt {
 
     void Thread::join () const
     {
-        wait();
+        Waitable(*this).wait();
     }
 
     bool Thread::join ( const Timespan& timeout ) const
     {
-        return (wait(timeout));
+        return (Waitable(*this).wait(timeout));
+    }
+
+    Thread::operator Waitable () const
+    {
+        return Waitable(handle());
     }
 
     void sleep ( const Timespan& timespan )

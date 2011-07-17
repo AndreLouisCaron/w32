@@ -19,7 +19,7 @@ namespace w32 { namespace mt {
          * @brief Mutual-exclusion lock.
          */
     class W32_MT_EXPORT Mutex :
-        public Waitable
+        public Object
     {
         /* nested types. */
     public:
@@ -71,6 +71,10 @@ namespace w32 { namespace mt {
              * @brief Makes the lock available for another thread.
              */
         void release ();
+
+        /* operators. */
+    public:
+        operator Waitable () const;
     };
 
 } }

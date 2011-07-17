@@ -15,7 +15,7 @@
 namespace w32 { namespace mt {
 
     class W32_MT_EXPORT ManualResetEvent :
-        public Waitable
+        public Object
     {
         /* class methods. */
     public:
@@ -33,8 +33,14 @@ namespace w32 { namespace mt {
     public:
         void set ();
         void reset ();
-        bool signaled () const;
-        using Waitable::wait;
+
+        void wait () const;
+        bool wait ( const Timespan& timeout ) const;
+        bool test () const;
+
+        /* operators. */
+    public:
+        operator Waitable () const;
     };
 
 } }

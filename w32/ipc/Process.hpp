@@ -26,7 +26,7 @@ namespace w32 { namespace ipc {
          * set sizes, and at least one thread of execution.
          */
     class W32_IPC_EXPORT Process :
-        public Waitable
+        public Object
     {
         /* nested types. */
     public:
@@ -52,7 +52,6 @@ namespace w32 { namespace ipc {
     public:
         explicit Process ( Identifier identifier );
         explicit Process ( const string& executable );
-
 
         /* methods. */
     public:
@@ -173,6 +172,16 @@ namespace w32 { namespace ipc {
              * @return False if the timeout elapsed.
              */
         bool join ( const Timespan& timeout ) const;
+
+            /*!
+             * @brief Checks if the process is already completed (doesn't wait).
+             * @return True if the process has completed.
+             */
+        bool test () const;
+
+        /* operators. */
+    public:
+        operator Waitable () const;
     };
 
     /*!

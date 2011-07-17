@@ -146,7 +146,7 @@ namespace {
         void standby () const { myStartup.wait(); }
 
             // Check if shutdown requested!
-        bool closing () const { return (myShutdown.signaled()); }
+        bool closing () const { return (myShutdown.test()); }
 
         w32::io::CompletionPort& port () { return (myPort); }
 

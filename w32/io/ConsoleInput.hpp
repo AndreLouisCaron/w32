@@ -16,11 +16,15 @@
 namespace w32 { namespace io {
 
     class W32_IO_EXPORT ConsoleInput :
-        public Waitable, public InputStream
+        public InputStream
     {
         /* construction. */
     public:
         ConsoleInput ();
+
+        /* operators .*/
+    public:
+        operator Waitable () const;
     };
 
 } }
