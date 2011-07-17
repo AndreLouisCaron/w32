@@ -36,8 +36,8 @@ namespace {
 #endif
         
             // Load the extension as an IShellFolder.
-        const w32::shl::Folder root =
-            w32::com::instantiate< ::IShellFolder >(SERVER);
+        const w32::shl::Folder root(
+            w32::com::instantiate< ::IShellFolder >(SERVER));
         
             // Tell the IShellFolder where it's at.
         const w32::shl::Path path = FILE;
