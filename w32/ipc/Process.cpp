@@ -178,6 +178,55 @@ namespace w32 { namespace ipc {
         return (Waitable(*this).test());
     }
 
+    pointer Process::acquire ( size_t size )
+    {
+        const ::LPVOID result = ::VirtualAllocEx
+            (handle(), 0, size, MEM_RESERVE|MEM_COMMIT, PAGE_READWRITE);
+        if ( result == 0 )
+        {
+            const ::DWORD error = ::GetLastError();
+            UNCHECKED_WIN32C_ERROR(VirtualAllocEx, error);
+        }
+        return (result);
+    }
+
+    void Process::release ( pointer base )
+    {
+        const ::BOOL result = ::VirtualFreeEx
+            (handle(), base, 0, MEM_RELEASE);
+        if ( result == FALSE )
+        {
+            const ::DWORD error = ::GetLastError();
+            UNCHECKED_WIN32C_ERROR(VirtualFreeEx, error);
+        }
+    }
+
+    size_t Process::get ( pointer base, void * data, size_t size ) const
+    {
+        ::SIZE_T transferred = 0;
+        const ::BOOL result = ::ReadProcessMemory
+            (handle(), base, data, size, &transferred);
+        if ( result == FALSE )
+        {
+            const ::DWORD error = ::GetLastError();
+            UNCHECKED_WIN32C_ERROR(ReadProcessMemory, error);
+        }
+        return (transferred);
+    }
+
+    size_t Process::put ( pointer base, const void * data, size_t size )
+    {
+        ::SIZE_T transferred = 0;
+        const ::BOOL result = ::WriteProcessMemory
+            (handle(), base, data, size, &transferred);
+        if ( result == FALSE )
+        {
+            const ::DWORD error = ::GetLastError();
+            UNCHECKED_WIN32C_ERROR(WriteProcessMemory, error);
+        }
+        return (transferred);
+    }
+
     const Process::Priority Process::Priority::higher ()
     {
         return (ABOVE_NORMAL_PRIORITY_CLASS);

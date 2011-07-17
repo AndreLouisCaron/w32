@@ -179,6 +179,43 @@ namespace w32 { namespace ipc {
              */
         bool test () const;
 
+            /*!
+             * @brief Allocate memory in target process.
+             * @param size Amount of memory to allocate (in bytes).
+             * @return Virtual address in remote process space.
+             *
+             * @see release()
+             * @see get()
+             * @see put()
+             */
+        pointer acquire ( size_t size );
+
+            /*!
+             * @brief Free memory in target process.
+             * @param base Virtual address in remote process space.
+             *
+             * @see acquire()
+             */
+        void release ( pointer base );
+
+            /*!
+             * @brief Copy memory from target process to current process.
+             * @param base Virtual address in remote process space.
+             * @param data Virtual address in current process space.
+             * @param size Amount of memory to copy (in bytes).
+             * @return Number of bytes copied.
+             */
+        size_t get ( pointer base, void * data, size_t size ) const;
+
+            /*!
+             * @brief Copy memory from current process to target process.
+             * @param base Virtual address in remote process space.
+             * @param data Virtual address in current process space.
+             * @param size Amount of memory to copy (in bytes).
+             * @return Number of bytes copied.
+             */
+        size_t put ( pointer base, const void * data, size_t size );
+
         /* operators. */
     public:
         operator Waitable () const;
