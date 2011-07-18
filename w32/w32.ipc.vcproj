@@ -184,6 +184,14 @@
 				RelativePath=".\ipc\Process.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\ipc\Processes.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ipc\Threads.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -208,6 +216,14 @@
 			</File>
 			<File
 				RelativePath=".\ipc\Process.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ipc\Processes.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ipc\Threads.hpp"
 				>
 			</File>
 		</Filter>

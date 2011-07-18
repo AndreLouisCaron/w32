@@ -18,6 +18,8 @@ namespace w32 {
 #   include <w32/ipc/Job.hpp>
 #   include <w32/ipc/Modules.hpp>
 #   include <w32/ipc/Process.hpp>
+#   include <w32/ipc/Processes.hpp>
+#   include <w32/ipc/Threads.hpp>
 #include "../__compiler-outro__.hpp"
 
 #endif /* _w32_ipc_hpp__ */
