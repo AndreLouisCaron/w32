@@ -55,6 +55,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "key-generation", "key-gener
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "loaded-modules", "loaded-modules\loaded-modules.vcproj", "{8B33DC98-51C2-4262-A909-06B54B9DF028}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "code-injection", "code-injection\code-injection.vcproj", "{B5CDA739-F974-4F5A-AC55-F31B2D83360A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		dbg|Win32 = dbg|Win32
@@ -279,6 +281,14 @@ Global
 		{8B33DC98-51C2-4262-A909-06B54B9DF028}.opt|Win32.Build.0 = opt|Win32
 		{8B33DC98-51C2-4262-A909-06B54B9DF028}.Release|Win32.ActiveCfg = opt|Win32
 		{8B33DC98-51C2-4262-A909-06B54B9DF028}.Release|Win32.Build.0 = opt|Win32
+		{B5CDA739-F974-4F5A-AC55-F31B2D83360A}.dbg|Win32.ActiveCfg = dbg|Win32
+		{B5CDA739-F974-4F5A-AC55-F31B2D83360A}.dbg|Win32.Build.0 = dbg|Win32
+		{B5CDA739-F974-4F5A-AC55-F31B2D83360A}.Debug|Win32.ActiveCfg = dbg|Win32
+		{B5CDA739-F974-4F5A-AC55-F31B2D83360A}.Debug|Win32.Build.0 = dbg|Win32
+		{B5CDA739-F974-4F5A-AC55-F31B2D83360A}.opt|Win32.ActiveCfg = opt|Win32
+		{B5CDA739-F974-4F5A-AC55-F31B2D83360A}.opt|Win32.Build.0 = opt|Win32
+		{B5CDA739-F974-4F5A-AC55-F31B2D83360A}.Release|Win32.ActiveCfg = opt|Win32
+		{B5CDA739-F974-4F5A-AC55-F31B2D83360A}.Release|Win32.Build.0 = opt|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

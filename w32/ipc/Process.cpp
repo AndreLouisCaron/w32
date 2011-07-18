@@ -6,6 +6,7 @@
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
 #include <w32/ipc/Process.hpp>
+#include <w32/astring.hpp>
 #include <w32/Error.hpp>
 
 namespace {
@@ -68,6 +69,11 @@ namespace {
             UNCHECKED_WIN32C_ERROR(OpenProcess, ::GetLastError());
         }
         return (result);
+    }
+
+    ::LPVOID relocate ( ::LPVOID base, ::DWORD offset )
+    {
+        return (static_cast<::LPBYTE>(base) + offset);
     }
 
 }
@@ -225,6 +231,57 @@ namespace w32 { namespace ipc {
             UNCHECKED_WIN32C_ERROR(WriteProcessMemory, error);
         }
         return (transferred);
+    }
+
+    mt::Thread Process::call ( pointer code, pointer base )
+    {
+        typedef ::LPTHREAD_START_ROUTINE CodePointer;
+        const ::HANDLE result = ::CreateRemoteThread
+            (handle(), 0, 0, reinterpret_cast<CodePointer>(code), base, 0, 0);
+        if ( result == 0 )
+        {
+            const ::DWORD error = ::GetLastError();
+            UNCHECKED_WIN32C_ERROR(CreateRemoteThread, error);
+        }
+        return (mt::Thread(mt::Thread::claim(result)));
+    }
+
+    pointer Process::symbol ( pointer base, const astring& name )
+    {
+            // Read executable core header.
+        ::IMAGE_DOS_HEADER prelude;
+        get(base, &prelude, sizeof(prelude));
+            // Read executable real headers.
+        ::IMAGE_NT_HEADERS headers;
+        get(relocate(base, prelude.e_lfanew), &headers, sizeof(headers));
+        ::IMAGE_DATA_DIRECTORY& data =
+            headers.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_EXPORT];
+            // Read exports dictionary.
+        ::IMAGE_EXPORT_DIRECTORY exports;
+        get(relocate(base, data.VirtualAddress), &exports, sizeof(exports));
+            // Find requested symbol.
+        ::CHAR symbol[MAX_MODULE_NAME32+1];
+        for ( ::DWORD i = 0; (0 < exports.NumberOfNames); ++i )
+        {
+                // Read function name's (relative) address.
+            ::DWORD offset = 0;
+            ::DWORD delta = exports.AddressOfNames + i*sizeof(offset);
+            get(relocate(base, delta), &offset, sizeof(offset));
+                // Read function name.
+            get(relocate(base, offset), symbol, sizeof(symbol));
+                // Check if it matches the requested name.
+            if ( ::strcmp(symbol, name.data()) == 0 )
+            {
+                    // Read function's (relative) address.
+                offset = 0;
+                delta = exports.AddressOfFunctions + i*sizeof(offset);
+                get(relocate(base, delta), &offset, sizeof(offset));
+                    // Return (relative) address.
+                return (relocate(base, offset));
+            }
+        }
+            // Couldn't find it.
+        return (0);
     }
 
     const Process::Priority Process::Priority::higher ()

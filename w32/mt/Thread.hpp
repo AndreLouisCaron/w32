@@ -94,10 +94,8 @@ namespace w32 { namespace mt {
         static Thread open ( Identifier identifier );
 
         /* construction. */
-    protected:
-        explicit Thread ( const Handle& handle );
-
     public:
+        explicit Thread ( const Handle& handle );
         explicit Thread ( Function function, Parameter parameter = 0 );
 
         /* methods. */

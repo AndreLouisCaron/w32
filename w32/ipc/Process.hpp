@@ -13,6 +13,7 @@
 #include <w32/types.hpp>
 #include <w32/Object.hpp>
 #include <w32/Waitable.hpp>
+#include <w32/mt/Thread.hpp>
 
 namespace w32 { namespace ipc {
 
@@ -215,6 +216,24 @@ namespace w32 { namespace ipc {
              * @return Number of bytes copied.
              */
         size_t put ( pointer base, const void * data, size_t size );
+
+            /*!
+             * @brief Start thread in target process.
+             * @param code Virtual address of function in target process space.
+             * @param base Virtual address of context in target process space.
+             * @return Thread instance for control and synchronization.
+             *
+             * @see acquire()
+             * @see symbol()
+             */
+        mt::Thread call ( pointer code, pointer base );
+
+            /*!
+             *
+             * @see Modules
+             * @see run()
+             */
+        pointer symbol ( pointer base, const astring& name );
 
         /* operators. */
     public:
