@@ -229,6 +229,9 @@ namespace w32 { namespace ipc {
         mt::Thread call ( pointer code, pointer base );
 
             /*!
+             * @brief Find exported symbol address in target process.
+             * @param base Module virtual base address in target process.
+             * @param name Symbol name.
              *
              * @see Modules
              * @see run()
