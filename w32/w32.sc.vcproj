@@ -102,9 +102,11 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				Optimization="2"
-				EnableIntrinsicFunctions="true"
+				Optimization="1"
+				EnableIntrinsicFunctions="false"
+				FavorSizeOrSpeed="2"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
+				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
