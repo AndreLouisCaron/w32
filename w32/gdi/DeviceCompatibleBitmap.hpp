@@ -23,7 +23,7 @@ namespace w32 { namespace gdi {
          * fast copies of bitmaps onto screens. These are fast since the
          * system doesn't need to perform any conversions.
          */
-    class W32_GDI_EXPORT DeviceCompatibleBitmap :
+    class DeviceCompatibleBitmap :
         public Bitmap
     {
         /* construction. */

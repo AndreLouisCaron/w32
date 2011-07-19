@@ -10,11 +10,4 @@
 
 #include "../__configure__.hpp"
 
-#ifdef __building_w32_dbg__
-#   define W32_DBG_EXPORT __declspec(dllexport)
-#   include "../__compiler-intro__.hpp"
-#else
-#   define W32_DBG_EXPORT __declspec(dllimport)
-#endif
-
 #endif /* _w32_dbg_configure__hpp__ */

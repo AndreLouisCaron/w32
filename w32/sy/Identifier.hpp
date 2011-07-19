@@ -22,7 +22,7 @@ namespace w32 { namespace sy {
 
     class Token;
 
-    class W32_SY_EXPORT Identifier
+    class Identifier
     {
         /* nested types. */
     public:

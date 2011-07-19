@@ -10,16 +10,6 @@
 
 // Exceptionally, include <../__configure__.hpp> *after* <WinSock2.h>.
 
-#ifdef __building_w32_net__
-#   define W32_NET_EXPORT __declspec(dllexport)
-#   include "../__compiler-intro__.hpp"
-#   ifdef _MSC_VER
-#       pragma comment ( lib, "WS2_32.lib" )
-#   endif
-#else
-#   define W32_NET_EXPORT __declspec(dllimport)
-#endif
-
 #ifndef _WINSOCK2API_
 #   if (defined(_INC_WINDOWS))
 #       error "You shouldn't include <Windows.h> before this header."

@@ -16,7 +16,7 @@
 
 namespace w32 { namespace net {
 
-    class W32_NET_EXPORT StreamSocket :
+    class StreamSocket :
         public Socket
     {
         /* construction. */

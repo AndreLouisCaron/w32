@@ -13,7 +13,7 @@
 
 namespace w32 { namespace fs {
 
-    void W32_FS_EXPORT copy ( const string& destination, const string& source );
+    void copy ( const string& destination, const string& source );
 
 } }
 

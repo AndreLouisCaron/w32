@@ -17,7 +17,7 @@ namespace w32 { namespace shl {
 
     class Storage;
 
-    class W32_SHL_EXPORT Stat
+    class Stat
     {
     friend class Storage;
 

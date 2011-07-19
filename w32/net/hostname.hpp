@@ -13,7 +13,7 @@
 
 namespace w32 { namespace net {
 
-    astring W32_NET_EXPORT hostname ();
+    astring hostname ();
 
 } }
 

@@ -14,7 +14,7 @@
 
 namespace w32 { namespace gdi {
 
-    class W32_GDI_EXPORT Rectangle
+    class Rectangle
     {
         /* nested types. */
     public:

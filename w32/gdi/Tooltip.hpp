@@ -21,7 +21,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Popup window used to display a hint about using something.
          */
-    class W32_GDI_EXPORT Tooltip :
+    class Tooltip :
         public Control
     {
         /* nested types. */
@@ -106,7 +106,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Trigger for the tooltip to popup.
          */
-    class W32_GDI_EXPORT Tooltip::Tool
+    class Tooltip::Tool
     {
         /* nested types. */
     public:
@@ -151,7 +151,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Icon displayed next to the tooltip's title.
          */
-    class W32_GDI_EXPORT Tooltip::Icon
+    class Tooltip::Icon
     {
         /* nested types. */
     public:

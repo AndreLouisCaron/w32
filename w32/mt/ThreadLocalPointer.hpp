@@ -14,12 +14,12 @@
 
 namespace w32 { namespace mt {
 
-    class W32_MT_EXPORT ThreadLocalPointer :
+    class ThreadLocalPointer :
         private NotCopyable
     {
         /* nested types. */
     public:
-        class W32_MT_EXPORT Handle :
+        class Handle :
             private w32::NotCopyable
         {
             /* nested types. */

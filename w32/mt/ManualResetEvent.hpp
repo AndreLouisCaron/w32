@@ -14,7 +14,7 @@
 
 namespace w32 { namespace mt {
 
-    class W32_MT_EXPORT ManualResetEvent :
+    class ManualResetEvent :
         public Object
     {
         /* class methods. */

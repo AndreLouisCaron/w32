@@ -19,12 +19,12 @@ namespace w32 { namespace shl { namespace ext {
          * If you want to define icon overlays, you should implement the
          * \c IconOverlayOverlay class instead.
          */
-    class W32_SHL_EXT_EXPORT IconOverlay :
+    class IconOverlay :
         public ::IShellIconOverlayIdentifier
     {
         /* nested types. */
     public:
-        class W32_SHL_EXT_EXPORT Priority
+        class Priority
         {
             /* class data. */
         public:

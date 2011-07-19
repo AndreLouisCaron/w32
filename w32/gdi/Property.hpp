@@ -17,7 +17,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Allows setting named (usally custom) window properties.
          */
-    class W32_GDI_EXPORT Property :
+    class Property :
         private NotCopyable
     {
         /* data. */

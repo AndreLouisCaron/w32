@@ -25,7 +25,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Control not responding to user input.
          */
-    class W32_GDI_EXPORT Static :
+    class Static :
         public Control
     {
         /* nested types. */

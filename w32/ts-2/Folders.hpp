@@ -17,7 +17,7 @@ namespace w32 { namespace ts {
         /*!
          * @brief Enumerates all sub-folders of a folder.
          */
-    class W32_TS2_EXPORT Folders :
+    class Folders :
         public com::Wrapper< ::ITaskFolderCollection >
     {
         /* construction. */

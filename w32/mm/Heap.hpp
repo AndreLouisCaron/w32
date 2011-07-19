@@ -15,12 +15,12 @@
 
 namespace w32 { namespace mm {
 
-    class W32_MM_EXPORT Heap :
+    class Heap :
         public Object, public Allocator
     {
         /* nested types. */
     public:
-        class W32_MM_EXPORT Lock :
+        class Lock :
             private w32::NotCopyable
         {
             /* data. */
@@ -35,7 +35,7 @@ namespace w32 { namespace mm {
 
         class Walker;
 
-        class W32_MM_EXPORT Entry :
+        class Entry :
             private w32::NotCopyable
         {
         friend class Walker;
@@ -61,7 +61,7 @@ namespace w32 { namespace mm {
             bool moveable () const;
         };
 
-        class W32_MM_EXPORT Walker :
+        class Walker :
             private w32::NotCopyable
         {
             /* data. */

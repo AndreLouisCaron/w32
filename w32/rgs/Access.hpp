@@ -18,7 +18,7 @@ namespace w32 { namespace rgs {
          *   defines the access the given handle will allow you (i.e. this is
          *   not persistent.
          */
-    class W32_RGS_EXPORT Access
+    class Access
     {
         /* nested types. */
     public:

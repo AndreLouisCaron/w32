@@ -16,7 +16,7 @@
 
 namespace w32 { namespace ipc {
 
-    class W32_IPC_EXPORT Modules :
+    class Modules :
         public Object
     {
         /* nested types. */
@@ -34,7 +34,7 @@ namespace w32 { namespace ipc {
         bool next ( Entry& entry );
     };
 
-    class W32_IPC_EXPORT Modules::Entry
+    class Modules::Entry
     {
         /* nested types. */
     public:

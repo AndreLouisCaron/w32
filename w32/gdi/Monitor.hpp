@@ -21,7 +21,7 @@ namespace w32 { namespace gdi {
     class Point;
     class Window;
 
-    class W32_GDI_EXPORT Monitor
+    class Monitor
     {
         /* nested types. */
     public:
@@ -49,7 +49,7 @@ namespace w32 { namespace gdi {
         const Handle& handle () const;
     };
 
-    class W32_GDI_EXPORT Monitor::Info
+    class Monitor::Info
     {
         /* nested types. */
     public:
@@ -96,7 +96,7 @@ namespace w32 { namespace gdi {
         }
     }
 
-    W32_GDI_EXPORT std::vector< Monitor > monitors ();
+    std::vector< Monitor > monitors ();
 
 } }
 

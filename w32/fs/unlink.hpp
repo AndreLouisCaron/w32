@@ -13,7 +13,7 @@
 
 namespace w32 { namespace fs {
 
-    void W32_FS_EXPORT unlink ( const string& path );
+    void unlink ( const string& path );
 
 } }
 

@@ -13,7 +13,7 @@
 
 namespace w32 { namespace mt {
 
-    class W32_MT_EXPORT Cleanup
+    class Cleanup
     {
         /* nested types. */
     public:

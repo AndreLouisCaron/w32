@@ -14,7 +14,7 @@
 
 namespace w32 { namespace io {
 
-     class W32_IO_EXPORT OutputStream :
+     class OutputStream :
         virtual public Stream
      {
          /* methods. */

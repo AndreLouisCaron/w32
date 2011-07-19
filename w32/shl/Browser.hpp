@@ -13,7 +13,7 @@
 
 namespace w32 { namespace shl {
 
-    class W32_SHL_EXPORT Browser
+    class Browser
     {
         /* nested types. */
     public:
@@ -36,7 +36,7 @@ namespace w32 { namespace shl {
         Path prompt ();
     };
 
-    class W32_SHL_EXPORT Browser::Hints
+    class Browser::Hints
     {
         /* nested types. */
     public:

@@ -18,7 +18,7 @@ namespace w32 { namespace rgs {
         /*!
          * @brief Enumerates all types of value we can store under a registry key.
          */
-    class W32_RGS_EXPORT Type
+    class Type
     {
         /* nested types. */
     public:

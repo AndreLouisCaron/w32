@@ -15,7 +15,7 @@
 
 namespace w32 { namespace gdi {
 
-    W32_GDI_EXPORT wparam loop ();
+    wparam loop ();
 
     template<class Idle>
     wparam loop ( Idle idle )

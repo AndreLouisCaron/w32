@@ -17,7 +17,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Text-rendering utility.
          */
-    class W32_GDI_EXPORT Font
+    class Font
     {
         /* nested types. */
     public:
@@ -78,7 +78,7 @@ namespace w32 { namespace gdi {
         void apply ( const Attributes& attributes );
     };
 
-    class W32_GDI_EXPORT Font::Attributes
+    class Font::Attributes
     {
         /* nested types. */
     public:

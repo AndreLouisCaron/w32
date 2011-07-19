@@ -22,7 +22,7 @@ namespace w32 { namespace shl { namespace ext {
          * This is useful for files such as images: you may replace the standard
          * icon for the file type by a per-file preview method.
          */
-    class W32_SHL_EXT_EXPORT ThumbnailProvider :
+    class ThumbnailProvider :
         public ::IInitializeWithStream,
         public ::IThumbnailProvider
     {
@@ -129,7 +129,7 @@ namespace w32 { namespace shl { namespace ext {
             );
     };
 
-    class W32_SHL_EXT_EXPORT ThumbnailProvider::Alpha
+    class ThumbnailProvider::Alpha
     {
         /* nested types. */
     public:

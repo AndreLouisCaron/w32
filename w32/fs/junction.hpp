@@ -13,7 +13,7 @@
 
 namespace w32 { namespace fs {
 
-    void W32_FS_EXPORT junction ( string alias, const string& target );
+    void junction ( string alias, const string& target );
 
 } }
 

@@ -15,7 +15,7 @@
 
 namespace w32 {
 
-    class W32_CORE_EXPORT mstring
+    class mstring
     {
         /* nested types. */
     public:
@@ -45,7 +45,7 @@ namespace w32 {
 
     void swap ( mstring& lhs, mstring& rhs );
 
-    class W32_CORE_EXPORT mstring::iterator :
+    class mstring::iterator :
         public std::iterator< std::forward_iterator_tag, std::size_t >
     {
     friend class mstring;

@@ -16,7 +16,7 @@ namespace w32 { namespace gdi {
     class DeviceIndependantBitmap;
     class Rectangle;
 
-    w32::gdi::DeviceIndependantBitmap W32_GDI_EXPORT capture
+    w32::gdi::DeviceIndependantBitmap capture
         ( const w32::gdi::DeviceContext& source, const Rectangle& bounds );
 
 } }

@@ -15,7 +15,7 @@
 
 namespace w32 { namespace mm {
 
-    class W32_MM_EXPORT Local
+    class Local
     {
         /* nested types. */
     public:
@@ -46,7 +46,7 @@ namespace w32 { namespace mm {
         std::size_t size () const;
     };
 
-    class W32_MM_EXPORT Local::Lock :
+    class Local::Lock :
         private w32::NotCopyable
     {
         /* data. */

@@ -17,7 +17,7 @@ namespace w32 { namespace rgs {
         /*!
          * @brief Enumerates a given key's direct children(sub-keys).
          */
-    class W32_RGS_EXPORT Keys :
+    class Keys :
         private NotCopyable
     {
         /* data. */

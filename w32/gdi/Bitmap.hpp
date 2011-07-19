@@ -25,7 +25,7 @@ namespace w32 { namespace gdi {
          * This is actually a wrong name though, as it does not contain only
          * monochrome pixels!
          */
-    class W32_GDI_EXPORT Bitmap
+    class Bitmap
     {
         /* nested types. */
     public:
@@ -55,7 +55,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Wraps general information about the bitmap.
          */
-    class W32_GDI_EXPORT Bitmap::Info
+    class Bitmap::Info
     {
         /* nested types. */
     public:
@@ -105,7 +105,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Loads a bitmap as the current tool for a device context.
          */
-    class W32_GDI_EXPORT Bitmap::Selection :
+    class Bitmap::Selection :
         private NotCopyable
     {
         /* data. */

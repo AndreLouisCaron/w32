@@ -14,7 +14,7 @@
 
 namespace w32 { namespace shl { namespace ext {
 
-    class W32_SHL_EXT_EXPORT Namespace :
+    class Namespace :
         public ::IItemNameLimits,
         public ::IObjectProvider,
         public ::IPersistFolder2,

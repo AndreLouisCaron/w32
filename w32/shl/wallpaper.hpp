@@ -16,7 +16,7 @@ namespace w32 { namespace shl {
          * @brief Enumerates ways the system can modify a desktop wallpaper
          *    image when the resolution differs from that of the screen's.
          */
-    class W32_SHL_EXPORT WallpaperStyle
+    class WallpaperStyle
     {
         /* class data. */
     public:
@@ -52,7 +52,7 @@ namespace w32 { namespace shl {
          * @param style How to modify the image when the resolution doesn't
          *    match the screen's.
          */
-    W32_SHL_EXPORT void wallpaper
+    void wallpaper
         ( const string& image, WallpaperStyle style );
 
 } }

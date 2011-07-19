@@ -15,7 +15,7 @@ namespace w32 { namespace ts {
         /*!
          * @brief Action performed when the trigger for a task is signled.
          */
-    class W32_TS2_EXPORT Action :
+    class Action :
         public com::Wrapper< ::IAction >
     {
         /* nested types. */
@@ -50,7 +50,7 @@ namespace w32 { namespace ts {
         /*!
          * @brief Type-code for different types of actions.
          */
-    class W32_TS2_EXPORT Action::Type
+    class Action::Type
     {
         /* nested types. */
     public:

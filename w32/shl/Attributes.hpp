@@ -14,7 +14,7 @@ namespace w32 { namespace shl {
 
     class Item;
 
-    class W32_SHL_EXPORT Attributes
+    class Attributes
     {
         /* nested types. */
     public:

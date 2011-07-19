@@ -10,14 +10,6 @@
 
 #include "../__configure__.hpp"
 
-#ifdef __building_w32_cr__
-#   define W32_CR_EXPORT __declspec(dllexport)
-#   include "../__compiler-intro__.hpp"
-#   pragma comment ( lib, "Crypt32.lib" )
-#else
-#   define W32_CR_EXPORT __declspec(dllimport)
-#endif
-
 #include <WinCrypt.h>
 
 #endif /* _w32_cr_configure__hpp__ */

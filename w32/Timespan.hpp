@@ -13,7 +13,7 @@
 
 namespace w32 {
 
-    class W32_CORE_EXPORT Timespan
+    class Timespan
     {
         /* nested types. */
     public:
@@ -45,7 +45,7 @@ namespace w32 {
         double get ( const Unit& unit ) const;
     };
 
-    class W32_CORE_EXPORT Timespan::Unit
+    class Timespan::Unit
     {
         /* class data. */
     public:

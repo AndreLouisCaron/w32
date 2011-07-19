@@ -10,16 +10,6 @@
 
 #include "../__configure__.hpp"
 
-#ifdef __building_w32_ts__
-#   define W32_TS_EXPORT __declspec(dllexport)
-#   include "../__compiler-intro__.hpp"
-#   ifdef _MSC_VER
-#       pragma comment ( lib, "mstask.lib" )
-#   endif
-#else
-#   define W32_TS_EXPORT __declspec(dllimport)
-#endif
-
 #include <mstask.h>
 #include <msterr.h>
 

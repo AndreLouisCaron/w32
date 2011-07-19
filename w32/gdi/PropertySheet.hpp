@@ -17,7 +17,7 @@
 
 namespace w32 { namespace gdi {
 
-    class W32_GDI_EXPORT PropertySheet :
+    class PropertySheet :
         virtual public Control
     {
         /* nested types. */
@@ -30,7 +30,7 @@ namespace w32 { namespace gdi {
     public:
     };
 
-    class W32_GDI_EXPORT PropertySheet::PageInfo :
+    class PropertySheet::PageInfo :
         private w32::NotCopyable
     {
         /* data. */
@@ -87,7 +87,7 @@ namespace w32 { namespace gdi {
         }
     };
 
-    class W32_GDI_EXPORT PropertySheet::Page :
+    class PropertySheet::Page :
         private w32::NotCopyable
     {
         /* data. */
@@ -120,7 +120,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Simplifies the use of page-adding callbacks.
          */
-    class W32_GDI_EXPORT PropertySheet::PageAdder
+    class PropertySheet::PageAdder
     {
         /* data. */
     private:

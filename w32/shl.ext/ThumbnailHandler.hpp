@@ -15,7 +15,7 @@ namespace w32 { namespace shl { namespace ext {
         /*!
          * @brief Extracts a thumbnail image for an item in the explorer.
          */
-    class W32_SHL_EXT_EXPORT ThumbnailHandler :
+    class ThumbnailHandler :
         public ::IPersistFile,
         public ::IExtractImage // IExtractImage2 for caching.
     {
@@ -97,7 +97,7 @@ namespace w32 { namespace shl { namespace ext {
         virtual ::HRESULT __stdcall GetDateStamp ( ::FILETIME * stamp );
     };
 
-    class W32_SHL_EXT_EXPORT ThumbnailHandler::Priority
+    class ThumbnailHandler::Priority
     {
         /* nested types. */
     public:

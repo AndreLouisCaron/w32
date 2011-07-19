@@ -13,7 +13,7 @@
 
 namespace w32 { namespace fs {
 
-    void W32_FS_EXPORT symlink ( const string& target, const string& alias );
+    void symlink ( const string& target, const string& alias );
 
 } }
 

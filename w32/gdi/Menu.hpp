@@ -30,7 +30,7 @@
 
 namespace w32 { namespace gdi {
 
-    class W32_GDI_EXPORT Menu
+    class Menu
     {
         /* nested types. */
     public:
@@ -84,7 +84,7 @@ namespace w32 { namespace gdi {
         void insert ( const string& item, uint position, uint identifier );
     };
 
-    class W32_GDI_EXPORT Menu::Item
+    class Menu::Item
     {
         /* nested types. */
     public:

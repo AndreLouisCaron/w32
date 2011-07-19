@@ -18,7 +18,7 @@ namespace w32 {
 
     class string;
 
-    class W32_CORE_EXPORT astring
+    class astring
     {
         /* nested types. */
     public:
@@ -86,7 +86,7 @@ namespace w32 {
         lhs.swap(rhs);
     }
 
-    W32_CORE_EXPORT std::ostream& operator<<
+    std::ostream& operator<<
         ( std::ostream& out, const astring& value );
 
     inline astring::astring ( const std::string& other )
@@ -101,7 +101,7 @@ namespace w32 {
         return (std::string(data(), size()));
     }
 
-    class W32_CORE_EXPORT astring::box
+    class astring::box
     {
         /* data. */
     private:

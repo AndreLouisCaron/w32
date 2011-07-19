@@ -13,7 +13,7 @@
 
 namespace w32 { namespace in {
 
-    class W32_IN_EXPORT Connection
+    class Connection
     {
         /* nested types. */
     public:

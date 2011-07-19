@@ -10,16 +10,6 @@
 
 #include "../__configure__.hpp"
 
-#ifdef __building_w32_in__
-#   define W32_IN_EXPORT __declspec(dllexport)
-#   include "../__compiler-intro__.hpp"
-#   ifdef _MSC_VER
-#       pragma comment ( lib, "Wininet.lib" )
-#   endif
-#else
-#   define W32_IN_EXPORT __declspec(dllimport)
-#endif
-
 #ifndef _WININET_
 #   include <Wininet.h>
 #endif

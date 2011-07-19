@@ -15,12 +15,12 @@
 
 namespace w32 { namespace gdi {
 
-    class W32_GDI_EXPORT EventQueue :
+    class EventQueue :
         private NotCopyable
     {
         /* nested types. */
     public:
-        class W32_GDI_EXPORT Filter
+        class Filter
         {
             /* class methods. */
         public:

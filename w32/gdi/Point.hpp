@@ -12,7 +12,7 @@
 
 namespace w32 { namespace gdi {
 
-    class W32_GDI_EXPORT Point
+    class Point
     {
         /* nested types. */
     public:

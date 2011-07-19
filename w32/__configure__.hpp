@@ -8,13 +8,6 @@
 // this software package (see "license.rtf"). If not, the license is available
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
-#ifdef __building_w32_core__
-#   define W32_CORE_EXPORT __declspec(dllexport)
-#   include "__compiler-intro__.hpp"
-#else
-#   define W32_CORE_EXPORT __declspec(dllimport)
-#endif
-
     // Define preferred windows version.
 #if (!defined(_WIN32_WINNT))
 #   define _WIN32_WINNT 0x0600

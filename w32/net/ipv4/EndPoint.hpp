@@ -17,7 +17,7 @@ namespace w32 { namespace net { namespace ipv4 {
         /*!
          * @brief Internet Protocol address (including port) version 4.
          */
-    class W32_NET_EXPORT EndPoint
+    class EndPoint
     {
         /* nested types. */
     public:
@@ -47,7 +47,7 @@ namespace w32 { namespace net { namespace ipv4 {
         Address address () const;
     };
 
-    W32_NET_EXPORT std::ostream& operator<<
+    std::ostream& operator<<
         ( std::ostream& out, const EndPoint& value );
 
 } } }

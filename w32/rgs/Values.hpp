@@ -17,7 +17,7 @@ namespace w32 { namespace rgs {
         /*!
          * @brief Enumerates a given key's values.
          */
-    class W32_RGS_EXPORT Values :
+    class Values :
         private NotCopyable
     {
         /* data. */

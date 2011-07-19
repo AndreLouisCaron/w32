@@ -15,7 +15,7 @@
 
 namespace w32 { namespace net {
 
-    class W32_NET_EXPORT sockstream :
+    class sockstream :
         public std::iostream
     {
         /* data. */

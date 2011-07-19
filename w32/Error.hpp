@@ -49,7 +49,7 @@ namespace w32 {
     * specific error codes are discovered for that function, add a check
     * for that error code and signal a specific error.
     */
-    class W32_CORE_EXPORT Error
+    class Error
     {
         /* nested types. */
     public:
@@ -198,7 +198,7 @@ namespace w32 {
 
         // Fast way to map error codes to named types.
     template< ::DWORD Code >
-    struct W32_CORE_EXPORT basic_error :
+    struct basic_error :
         public Error
     {
         basic_error () : Error(Code) {}

@@ -15,7 +15,7 @@ namespace w32 { namespace ts {
     class Registration;
     class Service;
 
-    class W32_TS2_EXPORT Definition :
+    class Definition :
         public com::Wrapper< ::ITaskDefinition >
     {
         /* construction. */

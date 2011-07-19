@@ -19,7 +19,7 @@
 
 namespace w32 { namespace mt {
 
-    class W32_MT_EXPORT ReadWriteLock :
+    class ReadWriteLock :
         private NotCopyable
     {
         /* nested types. */

@@ -16,7 +16,7 @@ namespace w32 { namespace net { namespace tcp {
         /*!
          * @brief Transfer control protocol "server" socket.
          */
-    class W32_NET_EXPORT Listener :
+    class Listener :
         public Socket
     {
         /* construction. */

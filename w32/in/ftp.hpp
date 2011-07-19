@@ -31,7 +31,7 @@ namespace w32 { namespace in {
 
 namespace w32 { namespace in { namespace ftp {
 
-    class W32_IN_EXPORT Connection :
+    class Connection :
         public in::Connection
     {
         /* construction. */
@@ -64,7 +64,7 @@ namespace w32 { namespace in { namespace ftp {
     // FtpFindFirstFile()
     // InternetFindNextFile()
     // InternetCloseHandle()
-    class W32_IN_EXPORT Listing
+    class Listing
     {
         /* nested types. */
     public:
@@ -91,7 +91,7 @@ namespace w32 { namespace in { namespace ftp {
         bool next ( Result& result );
     };
 
-    class W32_IN_EXPORT Listing::Result :
+    class Listing::Result :
         private NotCopyable
     {
         /* nested types. */

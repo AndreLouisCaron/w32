@@ -19,7 +19,7 @@ namespace w32 { namespace shl { namespace ext {
          * @brief Describes a column we wish to export to the Windows Explorer's
          *    list view.
          */
-    class W32_SHL_EXT_EXPORT Column :
+    class Column :
         private NotCopyable
     {
     friend class ColumnProvider;
@@ -92,7 +92,7 @@ namespace w32 { namespace shl { namespace ext {
         /*!
          * @brief Indicates alignment of the values in the column.
          */
-    class W32_SHL_EXT_EXPORT Column::Alignment
+    class Column::Alignment
     {
         /* nested types. */
     public:
@@ -120,7 +120,7 @@ namespace w32 { namespace shl { namespace ext {
         /*!
          * @brief Enables/disables different options for the column.
          */
-    class W32_SHL_EXT_EXPORT Column::Flags
+    class Column::Flags
     {
         /* nested types. */
     public:
@@ -187,7 +187,7 @@ namespace w32 { namespace shl { namespace ext {
          * @brief Identifies a file in the given folder for which the explorer
          *    will query for values.
          */
-    class W32_SHL_EXT_EXPORT EntryData :
+    class EntryData :
         private NotCopyable
     {
     friend class ColumnProvider;
@@ -236,7 +236,7 @@ namespace w32 { namespace shl { namespace ext {
          * want to insert in the new columns and to fetch it for each requested
          * item displayed in the explorer.
          */
-    class W32_SHL_EXT_EXPORT ColumnProvider :
+    class ColumnProvider :
         public ::IColumnProvider
     {
         /* data. */

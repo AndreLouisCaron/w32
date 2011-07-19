@@ -14,7 +14,7 @@ namespace w32 { namespace ts {
 
     class Definition;
 
-    class W32_TS2_EXPORT Actions :
+    class Actions :
         public com::Wrapper< ::IActionCollection >
     {
         /* construction. */

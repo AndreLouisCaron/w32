@@ -13,7 +13,7 @@
 
 namespace w32 { namespace msi {
 
-    class W32_MSI_EXPORT Guid
+    class Guid
     {
         /* data. */
     private:
@@ -28,7 +28,7 @@ namespace w32 { namespace msi {
         string value () const;
     };
 
-    W32_MSI_EXPORT std::wostream&
+    std::wostream&
         operator<< ( std::wostream& out, const Guid& guid );
 
 } }

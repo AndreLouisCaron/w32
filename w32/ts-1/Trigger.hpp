@@ -15,12 +15,12 @@ namespace w32 { namespace ts {
 
     class Task;
 
-    class W32_TS_EXPORT Trigger :
+    class Trigger :
         public w32::com::Wrapper< ::ITaskTrigger >
     {
         /* nested types. */
     public:
-        class W32_TS_EXPORT Type
+        class Type
         {
         friend class Trigger;
 
@@ -64,16 +64,16 @@ namespace w32 { namespace ts {
                 return (myValue != other.myValue);
             }
 
-            friend W32_TS_EXPORT std::ostream& operator<<
+            friend std::ostream& operator<<
                 ( std::ostream& out, const Type& type );
-            friend W32_TS_EXPORT std::wostream& operator<<
+            friend std::wostream& operator<<
                 ( std::wostream& out, const Type& type );
         };
 
             /*!
              * @brief Write access to trigger and auto-commit.
              */
-        class W32_TS_EXPORT Editor :
+        class Editor :
              private NotCopyable
         {
             /* nested types. */

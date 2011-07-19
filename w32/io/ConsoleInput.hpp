@@ -15,7 +15,7 @@
 
 namespace w32 { namespace io {
 
-    class W32_IO_EXPORT ConsoleInput :
+    class ConsoleInput :
         public InputStream
     {
         /* construction. */

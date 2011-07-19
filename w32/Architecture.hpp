@@ -15,7 +15,7 @@ namespace w32 {
 
     class System;
 
-    class W32_CORE_EXPORT Architecture
+    class Architecture
     {
         /* nested types. */
     public:

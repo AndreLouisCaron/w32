@@ -10,16 +10,6 @@
 
 #include "../__configure__.hpp"
 
-#ifdef __building_w32_msi__
-#   define W32_MSI_EXPORT __declspec(dllexport)
-#   include "../__compiler-intro__.hpp"
-#   ifdef _MSC_VER
-#       pragma comment ( lib, "msi.lib" )
-#   endif
-#else
-#   define W32_MSI_EXPORT __declspec(dllimport)
-#endif
-
 #define _WIN32_MSI 0x300
 #include <Windows.h>
 #include <Msi.h>

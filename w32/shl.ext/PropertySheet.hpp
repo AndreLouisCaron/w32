@@ -16,13 +16,13 @@ namespace w32 { namespace shl { namespace ext {
         /*!
          * @brief Translates into higher-order queries.
          */
-    class W32_SHL_EXT_EXPORT PropertySheet :
+    class PropertySheet :
         public ::IShellExtInit,
         public ::IShellPropSheetExt
     {
         /* nested types. */
     public:
-        class W32_SHL_EXT_EXPORT PropertyPage :
+        class PropertyPage :
             public w32::gdi::PropertySheet::PageInfo
         {
             /* construction. */

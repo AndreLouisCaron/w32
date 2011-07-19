@@ -19,7 +19,7 @@ namespace w32 { namespace net {
         /*!
          * @brief Enumeration of address families.
          */
-    class W32_NET_EXPORT Family
+    class Family
     {
         /* nested types. */
     public:
@@ -64,10 +64,10 @@ namespace w32 { namespace net {
         Value value () const;
     };
 
-    W32_NET_EXPORT bool operator== ( const Family& lhs, const Family& rhs );
-    W32_NET_EXPORT bool operator!= ( const Family& lhs, const Family& rhs );
+    bool operator== ( const Family& lhs, const Family& rhs );
+    bool operator!= ( const Family& lhs, const Family& rhs );
 
-    W32_NET_EXPORT std::ostream& operator<<
+    std::ostream& operator<<
         ( std::ostream& out, const Family& family );
 
 } }

@@ -15,7 +15,7 @@ namespace w32 { namespace shl {
 
     class Item;
 
-    class W32_SHL_EXPORT Listing :
+    class Listing :
         public com::Wrapper< ::IEnumShellItems >
     {
         /* nested types. */

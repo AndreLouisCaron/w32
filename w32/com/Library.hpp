@@ -14,7 +14,7 @@
 
 namespace w32{ namespace com {
 
-    class W32_COM_EXPORT Library :
+    class Library :
         private NotCopyable
     {
         /* construction. */

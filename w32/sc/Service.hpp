@@ -17,7 +17,7 @@ namespace w32 { namespace sc {
 
     class Database;
 
-    class W32_SC_EXPORT Service :
+    class Service :
         public Object
     {
         /* nested types. */
@@ -40,7 +40,7 @@ namespace w32 { namespace sc {
         void remove ();
     };
 
-    class W32_SC_EXPORT Service::Status
+    class Service::Status
     {
         /* nested types. */
     public:
@@ -74,7 +74,7 @@ namespace w32 { namespace sc {
         bool operator!= ( const Status& other ) const;
     };
 
-    class W32_SC_EXPORT Service::Handler :
+    class Service::Handler :
         private NotCopyable
     {
         /* members. */

@@ -13,7 +13,7 @@
 
 namespace w32 { namespace gdi {
 
-    W32_GDI_EXPORT Window console ();
+    Window console ();
 
 } }
 

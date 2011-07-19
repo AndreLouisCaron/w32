@@ -15,7 +15,7 @@ namespace w32 { namespace in {
 
     typedef ::INTERNET_PORT Port;
 
-    class W32_IN_EXPORT Url
+    class Url
     {
         /* nested types. */
     public:

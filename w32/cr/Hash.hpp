@@ -24,7 +24,7 @@ namespace w32 { namespace cr {
     class Key;
     class Provider;
 
-    class W32_CR_EXPORT Hash
+    class Hash
     {
         /* nested types. */
     public:
@@ -58,7 +58,7 @@ namespace w32 { namespace cr {
         bool verify ( const Key& key, const Blob& signature );
     };
 
-    class W32_CR_EXPORT Hash::Type
+    class Hash::Type
     {
         /* nested types. */
     public:

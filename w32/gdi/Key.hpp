@@ -14,7 +14,7 @@ namespace w32 { namespace gdi {
 
     class KeyboardNotification;
 
-    class W32_GDI_EXPORT Key
+    class Key
     {
         // Need to parse keycode from keyboard notification.
     friend class KeyboardNotification;

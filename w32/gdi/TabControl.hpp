@@ -26,7 +26,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Control used to overlap groups of child controls.
          */
-    class W32_GDI_EXPORT TabControl :
+    class TabControl :
         public Control
     {
         /* nested types. */
@@ -65,7 +65,7 @@ namespace w32 { namespace gdi {
         void removeImage ( int index );
     };
 
-    class W32_GDI_EXPORT TabControl::Tab
+    class TabControl::Tab
     {
         /* nested types. */
     public:

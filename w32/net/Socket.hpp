@@ -15,7 +15,7 @@
 
 namespace w32 { namespace net {
 
-    class W32_NET_EXPORT Socket
+    class Socket
     {
         /* nested types. */
     public:
@@ -63,7 +63,7 @@ namespace w32 { namespace net {
         void select ( mt::ManualResetEvent& event, Event events );
     };
 
-    class W32_NET_EXPORT Socket::Type
+    class Socket::Type
     {
         /* class data. */
     public:
@@ -99,7 +99,7 @@ namespace w32 { namespace net {
         Value value () const;
     };
 
-    class W32_NET_EXPORT Socket::Shutdown
+    class Socket::Shutdown
     {
         /* class data. */
     public:

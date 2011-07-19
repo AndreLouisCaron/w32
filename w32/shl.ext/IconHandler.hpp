@@ -20,7 +20,7 @@ namespace w32 { namespace shl { namespace ext {
          * If you want to define icon overlays, you should implement the
          * \c IconOverlayHandler class instead.
          */
-    class W32_SHL_EXT_EXPORT IconHandler :
+    class IconHandler :
         virtual public Extension,
         public ::IPersistFile,
         public ::IExtractIcon

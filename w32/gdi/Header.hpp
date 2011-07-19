@@ -22,7 +22,7 @@ namespace w32 { namespace gdi {
     class Bitmap;
     class Rectangle;
 
-    class W32_GDI_EXPORT Header :
+    class Header :
         public Control
     {
         /* nested types. */
@@ -58,7 +58,7 @@ namespace w32 { namespace gdi {
         void remove ( int index );
     };
 
-    class W32_GDI_EXPORT Header::Item
+    class Header::Item
     {
         /* nested types. */
     public:

@@ -12,7 +12,7 @@
 
 namespace w32 { namespace xml { namespace sax {
 
-    class W32_XML_SAX_EXPORT Attributes
+    class Attributes
     {
         /* nested types. */
     public:

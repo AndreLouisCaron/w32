@@ -15,7 +15,7 @@ namespace w32 { namespace xml { namespace dom {
 
     class Node;
 
-    class W32_XML_DOM_EXPORT Attributes
+    class Attributes
     {
         /* nested types. */
     public:

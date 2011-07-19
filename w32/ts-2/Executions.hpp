@@ -18,7 +18,7 @@ namespace w32 { namespace ts {
         /*!
          * @brief Enumerates currently running tasks.
          */
-    class W32_TS2_EXPORT Executions :
+    class Executions :
         public com::Wrapper< ::IRunningTaskCollection >
     {
         /* construction. */

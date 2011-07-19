@@ -16,7 +16,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Control that helps in selecting a date and time.
          */
-    class W32_GDI_EXPORT DateTimePicker :
+    class DateTimePicker :
         public Control
     {
         /* nested types. */

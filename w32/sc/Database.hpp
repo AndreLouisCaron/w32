@@ -15,7 +15,7 @@
 
 namespace w32 { namespace sc {
 
-    class W32_SC_EXPORT Database :
+    class Database :
         public Object
     {
         /* construction. */

@@ -15,20 +15,20 @@
 
 namespace w32 { namespace net {
 
-    void W32_NET_EXPORT select
+    void select
         ( Set& read, Set& write, Set& errors );
 
-    bool W32_NET_EXPORT select
+    bool select
         ( Set& read, Set& write, Set& errors, const Timespan& timeout );
 
-    void W32_NET_EXPORT select ( Set& sockets );
-    bool W32_NET_EXPORT select
+    void select ( Set& sockets );
+    bool select
         ( Set& sockets, const Timespan& timeout );
 
-    bool W32_NET_EXPORT readable ( const Socket& socket );
-    bool W32_NET_EXPORT readable
+    bool readable ( const Socket& socket );
+    bool readable
         ( const Socket& socket, const Timespan& timeout );
-    bool W32_NET_EXPORT writable ( const Socket& socket );
+    bool writable ( const Socket& socket );
 
 } }
 

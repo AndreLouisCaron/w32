@@ -14,7 +14,7 @@
 
 namespace w32 {
 
-    class W32_CORE_EXPORT Object
+    class Object
     {
         /* nested types. */
     public:

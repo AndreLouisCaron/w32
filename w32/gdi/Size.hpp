@@ -12,7 +12,7 @@
 
 namespace w32 { namespace gdi {
 
-    class W32_GDI_EXPORT Size
+    class Size
     {
         /* nested types. */
     public:

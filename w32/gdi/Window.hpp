@@ -28,7 +28,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Wraps a window resource.
          */
-    class W32_GDI_EXPORT Window
+    class Window
     {
         /* nested types. */
     public:
@@ -273,7 +273,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Configurator for window styles.
          */
-    class W32_GDI_EXPORT Window::Style
+    class Window::Style
     {
         /* data. */
     private:

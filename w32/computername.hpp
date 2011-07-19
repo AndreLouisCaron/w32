@@ -13,7 +13,7 @@
 
 namespace w32 {
 
-    W32_CORE_EXPORT string computername ();
+    string computername ();
 
 }
 

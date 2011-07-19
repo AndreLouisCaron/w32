@@ -18,7 +18,7 @@ namespace w32 { namespace io {
 
         /*!
          */
-    class W32_IO_EXPORT InputFile :
+    class InputFile :
         public InputStream
     {
         /* construction. */

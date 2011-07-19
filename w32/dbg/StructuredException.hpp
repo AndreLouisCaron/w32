@@ -13,7 +13,7 @@
 
 namespace w32 { namespace dbg {
 
-    class W32_DBG_EXPORT StructuredException
+    class StructuredException
     {
         /* nested types. */
     public:
@@ -35,7 +35,7 @@ namespace w32 { namespace dbg {
         virtual const char * what () const = 0;
     };
 
-    class W32_DBG_EXPORT StructuredException::FilterReplacement :
+    class StructuredException::FilterReplacement :
         private NotCopyable
     {
         /* data. */

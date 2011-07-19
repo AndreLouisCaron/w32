@@ -18,7 +18,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief System string-resource identifier.
          */
-    class W32_GDI_EXPORT Atom
+    class Atom
     {
         /* nested types. */
     public:

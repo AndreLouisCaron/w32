@@ -24,7 +24,7 @@ namespace w32 { namespace net {
         /*!
          * @brief Network byte-ordered 16 bit integer.
          */
-    class W32_NET_EXPORT uint16
+    class uint16
     {
         /* nested types. */
     public:
@@ -53,7 +53,7 @@ namespace w32 { namespace net {
 
     std::ostream& operator<< ( std::ostream& out, const uint16& value );
 
-    class W32_NET_EXPORT uint16::box
+    class uint16::box
     {
         /* data. */
     private:
@@ -71,7 +71,7 @@ namespace w32 { namespace net {
         /*!
          * @brief Network byte-ordered 32 bit integer.
          */
-    class W32_NET_EXPORT uint32
+    class uint32
     {
         /* nested types. */
     public:
@@ -100,7 +100,7 @@ namespace w32 { namespace net {
 
     std::ostream& operator<< ( std::ostream& out, const uint32& value );
 
-    class W32_NET_EXPORT uint32::box
+    class uint32::box
     {
         /* data. */
     private:

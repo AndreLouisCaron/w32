@@ -13,7 +13,7 @@
 
 namespace w32 { namespace shl { namespace ext {
 
-    class W32_SHL_EXT_EXPORT DropTarget :
+    class DropTarget :
         virtual public Extension,
         public ::IPersistFile,
         public ::IDropTarget

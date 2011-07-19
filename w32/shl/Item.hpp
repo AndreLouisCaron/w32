@@ -19,7 +19,7 @@ namespace w32 { namespace shl {
     class Folder;
     class Path;
 
-    class W32_SHL_EXPORT Item :
+    class Item :
         public com::Wrapper< ::IShellItem >
     {
         /* construction. */
@@ -42,11 +42,11 @@ namespace w32 { namespace shl {
         bool operator!= ( const Item& rhs ) const;
     };
 
-    W32_SHL_EXPORT Item root ();
+    Item root ();
 
-    W32_SHL_EXPORT Path abspath ( const Item& item );
+    Path abspath ( const Item& item );
 
-    class W32_SHL_EXPORT Item2 :
+    class Item2 :
         public com::Wrapper< ::IShellItem2 >
     {
         /* construction. */

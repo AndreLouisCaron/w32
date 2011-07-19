@@ -14,7 +14,7 @@
 
 namespace w32 { namespace shl {
 
-    class W32_SHL_EXPORT Dropping :
+    class Dropping :
         private NotCopyable
     {
         /* data. */

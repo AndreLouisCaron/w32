@@ -15,7 +15,7 @@ namespace w32 { namespace net {
 
     class Socket;
 
-    class W32_NET_EXPORT Event
+    class Event
     {
         /* nested types. */
     public:
@@ -47,7 +47,7 @@ namespace w32 { namespace net {
         operator Bitfield () const;
     };
 
-    class W32_NET_EXPORT Events
+    class Events
     {
         /* nested types.*/
     public:

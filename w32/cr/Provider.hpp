@@ -19,7 +19,7 @@ namespace w32 {
 
 namespace w32 { namespace cr {
 
-    class W32_CR_EXPORT Provider
+    class Provider
     {
         /* nested types. */
     public:
@@ -48,7 +48,7 @@ namespace w32 { namespace cr {
         string container () const;
     };
 
-    class W32_CR_EXPORT Provider::Type
+    class Provider::Type
     {
         /* nested types. */
     public:

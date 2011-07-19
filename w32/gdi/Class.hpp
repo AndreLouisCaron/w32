@@ -24,7 +24,7 @@ namespace w32 { namespace gdi {
          *
          * You should have only one instance of this class per registration.
          */
-    class W32_GDI_EXPORT Class
+    class Class
     {
         /* nested types. */
     public:
@@ -101,7 +101,7 @@ namespace w32 { namespace gdi {
          * You only need one instance of this class for the entire family
          * even when you have multiple windows from that family.
          */
-    class W32_GDI_EXPORT Registration :
+    class Registration :
         private NotCopyable
     {
         /* nested types. */
@@ -145,7 +145,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Style for a familiy of windows.
          */
-    class W32_GDI_EXPORT Class::Style
+    class Class::Style
     {
         /* data. */
     private:

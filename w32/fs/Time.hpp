@@ -14,7 +14,7 @@
 
 namespace w32 { namespace fs {
 
-    class W32_FS_EXPORT Time
+    class Time
     {
         /* nested types. */
     public:

@@ -14,7 +14,7 @@
 
 namespace w32{ namespace com {
 
-    class W32_COM_EXPORT Allocator :
+    class Allocator :
         public Wrapper< ::IMalloc >
     {
         /* nested types. */
@@ -78,7 +78,7 @@ namespace w32{ namespace com {
         ::CoTaskMemFree(block);
     }
 
-    W32_COM_EXPORT wchar_t * strdup ( const wchar_t * source );
+    wchar_t * strdup ( const wchar_t * source );
 
 } }
 

@@ -14,8 +14,8 @@
 
 namespace w32 { namespace rgs {
 
-    void W32_RGS_EXPORT clean ( Key& root );
-    void W32_RGS_EXPORT clean ( Key& root, const string& path );
+    void clean ( Key& root );
+    void clean ( Key& root, const string& path );
 
 } }
 

@@ -10,13 +10,6 @@
 
 #include "../__configure__.hpp"
 
-#ifdef __building_w32_com__
-#   define W32_COM_EXPORT __declspec(dllexport)
-#   include "../__compiler-intro__.hpp"
-#else
-#   define W32_COM_EXPORT __declspec(dllimport)
-#endif
-
 #include <unknwn.h>
 #include <ObjBase.h>
 #include <ObjIdl.h>

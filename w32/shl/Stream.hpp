@@ -16,7 +16,7 @@ namespace w32 { namespace shl {
     class Path;
     class Stat;
 
-    class W32_SHL_EXPORT Stream :
+    class Stream :
         public com::Wrapper< ::IStream >
     {
         /* class methods. */

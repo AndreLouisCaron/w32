@@ -21,7 +21,7 @@ namespace w32 { namespace gdi {
 
     class Rectangle;
 
-    class W32_GDI_EXPORT Edit :
+    class Edit :
         public Control
     {
         /* nested types. */

@@ -30,7 +30,7 @@ namespace w32 { namespace mt {
          * Threads can also have their own security context, which can be used
          * for impersonating clients.
          */
-    class W32_MT_EXPORT Thread :
+    class Thread :
         public Object
     {
         /* nested types. */
@@ -268,10 +268,10 @@ namespace w32 { namespace mt {
          * amount of time. Make sure longer suspension is safe for your
          * application.
          */
-    W32_MT_EXPORT void sleep ( const Timespan& timespan );
-    W32_MT_EXPORT bool alertable ( const Timespan& timespan );
+    void sleep ( const Timespan& timespan );
+    bool alertable ( const Timespan& timespan );
 
-    class W32_MT_EXPORT Sleep
+    class Sleep
     {
         w32::Timespan myTimespan;
     public:
@@ -288,7 +288,7 @@ namespace w32 { namespace mt {
         /*!
          * @brief Hint to the scheduler for assining processor cycles.
          */
-    class W32_MT_EXPORT Thread::Priority
+    class Thread::Priority
     {
         /* nested types. */
     public:
@@ -330,7 +330,7 @@ namespace w32 { namespace mt {
          * may become less responsive. Use this to keep giving the illusion
          * of simultaneous execution.
          */
-    W32_MT_EXPORT void yield ();
+    void yield ();
 
         /*!
          * @brief Prematurily ends the current thread.
@@ -340,7 +340,7 @@ namespace w32 { namespace mt {
          * application because C++ objects normally release resources in their
          * destructor and the stack is not unwound.
          */
-    W32_MT_EXPORT void exit ( uint status );
+    void exit ( uint status );
 
 } }
 

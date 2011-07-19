@@ -19,7 +19,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Obtains information about the currently selected font.
          */
-    class W32_GDI_EXPORT TextMetrics
+    class TextMetrics
     {
         /* nested types. */
     public:

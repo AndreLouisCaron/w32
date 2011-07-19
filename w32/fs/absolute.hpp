@@ -13,7 +13,7 @@
 
 namespace w32 { namespace fs {
 
-    string W32_FS_EXPORT absolute ( const string& path );
+    string absolute ( const string& path );
 
 } }
 

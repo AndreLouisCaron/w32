@@ -19,7 +19,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Wraps a system bitmap into which we can draw directly.
          */
-    class W32_GDI_EXPORT DeviceIndependantBitmap :
+    class DeviceIndependantBitmap :
         public Bitmap
     {
         /* nested types. */
@@ -80,7 +80,7 @@ namespace w32 { namespace gdi {
          * This structure contains more information than the
          * bitmap's information structure.
          */
-    class W32_GDI_EXPORT DeviceIndependantBitmap::Info
+    class DeviceIndependantBitmap::Info
     {
         /* nested types. */
     public:
@@ -133,7 +133,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Used to make sure GDI drawing is complete.
          */
-    class W32_GDI_EXPORT DeviceIndependantBitmap::Guard :
+    class DeviceIndependantBitmap::Guard :
         private w32::NotCopyable
     {
         /* construction. */
@@ -144,7 +144,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Bitmap loaded from a file.
          */
-    class W32_GDI_EXPORT FileBitmap :
+    class FileBitmap :
         public DeviceIndependantBitmap
     {
         /* nested types. */
@@ -164,7 +164,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Wraps access to a system bitmap resource's information.
          */
-    class W32_GDI_EXPORT FileBitmap::Info
+    class FileBitmap::Info
     {
         /* nested types. */
     public:

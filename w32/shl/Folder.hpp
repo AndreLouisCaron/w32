@@ -23,7 +23,7 @@ namespace w32 { namespace shl {
     class Path;
     class Stream;
 
-    class W32_SHL_EXPORT Folder :
+    class Folder :
         public com::Wrapper< ::IShellFolder >
     {
         /* nested types. */
@@ -44,7 +44,7 @@ namespace w32 { namespace shl {
         Item child ( const Path& path ) const;
     };
 
-    class W32_SHL_EXPORT Folder2 :
+    class Folder2 :
         public com::Wrapper< ::IShellFolder2 >
     {
         /* construction. */
@@ -57,7 +57,7 @@ namespace w32 { namespace shl {
         qword size ( const Path& path ) const;
     };
 
-    class W32_SHL_EXPORT Folder::Listing :
+    class Folder::Listing :
         public com::Wrapper< ::IEnumIDList >
     {
         /* nested types. */

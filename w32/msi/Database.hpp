@@ -23,7 +23,7 @@ namespace w32 { namespace msi {
          * the internal file format is hidden under the hood of a database and
          * is opaque.
          */
-    class W32_MSI_EXPORT Database :
+    class Database :
         public Object
     {
         /* nested types. */
@@ -41,7 +41,7 @@ namespace w32 { namespace msi {
              * @brief Enumeration of modes with which we can open msi
              *    databases.
              */
-        class W32_MSI_EXPORT Mode
+        class Mode
         {
             /* class data. */
         public:
@@ -72,7 +72,7 @@ namespace w32 { namespace msi {
             /*!
              * @brief Enumeration of the states an msi database can be in.
              */
-        class W32_MSI_EXPORT State
+        class State
         {
             /* class data. */
         public:

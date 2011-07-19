@@ -18,7 +18,7 @@ namespace w32 { namespace ts {
         /*!
          * @brief Write-access to a task object.
          */
-    class W32_TS_EXPORT Editor :
+    class Editor :
         private NotCopyable
     {
         /* data. */

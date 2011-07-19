@@ -10,11 +10,4 @@
 
 #include "../__configure__.hpp"
 
-#ifdef __building_w32_rgs__
-#   define W32_RGS_EXPORT __declspec(dllexport)
-#   include "../__compiler-intro__.hpp"
-#else
-#   define W32_RGS_EXPORT __declspec(dllimport)
-#endif
-
 #endif /* _win_rgs_configure__hpp__ */

@@ -17,7 +17,7 @@ namespace w32 { namespace in {
 
     class Session;
 
-    class W32_IN_EXPORT IStream
+    class IStream
     {
         /* nested types. */
     public:

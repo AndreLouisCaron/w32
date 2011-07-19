@@ -13,7 +13,7 @@
 
 namespace w32 { namespace msi {
 
-    class W32_MSI_EXPORT Products
+    class Products
     {
         /* nested types. */
     public:
@@ -48,7 +48,7 @@ namespace w32 { namespace msi {
         Product::Code current () const;
     };
 
-    class W32_MSI_EXPORT Products::User
+    class Products::User
     {
         /* nested types. */
     public:
@@ -77,7 +77,7 @@ namespace w32 { namespace msi {
         operator Value () const;
     };
 
-    class W32_MSI_EXPORT Products::Context
+    class Products::Context
     {
         /* nested types. */
     public:

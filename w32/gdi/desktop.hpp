@@ -18,7 +18,7 @@ namespace w32 { namespace gdi {
          *
          * It would be wise to use this carefully...
          */
-    W32_GDI_EXPORT Window desktop ();
+    Window desktop ();
 
 } }
 

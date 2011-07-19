@@ -17,7 +17,7 @@ namespace w32 { namespace msi {
         /*!
          * @brief Extracts information about columns affected by an SQL query.
          */
-    class W32_MSI_EXPORT Columns :
+    class Columns :
         public Record
     {
         /* construction. */

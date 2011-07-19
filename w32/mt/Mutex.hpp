@@ -18,7 +18,7 @@ namespace w32 { namespace mt {
         /*!
          * @brief Mutual-exclusion lock.
          */
-    class W32_MT_EXPORT Mutex :
+    class Mutex :
         public Object
     {
         /* nested types. */

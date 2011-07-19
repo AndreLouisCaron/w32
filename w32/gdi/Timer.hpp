@@ -19,7 +19,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Windows event loop based alarm.
          */
-    class W32_GDI_EXPORT Timer :
+    class Timer :
         private NotCopyable
     {
         /* nested types. */

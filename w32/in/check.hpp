@@ -13,8 +13,8 @@
 
 namespace w32 { namespace in {
 
-    W32_IN_EXPORT void check ( bool force=false );
-    W32_IN_EXPORT void check ( const string& url, bool force=false );
+    void check ( bool force=false );
+    void check ( const string& url, bool force=false );
 
 } }
 

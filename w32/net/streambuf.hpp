@@ -17,7 +17,7 @@ namespace w32 { namespace net {
         /*!
          * @brief Standard I/O stream adapter for socket streams.
          */
-    class W32_NET_EXPORT streambuf :
+    class streambuf :
         public std::basic_streambuf< char, std::char_traits<char> >
     {
         /* nested types. */

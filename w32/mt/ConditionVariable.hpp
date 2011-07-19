@@ -21,7 +21,7 @@
 
 namespace w32 { namespace mt {
 
-    class W32_MT_EXPORT ConditionVariable :
+    class ConditionVariable :
         private NotCopyable
     {
         /* nested types. */

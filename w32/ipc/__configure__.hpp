@@ -10,16 +10,6 @@
 
 #include "../__configure__.hpp"
 
-#ifdef __building_w32_ipc__
-#   define W32_IPC_EXPORT __declspec(dllexport)
-#   include "../__compiler-intro__.hpp"
-#   ifdef _MSC_VER
-#       pragma comment ( lib, "PSApi.lib" )
-#   endif
-#else
-#   define W32_IPC_EXPORT __declspec(dllimport)
-#endif
-
     // API headers.
 #ifndef _PSAPI_H_
 #   include <PSApi.h>

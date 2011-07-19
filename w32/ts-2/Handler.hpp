@@ -25,7 +25,7 @@ namespace w32 { namespace ts {
          * @warning The installation of the COM server absolutely needs the
          *    'DllSurrogate' value or the creation of your object will fail.
          */
-    class W32_TS2_EXPORT Handler :
+    class Handler :
         public com::Model< ::ITaskHandler >
     {
         /* nested types. */
@@ -53,7 +53,7 @@ namespace w32 { namespace ts {
          * @brief Allows the task to inform the task scheduler about its
          *    completion.
          */
-    class W32_TS2_EXPORT Handler::Status :
+    class Handler::Status :
         public com::Wrapper< ::ITaskHandlerStatus >
     {
         /* construction. */

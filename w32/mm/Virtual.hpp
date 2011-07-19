@@ -41,7 +41,7 @@ namespace w32 { namespace mm {
          *
          * @see w32::dbg::StructuredException
          */
-    class W32_MM_EXPORT Virtual :
+    class Virtual :
         public Allocator
     {
         /* nested types. */
@@ -56,7 +56,7 @@ namespace w32 { namespace mm {
              * possible) or writing your own executable loader. Furthermore,
              * write access is usually denied when defining read-only locations.
              */
-        class W32_MM_EXPORT Access
+        class Access
         {
             /* class data. */
         public:

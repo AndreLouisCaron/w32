@@ -15,7 +15,7 @@
 
 namespace w32 {
 
-    class W32_CORE_EXPORT Resource
+    class Resource
     {
         /* nested types. */
     public:

@@ -24,7 +24,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Control used to display status messages.
          */
-    class W32_GDI_EXPORT ProgressBar :
+    class ProgressBar :
         public Control
     {
         /* nested types. */
@@ -88,7 +88,7 @@ namespace w32 { namespace gdi {
         int step ( int delta );
     };
 
-    class W32_GDI_EXPORT ProgressBar::Range
+    class ProgressBar::Range
     {
         /* data. */
     private:

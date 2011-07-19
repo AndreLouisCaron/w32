@@ -15,7 +15,7 @@
 
 namespace w32 { namespace fs {
 
-    class W32_FS_EXPORT File :
+    class File :
         public Object
     {
         /* nested types. */
@@ -47,7 +47,7 @@ namespace w32 { namespace fs {
         size_type size () const;
     };
 
-    class W32_FS_EXPORT File::Access
+    class File::Access
     {
         /* nested types. */
     public:

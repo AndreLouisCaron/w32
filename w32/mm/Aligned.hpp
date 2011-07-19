@@ -15,7 +15,7 @@
 
 namespace w32 { namespace mm {
 
-    class W32_MM_EXPORT Aligned :
+    class Aligned :
         public Allocator
     {
         /* data. */

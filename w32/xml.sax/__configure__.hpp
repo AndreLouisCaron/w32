@@ -10,16 +10,6 @@
 
 #include "../__configure__.hpp"
 
-#ifdef __building_w32_xml_sax__
-#   define W32_XML_SAX_EXPORT __declspec(dllexport)
-#   include "../__compiler-intro__.hpp"
-#   ifdef _MSC_VER
-#       pragma comment ( lib, "msxml6.lib" )
-#   endif
-#else
-#   define W32_XML_SAX_EXPORT __declspec(dllimport)
-#endif
-
 #include <msxml6.h>
 
 #include <w32/bstring.hpp>

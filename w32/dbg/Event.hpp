@@ -14,7 +14,7 @@
 
 namespace w32 { namespace dbg {
 
-    class W32_DBG_EXPORT Event
+    class Event
     {
         /* nested types. */
     public:
@@ -45,7 +45,7 @@ namespace w32 { namespace dbg {
         }
     };
 
-    class W32_DBG_EXPORT Event::Type
+    class Event::Type
     {
         /* class data. */
     public:

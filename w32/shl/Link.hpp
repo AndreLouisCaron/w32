@@ -21,7 +21,7 @@ namespace w32 { namespace shl {
 
     class Path;
 
-    class W32_SHL_EXPORT Link :
+    class Link :
         public com::Wrapper< ::IShellLinkW >
     {
         /* construction. */

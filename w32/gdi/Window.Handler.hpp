@@ -17,7 +17,7 @@
 namespace w32 { namespace gdi {
 
     template<typename T>
-    class /*W32_GDI_EXPORT*/ Window::Handler
+    class Window::Handler
     {
     public:
             /*!

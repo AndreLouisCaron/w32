@@ -16,7 +16,7 @@
 
 namespace w32 { namespace fs {
 
-    class W32_FS_EXPORT Folder :
+    class Folder :
         public Object
     {
         /* class methods. */
@@ -41,7 +41,7 @@ namespace w32 { namespace fs {
         string path () const;
     };
 
-    class W32_FS_EXPORT ReparsePoint :
+    class ReparsePoint :
         public Folder
     {
         /* construction. */

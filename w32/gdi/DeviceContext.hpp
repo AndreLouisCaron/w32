@@ -36,14 +36,14 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Wraps access to the context used for drawing operations.
          */
-    class W32_GDI_EXPORT DeviceContext
+    class DeviceContext
     {
         /* nested types. */
     public:
             /*!
              * @brief Function object for Handle cleanup.
              */
-        class W32_GDI_EXPORT Cleanup
+        class Cleanup
         {
             /* nested types. */
         public:

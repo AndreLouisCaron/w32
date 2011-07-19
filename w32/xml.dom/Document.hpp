@@ -21,7 +21,7 @@ namespace w32 { namespace xml { namespace dom {
         /*!
          * @brief XML document.
          */
-    class W32_XML_DOM_EXPORT Document
+    class Document
     {
         /* nested types. */
     public:

@@ -7,10 +7,10 @@
 
 namespace w32 { namespace gdi {
 
-    W32_GDI_EXPORT void foreground ( const Window& window );
-    W32_GDI_EXPORT Window foreground ();
+    void foreground ( const Window& window );
+    Window foreground ();
 
-    class W32_GDI_EXPORT Foreground :
+    class Foreground :
         private NotCopyable
     {
         /* data. */

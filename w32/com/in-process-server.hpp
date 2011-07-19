@@ -25,7 +25,6 @@ extern "C" {
          *   - omission of increment may result in program crashes;
          *   - omission of decrement may result in memory leaks.
          */
-    W32_COM_EXPORT
     extern volatile ::LONG GlobalObjectCount;
 
         /*!

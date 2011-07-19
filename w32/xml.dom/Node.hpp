@@ -19,7 +19,7 @@ namespace w32 { namespace xml { namespace dom {
         /*!
          * @brief XML Document tree node.
          */
-    class W32_XML_DOM_EXPORT Node
+    class Node
     {
         /* nested types. */
     public:
@@ -65,7 +65,7 @@ namespace w32 { namespace xml { namespace dom {
         /*!
          * @brief Enumeration of node types.
          */
-    class W32_XML_DOM_EXPORT Node::Type
+    class Node::Type
     {
         /* nested types. */
     public:

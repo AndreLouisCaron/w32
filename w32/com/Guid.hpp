@@ -14,7 +14,7 @@
 
 namespace w32{ namespace com {
 
-    class W32_COM_EXPORT Guid
+    class Guid
     {
         /* nested types. */
     public:
@@ -56,13 +56,13 @@ namespace w32{ namespace com {
         bool operator!= ( const Guid& other ) const;
     };
 
-    W32_COM_EXPORT std::wostream& operator<<
+    std::wostream& operator<<
         ( std::wostream& out, const Guid& guid );
 
-    W32_COM_EXPORT std::wistream& operator>>
+    std::wistream& operator>>
         ( std::wistream& in, Guid& guid );
 
-    class W32_COM_EXPORT Guid::String
+    class Guid::String
     {
         /* data. */
     private:
@@ -77,7 +77,7 @@ namespace w32{ namespace com {
         const wchar_t * value () const;
     };
 
-    W32_COM_EXPORT std::wostream& operator<<
+    std::wostream& operator<<
         ( std::wostream& out, const Guid::String& guid );
 
         /*!

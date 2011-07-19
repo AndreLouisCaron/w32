@@ -19,7 +19,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Control to select values in a range.
          */
-    class W32_GDI_EXPORT UpDown :
+    class UpDown :
         public Control
     {
       /* nested types. */
@@ -41,7 +41,7 @@ namespace w32 { namespace gdi {
         Range range () const;
     };
 
-    class W32_GDI_EXPORT UpDown::Range
+    class UpDown::Range
     {
         /* data. */
     private:

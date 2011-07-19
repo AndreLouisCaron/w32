@@ -18,7 +18,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Image displayed where the mouse currently points.
          */
-    class W32_GDI_EXPORT Cursor
+    class Cursor
     {
         /* nested types. */
     public:
@@ -65,7 +65,7 @@ namespace w32 { namespace gdi {
         const Handle& handle () const;
     };
 
-    class W32_GDI_EXPORT Cursor::Show :
+    class Cursor::Show :
         private NotCopyable
     {
         /* construction. */
@@ -79,7 +79,7 @@ namespace w32 { namespace gdi {
         }
     };
 
-    class W32_GDI_EXPORT Hide :
+    class Cursor::Hide :
         private NotCopyable
     {
         /* construction. */

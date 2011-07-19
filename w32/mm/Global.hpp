@@ -21,7 +21,7 @@ namespace w32 { namespace mm {
          * You should not use this class unless a given interface requires you
          * to: modern mechanisms, which are also more convenient, exist.
          */
-    class W32_MM_EXPORT Global
+    class Global
     {
         /* nested types. */
     public:
@@ -52,7 +52,7 @@ namespace w32 { namespace mm {
         std::size_t size () const;
     };
 
-    class W32_MM_EXPORT Global::Lock :
+    class Global::Lock :
         private w32::NotCopyable
     {
         /* data. */

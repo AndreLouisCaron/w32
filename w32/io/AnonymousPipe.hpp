@@ -14,12 +14,12 @@
 
 namespace w32 { namespace io {
 
-    class W32_IO_EXPORT AnonymousPipe :
+    class AnonymousPipe :
         private NotCopyable
     {
         /* nested types. */
     private:
-        struct W32_IO_EXPORT Handles
+        struct Handles
         {
             /* data. */
         public:
@@ -32,7 +32,7 @@ namespace w32 { namespace io {
         };
 
     public:
-        class W32_IO_EXPORT Output :
+        class Output :
             public OutputStream
         {
             /* construction. */
@@ -40,7 +40,7 @@ namespace w32 { namespace io {
             explicit Output ( const Handles& handles );
         };
 
-        class W32_IO_EXPORT Input :
+        class Input :
             public InputStream
         {
             /* construction. */

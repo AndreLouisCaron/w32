@@ -14,7 +14,7 @@ namespace w32 { namespace ts {
 
     class Definition;
 
-    class W32_TS2_EXPORT Principal :
+    class Principal :
         public com::Wrapper< ::IPrincipal >
     {
         /* construction. */

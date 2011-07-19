@@ -17,7 +17,7 @@
 
 namespace w32 { namespace io {
 
-    class W32_IO_EXPORT CompletionPort :
+    class CompletionPort :
         public Object
     {
         /* nested types. */

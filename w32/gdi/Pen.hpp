@@ -18,13 +18,13 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Wraps a drawing tool used to draw lines.
          */
-    class W32_GDI_EXPORT Pen
+    class Pen
     {
         /* nested types. */
     public:
         typedef Reference< ::HPEN, void(*)(::HPEN) > Handle;
 
-        class W32_GDI_EXPORT Style
+        class Style
         {
             /* nested types. */
         public:

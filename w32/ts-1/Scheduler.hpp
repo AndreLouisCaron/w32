@@ -15,7 +15,7 @@
 
 namespace w32 { namespace ts {
 
-    class W32_TS_EXPORT Scheduler :
+    class Scheduler :
         public com::Wrapper< ::ITaskScheduler >
     {
         /* nested types. */

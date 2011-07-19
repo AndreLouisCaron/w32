@@ -13,7 +13,7 @@
 
 namespace w32 { namespace sc {
 
-    class W32_SC_EXPORT Object
+    class Object
     {
         /* nested types. */
     public:

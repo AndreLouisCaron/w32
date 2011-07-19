@@ -19,7 +19,7 @@ namespace w32 { namespace io {
         /*!
          * @brief Standard I/O stream adapter for input streams.
          */
-    class W32_IO_EXPORT istreambuf :
+    class istreambuf :
         public std::basic_streambuf< char, std::char_traits<char> >
     {
         /* nested types. */
@@ -58,7 +58,7 @@ namespace w32 { namespace io {
         /*!
          * @brief Standard I/O stream adapter for output streams.
          */
-    class W32_IO_EXPORT ostreambuf :
+    class ostreambuf :
         public std::basic_streambuf< char, std::char_traits<char> >
     {
         /* nested types. */
@@ -102,7 +102,7 @@ namespace w32 { namespace io {
         /*!
          * @brief Standard I/O stream adapter for i/o channels.
          */
-    class W32_IO_EXPORT streambuf :
+    class streambuf :
         public std::basic_streambuf< char, std::char_traits<char> >
     {
         /* nested types. */

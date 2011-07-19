@@ -19,7 +19,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Wraps access to an OpenGL context.
          */
-    class W32_GDI_EXPORT OpenGLContext
+    class OpenGLContext
     {
         /* nested types. */
     public:
@@ -81,7 +81,7 @@ namespace w32 { namespace gdi {
         const Handle& handle () const ;
     };
 
-    class W32_GDI_EXPORT OpenGLContext::Use :
+    class OpenGLContext::Use :
         private NotCopyable
     {
         /* data. */

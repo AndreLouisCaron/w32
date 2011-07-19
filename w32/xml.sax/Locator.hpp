@@ -12,7 +12,7 @@
 
 namespace w32 { namespace xml { namespace sax {
 
-    class W32_XML_SAX_EXPORT Locator
+    class Locator
     {
         /* nested types. */
     public:

@@ -20,7 +20,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Shorthand to writing simple windows.
          */
-    class W32_GDI_EXPORT Dialog :
+    class Dialog :
         public virtual Window
     {
         /* nested types. */
@@ -172,7 +172,7 @@ namespace w32 { namespace gdi {
         return (0);
     }
 
-    class W32_GDI_EXPORT Dialog::Template
+    class Dialog::Template
     {
         /* nested types. */
     public:
@@ -229,7 +229,7 @@ namespace w32 { namespace gdi {
     };
 
         // Another long and painful dispatcher.
-    struct W32_GDI_EXPORT Dialog::Handler
+    struct Dialog::Handler
     {
             /*!
              * @brief Hook invoked right before the dialog is shown.

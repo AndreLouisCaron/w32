@@ -21,10 +21,10 @@ namespace w32 { namespace gdi {
     class Message;
     class Window;
 
-    W32_GDI_EXPORT void post
+    void post
         ( Window& window, const Message& message );
-    W32_GDI_EXPORT void post ( const Message& message );
-    W32_GDI_EXPORT void post
+    void post ( const Message& message );
+    void post
         ( mt::Thread& thread, const Message& message );
 
 } }

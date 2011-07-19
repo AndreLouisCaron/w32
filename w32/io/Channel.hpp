@@ -14,7 +14,7 @@
 
 namespace w32 { namespace io {
 
-     class W32_IO_EXPORT Channel :
+     class Channel :
         virtual public InputStream,
         virtual public OutputStream
      {

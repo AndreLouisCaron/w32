@@ -20,7 +20,7 @@ namespace w32{ namespace gdi {
         /*!
          * @brief Wraps the context used during drawing operations.
          */
-    class W32_GDI_EXPORT PaintContext :
+    class PaintContext :
         private NotCopyable
     {
         /* nested types. */

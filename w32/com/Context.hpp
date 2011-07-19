@@ -12,7 +12,7 @@
 
 namespace w32 { namespace com {
 
-    class W32_COM_EXPORT Context
+    class Context
     {
         /* nested types. */
     public:

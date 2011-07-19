@@ -13,7 +13,7 @@
 
 namespace w32 { namespace shl { namespace ext {
 
-    class W32_SHL_EXT_EXPORT ContextMenu :
+    class ContextMenu :
         virtual public Extension,
         public ::IContextMenu
     {

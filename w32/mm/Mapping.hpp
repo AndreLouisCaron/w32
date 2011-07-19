@@ -15,12 +15,12 @@
 
 namespace w32 { namespace mm {
 
-    class W32_MM_EXPORT Mapping :
+    class Mapping :
         public Object
     {
         /* nested types. */
     public:
-        class W32_MM_EXPORT Mode
+        class Mode
         {
             /* nested types. */
         public:
@@ -63,7 +63,7 @@ namespace w32 { namespace mm {
         Mode mode () const;
     };
 
-    class W32_MM_EXPORT Mapping::View
+    class Mapping::View
     {
         /* nested types. */
     private:

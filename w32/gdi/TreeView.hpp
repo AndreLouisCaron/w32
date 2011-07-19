@@ -22,7 +22,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Control used to display a hierarchy.
          */
-    class W32_GDI_EXPORT TreeView :
+    class TreeView :
         public Control
     {
         /* nested types. */
@@ -101,7 +101,7 @@ namespace w32 { namespace gdi {
         ImageList images () const;
     };
 
-    class W32_GDI_EXPORT TreeView::Item
+    class TreeView::Item
     {
         /* nested types. */
     public:
@@ -120,7 +120,7 @@ namespace w32 { namespace gdi {
         Handle handle () const;
     };
 
-    class W32_GDI_EXPORT TreeView::Insertion
+    class TreeView::Insertion
     {
         /* nested types. */
     public:

@@ -24,7 +24,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Control used to display status messages.
          */
-    class W32_GDI_EXPORT StatusBar :
+    class StatusBar :
         public Control
     {
         /* construction. */

@@ -19,7 +19,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Wraps a drawing tool used to fill regions.
          */
-    class W32_GDI_EXPORT Brush
+    class Brush
     {
         /* nested types. */
     public:

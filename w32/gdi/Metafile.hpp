@@ -16,7 +16,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Macro of GDI drawing commands.
          */
-    class W32_GDI_EXPORT Metafile
+    class Metafile
     {
         /* nested types. */
     public:

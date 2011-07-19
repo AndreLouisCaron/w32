@@ -14,7 +14,7 @@ namespace w32 { namespace ts {
 
     class Task;
 
-    class W32_TS_EXPORT Status
+    class Status
     {
         /* nested types. */
     public:

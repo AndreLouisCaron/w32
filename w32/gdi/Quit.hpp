@@ -13,7 +13,7 @@
 
 namespace w32 { namespace gdi {
 
-    class W32_GDI_EXPORT Quit :
+    class Quit :
         public Message
     {
         /* construction. */
@@ -27,7 +27,7 @@ namespace w32 { namespace gdi {
         void status ( uint value );
     };
 
-    W32_GDI_EXPORT void quit ( uint status = 0 );
+    void quit ( uint status = 0 );
 
 } }
 

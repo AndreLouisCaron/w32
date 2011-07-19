@@ -22,7 +22,7 @@ namespace w32{ namespace com {
          * points to 0.
          */
     template<typename Interface>
-    class /*W32_COM_EXPORT*/ Ptr
+    class Ptr
     {
         /* class methods. */
     public:

@@ -14,7 +14,7 @@
 
 namespace w32 { namespace msi {
 
-    class W32_MSI_EXPORT Error
+    class Error
     {
         /* class data. */
     private:

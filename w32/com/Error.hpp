@@ -13,7 +13,7 @@
 
 namespace w32{ namespace com {
 
-    class W32_COM_EXPORT Error
+    class Error
     {
         /* data. */
     private:

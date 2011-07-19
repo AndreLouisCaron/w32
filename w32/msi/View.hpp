@@ -19,7 +19,7 @@ namespace w32 { namespace msi {
         /*!
          * @brief Wraps an SQL query to an msi database.
          */
-    class W32_MSI_EXPORT View :
+    class View :
         public Object
     {
         /* nested types. */
@@ -31,7 +31,7 @@ namespace w32 { namespace msi {
         class InvalidParameter {};
         class NoMoreRecords {};
 
-        class W32_MSI_EXPORT Column
+        class Column
         {
             /* class data. */
         public:

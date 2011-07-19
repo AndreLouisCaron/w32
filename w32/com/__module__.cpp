@@ -19,8 +19,7 @@ namespace w32 {
     // See if this can be removed!
 extern "C" {
 
-    W32_COM_EXPORT
-        volatile ::LONG GlobalObjectCount = 0;
+    volatile ::LONG GlobalObjectCount = 0;
 
 }
 

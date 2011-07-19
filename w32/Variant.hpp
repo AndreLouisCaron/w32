@@ -23,7 +23,7 @@ namespace w32 {
      * for a generic object type and can hold many different types of
      * values. However, it can only hold one of these at once.
      */
-    class W32_CORE_EXPORT Variant
+    class Variant
     {
         /* nested types. */
     public:
@@ -76,7 +76,7 @@ namespace w32 {
         operator int32 () const;
     };
 
-    class W32_CORE_EXPORT Variant::Type
+    class Variant::Type
     {
         /* nested types. */
     public:

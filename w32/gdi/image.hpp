@@ -19,12 +19,12 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Loads an image from an input file.
          */
-    W32_GDI_EXPORT Image image ( const string& path );
+    Image image ( const string& path );
 
         /*!
          * @brief Saves an image to an output file.
          */
-    W32_GDI_EXPORT void image ( const Image& image, const string& path );
+    void image ( const Image& image, const string& path );
 
 } }
 

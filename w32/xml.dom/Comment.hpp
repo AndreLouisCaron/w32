@@ -12,7 +12,7 @@
 
 namespace w32 { namespace xml { namespace dom {
 
-    class W32_XML_DOM_EXPORT Comment
+    class Comment
     {
         /* nested types. */
     public:

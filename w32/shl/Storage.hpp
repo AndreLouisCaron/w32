@@ -25,7 +25,7 @@ namespace w32 { namespace shl {
     class Stat;
     class Stream;
 
-    class W32_SHL_EXPORT Storage :
+    class Storage :
         public com::Wrapper< ::IStorage >
     {
         /* nested types. */
@@ -49,7 +49,7 @@ namespace w32 { namespace shl {
         Storage branch ( const string& child );
     };
 
-    class W32_SHL_EXPORT Storage::Listing :
+    class Storage::Listing :
         public com::Wrapper< ::IEnumSTATSTG >
     {
         /* nested types. */

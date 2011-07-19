@@ -15,7 +15,7 @@ namespace w32 {
 /*!
  * @brief Derive from this class to prevent copying and assignment.
  */
-class W32_CORE_EXPORT NotCopyable
+class NotCopyable
 {
     /* construction. */
 protected:

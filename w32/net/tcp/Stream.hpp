@@ -16,7 +16,7 @@ namespace w32 { namespace net { namespace tcp {
         /*!
          * @brief Transfer Control Protocol, connection socket.
          */
-    class W32_NET_EXPORT Stream :
+    class Stream :
         public StreamSocket
     {
         /* construction. */

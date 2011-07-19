@@ -26,7 +26,7 @@ namespace w32 { namespace ipc {
          * environment variables, a priority class, minimum and maximum working
          * set sizes, and at least one thread of execution.
          */
-    class W32_IPC_EXPORT Process :
+    class Process :
         public Object
     {
         /* nested types. */
@@ -246,7 +246,7 @@ namespace w32 { namespace ipc {
     /*!
      * @brief Hint to the scheduler for assining processor cycles.
      */
-     class W32_IPC_EXPORT Process::Priority
+     class Process::Priority
      {
          /* nested types. */
      public:

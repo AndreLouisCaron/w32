@@ -17,7 +17,7 @@
 
 namespace w32 { namespace fs {
 
-    class W32_FS_EXPORT Search :
+    class Search :
         public Object
     {
         /* nested types. */
@@ -37,7 +37,7 @@ namespace w32 { namespace fs {
         bool next ( Result& result );
     };
 
-    class W32_FS_EXPORT Search::Result :
+    class Search::Result :
         private NotCopyable
     {
         /* nested types. */

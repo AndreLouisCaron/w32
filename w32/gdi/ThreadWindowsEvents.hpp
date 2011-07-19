@@ -13,7 +13,7 @@
 
 namespace w32 { namespace gdi {
 
-    class W32_GDI_EXPORT ThreadWindowsEvents :
+    class ThreadWindowsEvents :
         public EventQueue
     {
         /* overrides. */

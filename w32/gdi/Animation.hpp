@@ -16,7 +16,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Enumeration of show/hide animations for windows.
          */
-    class W32_GDI_EXPORT Animation
+    class Animation
     {
         /* class data. */
     public:

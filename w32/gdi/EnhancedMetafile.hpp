@@ -25,7 +25,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Macro of GDI drawing commands.
          */
-    class W32_GDI_EXPORT EnhancedMetafile
+    class EnhancedMetafile
     {
         /* nested types. */
     public:
@@ -59,7 +59,7 @@ namespace w32 { namespace gdi {
         // can be used to play, etc.
         //
         // Find a clean interface for this...
-    class W32_GDI_EXPORT EnhancedMetafile::Compiler :
+    class EnhancedMetafile::Compiler :
         public DeviceContext
     {
     };

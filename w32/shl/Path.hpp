@@ -37,7 +37,7 @@ namespace w32 { namespace shl {
          * sure the number of components in the path is 1 and return
          * \c E_INVALIDARG if it doesn't.
          */
-    class W32_SHL_EXPORT Path
+    class Path
     {
     friend Path manage ( ::ITEMIDLIST * path );
 

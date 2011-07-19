@@ -14,7 +14,7 @@
 
 namespace w32 { namespace io {
 
-    class W32_IO_EXPORT StandardInput :
+    class StandardInput :
         public InputStream
     {
         /* nested types. */
@@ -26,7 +26,7 @@ namespace w32 { namespace io {
         StandardInput ();
     };
 
-    class W32_IO_EXPORT StandardInput::Redirection :
+    class StandardInput::Redirection :
         private w32::NotCopyable
     {
         /* data. */

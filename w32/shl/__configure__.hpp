@@ -10,13 +10,6 @@
 
 #include "../__configure__.hpp"
 
-#ifdef __building_w32_shl__
-#   define W32_SHL_EXPORT __declspec(dllexport)
-#   include "../__compiler-intro__.hpp"
-#else
-#   define W32_SHL_EXPORT __declspec(dllimport)
-#endif
-
 #include <ObjIdl.h>
 #include <ShlObj.h>
 #include <Shtypes.h>

@@ -14,7 +14,7 @@
 namespace w32{ namespace com {
 
     template<typename Interface>
-    class /*COM_CORE_EXPORT*/ Model :
+    class Model :
         virtual public Object, public Interface
     {
         /* overrides. */

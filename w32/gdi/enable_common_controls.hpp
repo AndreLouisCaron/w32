@@ -12,7 +12,7 @@
 
 namespace w32 { namespace gdi {
 
-    W32_GDI_EXPORT void enable_common_controls ();
+    void enable_common_controls ();
 
 } }
 

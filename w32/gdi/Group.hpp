@@ -22,7 +22,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Group of controls with a title, around which a border is set.
          */
-    class W32_GDI_EXPORT Group :
+    class Group :
         public Control
     {
         /* construction. */

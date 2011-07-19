@@ -14,7 +14,7 @@ namespace w32 { namespace xml { namespace dom {
 
     class Node;
 
-    class W32_XML_DOM_EXPORT List
+    class List
     {
         /* nested types. */
     public:

@@ -17,7 +17,7 @@ namespace w32 { namespace cr {
     class Hash;
     class Provider;
 
-    class W32_CR_EXPORT Key
+    class Key
     {
         /* nested types. */
     public:
@@ -48,7 +48,7 @@ namespace w32 { namespace cr {
         const Handle& handle () const;
     };
 
-    class W32_CR_EXPORT Key::Type
+    class Key::Type
     {
         /* nested types. */
     public:

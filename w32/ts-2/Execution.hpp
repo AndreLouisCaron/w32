@@ -18,7 +18,7 @@ namespace w32 { namespace ts {
         /*!
          * @brief Communicates with a currently running task.
          */
-    class W32_TS2_EXPORT Execution :
+    class Execution :
         public com::Wrapper< ::IRunningTask >
     {
         /* construction. */

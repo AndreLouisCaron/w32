@@ -19,7 +19,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Pictogram for an action, state or tool, etc.
          */
-    class W32_GDI_EXPORT Icon
+    class Icon
     {
         /* nested types. */
     public:
@@ -65,7 +65,7 @@ namespace w32 { namespace gdi {
         const Handle& handle () const;
     };
 
-    class W32_GDI_EXPORT Icon::Size
+    class Icon::Size
     {
         /* nested types. */
     public:

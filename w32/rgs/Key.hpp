@@ -19,7 +19,7 @@ namespace w32 { namespace rgs {
         /*!
          * @brief Allows manipulation of registry keys from different sources.
          */
-    class W32_RGS_EXPORT Key
+    class Key
     {
         /* nested types. */
     public:

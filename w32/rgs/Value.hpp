@@ -21,7 +21,7 @@ namespace w32 { namespace rgs {
          *
          * @todo Only handles strings and dwords for now.
          */
-    class W32_RGS_EXPORT Value
+    class Value
     {
         /* data. */
     private:

@@ -30,7 +30,7 @@ namespace w32 { namespace gdi {
     //   4) BS_3STATE      and BS_AUTO3STATE
     // See also "Command link"-type buttons.
 
-    class W32_GDI_EXPORT Button :
+    class Button :
         public Control
     {
         /* class methods. */

@@ -21,7 +21,7 @@ namespace w32 { namespace shl { namespace ext {
          * required methods to achieve functionaly and forget about the details.
          */
     template<typename Implementation>
-    class /*W32_SHL_EXT_EXPORT*/ BasicExtension :
+    class BasicExtension :
         public com::Object,
         public Implementation
     {

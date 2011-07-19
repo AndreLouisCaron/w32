@@ -18,12 +18,12 @@ namespace w32 { namespace io {
 
         /*!
          */
-    class W32_IO_EXPORT OutputFile :
+    class OutputFile :
         public OutputStream
     {
         /* nested types. */
     public:
-        class W32_IO_EXPORT Mode
+        class Mode
         {
             /* nested types. */
         public:

@@ -18,11 +18,11 @@
 
 namespace w32 { namespace gdi {
 
-    class W32_GDI_EXPORT MessageBox
+    class MessageBox
     {
         /* nested types. */
     public:
-        class W32_GDI_EXPORT Icon
+        class Icon
         {
             /* nested types. */
         public:
@@ -53,7 +53,7 @@ namespace w32 { namespace gdi {
             Value value () const;
         };
 
-        class W32_GDI_EXPORT Buttons
+        class Buttons
         {
             /* class data. */
         public:
@@ -83,7 +83,7 @@ namespace w32 { namespace gdi {
             }
         };
 
-        class W32_GDI_EXPORT Modality
+        class Modality
         {
             /* class data. */
         public:
@@ -113,7 +113,7 @@ namespace w32 { namespace gdi {
             }
         };
 
-        class W32_GDI_EXPORT Result
+        class Result
         {
             // The show() functions create objects of this class.
         friend class MessageBox;
@@ -162,7 +162,7 @@ namespace w32 { namespace gdi {
         static Result show ( const string& message );
     };
 
-    W32_GDI_EXPORT void messagebox
+    void messagebox
         ( const string& title, const string& message );
 
 } }

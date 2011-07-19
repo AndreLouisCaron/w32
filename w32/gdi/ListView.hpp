@@ -19,7 +19,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Control that displays a list of items.
          */
-    class W32_GDI_EXPORT ListView :
+    class ListView :
         public Control
     {
         /* nested types. */
@@ -90,7 +90,7 @@ namespace w32 { namespace gdi {
         Color textColor () const;
     };
 
-    class W32_GDI_EXPORT ListView::Column
+    class ListView::Column
     {
         /* nested types. */
     public:

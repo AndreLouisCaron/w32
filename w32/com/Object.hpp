@@ -18,7 +18,7 @@ namespace w32{ namespace com {
         /*!
          * @brief Implements the recurring parts of the IUnknown inteface.
          */
-    class W32_COM_EXPORT Object :
+    class Object :
         public ::IUnknown, public NotCopyable
     {
         /* class operators. */

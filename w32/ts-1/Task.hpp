@@ -14,7 +14,7 @@ namespace w32 { namespace ts {
 
     class Scheduler;
 
-    class W32_TS_EXPORT Task :
+    class Task :
         public com::Wrapper< ::ITask >
     {
         /* class methods. */

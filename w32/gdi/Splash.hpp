@@ -15,7 +15,7 @@
 
 namespace w32 { namespace gdi {
 
-    class W32_GDI_EXPORT Splash :
+    class Splash :
         private NotCopyable
     {
         /* data. */

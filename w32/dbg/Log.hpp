@@ -16,7 +16,7 @@
 
 namespace w32 { namespace dbg {
 
-    class W32_DBG_EXPORT Log
+    class Log
     {
         /* nested types. */
     public:

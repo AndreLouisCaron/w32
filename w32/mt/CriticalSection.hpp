@@ -13,7 +13,7 @@
 
 namespace w32 { namespace mt {
 
-    class W32_MT_EXPORT CriticalSection :
+    class CriticalSection :
         private NotCopyable
     {
         /* nested types. */
@@ -39,7 +39,7 @@ namespace w32 { namespace mt {
         void leave ();
     };
 
-    class W32_MT_EXPORT CriticalSection::Lock :
+    class CriticalSection::Lock :
         private w32::NotCopyable
     {
         /* data. */

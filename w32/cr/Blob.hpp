@@ -21,7 +21,7 @@ namespace w32 { namespace cr {
 
     class Provider;
 
-    class W32_CR_EXPORT Blob
+    class Blob
     {
         /* data. */
     public:
@@ -52,7 +52,7 @@ namespace w32 { namespace cr {
         lhs.swap(rhs);
     }
 
-    class W32_CR_EXPORT Format
+    class Format
     {
         /* nested types. */
     public:
@@ -84,12 +84,12 @@ namespace w32 { namespace cr {
         operator Value () const;
     };
 
-    W32_CR_EXPORT string convert
+    string convert
         ( const Blob& rhs, const Format& format=Format::hexraw() );
-    W32_CR_EXPORT Blob convert
+    Blob convert
         ( const string& rhs, const Format& format=Format::hexraw() );
 
-    W32_CR_EXPORT void random
+    void random
         ( const Provider& provider, void * data, dword size );
 
     inline void random ( const Provider& provider, Blob& blob )

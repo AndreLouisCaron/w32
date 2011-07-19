@@ -24,7 +24,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Groups icons and bitmaps with efficient storage.
          */
-    class W32_GDI_EXPORT ImageList
+    class ImageList
     {
         /* nested types. */
     public:

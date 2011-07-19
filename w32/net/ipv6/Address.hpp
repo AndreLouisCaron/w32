@@ -13,7 +13,7 @@
 
 namespace w32 { namespace net { namespace ipv6 {
 
-    class W32_NET_EXPORT Address
+    class Address
     {
         /* nested types. */
     public:
@@ -40,11 +40,9 @@ namespace w32 { namespace net { namespace ipv6 {
     bool operator== ( const Address& lhs, const Address& rhs );
     bool operator!= ( const Address& lhs, const Address& rhs );
 
-    W32_NET_EXPORT
-        std::istream& operator<< ( std::istream& in, Address& address );
+    std::istream& operator<< ( std::istream& in, Address& address );
 
-    W32_NET_EXPORT
-        std::ostream& operator<< ( std::ostream& out, const Address& address );
+    std::ostream& operator<< ( std::ostream& out, const Address& address );
 
 } } }
 

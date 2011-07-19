@@ -22,7 +22,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Display device information.
          */
-    class W32_GDI_EXPORT Device
+    class Device
     {
         /* nested types. */
     public:
@@ -72,7 +72,7 @@ namespace w32 { namespace gdi {
          * @brief Enumerates display devices.
          * @return A list of all display devices.
          */
-    W32_GDI_EXPORT std::vector< Device > devices ();
+    std::vector< Device > devices ();
 
 } }
 

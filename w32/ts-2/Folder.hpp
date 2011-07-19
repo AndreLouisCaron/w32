@@ -18,7 +18,7 @@ namespace w32 { namespace ts {
         /*!
          * @brief Way to organise tasks in a hierarchical fashion.
          */
-    class W32_TS2_EXPORT Folder :
+    class Folder :
         public com::Wrapper< ::ITaskFolder >
     {
         /* class methods. */

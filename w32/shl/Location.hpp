@@ -13,7 +13,7 @@
 
 namespace w32 { namespace shl {
 
-    class W32_SHL_EXPORT Location
+    class Location
     {
         /* nested types. */
     public:

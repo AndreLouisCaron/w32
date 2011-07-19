@@ -16,7 +16,7 @@ namespace w32 { namespace shl { namespace ext {
         /*!
          * @brief Base class for all extensions: takes care of initialization.
          */
-    class W32_SHL_EXT_EXPORT Extension :
+    class Extension :
         public ::IShellExtInit
     {
         /* data. */

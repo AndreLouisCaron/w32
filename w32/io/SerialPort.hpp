@@ -15,7 +15,7 @@
 
 namespace w32 { namespace io {
 
-    class W32_IO_EXPORT SerialPort :
+    class SerialPort :
         public Channel
     {
         /* nested types. */
@@ -42,7 +42,7 @@ namespace w32 { namespace io {
         void configure ( const Timeouts& timeouts );
     };
 
-    class W32_IO_EXPORT SerialPort::Control :
+    class SerialPort::Control :
         private NotCopyable
     {
         /* nested types. */
@@ -76,7 +76,7 @@ namespace w32 { namespace io {
         bool binary () const;
     };
 
-    class W32_IO_EXPORT SerialPort::Timeouts :
+    class SerialPort::Timeouts :
         private NotCopyable
     {
         /* nested types. */
@@ -98,7 +98,7 @@ namespace w32 { namespace io {
         const Data& data () const;
     };
 
-    class W32_IO_EXPORT SerialPort::Parity
+    class SerialPort::Parity
     {
         /* nested types. */
     public:
@@ -129,7 +129,7 @@ namespace w32 { namespace io {
         operator Value () const;
     };
 
-    class W32_IO_EXPORT SerialPort::Rate
+    class SerialPort::Rate
     {
         /* nested types. */
     public:
@@ -160,7 +160,7 @@ namespace w32 { namespace io {
         operator Value () const;
     };
 
-    class W32_IO_EXPORT SerialPort::Size
+    class SerialPort::Size
     {
         /* nested types. */
     public:
@@ -191,7 +191,7 @@ namespace w32 { namespace io {
         operator Value () const;
     };
 
-    class W32_IO_EXPORT SerialPort::Stop
+    class SerialPort::Stop
     {
         /* nested types. */
     public:

@@ -15,7 +15,7 @@
 
 namespace w32 {
 
-    class W32_CORE_EXPORT Waitable :
+    class Waitable :
         public Object
     {
         /* nested types. */
@@ -41,7 +41,7 @@ namespace w32 {
         bool test () const;
     };
 
-    class W32_CORE_EXPORT Waitable::Set :
+    class Waitable::Set :
         private NotCopyable
     {
         /* nested types. */

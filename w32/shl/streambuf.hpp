@@ -17,7 +17,7 @@ namespace w32 { namespace shl {
         /*!
          * @brief Standard I/O stream adapter for i/o streams.
          */
-    class W32_SHL_EXPORT streambuf :
+    class streambuf :
         public std::basic_streambuf< char, std::char_traits<char> >
     {
         /* nested types. */

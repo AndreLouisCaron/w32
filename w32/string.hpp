@@ -19,7 +19,7 @@ namespace w32 {
     class astring;
     class bstring;
 
-    class W32_CORE_EXPORT string
+    class string
     {
         /* nested types. */
     public:
@@ -107,7 +107,7 @@ namespace w32 {
         string operator+ ( wchar_t rhs ) const;
     };
 
-    W32_CORE_EXPORT string operator+
+    string operator+
         ( const wchar_t * lhs, const string& rhs );
 
     inline void swap ( string& lhs, string& rhs ) {
@@ -135,10 +135,10 @@ namespace w32 {
         return (std::wstring(begin(), end()));
     }
 
-    W32_CORE_EXPORT std::wostream& operator<<
+    std::wostream& operator<<
         ( std::wostream& out, const string& value );
 
-    class W32_CORE_EXPORT string::box
+    class string::box
     {
         /* data. */
     private:

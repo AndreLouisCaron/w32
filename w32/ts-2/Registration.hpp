@@ -17,7 +17,7 @@ namespace w32 { namespace ts {
     class State;
     class Registrations;
 
-    class W32_TS2_EXPORT Registration :
+    class Registration :
         public com::Wrapper< ::IRegisteredTask >
     {
         /* construction. */

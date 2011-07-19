@@ -15,7 +15,7 @@
 
 namespace w32 {
 
-    class W32_CORE_EXPORT strings
+    class strings
     {
         /* nested types. */
     public:
@@ -45,7 +45,7 @@ namespace w32 {
         value_type operator[] ( size_type i ) const;
     };
 
-    class W32_CORE_EXPORT strings::iterator :
+    class strings::iterator :
         public std::iterator< std::forward_iterator_tag, std::size_t >
     {
     friend class strings;

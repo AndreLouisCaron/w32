@@ -21,7 +21,7 @@ namespace w32 { namespace msi {
          * prepared update and as a means to retrive the values when reading the
          * results of a query.
          */
-    class W32_MSI_EXPORT Record :
+    class Record :
         public Object
     {
         /* nested types. */

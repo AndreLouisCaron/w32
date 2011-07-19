@@ -15,7 +15,7 @@ namespace w32 { namespace ts {
         /*!
          * @brief Enhanced task scheduler for Windows Vista.
          */
-    class W32_TS2_EXPORT Service :
+    class Service :
         public com::Wrapper< ::ITaskService >
     {
         /* construction. */

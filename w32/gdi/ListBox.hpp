@@ -19,7 +19,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Control that displays a list of items.
          */
-    class W32_GDI_EXPORT ListBox :
+    class ListBox :
         public Control
     {
         /* nested types. */

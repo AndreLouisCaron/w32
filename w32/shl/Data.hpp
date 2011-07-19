@@ -12,7 +12,7 @@
 
 namespace w32 { namespace shl {
 
-    class W32_SHL_EXPORT Data :
+    class Data :
         public com::Wrapper< ::IDataObject >
     {
         /* construction. */

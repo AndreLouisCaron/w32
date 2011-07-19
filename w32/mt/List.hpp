@@ -15,7 +15,7 @@
 
 namespace w32 { namespace mt {
 
-    class W32_MT_EXPORT List :
+    class List :
         private NotCopyable
     {
         /* nested types. */
@@ -54,7 +54,7 @@ namespace w32 { namespace mt {
         const_iterator end () const;
     };
 
-    class W32_MT_EXPORT List::iterator :
+    class List::iterator :
         public std::iterator< std::forward_iterator_tag, std::size_t >
     {
     friend class List;
@@ -76,7 +76,7 @@ namespace w32 { namespace mt {
         bool operator!= ( const iterator& other ) const;
     };
 
-    class W32_MT_EXPORT List::const_iterator :
+    class List::const_iterator :
         public std::iterator< std::forward_iterator_tag, std::size_t >
     {
     friend class List;

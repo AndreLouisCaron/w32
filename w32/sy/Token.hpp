@@ -14,7 +14,7 @@
 
 namespace w32 { namespace sy {
 
-    class W32_SY_EXPORT Token :
+    class Token :
         public Object
     {
         /* nested types. */
@@ -31,7 +31,7 @@ namespace w32 { namespace sy {
         bool restricted () const;
     };
 
-    class W32_SY_EXPORT Token::Type
+    class Token::Type
     {
         /* class data. */
     public:
@@ -64,7 +64,7 @@ namespace w32 { namespace sy {
         bool operator!= ( const Type& other ) const;
     };
 
-    class W32_SY_EXPORT Token::Access
+    class Token::Access
     {
         /* class data. */
     public:

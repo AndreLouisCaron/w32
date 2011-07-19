@@ -14,10 +14,10 @@
 
 namespace w32 { namespace gdi {
 
-    W32_GDI_EXPORT Window focus ( const Window& window );
-    W32_GDI_EXPORT Window focus ();
+    Window focus ( const Window& window );
+    Window focus ();
 
-    class W32_GDI_EXPORT Focus :
+    class Focus :
         private NotCopyable
     {
         /* data. */

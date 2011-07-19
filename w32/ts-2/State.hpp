@@ -15,7 +15,7 @@ namespace w32 { namespace ts {
     class Execution;
     class Registration;
 
-    class W32_TS2_EXPORT State
+    class State
     {
         /* nested types. */
     public:

@@ -22,7 +22,7 @@ namespace w32 { namespace net {
 
     using std::bad_cast;
 
-    class W32_NET_EXPORT Host
+    class Host
     {
         /* nested types. */
     public:
@@ -82,7 +82,7 @@ namespace w32 { namespace net {
         astring name () const;
     };
 
-    class W32_NET_EXPORT Host::Aliases :
+    class Host::Aliases :
         public mstring
     {
         /* construction. */

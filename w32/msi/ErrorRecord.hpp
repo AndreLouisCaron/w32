@@ -13,7 +13,7 @@
 
 namespace w32 { namespace msi {
 
-    class W32_MSI_EXPORT ErrorRecord :
+    class ErrorRecord :
         public Object
     {
         /* construction. */

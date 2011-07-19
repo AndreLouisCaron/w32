@@ -13,7 +13,7 @@
 
 namespace w32 { namespace fs {
 
-    class W32_FS_EXPORT Attributes
+    class Attributes
     {
         /* data. */
     private:
@@ -47,7 +47,7 @@ namespace w32 { namespace fs {
         bool operator!= ( const Attributes& other ) const;
     };
 
-    bool W32_FS_EXPORT exists ( const string& path );
+    bool exists ( const string& path );
 
 } }
 

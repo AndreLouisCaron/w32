@@ -14,7 +14,7 @@
 
 namespace w32 { namespace net {
 
-    class W32_NET_EXPORT Buffer :
+    class Buffer :
         private NotCopyable
     {
         /* nested types. */

@@ -14,7 +14,7 @@
 
 namespace w32 { namespace shl {
 
-    class W32_SHL_EXPORT Binding :
+    class Binding :
         public com::Wrapper< ::IBindCtx >
     {
         /* nested types. */
@@ -31,7 +31,7 @@ namespace w32 { namespace shl {
         void options ( const Options& options );
     };
 
-    class W32_SHL_EXPORT Binding::Options
+    class Binding::Options
     {
         /* nested types. */
     public:

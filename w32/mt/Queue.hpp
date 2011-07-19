@@ -17,7 +17,7 @@ namespace w32 { namespace mt {
     class Cleanup;
     class Pool;
 
-    class W32_MT_EXPORT Queue :
+    class Queue :
         private NotCopyable
     {
         /* nested types. */

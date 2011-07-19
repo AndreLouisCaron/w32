@@ -17,7 +17,7 @@ namespace w32 { namespace shl { namespace ext {
          * @brief Bubble of text displayed when the mouse hovers over certain
          *    items in the Windows Explorer.
          */
-    class W32_SHL_EXT_EXPORT Tooltip :
+    class Tooltip :
         virtual public Extension,
         public ::IPersistFile,
         public ::IQueryInfo

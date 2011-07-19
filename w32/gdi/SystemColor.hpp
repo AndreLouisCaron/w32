@@ -17,7 +17,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Enumeration of all colors named by the system.
          */
-    class W32_GDI_EXPORT SystemColor
+    class SystemColor
     {
         /* nested types. */
     public:

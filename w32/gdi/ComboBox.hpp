@@ -18,7 +18,7 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Edit box & list box.
          */
-    class W32_GDI_EXPORT ComboBox :
+    class ComboBox :
         virtual public Control
     {
         /* nested types. */

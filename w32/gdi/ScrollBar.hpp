@@ -19,7 +19,7 @@ namespace w32 { namespace gdi {
 
     class Rectangle;
 
-    class W32_GDI_EXPORT ScrollBar :
+    class ScrollBar :
         public Control
     {
         /* construction. */

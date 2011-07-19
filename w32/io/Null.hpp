@@ -16,7 +16,7 @@ namespace w32 { namespace io {
         /*!
          * @brief Special file for infinite writes and zero reads.
          */
-    class W32_IO_EXPORT Null :
+    class Null :
         public Channel
     {
         /* construction. */

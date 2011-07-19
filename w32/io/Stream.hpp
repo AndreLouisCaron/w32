@@ -18,7 +18,7 @@ namespace w32 { namespace io {
          *
          * Provides access to the stream's handle, for low-level manipulation.
          */
-    class W32_IO_EXPORT Stream :
+    class Stream :
         virtual public Object
     {
         /* nested types. */
@@ -39,7 +39,7 @@ namespace w32 { namespace io {
         void position ( const Position& value ) const;
      };
 
-    class W32_IO_EXPORT Stream::Type
+    class Stream::Type
     {
         /* nested types. */
     public:
@@ -70,7 +70,7 @@ namespace w32 { namespace io {
         Value value () const;
     };
 
-    class W32_IO_EXPORT Stream::Position
+    class Stream::Position
     {
         /* nested types. */
     public:
@@ -93,7 +93,7 @@ namespace w32 { namespace io {
         }
     };
 
-    class W32_IO_EXPORT Stream::Size
+    class Stream::Size
     {
         /* nested types. */
     public:

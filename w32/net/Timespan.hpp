@@ -14,7 +14,7 @@
 
 namespace w32 { namespace net {
 
-    class W32_NET_EXPORT Timespan
+    class Timespan
     {
         /* nested types. */
     public:

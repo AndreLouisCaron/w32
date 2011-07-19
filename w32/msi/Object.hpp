@@ -16,7 +16,7 @@ namespace w32 { namespace msi {
         /*!
          * @brief Generic Windows Installer resource.
          */
-    class W32_MSI_EXPORT Object
+    class Object
     {
         /* nested types. */
     public:

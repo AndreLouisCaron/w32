@@ -17,7 +17,7 @@ namespace w32 { namespace ts {
         /*!
          * @brief Enumerate all scheduled task names.
          */
-    class W32_TS_EXPORT Tasks :
+    class Tasks :
         public com::Wrapper< ::IEnumWorkItems >
     {
         /* construction. */

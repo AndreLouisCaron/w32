@@ -19,7 +19,7 @@ namespace w32 { namespace mm {
          * @brief Named chunk of memory that can subsequently be mapped onto
          *   other processes' address spaces.
          */
-    class W32_MM_EXPORT Shared :
+    class Shared :
         virtual public Object
     {
         /* data. */

@@ -14,7 +14,7 @@
 
 namespace w32 { namespace mm {
 
-    class W32_MM_EXPORT Allocator
+    class Allocator
     {
         /* construction. */
     public:

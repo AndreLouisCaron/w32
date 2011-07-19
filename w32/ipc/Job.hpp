@@ -25,7 +25,7 @@ namespace w32 { namespace ipc {
          * By default, all child processes of a process in a job are also
          * assigned to the job. It is possible to override this behaviour.
          */
-    class W32_IPC_EXPORT Job :
+    class Job :
         public Object
     {
         /* class methods. */

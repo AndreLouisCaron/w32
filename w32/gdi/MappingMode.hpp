@@ -18,13 +18,13 @@ namespace w32 { namespace gdi {
         /*!
          * @brief Coordinate-translation mode.
          */
-    class W32_GDI_EXPORT MappingMode
+    class MappingMode
     {
         /* nested types. */
     public:
         typedef int Value;
 
-        class W32_GDI_EXPORT Selection :
+        class Selection :
             private NotCopyable
         {
             /* data. */

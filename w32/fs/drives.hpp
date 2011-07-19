@@ -13,7 +13,7 @@
 
 namespace w32 { namespace fs {
 
-    mstring W32_FS_EXPORT drives ();
+    mstring drives ();
 
 } }
 

@@ -21,7 +21,7 @@ namespace w32 { namespace net {
          *   which we add or remove elements on demand (i.e. the size never
          *   changes, but we ensure
          */
-    class W32_NET_EXPORT Set :
+    class Set :
         private NotCopyable
     {
         /* nested types. */

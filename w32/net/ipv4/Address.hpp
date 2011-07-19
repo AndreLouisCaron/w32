@@ -14,7 +14,7 @@
 
 namespace w32 { namespace net { namespace ipv4 {
 
-    class W32_NET_EXPORT Address
+    class Address
     {
         /* nested types. */
     public:
@@ -50,19 +50,19 @@ namespace w32 { namespace net { namespace ipv4 {
         uint8 _4 () const;
     };
 
-    W32_NET_EXPORT bool operator==
+    bool operator==
         ( const Address& lhs, const Address& rhs );
 
-    W32_NET_EXPORT bool operator!=
+    bool operator!=
         ( const Address& lhs, const Address& rhs );
 
-    W32_NET_EXPORT bool operator<
+    bool operator<
         ( const Address& lhs, const Address& rhs );
 
-    W32_NET_EXPORT std::istream& operator<<
+    std::istream& operator<<
         ( std::istream& in, Address& address );
 
-    W32_NET_EXPORT std::ostream& operator<<
+    std::ostream& operator<<
         ( std::ostream& out, const Address& address );
 
 } } }

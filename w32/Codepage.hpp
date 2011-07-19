@@ -13,7 +13,7 @@
 
 namespace w32 {
 
-    class W32_CORE_EXPORT Codepage
+    class Codepage
     {
         /* nested types. */
     public:

@@ -18,7 +18,7 @@ namespace w32{ namespace com {
          * @brief Holds a COM handle and defines common methods.
          */
     template<typename T>
-    class /*W32_COM_EXPORT*/ Wrapper
+    class Wrapper
     {
         /* nested types. */
     public:

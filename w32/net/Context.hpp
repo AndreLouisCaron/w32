@@ -18,7 +18,7 @@ namespace w32 { namespace net {
         /*!
          * @brief RAII object to initialize the WinSock2 library.
          */
-    class W32_NET_EXPORT Context :
+    class Context :
         private NotCopyable
     {
         /* nested types. */
