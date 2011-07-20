@@ -40,6 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
+				AdditionalIncludeDirectories="$(SolutionDir).."
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				ExceptionHandling="2"
@@ -106,6 +107,7 @@
 				Optimization="1"
 				EnableIntrinsicFunctions="false"
 				FavorSizeOrSpeed="2"
+				AdditionalIncludeDirectories="$(SolutionDir).."
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
 				ExceptionHandling="2"
