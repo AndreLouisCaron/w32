@@ -92,7 +92,7 @@ namespace png {
         if ((decoder->color_type == PNG_COLOR_TYPE_GRAY)
                 && (decoder->bit_depth < 8))
         {
-            ::png_set_gray_1_2_4_to_8(decoder);
+            ::png_set_expand_gray_1_2_4_to_8(decoder);
         }
         if ( decoder->bit_depth == 16 ) {
             ::png_set_strip_16(decoder);
