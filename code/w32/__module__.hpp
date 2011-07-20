@@ -12,6 +12,13 @@
 
 namespace w32 {}
 
+/*!
+ * @defgroup w32 Basic services
+ *
+ * This group contains very basic services (e.g. string manipulation) or
+ * services that have not been categorized into a particular category.
+ */
+
 #include "__compiler-intro__.hpp"
 #   include <w32/Architecture.hpp>
 #   include <w32/astring.hpp>
