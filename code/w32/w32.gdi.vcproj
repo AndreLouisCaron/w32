@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="&quot;$(SolutionDir)..&quot;;&quot;$(SolutionDir)..\libpng&quot;;&quot;$(SolutionDir)..\zlib&quot;;&quot;$(SolutionDir)..\jpeglib&quot;"
 				PreprocessorDefinitions="_CRT_SECURE_NO_WARNINGS; _SCL_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -104,7 +104,7 @@
 				Optimization="1"
 				EnableIntrinsicFunctions="false"
 				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="&quot;$(SolutionDir)..&quot;;&quot;$(SolutionDir)..\libpng&quot;;&quot;$(SolutionDir)..\zlib&quot;;&quot;$(SolutionDir)..\jpeglib&quot;"
 				PreprocessorDefinitions="_CRT_SECURE_NO_WARNINGS; _SCL_SECURE_NO_WARNINGS"
 				StringPooling="true"
 				RuntimeLibrary="2"

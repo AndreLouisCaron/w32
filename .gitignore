@@ -3,3 +3,6 @@
 *.vcproj.*.user
 *.ncb
 *.suo
+code/jpeglib/
+code/libpng/
+code/zlib/
