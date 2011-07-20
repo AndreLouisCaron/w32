@@ -41,7 +41,7 @@ namespace w32 { namespace gdi {
 
     Timer::Timer ( Timespan timeout, Callback callback )
         : myWindow(0), myTimeout(timeout), myCallback(callback),
-          myHandle(::acquire(0, myTimeout.ticks(), myCallback))
+          myHandle(::acquire(myWindow, myTimeout.ticks(), myCallback))
     {
     }
 
