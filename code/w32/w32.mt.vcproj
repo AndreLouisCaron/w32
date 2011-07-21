@@ -211,6 +211,10 @@
 				RelativePath=".\mt\ThreadLocalPointer.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\mt\Timer.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -275,6 +279,10 @@
 			</File>
 			<File
 				RelativePath=".\mt\ThreadLocalPointer.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\mt\Timer.hpp"
 				>
 			</File>
 		</Filter>
