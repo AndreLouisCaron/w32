@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="w32.shl.ext"
-	ProjectGUID="{6640235D-42D6-45F4-9DC7-5ED3A50E35FD}"
-	RootNamespace="w32shlext"
+	Name="w32.io"
+	ProjectGUID="{CAE517EB-0A15-49E2-8E9B-0126390C4D47}"
+	RootNamespace="w32io"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -40,9 +40,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
+				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				WarningLevel="3"
@@ -105,9 +106,10 @@
 				Optimization="1"
 				EnableIntrinsicFunctions="false"
 				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
+				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
@@ -152,51 +154,75 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\shl.ext\__module__.cpp"
+				RelativePath="w32\io\__module__.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\shl.ext\ColumnProvider.cpp"
+				RelativePath="w32\io\AnonymousPipe.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\shl.ext\ContextMenu.cpp"
+				RelativePath="w32\io\Channel.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\shl.ext\DropTarget.cpp"
+				RelativePath="w32\io\CompletionPort.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\shl.ext\Extension.cpp"
+				RelativePath="w32\io\ConsoleInput.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\shl.ext\IconHandler.cpp"
+				RelativePath="w32\io\ConsoleOutput.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\shl.ext\IconOverlay.cpp"
+				RelativePath="w32\io\InputFile.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\shl.ext\Namespace.cpp"
+				RelativePath="w32\io\InputStream.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\shl.ext\PropertySheet.cpp"
+				RelativePath="w32\io\Null.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\shl.ext\ThumbnailHandler.cpp"
+				RelativePath="w32\io\OutputFile.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\shl.ext\ThumbnailProvider.cpp"
+				RelativePath="w32\io\OutputStream.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\shl.ext\Tooltip.cpp"
+				RelativePath="w32\io\SerialPort.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\io\StandardError.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\io\StandardInput.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\io\StandardOutput.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\io\Stream.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\io\streambuf.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\io\Transfer.cpp"
 				>
 			</File>
 		</Filter>
@@ -206,59 +232,79 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\shl.ext\__configure__.hpp"
+				RelativePath="w32\io\__configure__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\shl.ext\__module__.hpp"
+				RelativePath="w32\io\__module__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\shl.ext\BasicExtension.hpp"
+				RelativePath="w32\io\AnonymousPipe.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\shl.ext\ColumnProvider.hpp"
+				RelativePath="w32\io\Channel.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\shl.ext\ContextMenu.hpp"
+				RelativePath="w32\io\CompletionPort.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\shl.ext\DropTarget.hpp"
+				RelativePath="w32\io\ConsoleInput.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\shl.ext\Extension.hpp"
+				RelativePath="w32\io\ConsoleOutput.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\shl.ext\IconHandler.hpp"
+				RelativePath="w32\io\InputFile.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\shl.ext\IconOverlay.hpp"
+				RelativePath="w32\io\InputStream.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\shl.ext\Namespace.hpp"
+				RelativePath="w32\io\Null.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\shl.ext\PropertySheet.hpp"
+				RelativePath="w32\io\OutputFile.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\shl.ext\ThumbnailHandler.hpp"
+				RelativePath="w32\io\OutputStream.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\shl.ext\ThumbnailProvider.hpp"
+				RelativePath="w32\io\SerialPort.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\shl.ext\Tooltip.hpp"
+				RelativePath="w32\io\StandardError.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\io\StandardInput.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\io\StandardOutput.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\io\Stream.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\io\streambuf.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\io\Transfer.hpp"
 				>
 			</File>
 		</Filter>

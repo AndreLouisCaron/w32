@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="w32.xml.dom"
-	ProjectGUID="{D39754BD-85D2-40B9-A7AF-46F399D7A8A1}"
-	RootNamespace="w32xmldom"
+	Name="w32.fs"
+	ProjectGUID="{61627339-BCDA-47EA-9033-285B2B208345}"
+	RootNamespace="w32fs"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -40,9 +40,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
+				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				WarningLevel="3"
@@ -105,9 +106,10 @@
 				Optimization="1"
 				EnableIntrinsicFunctions="false"
 				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
+				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
@@ -152,51 +154,63 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\xml.dom\__module__.cpp"
+				RelativePath="w32\fs\__module__.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\Attribute.cpp"
+				RelativePath="w32\fs\absolute.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\Attributes.cpp"
+				RelativePath="w32\fs\Attributes.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\CData.cpp"
+				RelativePath="w32\fs\Changes.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\Comment.cpp"
+				RelativePath="w32\fs\copy.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\Document.cpp"
+				RelativePath="w32\fs\drives.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\Element.cpp"
+				RelativePath="w32\fs\File.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\Error.cpp"
+				RelativePath="w32\fs\Folder.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\Instruction.cpp"
+				RelativePath="w32\fs\hardlink.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\List.cpp"
+				RelativePath="w32\fs\junction.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\Node.cpp"
+				RelativePath="w32\fs\move.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\Text.cpp"
+				RelativePath="w32\fs\Search.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\fs\symlink.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\fs\Time.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\fs\unlink.cpp"
 				>
 			</File>
 		</Filter>
@@ -206,63 +220,71 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\xml.dom\__configure__.hpp"
+				RelativePath="w32\fs\__configure__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\__module__.hpp"
+				RelativePath="w32\fs\__module__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\Attribute.hpp"
+				RelativePath="w32\fs\absolute.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\Attributes.hpp"
+				RelativePath="w32\fs\Attributes.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\CData.hpp"
+				RelativePath="w32\fs\Changes.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\Comment.hpp"
+				RelativePath="w32\fs\copy.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\Document.hpp"
+				RelativePath="w32\fs\directory.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\Element.hpp"
+				RelativePath="w32\fs\drives.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\Error.hpp"
+				RelativePath="w32\fs\File.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\Instruction.hpp"
+				RelativePath="w32\fs\Folder.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\List.hpp"
+				RelativePath="w32\fs\hardlink.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\Node.hpp"
+				RelativePath="w32\fs\junction.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\Text.hpp"
+				RelativePath="w32\fs\move.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\Visitor.hpp"
+				RelativePath="w32\fs\Search.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.dom\walk.hpp"
+				RelativePath="w32\fs\symlink.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\fs\Time.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\fs\unlink.hpp"
 				>
 			</File>
 		</Filter>

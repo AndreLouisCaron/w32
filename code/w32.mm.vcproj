@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="w32.sy"
-	ProjectGUID="{2D570876-4D0D-427F-B84D-C752D4304E74}"
-	RootNamespace="w32sy"
+	Name="w32.mm"
+	ProjectGUID="{CA8AE3FC-3EAF-419E-803C-9ACC9448593D}"
+	RootNamespace="w32mm"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -40,13 +40,15 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
+				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				WarningLevel="3"
 				DebugInformationFormat="4"
+				DisableSpecificWarnings="4251"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -104,13 +106,15 @@
 				Optimization="1"
 				EnableIntrinsicFunctions="false"
 				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
+				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
 				DebugInformationFormat="3"
+				DisableSpecificWarnings="4251"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -150,19 +154,35 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\sy\__module__.cpp"
+				RelativePath="w32\mm\__module__.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\sy\Identifier.cpp"
+				RelativePath="w32\mm\Aligned.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\sy\Impersonation.cpp"
+				RelativePath="w32\mm\Global.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\sy\Token.cpp"
+				RelativePath="w32\mm\Heap.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\mm\Local.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\mm\Mapping.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\mm\Shared.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\mm\Virtual.cpp"
 				>
 			</File>
 		</Filter>
@@ -172,23 +192,43 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\sy\__configure__.hpp"
+				RelativePath="w32\mm\__configure__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\sy\__module__.hpp"
+				RelativePath="w32\mm\__module__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\sy\Identifier.hpp"
+				RelativePath="w32\mm\Aligned.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\sy\Impersonation.hpp"
+				RelativePath="w32\mm\Allocator.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\sy\Token.hpp"
+				RelativePath="w32\mm\Global.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\mm\Heap.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\mm\Local.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\mm\Mapping.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\mm\Shared.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\mm\Virtual.hpp"
 				>
 			</File>
 		</Filter>

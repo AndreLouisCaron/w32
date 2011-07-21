@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="w32.io"
-	ProjectGUID="{CAE517EB-0A15-49E2-8E9B-0126390C4D47}"
-	RootNamespace="w32io"
+	Name="w32.ts-2"
+	ProjectGUID="{9500BF2E-4819-4887-903D-A9DDAB66D425}"
+	RootNamespace="w32ts2"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -40,10 +40,9 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
-				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				WarningLevel="3"
@@ -106,10 +105,9 @@
 				Optimization="1"
 				EnableIntrinsicFunctions="false"
 				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
-				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
@@ -154,75 +152,59 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\io\__module__.cpp"
+				RelativePath="w32\ts-2\__module__.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\AnonymousPipe.cpp"
+				RelativePath="w32\ts-2\Action.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\Channel.cpp"
+				RelativePath="w32\ts-2\Actions.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\CompletionPort.cpp"
+				RelativePath="w32\ts-2\Definition.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\ConsoleInput.cpp"
+				RelativePath="w32\ts-2\Execution.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\ConsoleOutput.cpp"
+				RelativePath="w32\ts-2\Executions.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\InputFile.cpp"
+				RelativePath="w32\ts-2\Folder.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\InputStream.cpp"
+				RelativePath="w32\ts-2\Folders.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\Null.cpp"
+				RelativePath="w32\ts-2\Handler.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\OutputFile.cpp"
+				RelativePath="w32\ts-2\Principal.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\OutputStream.cpp"
+				RelativePath="w32\ts-2\Registration.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\SerialPort.cpp"
+				RelativePath="w32\ts-2\Registrations.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\StandardError.cpp"
+				RelativePath="w32\ts-2\Service.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\StandardInput.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\io\StandardOutput.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\io\Stream.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\io\streambuf.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\io\Transfer.cpp"
+				RelativePath="w32\ts-2\State.cpp"
 				>
 			</File>
 		</Filter>
@@ -232,79 +214,63 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\io\__configure__.hpp"
+				RelativePath="w32\ts-2\__configure__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\__module__.hpp"
+				RelativePath="w32\ts-2\__module__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\AnonymousPipe.hpp"
+				RelativePath="w32\ts-2\Action.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\Channel.hpp"
+				RelativePath="w32\ts-2\Actions.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\CompletionPort.hpp"
+				RelativePath="w32\ts-2\Definition.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\ConsoleInput.hpp"
+				RelativePath="w32\ts-2\Execution.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\ConsoleOutput.hpp"
+				RelativePath="w32\ts-2\Executions.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\InputFile.hpp"
+				RelativePath="w32\ts-2\Folder.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\InputStream.hpp"
+				RelativePath="w32\ts-2\Folders.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\Null.hpp"
+				RelativePath="w32\ts-2\Handler.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\OutputFile.hpp"
+				RelativePath="w32\ts-2\Principal.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\OutputStream.hpp"
+				RelativePath="w32\ts-2\Registration.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\SerialPort.hpp"
+				RelativePath="w32\ts-2\Registrations.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\StandardError.hpp"
+				RelativePath="w32\ts-2\Service.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\io\StandardInput.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\io\StandardOutput.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\io\Stream.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\io\streambuf.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\io\Transfer.hpp"
+				RelativePath="w32\ts-2\State.hpp"
 				>
 			</File>
 		</Filter>

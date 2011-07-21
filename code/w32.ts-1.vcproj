@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="w32"
-	ProjectGUID="{61011C09-083A-410A-93AF-5E6CD4775865}"
-	RootNamespace="w32"
+	Name="w32.ts-1"
+	ProjectGUID="{1B60F158-8BD8-4298-8023-3E7213C3B378}"
+	RootNamespace="w32ts"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -40,10 +40,9 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
-				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				WarningLevel="3"
@@ -106,10 +105,9 @@
 				Optimization="1"
 				EnableIntrinsicFunctions="false"
 				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
-				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
@@ -154,103 +152,31 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\__module__.cpp"
+				RelativePath="w32\ts-1\__module__.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Architecture.cpp"
+				RelativePath="w32\ts-1\Editor.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\astring.cpp"
+				RelativePath="w32\ts-1\Scheduler.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\bstring.cpp"
+				RelativePath="w32\ts-1\Status.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Codepage.cpp"
+				RelativePath="w32\ts-1\Task.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\computername.cpp"
+				RelativePath="w32\ts-1\Tasks.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Console.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\currentdirectory.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Environment.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Error.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Language.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Module.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\mstring.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\NotCopyable.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Object.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Resource.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\string.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\strings.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\System.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Time.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Timespan.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Transaction.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Variant.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Version.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Waitable.cpp"
+				RelativePath="w32\ts-1\Trigger.cpp"
 				>
 			</File>
 		</Filter>
@@ -260,127 +186,35 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\__configure__.hpp"
+				RelativePath="w32\ts-1\__configure__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\__module__.hpp"
+				RelativePath="w32\ts-1\__module__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Architecture.hpp"
+				RelativePath="w32\ts-1\Editor.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Arithmetic.hpp"
+				RelativePath="w32\ts-1\Scheduler.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\astring.hpp"
+				RelativePath="w32\ts-1\Status.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\bstring.hpp"
+				RelativePath="w32\ts-1\Task.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Codepage.hpp"
+				RelativePath="w32\ts-1\Tasks.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\computername.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Console.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\currentdirectory.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Environment.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Error.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Language.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Module.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\mstring.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\NotCopyable.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Object.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\pop-compiler-settings.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\push-compiler-settings.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Reference.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Resource.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\string.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\strings.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\System.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Time.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Timespan.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Transaction.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\types.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Variant.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Version.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Waitable.hpp"
+				RelativePath="w32\ts-1\Trigger.hpp"
 				>
 			</File>
 		</Filter>

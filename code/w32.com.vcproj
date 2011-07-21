@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="w32.ts-2"
-	ProjectGUID="{9500BF2E-4819-4887-903D-A9DDAB66D425}"
-	RootNamespace="w32ts2"
+	Name="w32.com"
+	ProjectGUID="{5CB087C7-ABDF-48DF-961A-CE2D06091840}"
+	RootNamespace="w32com"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -105,7 +105,7 @@
 				Optimization="1"
 				EnableIntrinsicFunctions="false"
 				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
 				RuntimeLibrary="2"
@@ -152,59 +152,47 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\ts-2\__module__.cpp"
+				RelativePath="w32\com\__module__.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ts-2\Action.cpp"
+				RelativePath="w32\com\Allocator.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ts-2\Actions.cpp"
+				RelativePath="w32\com\Context.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ts-2\Definition.cpp"
+				RelativePath="w32\com\Error.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ts-2\Execution.cpp"
+				RelativePath="w32\com\Factory.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ts-2\Executions.cpp"
+				RelativePath="w32\com\Guid.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ts-2\Folder.cpp"
+				RelativePath="w32\com\Library.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ts-2\Folders.cpp"
+				RelativePath="w32\com\Model.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ts-2\Handler.cpp"
+				RelativePath="w32\com\Object.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ts-2\Principal.cpp"
+				RelativePath="w32\com\Result.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ts-2\Registration.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ts-2\Registrations.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ts-2\Service.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ts-2\State.cpp"
+				RelativePath="w32\com\Threading.cpp"
 				>
 			</File>
 		</Filter>
@@ -214,63 +202,63 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\ts-2\__configure__.hpp"
+				RelativePath="w32\com\__configure__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ts-2\__module__.hpp"
+				RelativePath="w32\com\__module__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ts-2\Action.hpp"
+				RelativePath="w32\com\Allocator.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ts-2\Actions.hpp"
+				RelativePath="w32\com\Context.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ts-2\Definition.hpp"
+				RelativePath="w32\com\Error.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ts-2\Execution.hpp"
+				RelativePath="w32\com\Factory.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ts-2\Executions.hpp"
+				RelativePath="w32\com\Guid.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ts-2\Folder.hpp"
+				RelativePath="w32\com\instantiate.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ts-2\Folders.hpp"
+				RelativePath="w32\com\Library.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ts-2\Handler.hpp"
+				RelativePath="w32\com\Model.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ts-2\Principal.hpp"
+				RelativePath="w32\com\Object.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ts-2\Registration.hpp"
+				RelativePath="w32\com\Ptr.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ts-2\Registrations.hpp"
+				RelativePath="w32\com\Result.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ts-2\Service.hpp"
+				RelativePath="w32\com\Threading.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ts-2\State.hpp"
+				RelativePath="w32\com\Wrapper.hpp"
 				>
 			</File>
 		</Filter>

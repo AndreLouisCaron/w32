@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="w32.msi"
-	ProjectGUID="{1541D84C-09C7-4DEC-BA01-528BF6CE6DFD}"
-	RootNamespace="w32msi"
+	Name="w32"
+	ProjectGUID="{61011C09-083A-410A-93AF-5E6CD4775865}"
+	RootNamespace="w32"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -40,9 +40,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
+				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				WarningLevel="3"
@@ -105,9 +106,10 @@
 				Optimization="1"
 				EnableIntrinsicFunctions="false"
 				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
+				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
@@ -152,51 +154,103 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\msi\__module__.cpp"
+				RelativePath="w32\__module__.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\msi\Columns.cpp"
+				RelativePath="w32\Architecture.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\msi\Database.cpp"
+				RelativePath="w32\astring.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\msi\Error.cpp"
+				RelativePath="w32\bstring.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\msi\ErrorRecord.cpp"
+				RelativePath="w32\Codepage.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\msi\Guid.cpp"
+				RelativePath="w32\computername.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\msi\Hash.cpp"
+				RelativePath="w32\Console.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\msi\Object.cpp"
+				RelativePath="w32\currentdirectory.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\msi\Product.cpp"
+				RelativePath="w32\Environment.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\msi\Products.cpp"
+				RelativePath="w32\Error.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\msi\Record.cpp"
+				RelativePath="w32\Language.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\msi\View.cpp"
+				RelativePath="w32\Module.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\mstring.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\NotCopyable.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\Object.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\Resource.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\string.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\strings.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\System.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\Time.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\Timespan.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\Transaction.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\Variant.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\Version.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\Waitable.cpp"
 				>
 			</File>
 		</Filter>
@@ -206,55 +260,127 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\msi\__configure__.hpp"
+				RelativePath="w32\__configure__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\msi\__module__.hpp"
+				RelativePath="w32\__module__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\msi\Columns.hpp"
+				RelativePath="w32\Architecture.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\msi\Database.hpp"
+				RelativePath="w32\Arithmetic.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\msi\Error.hpp"
+				RelativePath="w32\astring.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\msi\ErrorRecord.hpp"
+				RelativePath="w32\bstring.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\msi\Guid.hpp"
+				RelativePath="w32\Codepage.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\msi\Hash.hpp"
+				RelativePath="w32\computername.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\msi\Object.hpp"
+				RelativePath="w32\Console.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\msi\Product.hpp"
+				RelativePath="w32\currentdirectory.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\msi\Products.hpp"
+				RelativePath="w32\Environment.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\msi\Record.hpp"
+				RelativePath="w32\Error.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\msi\View.hpp"
+				RelativePath="w32\Language.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\Module.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\mstring.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\NotCopyable.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\Object.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\pop-compiler-settings.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\push-compiler-settings.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\Reference.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\Resource.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\string.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\strings.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\System.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\Time.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\Timespan.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\Transaction.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\types.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\Variant.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\Version.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\Waitable.hpp"
 				>
 			</File>
 		</Filter>

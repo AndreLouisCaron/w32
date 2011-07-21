@@ -2,9 +2,10 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="w32.mm"
-	ProjectGUID="{CA8AE3FC-3EAF-419E-803C-9ACC9448593D}"
-	RootNamespace="w32mm"
+	Name="w32.in"
+	ProjectGUID="{7F33DD88-FC9D-4899-A963-8DCA0427C2FD}"
+	RootNamespace="w32in"
+	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -20,7 +21,7 @@
 			OutputDirectory="$(SolutionDir)..\.build\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\.build\$(ConfigurationName)\$(ProjectName)"
 			ConfigurationType="4"
-			CharacterSet="2"
+			CharacterSet="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -40,15 +41,14 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
-				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="4"
-				DisableSpecificWarnings="4251"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -83,7 +83,7 @@
 			OutputDirectory="$(SolutionDir)..\.build\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\.build\$(ConfigurationName)\$(ProjectName)"
 			ConfigurationType="4"
-			CharacterSet="2"
+			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
 			<Tool
@@ -106,15 +106,14 @@
 				Optimization="1"
 				EnableIntrinsicFunctions="false"
 				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
-				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
+				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="3"
-				DisableSpecificWarnings="4251"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -154,35 +153,31 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\mm\__module__.cpp"
+				RelativePath="w32\in\__module__.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\mm\Aligned.cpp"
+				RelativePath="w32\in\check.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\mm\Global.cpp"
+				RelativePath="w32\in\Connection.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\mm\Heap.cpp"
+				RelativePath="w32\in\ftp.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\mm\Local.cpp"
+				RelativePath="w32\in\IStream.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\mm\Mapping.cpp"
+				RelativePath="w32\in\Session.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\mm\Shared.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\mm\Virtual.cpp"
+				RelativePath="w32\in\Url.cpp"
 				>
 			</File>
 		</Filter>
@@ -192,43 +187,39 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\mm\__configure__.hpp"
+				RelativePath="w32\in\__configure__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\mm\__module__.hpp"
+				RelativePath="w32\in\__module__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\mm\Aligned.hpp"
+				RelativePath="w32\in\check.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\mm\Allocator.hpp"
+				RelativePath="w32\in\Connection.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\mm\Global.hpp"
+				RelativePath="w32\in\ftp.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\mm\Heap.hpp"
+				RelativePath="w32\in\http.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\mm\Local.hpp"
+				RelativePath="w32\in\IStream.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\mm\Mapping.hpp"
+				RelativePath="w32\in\Session.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\mm\Shared.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\mm\Virtual.hpp"
+				RelativePath="w32\in\Url.hpp"
 				>
 			</File>
 		</Filter>

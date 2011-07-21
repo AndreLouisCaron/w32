@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(SolutionDir)..&quot;;&quot;$(SolutionDir)..\libpng&quot;;&quot;$(SolutionDir)..\zlib&quot;;&quot;$(SolutionDir)..\jpeglib&quot;"
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_CRT_SECURE_NO_WARNINGS; _SCL_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -104,7 +104,7 @@
 				Optimization="1"
 				EnableIntrinsicFunctions="false"
 				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="&quot;$(SolutionDir)..&quot;;&quot;$(SolutionDir)..\libpng&quot;;&quot;$(SolutionDir)..\zlib&quot;;&quot;$(SolutionDir)..\jpeglib&quot;"
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_CRT_SECURE_NO_WARNINGS; _SCL_SECURE_NO_WARNINGS"
 				StringPooling="true"
 				RuntimeLibrary="2"
@@ -150,275 +150,275 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\gdi\__module__.cpp"
+				RelativePath="w32\gdi\__module__.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Animation.cpp"
+				RelativePath="w32\gdi\Animation.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Atom.cpp"
+				RelativePath="w32\gdi\Atom.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Bitmap.cpp"
+				RelativePath="w32\gdi\Bitmap.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Blend.cpp"
+				RelativePath="w32\gdi\Blend.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Brush.cpp"
+				RelativePath="w32\gdi\Brush.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Button.cpp"
+				RelativePath="w32\gdi\Button.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Calendar.cpp"
+				RelativePath="w32\gdi\Calendar.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\capture.cpp"
+				RelativePath="w32\gdi\capture.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Class.cpp"
+				RelativePath="w32\gdi\Class.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\ComboBox.cpp"
+				RelativePath="w32\gdi\ComboBox.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\console.cpp"
+				RelativePath="w32\gdi\console.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Cursor.cpp"
+				RelativePath="w32\gdi\Cursor.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\DateTimePicker.cpp"
+				RelativePath="w32\gdi\DateTimePicker.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\desktop.cpp"
+				RelativePath="w32\gdi\desktop.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Device.cpp"
+				RelativePath="w32\gdi\Device.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\DeviceCompatibleBitmap.cpp"
+				RelativePath="w32\gdi\DeviceCompatibleBitmap.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\DeviceContext.cpp"
+				RelativePath="w32\gdi\DeviceContext.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\DeviceIndependantBitmap.cpp"
+				RelativePath="w32\gdi\DeviceIndependantBitmap.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Dialog.cpp"
+				RelativePath="w32\gdi\Dialog.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Edit.cpp"
+				RelativePath="w32\gdi\Edit.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\enable_common_controls.cpp"
+				RelativePath="w32\gdi\enable_common_controls.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\EnhancedMetafile.cpp"
+				RelativePath="w32\gdi\EnhancedMetafile.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\EventQueue.cpp"
+				RelativePath="w32\gdi\EventQueue.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Focus.cpp"
+				RelativePath="w32\gdi\Focus.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Font.cpp"
+				RelativePath="w32\gdi\Font.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\fonts.cpp"
+				RelativePath="w32\gdi\fonts.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Foreground.cpp"
+				RelativePath="w32\gdi\Foreground.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Group.cpp"
+				RelativePath="w32\gdi\Group.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Header.cpp"
+				RelativePath="w32\gdi\Header.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Icon.cpp"
+				RelativePath="w32\gdi\Icon.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\image.cpp"
+				RelativePath="w32\gdi\image.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\ImageList.cpp"
+				RelativePath="w32\gdi\ImageList.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\IpAddress.cpp"
+				RelativePath="w32\gdi\IpAddress.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Key.cpp"
+				RelativePath="w32\gdi\Key.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\ListBox.cpp"
+				RelativePath="w32\gdi\ListBox.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\ListView.cpp"
+				RelativePath="w32\gdi\ListView.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\loop.cpp"
+				RelativePath="w32\gdi\loop.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\MappingMode.cpp"
+				RelativePath="w32\gdi\MappingMode.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Menu.cpp"
+				RelativePath="w32\gdi\Menu.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Message.cpp"
+				RelativePath="w32\Message.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\MessageBox.cpp"
+				RelativePath="w32\gdi\MessageBox.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Metafile.cpp"
+				RelativePath="w32\gdi\Metafile.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Monitor.cpp"
+				RelativePath="w32\gdi\Monitor.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\OpenGLContext.cpp"
+				RelativePath="w32\gdi\OpenGLContext.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\PaintContext.cpp"
+				RelativePath="w32\gdi\PaintContext.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Pen.cpp"
+				RelativePath="w32\gdi\Pen.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\PixelFormat.cpp"
+				RelativePath="w32\gdi\PixelFormat.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\post.cpp"
+				RelativePath="w32\gdi\post.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\ProgressBar.cpp"
+				RelativePath="w32\gdi\ProgressBar.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\PropertySheet.cpp"
+				RelativePath="w32\gdi\PropertySheet.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Quit.cpp"
+				RelativePath="w32\gdi\Quit.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Region.cpp"
+				RelativePath="w32\gdi\Region.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\ScrollBar.cpp"
+				RelativePath="w32\gdi\ScrollBar.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Splash.cpp"
+				RelativePath="w32\gdi\Splash.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Static.cpp"
+				RelativePath="w32\gdi\Static.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\StatusBar.cpp"
+				RelativePath="w32\gdi\StatusBar.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\SystemColor.cpp"
+				RelativePath="w32\gdi\SystemColor.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\TabControl.cpp"
+				RelativePath="w32\gdi\TabControl.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\TextMetrics.cpp"
+				RelativePath="w32\gdi\TextMetrics.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\ThreadEvents.cpp"
+				RelativePath="w32\gdi\ThreadEvents.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\ThreadWindowsEvents.cpp"
+				RelativePath="w32\gdi\ThreadWindowsEvents.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Timer.cpp"
+				RelativePath="w32\gdi\Timer.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Tooltip.cpp"
+				RelativePath="w32\gdi\Tooltip.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\TrackBar.cpp"
+				RelativePath="w32\gdi\TrackBar.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\TreeView.cpp"
+				RelativePath="w32\gdi\TreeView.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\UpDown.cpp"
+				RelativePath="w32\gdi\UpDown.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Window.cpp"
+				RelativePath="w32\gdi\Window.cpp"
 				>
 			</File>
 		</Filter>
@@ -428,291 +428,291 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\gdi\__configure__.hpp"
+				RelativePath="w32\gdi\__configure__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\__module__.hpp"
+				RelativePath="w32\gdi\__module__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Animation.hpp"
+				RelativePath="w32\gdi\Animation.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Atom.hpp"
+				RelativePath="w32\gdi\Atom.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\AtomProperty.hpp"
+				RelativePath="w32\gdi\AtomProperty.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Bitmap.hpp"
+				RelativePath="w32\gdi\Bitmap.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Blend.hpp"
+				RelativePath="w32\gdi\Blend.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Brush.hpp"
+				RelativePath="w32\gdi\Brush.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Button.hpp"
+				RelativePath="w32\gdi\Button.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Calendar.hpp"
+				RelativePath="w32\gdi\Calendar.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\capture.hpp"
+				RelativePath="w32\gdi\capture.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Class.hpp"
+				RelativePath="w32\gdi\Class.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Color.hpp"
+				RelativePath="w32\gdi\Color.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\ComboBox.hpp"
+				RelativePath="w32\gdi\ComboBox.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\console.hpp"
+				RelativePath="w32\gdi\console.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Control.hpp"
+				RelativePath="w32\gdi\Control.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Cursor.hpp"
+				RelativePath="w32\gdi\Cursor.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\DateTimePicker.hpp"
+				RelativePath="w32\gdi\DateTimePicker.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\desktop.hpp"
+				RelativePath="w32\gdi\desktop.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Device.hpp"
+				RelativePath="w32\gdi\Device.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\DeviceContext.hpp"
+				RelativePath="w32\gdi\DeviceContext.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\DeviceIndependantBitmap.hpp"
+				RelativePath="w32\gdi\DeviceIndependantBitmap.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Dialog.hpp"
+				RelativePath="w32\gdi\Dialog.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Edit.hpp"
+				RelativePath="w32\gdi\Edit.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\enable_common_controls.hpp"
+				RelativePath="w32\gdi\enable_common_controls.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\EnhancedMetafile.hpp"
+				RelativePath="w32\gdi\EnhancedMetafile.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Focus.hpp"
+				RelativePath="w32\gdi\Focus.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Font.hpp"
+				RelativePath="w32\gdi\Font.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\fonts.hpp"
+				RelativePath="w32\gdi\fonts.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Foreground.hpp"
+				RelativePath="w32\gdi\Foreground.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Group.hpp"
+				RelativePath="w32\gdi\Group.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Header.hpp"
+				RelativePath="w32\gdi\Header.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Icon.hpp"
+				RelativePath="w32\gdi\Icon.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\image.hpp"
+				RelativePath="w32\gdi\image.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\ImageList.hpp"
+				RelativePath="w32\gdi\ImageList.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\IpAddress.hpp"
+				RelativePath="w32\gdi\IpAddress.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Key.hpp"
+				RelativePath="w32\gdi\Key.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\ListView.hpp"
+				RelativePath="w32\gdi\ListView.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\loop.hpp"
+				RelativePath="w32\gdi\loop.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\MappingMode.hpp"
+				RelativePath="w32\gdi\MappingMode.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Menu.hpp"
+				RelativePath="w32\gdi\Menu.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Message.hpp"
+				RelativePath="w32\gdi\Message.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\MessageBox.hpp"
+				RelativePath="w32\gdi\MessageBox.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Metafile.hpp"
+				RelativePath="w32\gdi\Metafile.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Monitor.hpp"
+				RelativePath="w32\gdi\Monitor.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Notification.hpp"
+				RelativePath="w32\gdi\Notification.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\OpenGLContext.hpp"
+				RelativePath="w32\gdi\OpenGLContext.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\PaintContext.hpp"
+				RelativePath="w32\gdi\PaintContext.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Pen.hpp"
+				RelativePath="w32\gdi\Pen.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\PixelFormat.hpp"
+				RelativePath="w32\gdi\PixelFormat.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Point.hpp"
+				RelativePath="w32\gdi\Point.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\post.hpp"
+				RelativePath="w32\gdi\post.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\ProgressBar.hpp"
+				RelativePath="w32\gdi\ProgressBar.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Property.hpp"
+				RelativePath="w32\gdi\Property.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\PropertySheet.hpp"
+				RelativePath="w32\gdi\PropertySheet.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Rectangle.hpp"
+				RelativePath="w32\gdi\Rectangle.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\ScrollBar.hpp"
+				RelativePath="w32\gdi\ScrollBar.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Size.hpp"
+				RelativePath="w32\gdi\Size.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Splash.hpp"
+				RelativePath="w32\gdi\Splash.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Static.hpp"
+				RelativePath="w32\gdi\Static.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\StatusBar.hpp"
+				RelativePath="w32\gdi\StatusBar.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\SystemColor.hpp"
+				RelativePath="w32\gdi\SystemColor.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\TabControl.hpp"
+				RelativePath="w32\gdi\TabControl.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\TextMetrics.hpp"
+				RelativePath="w32\gdi\TextMetrics.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\ThreadWindowsEvents.hpp"
+				RelativePath="w32\gdi\ThreadWindowsEvents.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Timer.hpp"
+				RelativePath="w32\gdi\Timer.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Tooltip.hpp"
+				RelativePath="w32\gdi\Tooltip.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\TrackBar.hpp"
+				RelativePath="w32\gdi\TrackBar.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\TreeView.hpp"
+				RelativePath="w32\gdi\TreeView.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\UpDown.hpp"
+				RelativePath="w32\gdi\UpDown.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Window.Handler.hpp"
+				RelativePath="w32\gdi\Window.Handler.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\gdi\Window.hpp"
+				RelativePath="w32\gdi\Window.hpp"
 				>
 			</File>
 		</Filter>

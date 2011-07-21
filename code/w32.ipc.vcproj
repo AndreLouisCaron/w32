@@ -2,10 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="w32.in"
-	ProjectGUID="{7F33DD88-FC9D-4899-A963-8DCA0427C2FD}"
-	RootNamespace="w32in"
-	Keyword="Win32Proj"
+	Name="w32.ipc"
+	ProjectGUID="{871C9846-8B31-4225-B83F-A1213F1162DF}"
+	RootNamespace="w32ipc"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -21,7 +20,7 @@
 			OutputDirectory="$(SolutionDir)..\.build\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\.build\$(ConfigurationName)\$(ProjectName)"
 			ConfigurationType="4"
-			CharacterSet="1"
+			CharacterSet="2"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -41,14 +40,15 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
+				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
-				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="4"
+				DisableSpecificWarnings="4251"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -83,7 +83,7 @@
 			OutputDirectory="$(SolutionDir)..\.build\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\.build\$(ConfigurationName)\$(ProjectName)"
 			ConfigurationType="4"
-			CharacterSet="1"
+			CharacterSet="2"
 			WholeProgramOptimization="1"
 			>
 			<Tool
@@ -106,14 +106,15 @@
 				Optimization="1"
 				EnableIntrinsicFunctions="false"
 				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
+				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="3"
+				DisableSpecificWarnings="4251"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -153,31 +154,27 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\in\__module__.cpp"
+				RelativePath="w32\ipc\__module__.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\in\check.cpp"
+				RelativePath="w32\ipc\Job.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\in\Connection.cpp"
+				RelativePath="w32\ipc\Modules.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\in\ftp.cpp"
+				RelativePath="w32\ipc\Process.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\in\IStream.cpp"
+				RelativePath="w32\ipc\Processes.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\in\Session.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\in\Url.cpp"
+				RelativePath="w32\ipc\Threads.cpp"
 				>
 			</File>
 		</Filter>
@@ -187,39 +184,31 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\in\__configure__.hpp"
+				RelativePath="w32\ipc\__configure__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\in\__module__.hpp"
+				RelativePath="w32\ipc\__module__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\in\check.hpp"
+				RelativePath="w32\ipc\Job.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\in\Connection.hpp"
+				RelativePath="w32\ipc\Modules.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\in\ftp.hpp"
+				RelativePath="w32\ipc\Process.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\in\http.hpp"
+				RelativePath="w32\ipc\Processes.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\in\IStream.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\in\Session.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\in\Url.hpp"
+				RelativePath="w32\ipc\Threads.hpp"
 				>
 			</File>
 		</Filter>

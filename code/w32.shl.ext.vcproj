@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="w32.dbg"
-	ProjectGUID="{85854619-D795-43A2-B8E7-157FA92C3402}"
-	RootNamespace="w32dbg"
+	Name="w32.shl.ext"
+	ProjectGUID="{6640235D-42D6-45F4-9DC7-5ED3A50E35FD}"
+	RootNamespace="w32shlext"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -40,10 +40,9 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
-				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				WarningLevel="3"
@@ -106,10 +105,9 @@
 				Optimization="1"
 				EnableIntrinsicFunctions="false"
 				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
-				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
@@ -154,19 +152,51 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\dbg\__module__.cpp"
+				RelativePath="w32\shl.ext\__module__.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\dbg\Event.cpp"
+				RelativePath="w32\shl.ext\ColumnProvider.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\dbg\Log.cpp"
+				RelativePath="w32\shl.ext\ContextMenu.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\dbg\StructuredException.cpp"
+				RelativePath="w32\shl.ext\DropTarget.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl.ext\Extension.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl.ext\IconHandler.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl.ext\IconOverlay.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl.ext\Namespace.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl.ext\PropertySheet.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl.ext\ThumbnailHandler.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl.ext\ThumbnailProvider.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl.ext\Tooltip.cpp"
 				>
 			</File>
 		</Filter>
@@ -176,23 +206,59 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\dbg\__configure__.hpp"
+				RelativePath="w32\shl.ext\__configure__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\dbg\__module__.hpp"
+				RelativePath="w32\shl.ext\__module__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\dbg\Event.hpp"
+				RelativePath="w32\shl.ext\BasicExtension.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\dbg\Log.hpp"
+				RelativePath="w32\shl.ext\ColumnProvider.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\dbg\StructuredException.hpp"
+				RelativePath="w32\shl.ext\ContextMenu.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl.ext\DropTarget.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl.ext\Extension.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl.ext\IconHandler.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl.ext\IconOverlay.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl.ext\Namespace.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl.ext\PropertySheet.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl.ext\ThumbnailHandler.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl.ext\ThumbnailProvider.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl.ext\Tooltip.hpp"
 				>
 			</File>
 		</Filter>

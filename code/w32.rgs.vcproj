@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="w32.fs"
-	ProjectGUID="{61627339-BCDA-47EA-9033-285B2B208345}"
-	RootNamespace="w32fs"
+	Name="w32.rgs"
+	ProjectGUID="{9798391A-BE19-444F-A18B-835EDB3B851A}"
+	RootNamespace="w32rgs"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				ExceptionHandling="2"
@@ -106,7 +106,7 @@
 				Optimization="1"
 				EnableIntrinsicFunctions="false"
 				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
 				ExceptionHandling="2"
@@ -154,63 +154,35 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\fs\__module__.cpp"
+				RelativePath="w32\rgs\__module__.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\fs\absolute.cpp"
+				RelativePath="w32\rgs\Access.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\fs\Attributes.cpp"
+				RelativePath="w32\rgs\clean.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\fs\Changes.cpp"
+				RelativePath="w32\rgs\Key.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\fs\copy.cpp"
+				RelativePath="w32\rgs\Keys.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\fs\drives.cpp"
+				RelativePath="w32\rgs\Type.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\fs\File.cpp"
+				RelativePath="w32\rgs\Value.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\fs\Folder.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\fs\hardlink.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\fs\junction.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\fs\move.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\fs\Search.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\fs\symlink.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\fs\Time.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\fs\unlink.cpp"
+				RelativePath="w32\rgs\Values.cpp"
 				>
 			</File>
 		</Filter>
@@ -220,71 +192,39 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\fs\__configure__.hpp"
+				RelativePath="w32\rgs\__configure__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\fs\__module__.hpp"
+				RelativePath="w32\rgs\__module__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\fs\absolute.hpp"
+				RelativePath="w32\rgs\Access.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\fs\Attributes.hpp"
+				RelativePath="w32\rgs\clean.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\fs\Changes.hpp"
+				RelativePath="w32\rgs\Key.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\fs\copy.hpp"
+				RelativePath="w32\rgs\Keys.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\fs\directory.hpp"
+				RelativePath="w32\rgs\Type.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\fs\drives.hpp"
+				RelativePath="w32\rgs\Value.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\fs\File.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\fs\Folder.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\fs\hardlink.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\fs\junction.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\fs\move.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\fs\Search.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\fs\symlink.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\fs\Time.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\fs\unlink.hpp"
+				RelativePath="w32\rgs\Values.hpp"
 				>
 			</File>
 		</Filter>

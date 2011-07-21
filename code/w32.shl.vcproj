@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="w32.sc"
-	ProjectGUID="{4807A37B-88B9-4C2B-AF96-2FEA055E60BE}"
-	RootNamespace="w32sc"
+	Name="w32.shl"
+	ProjectGUID="{C9DC3625-64E4-4D20-9CDD-C56B3A811B94}"
+	RootNamespace="w32shl"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -40,10 +40,9 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
-				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				WarningLevel="3"
@@ -106,10 +105,9 @@
 				Optimization="1"
 				EnableIntrinsicFunctions="false"
 				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
-				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
@@ -154,19 +152,75 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\sc\__module__.cpp"
+				RelativePath="w32\shl\__module__.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\sc\Database.cpp"
+				RelativePath="w32\shl\Attributes.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\sc\Object.cpp"
+				RelativePath="w32\shl\Binding.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\sc\Service.cpp"
+				RelativePath="w32\shl\Browser.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\Data.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\Dropping.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\Folder.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\Item.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\Link.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\Listing.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\Location.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\Path.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\Stat.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\Storage.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\Stream.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\streambuf.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\TaskbarIcon.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\wallpaper.cpp"
 				>
 			</File>
 		</Filter>
@@ -176,23 +230,79 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\sc\__configure__.hpp"
+				RelativePath="w32\shl\__configure__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\sc\__module__.hpp"
+				RelativePath="w32\shl\__module__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\sc\Database.hpp"
+				RelativePath="w32\shl\Attributes.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\sc\Object.hpp"
+				RelativePath="w32\shl\Binding.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\sc\Service.hpp"
+				RelativePath="w32\shl\Browser.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\Data.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\Dropping.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\Folder.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\Item.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\Link.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\Listing.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\Location.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\Path.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\Stat.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\Storage.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\Stream.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\streambuf.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\TaskbarIcon.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\shl\wallpaper.hpp"
 				>
 			</File>
 		</Filter>

@@ -2,9 +2,10 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="w32.rgs"
-	ProjectGUID="{9798391A-BE19-444F-A18B-835EDB3B851A}"
-	RootNamespace="w32rgs"
+	Name="w32.cr"
+	ProjectGUID="{017CF0B7-2826-4F0B-8AAA-EE66D9FC26EE}"
+	RootNamespace="w32cr"
+	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -20,7 +21,7 @@
 			OutputDirectory="$(SolutionDir)..\.build\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\.build\$(ConfigurationName)\$(ProjectName)"
 			ConfigurationType="4"
-			CharacterSet="2"
+			CharacterSet="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -40,15 +41,14 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
-				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="4"
-				DisableSpecificWarnings="4251"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -83,7 +83,7 @@
 			OutputDirectory="$(SolutionDir)..\.build\$(ConfigurationName)"
 			IntermediateDirectory="$(SolutionDir)..\.build\$(ConfigurationName)\$(ProjectName)"
 			ConfigurationType="4"
-			CharacterSet="2"
+			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
 			<Tool
@@ -106,15 +106,14 @@
 				Optimization="1"
 				EnableIntrinsicFunctions="false"
 				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
-				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
+				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="3"
-				DisableSpecificWarnings="4251"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -154,35 +153,23 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\rgs\__module__.cpp"
+				RelativePath="w32\cr\__module__.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\rgs\Access.cpp"
+				RelativePath="w32\cr\Blob.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\rgs\clean.cpp"
+				RelativePath="w32\cr\Hash.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\rgs\Key.cpp"
+				RelativePath="w32\cr\Key.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\rgs\Keys.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\rgs\Type.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\rgs\Value.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\rgs\Values.cpp"
+				RelativePath="w32\cr\Provider.cpp"
 				>
 			</File>
 		</Filter>
@@ -192,39 +179,27 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\rgs\__configure__.hpp"
+				RelativePath="w32\cr\__configure__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\rgs\__module__.hpp"
+				RelativePath="w32\cr\__module__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\rgs\Access.hpp"
+				RelativePath="w32\cr\Blob.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\rgs\clean.hpp"
+				RelativePath="w32\cr\Hash.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\rgs\Key.hpp"
+				RelativePath="w32\cr\Key.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\rgs\Keys.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\rgs\Type.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\rgs\Value.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\rgs\Values.hpp"
+				RelativePath="w32\cr\Provider.hpp"
 				>
 			</File>
 		</Filter>

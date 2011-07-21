@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="w32.xml.sax"
-	ProjectGUID="{3562DD44-00A3-4F44-ADEE-B3A5C7382712}"
-	RootNamespace="w32xmlsax"
+	Name="w32.net"
+	ProjectGUID="{FEB2C938-CBD9-40C2-9627-4969EDD35EE3}"
+	RootNamespace="w32net"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -40,9 +40,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
+				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				WarningLevel="3"
@@ -105,9 +106,10 @@
 				Optimization="1"
 				EnableIntrinsicFunctions="false"
 				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
+				ExceptionHandling="2"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
@@ -152,15 +154,87 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\xml.sax\__module__.cpp"
+				RelativePath="w32\net\__module__.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.sax\Attributes.cpp"
+				RelativePath="w32\net\ipv4\Address.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.sax\Locator.cpp"
+				RelativePath="w32\net\ipv6\Address_.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\Buffer.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\Context.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\DatagramSocket.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\ipv4\EndPoint.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\Event.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\Family.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\Host.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\hostname.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\integers.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\tcp\Listener.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\select.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\Set.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\Socket.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\sockstream.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\tcp\Stream.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\streambuf.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\StreamSocket.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\Timespan.cpp"
 				>
 			</File>
 		</Filter>
@@ -170,39 +244,87 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\xml.sax\__configure__.hpp"
+				RelativePath="w32\net\__configure__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.sax\__module__.hpp"
+				RelativePath="w32\net\__module__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.sax\Attributes.hpp"
+				RelativePath="w32\net\ipv4\Address.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.sax\ContentHandler.hpp"
+				RelativePath="w32\net\Buffer.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.sax\DtdHandler.hpp"
+				RelativePath="w32\net\Context.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.sax\ErrorHandler.hpp"
+				RelativePath="w32\net\DatagramSocket.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.sax\LexicalHandler.hpp"
+				RelativePath="w32\net\ipv4\EndPoint.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.sax\Locator.hpp"
+				RelativePath="w32\net\Event.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\xml.sax\Reader.hpp"
+				RelativePath="w32\net\Family.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\Host.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\hostname.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\integers.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\tcp\Listener.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\select.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\Set.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\Socket.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\sockstream.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\tcp\Stream.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\streambuf.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\StreamSocket.hpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\net\Timespan.hpp"
 				>
 			</File>
 		</Filter>

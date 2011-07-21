@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="w32.com"
-	ProjectGUID="{5CB087C7-ABDF-48DF-961A-CE2D06091840}"
-	RootNamespace="w32com"
+	Name="w32.msi"
+	ProjectGUID="{1541D84C-09C7-4DEC-BA01-528BF6CE6DFD}"
+	RootNamespace="w32msi"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -105,7 +105,7 @@
 				Optimization="1"
 				EnableIntrinsicFunctions="false"
 				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
 				RuntimeLibrary="2"
@@ -152,47 +152,51 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\com\__module__.cpp"
+				RelativePath="w32\msi\__module__.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\com\Allocator.cpp"
+				RelativePath="w32\msi\Columns.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\com\Context.cpp"
+				RelativePath="w32\msi\Database.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\com\Error.cpp"
+				RelativePath="w32\msi\Error.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\com\Factory.cpp"
+				RelativePath="w32\msi\ErrorRecord.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\com\Guid.cpp"
+				RelativePath="w32\msi\Guid.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\com\Library.cpp"
+				RelativePath="w32\msi\Hash.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\com\Model.cpp"
+				RelativePath="w32\msi\Object.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\com\Object.cpp"
+				RelativePath="w32\msi\Product.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\com\Result.cpp"
+				RelativePath="w32\msi\Products.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\com\Threading.cpp"
+				RelativePath="w32\msi\Record.cpp"
+				>
+			</File>
+			<File
+				RelativePath="w32\msi\View.cpp"
 				>
 			</File>
 		</Filter>
@@ -202,63 +206,55 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\com\__configure__.hpp"
+				RelativePath="w32\msi\__configure__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\com\__module__.hpp"
+				RelativePath="w32\msi\__module__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\com\Allocator.hpp"
+				RelativePath="w32\msi\Columns.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\com\Context.hpp"
+				RelativePath="w32\msi\Database.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\com\Error.hpp"
+				RelativePath="w32\msi\Error.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\com\Factory.hpp"
+				RelativePath="w32\msi\ErrorRecord.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\com\Guid.hpp"
+				RelativePath="w32\msi\Guid.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\com\instantiate.hpp"
+				RelativePath="w32\msi\Hash.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\com\Library.hpp"
+				RelativePath="w32\msi\Object.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\com\Model.hpp"
+				RelativePath="w32\msi\Product.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\com\Object.hpp"
+				RelativePath="w32\msi\Products.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\com\Ptr.hpp"
+				RelativePath="w32\msi\Record.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\com\Result.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\com\Threading.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\com\Wrapper.hpp"
+				RelativePath="w32\msi\View.hpp"
 				>
 			</File>
 		</Filter>

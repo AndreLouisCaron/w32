@@ -40,6 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
+				AdditionalIncludeDirectories="$(SolutionDir)..\code\"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -112,6 +113,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
+				AdditionalIncludeDirectories="$(SolutionDir)..\code\"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
@@ -171,7 +173,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Compiling WIX Installer"
-					CommandLine="candle -nologo -out $(IntDir)\$(InputName).wixobj -dConfiguration=$(ConfigurationName) $(InputPath)"
+					CommandLine="candle -nologo -out $(IntDir)\$(InputName).wixobj -dConfiguration=$(ConfigurationName) $(InputPath)&#x0D;&#x0A;"
 					AdditionalDependencies="en-us.wxl"
 					Outputs="$(IntDir)\$(InputName).wixobj"
 				/>
@@ -182,7 +184,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Compiling WIX Installer"
-					CommandLine="candle -nologo -out $(IntDir)\$(InputName).wixobj -dConfiguration=$(ConfigurationName) $(InputPath)"
+					CommandLine="candle -nologo -out $(IntDir)\$(InputName).wixobj -dConfiguration=$(ConfigurationName) $(InputPath)&#x0D;&#x0A;"
 					AdditionalDependencies="en-us.wxl"
 					Outputs="$(IntDir)\$(InputName).wixobj"
 				/>

@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="w32.ipc"
-	ProjectGUID="{871C9846-8B31-4225-B83F-A1213F1162DF}"
-	RootNamespace="w32ipc"
+	Name="w32.dbg"
+	ProjectGUID="{85854619-D795-43A2-B8E7-157FA92C3402}"
+	RootNamespace="w32dbg"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				ExceptionHandling="2"
@@ -106,7 +106,7 @@
 				Optimization="1"
 				EnableIntrinsicFunctions="false"
 				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="$(SolutionDir).."
+				AdditionalIncludeDirectories="$(SolutionDir)"
 				PreprocessorDefinitions="_SCL_SECURE_NO_WARNINGS; _CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
 				ExceptionHandling="2"
@@ -154,27 +154,19 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\ipc\__module__.cpp"
+				RelativePath="w32\dbg\__module__.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ipc\Job.cpp"
+				RelativePath="w32\dbg\Event.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ipc\Modules.cpp"
+				RelativePath="w32\dbg\Log.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ipc\Process.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ipc\Processes.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ipc\Threads.cpp"
+				RelativePath="w32\dbg\StructuredException.cpp"
 				>
 			</File>
 		</Filter>
@@ -184,31 +176,23 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\ipc\__configure__.hpp"
+				RelativePath="w32\dbg\__configure__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ipc\__module__.hpp"
+				RelativePath="w32\dbg\__module__.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ipc\Job.hpp"
+				RelativePath="w32\dbg\Event.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ipc\Modules.hpp"
+				RelativePath="w32\dbg\Log.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ipc\Process.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ipc\Processes.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ipc\Threads.hpp"
+				RelativePath="w32\dbg\StructuredException.hpp"
 				>
 			</File>
 		</Filter>
