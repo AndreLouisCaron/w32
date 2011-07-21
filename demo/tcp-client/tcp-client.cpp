@@ -38,5 +38,6 @@ namespace {
     // Link automagically.
 #pragma comment ( lib, "w32.lib" )
 #pragma comment ( lib, "w32.dbg.lib" )
+#pragma comment ( lib, "w32.io.lib" )
 #pragma comment ( lib, "w32.mt.lib" )
 #pragma comment ( lib, "w32.net.lib" )

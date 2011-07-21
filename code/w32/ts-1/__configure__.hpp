@@ -21,4 +21,8 @@
     // Yet another COM-based Windows API!
 #include <w32.com.hpp>
 
+#ifdef _MSC_VER
+#   pragma comment ( lib, "Mstask.lib" )
+#endif
+
 #endif /* _w32_ts_configure_hpp__ */

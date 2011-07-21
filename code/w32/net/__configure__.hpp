@@ -32,4 +32,8 @@
 #   include <AF_irda.h>  // Infra-red data acquisition.
 #endif
 
+#ifdef _MSC_VER
+#   pragma comment ( lib, "ws2_32.lib" )
+#endif
+
 #endif /* _w32_net_configure_hpp__ */

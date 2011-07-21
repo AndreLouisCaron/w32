@@ -234,5 +234,6 @@ namespace {
 #pragma comment ( lib, "w32.dbg.lib" )
 #pragma comment ( lib, "w32.fs.lib" )
 #pragma comment ( lib, "w32.gdi.lib" )
+#pragma comment ( lib, "w32.mt.lib" )
 #pragma comment ( lib, "w32.rgs.lib" )
 #pragma comment ( lib, "w32.shl.lib" )

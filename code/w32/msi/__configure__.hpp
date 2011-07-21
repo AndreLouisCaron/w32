@@ -21,4 +21,8 @@
 #   include <w32/types.hpp>
 #include "../__compiler-outro__.hpp"
 
+#ifdef _MSC_VER
+#   pragma comment ( lib, "Msi.lib" )
+#endif
+
 #endif /* _w32_msi_configure_hpp__ */

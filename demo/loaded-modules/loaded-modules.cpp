@@ -44,3 +44,4 @@ namespace {
 #pragma comment ( lib, "w32.lib" )
 #pragma comment ( lib, "w32.dbg.lib" )
 #pragma comment ( lib, "w32.ipc.lib" )
+#pragma comment ( lib, "w32.mt.lib" )

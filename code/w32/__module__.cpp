@@ -14,24 +14,3 @@ namespace w32 {
     std::locale::id Error::Put::id;
 
 }
-
-extern "C" {
-
-    ::ULONG __stdcall DllMain (
-        ::HINSTANCE instance, ::DWORD reason, ::LPVOID reserved
-        )
-    try
-    {
-        if ( reason == DLL_PROCESS_ATTACH )
-        {
-        }
-        else if ( reason == DLL_PROCESS_DETACH )
-        {
-        }
-        return (TRUE);
-    }
-    catch ( ... ) {
-        return (FALSE);
-    }
-
-}

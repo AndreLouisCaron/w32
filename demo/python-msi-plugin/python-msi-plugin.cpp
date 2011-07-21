@@ -10,7 +10,6 @@
 
 #include <w32.hpp>
 #include <w32.msi.hpp>
-#include <Python.h>
 
 // Enable logging:
 //   [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Installer]
@@ -18,12 +17,6 @@
 //   "Logging"="vicewarmup"
 
 namespace {
-
-        // Sample python script!
-    const char script[] = ""
-        "import os\n"
-        "print os.listdir('.')"
-        ;
 
 #if 0
     void log ( w32::msi::Install, const w32::string& message )
@@ -72,19 +65,10 @@ extern "C" {
     {
         // Use ::MsiGetProperty() to fetch external settings.
         
-            // Setup the interpreter.
-        ::Py_Initialize();
-        
-            // Run the custom script.
-        ::PyRun_SimpleString(::script);
-        
-            //  Cleanup the interpreter.
-        ::Py_Finalize();
         return (ERROR_SUCCESS);
     }
     catch ( ... )
     {
-        ::Py_Finalize();
         return (EXIT_FAILURE);
     }
 

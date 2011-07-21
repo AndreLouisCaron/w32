@@ -66,6 +66,8 @@ extern "C" {
         return (E_FAIL);
     }
 
+    volatile ::LONG GlobalObjectCount = 0;
+
 }
 
 // Override operator new() to force use of COM allocator.

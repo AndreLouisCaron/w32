@@ -7,32 +7,3 @@
 
     // Make sure header compiles standalone.
 #include "__module__.hpp"
-#include <w32.hpp>
-
-namespace w32 {
-
-        // Can't be "declspec(dllexport)"ed.
-    std::locale::id Error::Put::id;
-
-}
-
-extern "C" {
-
-    ::ULONG __stdcall DllMain (
-        ::HINSTANCE instance, ::DWORD reason, ::LPVOID reserved
-        )
-    try
-    {
-        if ( reason == DLL_PROCESS_ATTACH )
-        {
-        }
-        else if ( reason == DLL_PROCESS_DETACH )
-        {
-        }
-        return (TRUE);
-    }
-    catch ( ... ) {
-        return (FALSE);
-    }
-
-}
