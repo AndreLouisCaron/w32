@@ -59,6 +59,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalLibraryDirectories="&quot;$(ProjectDir)3rd-party\&quot;"
 				GenerateDebugInformation="true"
 				TargetMachine="1"
 			/>
@@ -131,6 +132,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalLibraryDirectories="&quot;$(ProjectDir)3rd-party\&quot;"
 				GenerateDebugInformation="true"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
