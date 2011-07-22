@@ -7,6 +7,8 @@
 
 #include <w32/net/tcp/Stream.hpp>
 #include <w32/Error.hpp>
+#include <w32/io/InputStream.hpp>
+#include <w32/io/OutputStream.hpp>
 
 namespace {
 
@@ -50,6 +52,11 @@ namespace {
         return (result);
     }
 
+    ::HANDLE cast ( ::SOCKET handle )
+    {
+        return (reinterpret_cast< ::HANDLE >(handle));
+    }
+
 }
 
 namespace w32 { namespace net { namespace tcp {
@@ -81,6 +88,21 @@ namespace w32 { namespace net { namespace tcp {
             }
             UNCHECKED_WIN32C_ERROR(connect, error);
         }
+    }
+
+    Stream::operator io::Stream () const
+    {
+        return (io::Stream(Object::proxy(::cast(handle()))));
+    }
+
+    Stream::operator io::InputStream () const
+    {
+        return (io::InputStream(Object::proxy(::cast(handle()))));
+    }
+
+    Stream::operator io::OutputStream () const
+    {
+        return (io::OutputStream(Object::proxy(::cast(handle()))));
     }
 
 } } }

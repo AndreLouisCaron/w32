@@ -28,9 +28,8 @@ namespace w32 { namespace io {
         class Type;
 
         /* construction. */
-    protected:
+    public:
         explicit Stream ( const Handle& handle );
-        Stream ();
 
          /* methods. */
      public:

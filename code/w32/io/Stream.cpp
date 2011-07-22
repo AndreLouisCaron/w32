@@ -57,11 +57,6 @@ namespace w32 { namespace io {
     {
     }
 
-    Stream::Stream ()
-        : Object(Object::proxy(0))
-    {
-    }
-
     Stream::Size Stream::size () const
     {
         ::LARGE_INTEGER value = { 0 };

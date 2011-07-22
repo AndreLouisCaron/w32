@@ -11,6 +11,14 @@
 #include <w32/net/ipv4/EndPoint.hpp>
 #include <w32/net/tcp/Listener.hpp>
 
+namespace w32 { namespace io {
+
+    class InputStream;
+    class OutputStream;
+    class Stream;
+
+} }
+
 namespace w32 { namespace net { namespace tcp {
 
         /*!
@@ -31,6 +39,12 @@ namespace w32 { namespace net { namespace tcp {
              * @brief Connect to a server (client side).
              */
         Stream ( const ipv4::EndPoint& peer );
+
+        /* operators . */
+    public:
+        operator io::Stream () const;
+        operator io::InputStream () const;
+        operator io::OutputStream () const;
     };
 
 } } }
