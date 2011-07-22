@@ -57,6 +57,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "loaded-modules", "loaded-mo
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "code-injection", "code-injection\code-injection.vcproj", "{B5CDA739-F974-4F5A-AC55-F31B2D83360A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "display-png", "display-png\display-png.vcproj", "{3441A9FE-7F4A-44FF-8AE4-6CAE4DC008E8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "display-jpg", "display-jpg\display-jpg.vcproj", "{AB0A2346-67D0-43D7-9EA5-D4011440A768}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		dbg|Win32 = dbg|Win32
@@ -289,6 +293,22 @@ Global
 		{B5CDA739-F974-4F5A-AC55-F31B2D83360A}.opt|Win32.Build.0 = opt|Win32
 		{B5CDA739-F974-4F5A-AC55-F31B2D83360A}.Release|Win32.ActiveCfg = opt|Win32
 		{B5CDA739-F974-4F5A-AC55-F31B2D83360A}.Release|Win32.Build.0 = opt|Win32
+		{3441A9FE-7F4A-44FF-8AE4-6CAE4DC008E8}.dbg|Win32.ActiveCfg = dbg|Win32
+		{3441A9FE-7F4A-44FF-8AE4-6CAE4DC008E8}.dbg|Win32.Build.0 = dbg|Win32
+		{3441A9FE-7F4A-44FF-8AE4-6CAE4DC008E8}.Debug|Win32.ActiveCfg = dbg|Win32
+		{3441A9FE-7F4A-44FF-8AE4-6CAE4DC008E8}.Debug|Win32.Build.0 = dbg|Win32
+		{3441A9FE-7F4A-44FF-8AE4-6CAE4DC008E8}.opt|Win32.ActiveCfg = opt|Win32
+		{3441A9FE-7F4A-44FF-8AE4-6CAE4DC008E8}.opt|Win32.Build.0 = opt|Win32
+		{3441A9FE-7F4A-44FF-8AE4-6CAE4DC008E8}.Release|Win32.ActiveCfg = opt|Win32
+		{3441A9FE-7F4A-44FF-8AE4-6CAE4DC008E8}.Release|Win32.Build.0 = opt|Win32
+		{AB0A2346-67D0-43D7-9EA5-D4011440A768}.dbg|Win32.ActiveCfg = dbg|Win32
+		{AB0A2346-67D0-43D7-9EA5-D4011440A768}.dbg|Win32.Build.0 = dbg|Win32
+		{AB0A2346-67D0-43D7-9EA5-D4011440A768}.Debug|Win32.ActiveCfg = dbg|Win32
+		{AB0A2346-67D0-43D7-9EA5-D4011440A768}.Debug|Win32.Build.0 = dbg|Win32
+		{AB0A2346-67D0-43D7-9EA5-D4011440A768}.opt|Win32.ActiveCfg = opt|Win32
+		{AB0A2346-67D0-43D7-9EA5-D4011440A768}.opt|Win32.Build.0 = opt|Win32
+		{AB0A2346-67D0-43D7-9EA5-D4011440A768}.Release|Win32.ActiveCfg = opt|Win32
+		{AB0A2346-67D0-43D7-9EA5-D4011440A768}.Release|Win32.Build.0 = opt|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

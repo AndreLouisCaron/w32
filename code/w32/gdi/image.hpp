@@ -9,22 +9,11 @@
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
 #include "__configure__.hpp"
-#include <w32/string.hpp>
 #include <w32/gdi/DeviceIndependantBitmap.hpp>
 
 namespace w32 { namespace gdi {
 
     typedef w32::gdi::DeviceIndependantBitmap Image;
-
-        /*!
-         * @brief Loads an image from an input file.
-         */
-    Image image ( const string& path );
-
-        /*!
-         * @brief Saves an image to an output file.
-         */
-    void image ( const Image& image, const string& path );
 
 } }
 
