@@ -421,6 +421,10 @@
 				RelativePath="w32\gdi\Window.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\w32\gdi\WindowEvents.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -713,6 +717,10 @@
 			</File>
 			<File
 				RelativePath="w32\gdi\Window.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\w32\gdi\WindowEvents.hpp"
 				>
 			</File>
 		</Filter>

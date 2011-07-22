@@ -5,10 +5,10 @@
 // this software package (see "license.rtf"). If not, the license is available
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
-#include <win32c/gdi/WindowEvents.hpp>
-#include <win32c/diagnostics/UncheckedError.hpp>
+#include <w32/gdi/WindowEvents.hpp>
+#include <w32/Error.hpp>
 
-namespace win32c { namespace gdi {
+namespace w32 { namespace gdi {
 
     WindowEvents::WindowEvents ( const Window& window )
         : myWindow(window)
@@ -20,32 +20,32 @@ namespace win32c { namespace gdi {
         return (myWindow);
     }
 
-    bool WindowEvents::next ( Event& event, const Filter& filter )
+    bool WindowEvents::next ( Event& event, Filter filter )
     {
         const ::BOOL result = ::GetMessage(
-            &event.data(), myWindow.handle().get(),
-            filter.first(), filter.last()
+            &event.data(), myWindow.handle(), filter.first(), filter.last()
             );
-        if ( result == -1 ) {
-            UNCHECKED_WIN32C_ERROR(GetMessage,::GetLastError());
+        if ( result == -1 )
+        {
+            const ::DWORD error = ::GetLastError();
+            UNCHECKED_WIN32C_ERROR(GetMessage, error);
         }
         return (result != 0);
     }
 
-    bool WindowEvents::peek ( Event& event, const Filter& filter )
+    bool WindowEvents::peek ( Event& event, Filter filter )
     {
         const ::BOOL result = ::PeekMessage(
-            &event.data(), myWindow.handle().get(),
+            &event.data(), myWindow.handle(),
             filter.first(), filter.last(), PM_NOREMOVE
             );
-        return (result != 0);
+        return (result != FALSE);
     }
 
-    void ThreadEvents::post ( const Notification& notification )
+    void WindowEvents::post ( const Message& message )
     {
         const ::BOOL result = ::PostMessage(
-            myWindow.handle(), notification.message(),
-            notification.wparam(), notification.lparam()
+            myWindow.handle(), message.wm(), message.wp(), message.lp()
             );
         if ( result == 0 ) {
             UNCHECKED_WIN32C_ERROR(PostMessage,::GetLastError());

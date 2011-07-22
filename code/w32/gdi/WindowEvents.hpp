@@ -1,5 +1,5 @@
-#ifndef _win32c_gdi_WindowEvents_hpp__
-#define _win32c_gdi_WindowEvents_hpp__
+#ifndef _w32_gdi_WindowEvents_hpp__
+#define _w32_gdi_WindowEvents_hpp__
 
 // Copyright(c) Andre Caron, 2009-2010
 //
@@ -8,9 +8,11 @@
 // this software package (see "license.rtf"). If not, the license is available
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
-#include <win32c/gdi/EventQueue.hpp>
+#include "__configure__.hpp"
+#include <w32/gdi/EventQueue.hpp>
+#include <w32/gdi/Window.hpp>
 
-namespace win32c { namespace gdi {
+namespace w32 { namespace gdi {
 
     class WindowEvents :
         public EventQueue
@@ -29,11 +31,11 @@ namespace win32c { namespace gdi {
 
         /* overrides. */
     public:
-        virtual bool next ( Event& event, const Filter& filter = anyEvent );
-        virtual bool peek ( Event& event, const Filter& filter = anyEvent );
-        virtual void post ( const Notification& notification );
+        virtual bool next ( Event& event, Filter filter = Filter::any() );
+        virtual bool peek ( Event& event, Filter filter = Filter::any() );
+        virtual void post ( const Message& message );
     };
 
 } }
 
-#endif /* _win32c_gdi_WindowEvents_hpp__ */
+#endif /* _w32_gdi_WindowEvents_hpp__ */

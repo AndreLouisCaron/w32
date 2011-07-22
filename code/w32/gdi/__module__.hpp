@@ -67,6 +67,7 @@ namespace w32 {
 #   include <w32/gdi/TrackBar.hpp>
 #   include <w32/gdi/TreeView.hpp>
 #   include <w32/gdi/Window.hpp>
+#   include <w32/gdi/WindowEvents.hpp>
 #   include <w32/gdi/UpDown.hpp>
 #   include <w32/gdi/Window.Handler.hpp>
 #include "../__compiler-outro__.hpp"
