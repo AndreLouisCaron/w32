@@ -9,19 +9,31 @@
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
 #include "__configure__.hpp"
-#include <w32/io/InputStream.hpp>
-#include <w32/io/OutputStream.hpp>
+#include <w32/Object.hpp>
+#include <w32/types.hpp>
 
 namespace w32 { namespace io {
 
-     class Channel :
-        virtual public InputStream,
-        virtual public OutputStream
-     {
-         /* construction. */
-     public:
-         explicit Channel ( const Handle& handle );
-     };
+    class InputStream;
+    class OutputStream;
+
+    class Channel :
+        public Object
+    {
+        /* construction. */
+    public:
+        explicit Channel ( const Handle& handle );
+
+        /* methods. */
+    public:
+         dword get ( byte * buffer, dword bytes );
+         dword put ( const byte * buffer, dword bytes );
+
+        /* operators. */
+    public:
+        operator InputStream () const;
+        operator OutputStream () const;
+    };
 
 } }
 

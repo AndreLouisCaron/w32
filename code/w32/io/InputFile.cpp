@@ -26,7 +26,7 @@ namespace {
 namespace w32 { namespace io {
 
     InputFile::InputFile ( const string& path )
-        : Stream(Object::claim(
+        : InputStream(Object::claim(
               ::open(path.c_str(), FILE_SHARE_READ, OPEN_EXISTING)
               ))
     {

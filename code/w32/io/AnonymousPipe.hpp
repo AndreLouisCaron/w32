@@ -10,81 +10,26 @@
 
 #include "__configure__.hpp"
 #include <w32/NotCopyable.hpp>
-#include <w32/io/Channel.hpp>
+#include <w32/io/InputStream.hpp>
+#include <w32/io/OutputStream.hpp>
 
 namespace w32 { namespace io {
 
     class AnonymousPipe :
         private NotCopyable
     {
-        /* nested types. */
-    private:
-        struct Handles
-        {
-            /* data. */
-        public:
-            ::HANDLE input;
-            ::HANDLE output;
-
-            /* construction. */
-        public:
-            Handles ();
-        };
-
-    public:
-        class Output :
-            public OutputStream
-        {
-            /* construction. */
-        public:
-            explicit Output ( const Handles& handles );
-        };
-
-        class Input :
-            public InputStream
-        {
-            /* construction. */
-        public:
-            explicit Input ( const Handles& handles );
-        };
-
         /* data. */
     private:
-        Handles myHandles;
-        Input myInput;
-        Output myOutput;
+        Object::Handle myHandles[2];
 
         /* construction. */
     public:
         AnonymousPipe ();
 
-        /* methods. */
-    public:
-        Input& input () {
-            return (myInput);
-        }
-
-        Output& output () {
-            return (myOutput);
-        }
-
         /* operators. */
     public:
-        operator Output& () {
-            return (myOutput);
-        }
-
-        operator const Output& () const {
-            return (myOutput);
-        }
-
-        operator Input& () {
-            return (myInput);
-        }
-
-        operator const Input& () const {
-            return (myInput);
-        }
+        operator InputStream () const;
+        operator OutputStream () const;
     };
 
 } }

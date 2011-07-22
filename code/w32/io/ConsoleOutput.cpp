@@ -28,7 +28,7 @@ namespace {
 namespace w32 { namespace io {
 
     ConsoleOutput::ConsoleOutput ()
-        : Stream(Object::claim(::open()))
+        : OutputStream(Object::claim(::open()))
     {
     }
 

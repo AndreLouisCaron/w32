@@ -19,7 +19,7 @@ namespace w32 { namespace io {
          * Provides access to the stream's handle, for low-level manipulation.
          */
     class Stream :
-        virtual public Object
+        public Object
     {
         /* nested types. */
     public:

@@ -47,7 +47,7 @@ namespace w32 { namespace io {
     }
 
     StandardInput::StandardInput ()
-        : Stream(Object::claim(::get()))
+        : InputStream(Object::claim(::get()))
     {
     }
 

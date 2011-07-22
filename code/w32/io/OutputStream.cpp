@@ -10,6 +10,11 @@
 
 namespace w32 { namespace io {
 
+    OutputStream::OutputStream ( const Handle& handle )
+        : Stream(handle)
+    {
+    }
+
     dword OutputStream::put ( const byte * buffer, dword bytes )
     {
         ::DWORD written = 0;

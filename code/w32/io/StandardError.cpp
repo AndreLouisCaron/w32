@@ -47,7 +47,7 @@ namespace w32 { namespace io {
     }
 
     StandardError::StandardError ()
-        : Stream(Object::claim(::get()))
+        : OutputStream(Object::claim(::get()))
     {
     }
 

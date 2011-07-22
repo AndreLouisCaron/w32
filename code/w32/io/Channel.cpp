@@ -6,12 +6,34 @@
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
 #include <w32/io/Channel.hpp>
+#include <w32/io/InputStream.hpp>
+#include <w32/io/OutputStream.hpp>
 
 namespace w32 { namespace io {
 
     Channel::Channel ( const Handle& handle )
         : Object(handle)
     {
+    }
+
+    dword Channel::get ( byte * data, dword size )
+    {
+        return (InputStream(*this).get(data, size));
+    }
+
+    dword Channel::put ( const byte * data, dword size )
+    {
+        return (OutputStream(*this).put(data, size));
+    }
+
+    Channel::operator InputStream () const
+    {
+        return (InputStream(handle()));
+    }
+
+    Channel::operator OutputStream () const
+    {
+        return (OutputStream(handle()));
     }
 
 } }

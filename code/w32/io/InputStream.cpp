@@ -10,6 +10,11 @@
 
 namespace w32 { namespace io {
 
+    InputStream::InputStream ( const Handle& handle )
+        : Stream(handle)
+    {
+    }
+
     dword InputStream::get ( byte * buffer, dword bytes )
     {
         ::DWORD read = 0;

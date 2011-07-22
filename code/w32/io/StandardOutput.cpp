@@ -47,7 +47,7 @@ namespace w32 { namespace io {
     }
 
     StandardOutput::StandardOutput ()
-        : Stream(Object::claim(::get()))
+        : OutputStream(Object::claim(::get()))
     {
     }
 

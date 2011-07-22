@@ -12,7 +12,6 @@ namespace {
 
     void allocate ( ::PHANDLE input, ::PHANDLE output )
     {
-        (*output) = (*input) = INVALID_HANDLE_VALUE;
         const ::BOOL result = ::CreatePipe(input, output, 0, 0);
         if ( result == FALSE )
         {
@@ -25,26 +24,24 @@ namespace {
 
 namespace w32 { namespace io {
 
-    AnonymousPipe::Handles::Handles ()
-    {
-        allocate(&input, &output);
-    }
-
-    AnonymousPipe::Output::Output ( const Handles& handles )
-        : Stream(Object::claim(handles.output))
-    {
-    }
-
-    AnonymousPipe::Input::Input ( const Handles& handles )
-        : Stream(Object::claim(handles.input))
-    {
-    }
-
     AnonymousPipe::AnonymousPipe ()
-        : myHandles(),
-          myInput(myHandles),
-          myOutput(myHandles)
     {
+            // Allocate handles.
+        ::HANDLE handles[2] = { 0 };
+        allocate(&handles[0], &handles[1]);
+            // Wrap them.
+        myHandles[0] = Object::claim(handles[0]);
+        myHandles[1] = Object::claim(handles[1]);
+    }
+
+    AnonymousPipe::operator InputStream () const
+    {
+        return (InputStream(myHandles[0]));
+    }
+
+    AnonymousPipe::operator OutputStream () const
+    {
+        return (OutputStream(myHandles[0]));
     }
 
 } }

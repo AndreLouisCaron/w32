@@ -15,8 +15,12 @@
 namespace w32 { namespace io {
 
      class OutputStream :
-        virtual public Stream
+         public Stream
      {
+         /* construction. */
+     public:
+         explicit OutputStream ( const Handle& handle );
+
          /* methods. */
      public:
             /*!

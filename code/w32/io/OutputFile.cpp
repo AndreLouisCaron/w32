@@ -63,7 +63,7 @@ namespace w32 { namespace io {
     }
 
     OutputFile::OutputFile ( const string& path, const Mode& mode )
-        : Stream(Object::claim(
+        : OutputStream(Object::claim(
               ::open(path.c_str(), 0, mode.value())
               ))
     {
