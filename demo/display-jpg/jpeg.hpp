@@ -279,7 +279,6 @@ namespace jpeg {
         
             // 3. Specify source of compressed data.
         source.of(decompressor);
-        source.fill();
         
             // 4. Read stream header.
         if ( ::setjmp(handler.state) != 0 ) {
