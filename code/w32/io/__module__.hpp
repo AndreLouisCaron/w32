@@ -22,6 +22,7 @@ namespace w32 {
 #   include <w32/io/ConsoleOutput.hpp>
 #   include <w32/io/InputFile.hpp>
 #   include <w32/io/InputStream.hpp>
+#   include <w32/io/NamedPipe.hpp>
 #   include <w32/io/Null.hpp>
 #   include <w32/io/OutputFile.hpp>
 #   include <w32/io/OutputStream.hpp>

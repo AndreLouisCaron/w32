@@ -186,6 +186,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\w32\io\NamedPipe.cpp"
+				>
+			</File>
+			<File
 				RelativePath="w32\io\Null.cpp"
 				>
 			</File>
@@ -265,6 +269,10 @@
 			</File>
 			<File
 				RelativePath="w32\io\InputStream.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\w32\io\NamedPipe.hpp"
 				>
 			</File>
 			<File
