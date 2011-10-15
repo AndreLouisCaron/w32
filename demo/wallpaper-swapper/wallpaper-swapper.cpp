@@ -63,7 +63,7 @@ namespace {
         while ((image.handle() == 0) && (__wallpapers__.size() > 0))
         {
             const std::size_t i = std::rand() % __wallpapers__.size();
-            image = w32::gdi::image(__wallpapers__[i]);
+            image = w32::gdi::FileBitmap(__wallpapers__[i]);
             
                 // Remove failing images from the list.
             if ( image.handle() == 0 ) {
@@ -85,9 +85,7 @@ namespace {
         else {
             path =  __library__() + L"\\__current__.jpg";
         }
-        
-            // Save a copy in the proper format.
-        w32::gdi::image(image, path);
+        image.save(path);
         
             // Set it as wallpaper.
         w32::shl::wallpaper(path, style);
