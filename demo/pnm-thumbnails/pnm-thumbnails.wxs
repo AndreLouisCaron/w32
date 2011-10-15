@@ -157,42 +157,6 @@
            Id='ShellExtensionComServerExecutable' Name="pnm-thumbnails.dll" DiskId='1'
            Source="$(var.Root)pnm-thumbnails.dll" KeyPath='yes'>
         </File>
-        <File
-        Id='ShellExtensionComServerExecutableDep1' Name="w32.dll" DiskId='1'
-        Source="$(var.Root)w32.dll" KeyPath='no'>
-        </File>
-        <File
-           Id='ShellExtensionComServerExecutableDep2' Name="w32.com.dll" DiskId='1'
-           Source="$(var.Root)w32.com.dll" KeyPath='no'>
-        </File>
-        <File
-           Id='ShellExtensionComServerExecutableDep3' Name="w32.dbg.dll" DiskId='1'
-           Source="$(var.Root)w32.dbg.dll" KeyPath='no'>
-        </File>
-        <File
-           Id='ShellExtensionComServerExecutableDep4' Name="w32.fs.dll" DiskId='1'
-           Source="$(var.Root)w32.fs.dll" KeyPath='no'>
-        </File>
-        <File
-           Id='ShellExtensionComServerExecutableDep5' Name="w32.gdi.dll" DiskId='1'
-           Source="$(var.Root)w32.gdi.dll" KeyPath='no'>
-        </File>
-        <File
-           Id='ShellExtensionComServerExecutableDep6' Name="w32.mt.dll" DiskId='1'
-           Source="$(var.Root)w32.mt.dll" KeyPath='no'>
-        </File>
-        <File
-           Id='ShellExtensionComServerExecutableDep7' Name="w32.rgs.dll" DiskId='1'
-           Source="$(var.Root)w32.rgs.dll" KeyPath='no'>
-        </File>
-        <File
-           Id='ShellExtensionComServerExecutableDep8' Name="w32.shl.dll" DiskId='1'
-           Source="$(var.Root)w32.shl.dll" KeyPath='no'>
-        </File>
-        <File
-           Id='ShellExtensionComServerExecutableDep9' Name="w32.shl.ext.dll" DiskId='1'
-           Source="$(var.Root)w32.shl.ext.dll" KeyPath='no'>
-        </File>
       </Component>
     </DirectoryRef>
 
