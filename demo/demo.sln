@@ -65,6 +65,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "named-pipe-client", "named-
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "named-pipe-server", "named-pipe-server\named-pipe-server.vcproj", "{DFF461C2-A5AF-4695-B8F5-E1BA73A71BB3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "service", "service\service.vcproj", "{79AD1838-B66A-42D4-99D4-F3D9CB2697FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		dbg|Win32 = dbg|Win32
@@ -329,6 +331,14 @@ Global
 		{DFF461C2-A5AF-4695-B8F5-E1BA73A71BB3}.opt|Win32.Build.0 = opt|Win32
 		{DFF461C2-A5AF-4695-B8F5-E1BA73A71BB3}.Release|Win32.ActiveCfg = opt|Win32
 		{DFF461C2-A5AF-4695-B8F5-E1BA73A71BB3}.Release|Win32.Build.0 = opt|Win32
+		{79AD1838-B66A-42D4-99D4-F3D9CB2697FE}.dbg|Win32.ActiveCfg = dbg|Win32
+		{79AD1838-B66A-42D4-99D4-F3D9CB2697FE}.dbg|Win32.Build.0 = dbg|Win32
+		{79AD1838-B66A-42D4-99D4-F3D9CB2697FE}.Debug|Win32.ActiveCfg = dbg|Win32
+		{79AD1838-B66A-42D4-99D4-F3D9CB2697FE}.Debug|Win32.Build.0 = dbg|Win32
+		{79AD1838-B66A-42D4-99D4-F3D9CB2697FE}.opt|Win32.ActiveCfg = opt|Win32
+		{79AD1838-B66A-42D4-99D4-F3D9CB2697FE}.opt|Win32.Build.0 = opt|Win32
+		{79AD1838-B66A-42D4-99D4-F3D9CB2697FE}.Release|Win32.ActiveCfg = opt|Win32
+		{79AD1838-B66A-42D4-99D4-F3D9CB2697FE}.Release|Win32.Build.0 = opt|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
