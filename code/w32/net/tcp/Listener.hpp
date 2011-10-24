@@ -21,6 +21,7 @@ namespace w32 { namespace net { namespace tcp {
     {
         /* construction. */
     public:
+        explicit Listener ( const Socket::Handle& handle );
         Listener ( const ipv4::EndPoint& name, int backlog = SOMAXCONN );
     };
 

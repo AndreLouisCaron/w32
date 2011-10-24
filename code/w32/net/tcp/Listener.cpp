@@ -31,6 +31,11 @@ namespace {
 
 namespace w32 { namespace net { namespace tcp {
 
+    Listener::Listener ( const Socket::Handle& handle )
+        : Socket(handle)
+    {
+    }
+
     Listener::Listener ( const ipv4::EndPoint& name, int backlog )
         : Socket(claim(::allocate()))
     {
