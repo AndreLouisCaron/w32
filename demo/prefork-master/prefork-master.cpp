@@ -24,6 +24,21 @@ namespace {
         return (command.str().c_str());
     }
 
+    w32::net::ipv4::EndPoint listener ( const w32::astring& argument )
+    {
+        std::istringstream stream(argument.c_str());
+        w32::net::ipv4::EndPoint endpoint;
+        if ( !(stream >> endpoint) ) {
+            throw (std::invalid_argument("endpoint"));
+        }
+        return (endpoint);
+    }
+
+    w32::net::ipv4::EndPoint listener ( const w32::string& endpoint )
+    {
+        return (listener(w32::astring(endpoint, w32::Codepage::ansi())));
+    }
+
 }
 
 #include <w32/console-program.hpp>
@@ -36,8 +51,11 @@ namespace {
         const w32::net::Context _;
         
           // configure master process.
-        const w32::net::ipv4::EndPoint endpoint
-            (w32::net::ipv4::Address::any(), 4321);
+        w32::net::ipv4::EndPoint endpoint
+            (w32::net::ipv4::Address::any(), 8000);
+        if ( argc > 1 ) {
+            endpoint = ::listener(w32::string(argv[1]));
+        }
         const w32::dword slavecount = 1;
         const w32::string slavepath = L"../../.build/dbg/prefork-slave.exe";
         
@@ -46,7 +64,7 @@ namespace {
             << std::endl;
         
         std::cout
-            << "Opening listening socket."
+            << "Opening listening socket, binding to '" << endpoint << "'."
             << std::endl;
         
           // start listening for connections.
