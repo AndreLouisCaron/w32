@@ -24,9 +24,8 @@ namespace {
         
             // Setup connection parameters.
         const w32::net::Host host(w32::computername());
-        const w32::net::ipv4::Address address
-            (host.address<w32::net::ipv4::Address>(0));
-        //const w32::net::ipv4::Address address(206, 167, 184, 106);
+        const w32::net::ipv4::Address address =
+            w32::net::ipv4::Address::local();
         const w32::net::uint16 port(4321);
         const w32::net::ipv4::EndPoint peer(address,port);
         
