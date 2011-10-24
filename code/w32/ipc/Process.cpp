@@ -34,7 +34,7 @@ namespace {
         return (clone(handle, ::GetCurrentProcess()));
     }
 
-    ::HANDLE create ( ::LPWSTR executable )
+    ::HANDLE create ( ::LPWSTR executable, ::BOOL inherit )
     {
         static const ::DWORD flags = 0;
         //flags = EXTENDED_STARTUPINFO_PRESENT;
@@ -48,8 +48,7 @@ namespace {
         
         ::PROCESS_INFORMATION information;
         const ::BOOL result = ::CreateProcessW(
-                                  0, executable, 0, 0, FALSE, flags, 0, 0, &startup, &information
-                              );
+            0, executable, 0, 0, inherit, flags, 0, 0, &startup, &information);
         if ( result == 0 ) {
             UNCHECKED_WIN32C_ERROR(CreateProcess, ::GetLastError());
         }
@@ -96,10 +95,9 @@ namespace w32 { namespace ipc {
     {
     }
 
-    Process::Process ( const string& executable )
-        : Object(Object::claim(
-        ::create(const_cast<::LPWSTR>(executable.c_str()))
-        ))
+    Process::Process ( const string& executable, bool inherit )
+        : Object(Object::claim(::create(
+            const_cast<::LPWSTR>(executable.c_str()), inherit?TRUE:FALSE)))
     {
     }
 

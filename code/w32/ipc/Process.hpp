@@ -52,7 +52,7 @@ namespace w32 { namespace ipc {
 
     public:
         explicit Process ( Identifier identifier );
-        explicit Process ( const string& executable );
+        explicit Process ( const string& executable, bool inherit=false );
 
         /* methods. */
     public:
