@@ -71,6 +71,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "prefork-master", "prefork-m
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "prefork-slave", "prefork-slave\prefork-slave.vcproj", "{A0DA7740-4E02-4378-821F-BB1FE778B630}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "prefork-echo-server", "prefork-echo-server\prefork-echo-server.vcproj", "{F588FE39-DCDE-46E6-9766-704595540536}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		dbg|Win32 = dbg|Win32
@@ -359,6 +361,14 @@ Global
 		{A0DA7740-4E02-4378-821F-BB1FE778B630}.opt|Win32.Build.0 = opt|Win32
 		{A0DA7740-4E02-4378-821F-BB1FE778B630}.Release|Win32.ActiveCfg = opt|Win32
 		{A0DA7740-4E02-4378-821F-BB1FE778B630}.Release|Win32.Build.0 = opt|Win32
+		{F588FE39-DCDE-46E6-9766-704595540536}.dbg|Win32.ActiveCfg = dbg|Win32
+		{F588FE39-DCDE-46E6-9766-704595540536}.dbg|Win32.Build.0 = dbg|Win32
+		{F588FE39-DCDE-46E6-9766-704595540536}.Debug|Win32.ActiveCfg = dbg|Win32
+		{F588FE39-DCDE-46E6-9766-704595540536}.Debug|Win32.Build.0 = dbg|Win32
+		{F588FE39-DCDE-46E6-9766-704595540536}.opt|Win32.ActiveCfg = opt|Win32
+		{F588FE39-DCDE-46E6-9766-704595540536}.opt|Win32.Build.0 = opt|Win32
+		{F588FE39-DCDE-46E6-9766-704595540536}.Release|Win32.ActiveCfg = opt|Win32
+		{F588FE39-DCDE-46E6-9766-704595540536}.Release|Win32.Build.0 = opt|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
