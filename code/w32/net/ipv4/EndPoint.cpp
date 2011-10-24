@@ -92,6 +92,27 @@ namespace w32 { namespace net { namespace ipv4 {
             myData.sin_addr.S_un.S_un_b.s_b4));
     }
 
+    std::istream& operator>> ( std::istream& stream, EndPoint& value )
+    {
+          // parse the host.
+        Address host;
+        if ( !(stream >> host) ) {
+            stream.setstate(std::ios::failbit); return (stream);
+        }
+          // parse the port.
+        if ( stream.peek() != ':' ) {
+            stream.setstate(std::ios::failbit); return (stream);
+        }
+        stream.ignore();
+        int port = -1;
+        if ( !(stream >> port) || (port < 0) || (port >= (1<<15)) ) {
+            stream.setstate(std::ios::failbit); return (stream);
+        }
+          // build end pair.
+        value = w32::net::ipv4::EndPoint(host, port);
+        return (stream);
+    }
+
     std::ostream& operator<< ( std::ostream& out, const EndPoint& value )
     {
         return (out

@@ -48,6 +48,11 @@ namespace w32 { namespace net { namespace ipv4 {
         uint8 _2 () const;
         uint8 _3 () const;
         uint8 _4 () const;
+
+        /* operators. */
+    public:
+        friend std::istream& operator>>
+            ( std::istream& in, Address& address );
     };
 
     bool operator==
@@ -58,9 +63,6 @@ namespace w32 { namespace net { namespace ipv4 {
 
     bool operator<
         ( const Address& lhs, const Address& rhs );
-
-    std::istream& operator<<
-        ( std::istream& in, Address& address );
 
     std::ostream& operator<<
         ( std::ostream& out, const Address& address );

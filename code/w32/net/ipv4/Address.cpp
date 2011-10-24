@@ -101,17 +101,29 @@ namespace w32 { namespace net { namespace ipv4 {
         return (lhs.value().S_un.S_addr != rhs.value().S_un.S_addr);
     }
 
-    std::istream& operator<< ( std::istream& in, Address& address )
+    std::istream& operator>> ( std::istream& in, Address& address )
     {
-            // Clear, just to make sure.
+          // Clear, just to make sure.
         address = Address::none();
         
-        // Parse.
-        
-            // Check for successful parsing.
-        if ( address == Address::none() ) {
-            in.setstate(std::ios::failbit);
+          // Parse 4 integer parts.
+        int parts[4];
+        for ( int i = 0; ((i < 4) && in); ++i )
+        {
+            if ((i > 0) && ((in.peek() != '.') || !in.ignore(1))) {
+                in.setstate(std::ios::failbit); return (in);
+            }
+            if ( !(in >> parts[i]) || (parts[i] < 0) || (parts[i] > 255)) {
+                in.setstate(std::ios::failbit); return (in);
+            }
         }
+        
+          // Succeeded, save results.
+        address.myValue.S_un.S_un_b.s_b1 = parts[0];
+        address.myValue.S_un.S_un_b.s_b2 = parts[1];
+        address.myValue.S_un.S_un_b.s_b3 = parts[2];
+        address.myValue.S_un.S_un_b.s_b4 = parts[3];
+        
         return (in);
     }
 

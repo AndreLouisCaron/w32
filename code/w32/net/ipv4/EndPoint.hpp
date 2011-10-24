@@ -47,6 +47,9 @@ namespace w32 { namespace net { namespace ipv4 {
         Address address () const;
     };
 
+    std::istream& operator>>
+        ( std::istream& in, EndPoint& value );
+
     std::ostream& operator<<
         ( std::ostream& out, const EndPoint& value );
 
