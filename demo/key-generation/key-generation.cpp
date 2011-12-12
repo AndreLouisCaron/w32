@@ -8,7 +8,7 @@
 #include <w32.hpp>
 #include <w32.cr.hpp>
 
-#include <w32/console-program.hpp>
+#include <w32/app/console-program.hpp>
 
 namespace {
 
@@ -30,14 +30,15 @@ namespace {
         std::wcout << w32::cr::convert(hash.data()) << std::endl;
         
         const w32::cr::Hash::Type algorithm = w32::cr::Hash::Type::rc2();
-        w32::cr::Key sessionkey = w32::cr::Key::derive(provider, hash, algorithm);
+        w32::cr::Key sessionkey =
+            w32::cr::Key::derive(provider, hash, algorithm);
         
         return (EXIT_SUCCESS);
     }
 
 }
 
-#include <w32/console-program.cpp>
+#include <w32/app/console-program.cpp>
 
     // Link automagically.
 #pragma comment ( lib, "w32.lib" )

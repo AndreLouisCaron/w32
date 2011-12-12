@@ -9,7 +9,7 @@
 #include <fstream>
 #include <iostream>
 
-#include <w32/console-program.hpp>
+#include <w32/app/console-program.hpp>
 
 namespace {
 
@@ -40,11 +40,13 @@ namespace {
         
             // Save the image in Windows Bitmap format.
         convert(header,input).save(argv[2]);
+
+        return (EXIT_SUCCESS);
     }
 
 }
 
-#include <w32/console-program.cpp>
+#include <w32/app/console-program.cpp>
 
     // Link automagically.
 #pragma comment ( lib, "w32.lib" )

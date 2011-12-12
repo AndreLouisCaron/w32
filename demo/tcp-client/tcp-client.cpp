@@ -5,7 +5,7 @@
 // this software package (see "license.rtf"). If not, the license is available
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
-#include <w32/net/tcp/naive-client.hpp>
+#include <w32/app/naive-client.hpp>
 #include <w32.mt.hpp>
 #include <w32.net.hpp>
 
@@ -33,7 +33,7 @@ namespace {
 
 }
 
-#include <w32/net/tcp/naive-client.cpp>
+#include <w32/app/naive-client.cpp>
 
     // Link automagically.
 #pragma comment ( lib, "w32.lib" )
@@ -41,3 +41,5 @@ namespace {
 #pragma comment ( lib, "w32.io.lib" )
 #pragma comment ( lib, "w32.mt.lib" )
 #pragma comment ( lib, "w32.net.lib" )
+#pragma comment ( lib, "w32.net.ipv4.lib" )
+#pragma comment ( lib, "w32.net.tcp.lib" )

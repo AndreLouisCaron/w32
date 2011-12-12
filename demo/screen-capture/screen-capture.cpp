@@ -8,6 +8,7 @@
 #include <w32.hpp>
 #include <w32.gdi.hpp>
 #include <w32.mt.hpp>
+
 #include <functional>
 
 namespace {
@@ -116,7 +117,7 @@ namespace {
 
 }
 
-#include <w32/gdi/windows-program.hpp>
+#include <w32/app/windows-program.hpp>
 
 namespace {
 
@@ -133,7 +134,7 @@ namespace {
 
 }
 
-#include <w32/gdi/windows-program.cpp>
+#include <w32/app/windows-program.cpp>
 
     // Link automagically.
 #pragma comment ( lib, "w32.lib" )

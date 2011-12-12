@@ -9,6 +9,7 @@
 #include <w32.hpp>
 #include <w32.io.hpp>
 #include <w32.mt.hpp>
+
 #include <algorithm>
 #include <iostream>
 #include <memory>
@@ -269,7 +270,7 @@ namespace {
 
 }
 
-#include <w32/console-program.hpp>
+#include <w32/app/console-program.hpp>
 
 namespace {
 
@@ -299,11 +300,4 @@ namespace {
 
 }
 
-#include <w32/console-program.cpp>
-
-    // Link automagically.
-#pragma comment ( lib, "w32.lib" )
-#pragma comment ( lib, "w32.dbg.lib" )
-#pragma comment ( lib, "w32.io.lib" )
-#pragma comment ( lib, "w32.mt.lib" )
-#pragma comment ( lib, "w32.net.lib" )
+#include <w32/app/console-program.cpp>

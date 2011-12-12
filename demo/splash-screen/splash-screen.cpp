@@ -96,7 +96,7 @@ namespace {
 
 }
 
-#include <w32/gdi/windows-program.hpp>
+#include <w32/app/windows-program.hpp>
 
 namespace {
 
@@ -129,12 +129,4 @@ namespace {
 
 }
 
-#include <w32/gdi/windows-program.cpp>
-
-    // Link automagically.
-#pragma comment ( lib, "w32.lib" )
-#pragma comment ( lib, "w32.dbg.lib" )
-#pragma comment ( lib, "w32.fs.lib" )
-#pragma comment ( lib, "w32.io.lib" )
-#pragma comment ( lib, "w32.gdi.lib" )
-#pragma comment ( lib, "w32.mt.lib" )
+#include <w32/app/windows-program.cpp>

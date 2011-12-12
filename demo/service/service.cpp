@@ -8,7 +8,7 @@
 #include <w32.dbg.hpp>
 #include <w32.mt.hpp>
 
-#include <w32/sc/service-program.hpp>
+#include <w32/app/service-program.hpp>
 
 namespace {
 
@@ -54,7 +54,7 @@ namespace {
 
 }
 
-#include <w32/sc/service-program.cpp>
+#include <w32/app/service-program.cpp>
 
 #pragma comment ( lib, "w32.lib" )
 #pragma comment ( lib, "w32.dbg.lib" )

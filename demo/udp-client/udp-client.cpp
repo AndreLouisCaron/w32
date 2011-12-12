@@ -5,20 +5,16 @@
 // this software package (see "license.rtf"). If not, the license is available
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
-#include <w32/net/integers.hpp>
-#include <w32/net/Context.hpp>
-#include <w32/net/streambuf.hpp>
-#include <w32/net/ipv4/Address.hpp>
-#include <w32/net/ipv4/EndPoint.hpp>
-#include <w32/net/udp/Socket.hpp>
-#include <w32/diagnostics/UncheckedError.hpp>
-#include <w32/diagnostics/StructuredException.hpp>
+#include <w32.net.hpp>
+
 #include <iostream>
 #include <string>
 
-int main ( int arc, char ** argv )
-{
-    try
+#include <w32/app/console-program.hpp>
+
+namespace {
+
+    int run ( int arc, wchar_t ** argv )
     {
         // Must load winsock2.
         w32::net::Context context;
@@ -33,22 +29,17 @@ int main ( int arc, char ** argv )
 
         const char buffer[] = "hello, world!";
         socket.put(peer,buffer,sizeof(buffer));
+
+        return (EXIT_SUCCESS);
     }
-    catch ( const w32::diagnostics::UncheckedError& error ) {
-        std::cerr << error.what() << std::endl;
-        return (EXIT_FAILURE);
-    }
-    catch ( const w32::diagnostics::StructuredException& error ) {
-        std::cerr << error.what() << std::endl;
-        return (EXIT_FAILURE);
-    }
-    catch ( const std::exception& error ) {
-        std::cerr << error.what() << std::endl;
-        return (EXIT_FAILURE);
-    }
-    catch ( ... ) {
-        std::cerr << "Unknown failure." << std::endl;
-        return (EXIT_FAILURE);
-    }
-    return (EXIT_SUCCESS);
+
 }
+
+#include <w32/app/console-program.cpp>
+
+    // Link automagically.
+#pragma comment ( lib, "w32.lib" )
+#pragma comment ( lib, "w32.dbg.lib" )
+#pragma comment ( lib, "w32.net.lib" )
+#pragma comment ( lib, "w32.net.ipv4.lib" )
+#pragma comment ( lib, "w32.net.udp.lib" )

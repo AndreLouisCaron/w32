@@ -7,8 +7,10 @@
 
 #include "tga.hpp"
 #include "tga-to-bmp32.hpp"
+
 #include <w32.shl.hpp>
 #include <w32.shl.ext.hpp>
+
 #include <algorithm>
 #include <cstddef>
 #include <fstream>
@@ -98,12 +100,4 @@ namespace {
 }
 
     // Compile this as a COM in-process server.
-#include <w32/com/in-process-server.cpp>
-
-    // Link automagically.
-#pragma comment ( lib, "w32.lib" )
-#pragma comment ( lib, "w32.com.lib" )
-#pragma comment ( lib, "w32.dbg.lib" )
-#pragma comment ( lib, "w32.gdi.lib" )
-#pragma comment ( lib, "w32.shl.lib" )
-#pragma comment ( lib, "w32.shl.ext.lib" )
+#include <w32/app/in-process-server.cpp>

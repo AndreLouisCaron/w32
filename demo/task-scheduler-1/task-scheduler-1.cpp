@@ -81,7 +81,7 @@ namespace {
 
 }
 
-#include <w32/console-program.hpp>
+#include <w32/app/console-program.hpp>
 
 namespace {
 
@@ -187,7 +187,7 @@ namespace {
 
 }
 
-#include <w32/console-program.cpp>
+#include <w32/app/console-program.cpp>
 
     // Link automagically.
 #pragma comment ( lib, "w32.lib" )

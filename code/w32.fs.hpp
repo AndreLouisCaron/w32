@@ -5,4 +5,4 @@
 // this software package (see "license.rtf"). If not, the license is available
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
-#include <w32/fs/__module__.hpp>
+#include <w32.fs/__module__.hpp>

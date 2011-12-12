@@ -8,7 +8,7 @@
 #include <w32.hpp>
 #include <w32.net.hpp>
 
-#include <w32/net/prefork-server.hpp>
+#include <w32/app/prefork-server.hpp>
 
 namespace {
 
@@ -45,9 +45,11 @@ namespace {
 
 }
 
-#include <w32/net/prefork-server.cpp>
+#include <w32/app/prefork-server.cpp>
 
 #pragma comment ( lib, "w32.lib" )
 #pragma comment ( lib, "w32.dbg.lib" )
 #pragma comment ( lib, "w32.io.lib" )
 #pragma comment ( lib, "w32.net.lib" )
+#pragma comment ( lib, "w32.net.ipv4.lib" )
+#pragma comment ( lib, "w32.net.tcp.lib" )

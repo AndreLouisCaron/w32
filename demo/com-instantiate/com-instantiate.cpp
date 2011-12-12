@@ -13,7 +13,7 @@ namespace {
 
 }
 
-#include <w32/console-program.hpp>
+#include <w32/app/console-program.hpp>
 
 namespace {
 
@@ -53,9 +53,4 @@ namespace {
 
 }
 
-#include <w32/console-program.cpp>
-
-    // Link automagically.
-#pragma comment ( lib, "w32.lib" )
-#pragma comment ( lib, "w32.com.lib" )
-#pragma comment ( lib, "w32.dbg.lib" )
+#include <w32/app/console-program.cpp>

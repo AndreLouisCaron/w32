@@ -14,7 +14,7 @@
 #include <vector>
 #include <ctime>
 
-#include <w32/shl/taskbar-application.hpp>
+#include <w32/app/taskbar-application.hpp>
 
 namespace {
 
@@ -225,7 +225,7 @@ namespace {
 
 }
 
-#include <w32/shl/taskbar-application.cpp>
+#include <w32/app/taskbar-application.cpp>
 
     // Link automagically.
 #pragma comment ( lib, "w32.lib" )

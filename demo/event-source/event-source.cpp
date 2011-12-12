@@ -7,6 +7,7 @@
 
 #include <w32.dbg.hpp>
 #include <w32.rgs.hpp>
+
 #include <exception>
 #include <iostream>
 #include <sstream>
@@ -164,7 +165,7 @@ namespace {
 
 }
 
-#include <w32/console-program.hpp>
+#include <w32/app/console-program.hpp>
 
 namespace {
 
@@ -199,9 +200,4 @@ namespace {
 
 }
 
-#include <w32/console-program.cpp>
-
-    // Link automagically.
-#pragma comment ( lib, "w32.lib" )
-#pragma comment ( lib, "w32.dbg.lib" )
-#pragma comment ( lib, "w32.rgs.lib" )
+#include <w32/app/console-program.cpp>

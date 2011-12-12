@@ -6,7 +6,7 @@
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
 #include <w32/HandleClone.hpp>
-#include <w32/dbg/UncheckedError.hpp>
+#include <w32/Error.hpp>
 
 namespace {
 
