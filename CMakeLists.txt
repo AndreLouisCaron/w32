@@ -5,6 +5,7 @@ cmake_minimum_required(VERSION 2.6)
 project(w32++)
 
 # Define usual include paths, etc.
+set(w32_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 find_package(w32 REQUIRED)
 
 if(MSVC)
