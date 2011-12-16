@@ -4,6 +4,9 @@ cmake_minimum_required(VERSION 2.6)
 
 project(w32++)
 
+# Define usual include paths, etc.
+find_package(w32 REQUIRED)
+
 if(MSVC)
   # C and C++ runtime libraries are safe to use.
   # Don't use non-portable and inconvenient APIs
@@ -28,7 +31,7 @@ set(LIBRARY_OUTPUT_PATH    ${PROJECT_BINARY_DIR})
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR})
 
 # Resolve our own code in '#include <...>' directives.
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/code)
+include_directories(${w32_include_dir})
 
 # Build all libraries.
 add_subdirectory(code)
