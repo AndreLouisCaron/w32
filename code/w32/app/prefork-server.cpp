@@ -158,25 +158,12 @@ namespace {
             }
         }
         
-          // accept connections from gateway.
-        ::Server server;
-        bool running = true;
-        int connections = 0;
-        do {
-            w32::net::tcp::Stream stream(listener);
-            
-            std::cout
-                << "Accepted connection."
-                << std::endl;
-            
-            running &= server(stream);
-            running &= ((limit > 0) && (++connections < limit));
-            
-            std::cout
-                << "Client disconnected."
-                << std::endl;
+          // accept incoming connections one at a time.
+        ::Server server(argc-1, argv+1);
+        for ( int count = 0; ((limit == 0) || (count < limit)); ++count )
+        {
+             server(w32::net::tcp::Stream(listener));
         }
-        while ( running );
         
         return (EXIT_SUCCESS);
     }
@@ -216,9 +203,3 @@ namespace {
 }
 
 #include <w32/app/console-program.cpp>
-
-#pragma comment ( lib, "w32.lib" )
-#pragma comment ( lib, "w32.dbg.lib" )
-#pragma comment ( lib, "w32.mt.lib" )
-#pragma comment ( lib, "w32.ipc.lib" )
-#pragma comment ( lib, "w32.net.lib" )
