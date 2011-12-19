@@ -47,10 +47,8 @@ namespace w32 { namespace ipc {
         static Process current ();
 
         /* construction. */
-    protected:
-        explicit Process ( const Handle& handle );
-
     public:
+        explicit Process ( const Handle& handle );
         explicit Process ( Identifier identifier );
         explicit Process ( const string& executable, bool inherit=false );
 
