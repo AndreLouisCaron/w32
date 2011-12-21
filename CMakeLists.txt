@@ -23,7 +23,7 @@ if(MSVC)
     "/DWIN32 /D_WINDOWS /EHsc /wd4355"
     CACHE STRING "Release compiler flags" FORCE)
   set(CMAKE_CXX_FLAGS_DEBUG
-    "${CMAKE_CXX_FLAGS_DEBUG} /WX /wd4355"
+    "/DWIN32 /D_WINDOWS /WX /wd4355"
     CACHE STRING "Debug compiler flags" FORCE)
 endif()
 
