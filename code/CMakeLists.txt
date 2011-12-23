@@ -1,32 +1,36 @@
-set(modules
-  w32
-  w32.com
-  w32.cr
-  w32.dbg
-  w32.fs
-  w32.gdi
-  w32.in
-  w32.io
-  w32.ipc
-  w32.mm
-  w32.msi
-  w32.mt
-  w32.net
-  w32.net.ipv4
-  w32.net.ipv6
-#  w32.net.irda
-  w32.net.tcp
-  w32.net.udp
-  w32.rgs
-  w32.sc
-  w32.shl
-  w32.shl.ext
-  w32.sy
-  w32.ts-1
-  w32.ts-2
-  w32.xml.dom
-  w32.xml.sax
-)
+if(w32_FIND_COMPONENTS)
+ set(modules ${w32_FIND_COMPONENTS})
+else()
+ set(modules
+   w32
+   w32.com
+   w32.cr
+   w32.dbg
+   w32.fs
+   w32.gdi
+   w32.in
+   w32.io
+   w32.ipc
+   w32.mm
+   w32.msi
+   w32.mt
+   w32.net
+   w32.net.ipv4
+   w32.net.ipv6
+ #  w32.net.irda
+   w32.net.tcp
+   w32.net.udp
+   w32.rgs
+   w32.sc
+   w32.shl
+   w32.shl.ext
+   w32.sy
+   w32.ts-1
+   w32.ts-2
+   w32.xml.dom
+   w32.xml.sax
+ )
+endif()
 foreach(module ${modules})
   add_subdirectory(${module})
 endforeach()
