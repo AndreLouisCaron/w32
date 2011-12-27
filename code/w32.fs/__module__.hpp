@@ -14,20 +14,18 @@ namespace w32 {
     namespace fs {}
 }
 
-#include "../w32/__compiler-intro__.hpp"
-#   include <w32.fs/Attributes.hpp>
-#   include <w32.fs/Changes.hpp>
-#   include <w32.fs/copy.hpp>
-#   include <w32.fs/drives.hpp>
-#   include <w32.fs/File.hpp>
-#   include <w32.fs/Folder.hpp>
-#   include <w32.fs/hardlink.hpp>
-#   include <w32.fs/junction.hpp>
-#   include <w32.fs/move.hpp>
-#   include <w32.fs/Search.hpp>
-#   include <w32.fs/symlink.hpp>
-#   include <w32.fs/Time.hpp>
-#   include <w32.fs/unlink.hpp>
-#include "../w32/__compiler-outro__.hpp"
+#include <w32.fs/Attributes.hpp>
+#include <w32.fs/Changes.hpp>
+#include <w32.fs/copy.hpp>
+#include <w32.fs/drives.hpp>
+#include <w32.fs/File.hpp>
+#include <w32.fs/Folder.hpp>
+#include <w32.fs/hardlink.hpp>
+#include <w32.fs/junction.hpp>
+#include <w32.fs/move.hpp>
+#include <w32.fs/Search.hpp>
+#include <w32.fs/symlink.hpp>
+#include <w32.fs/Time.hpp>
+#include <w32.fs/unlink.hpp>
 
 #endif /* _w32_fs_hpp__ */

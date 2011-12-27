@@ -14,11 +14,9 @@ namespace w32 {
     namespace cr {}
 }
 
-#include "../w32/__compiler-intro__.hpp"
-#   include <w32.cr/Blob.hpp>
-#   include <w32.cr/Hash.hpp>
-#   include <w32.cr/Key.hpp>
-#   include <w32.cr/Provider.hpp>
-#include "../w32/__compiler-outro__.hpp"
+#include <w32.cr/Blob.hpp>
+#include <w32.cr/Hash.hpp>
+#include <w32.cr/Key.hpp>
+#include <w32.cr/Provider.hpp>
 
 #endif /* _w32_cr_hpp__ */

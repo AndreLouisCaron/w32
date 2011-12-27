@@ -14,12 +14,10 @@ namespace w32 {
     namespace ipc {}
 }
 
-#include "../w32/__compiler-intro__.hpp"
-#   include <w32.ipc/Job.hpp>
-#   include <w32.ipc/Modules.hpp>
-#   include <w32.ipc/Process.hpp>
-#   include <w32.ipc/Processes.hpp>
-#   include <w32.ipc/Threads.hpp>
-#include "../w32/__compiler-outro__.hpp"
+#include <w32.ipc/Job.hpp>
+#include <w32.ipc/Modules.hpp>
+#include <w32.ipc/Process.hpp>
+#include <w32.ipc/Processes.hpp>
+#include <w32.ipc/Threads.hpp>
 
 #endif /* _w32_ipc_hpp__ */

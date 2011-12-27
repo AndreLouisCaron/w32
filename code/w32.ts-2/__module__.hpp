@@ -14,20 +14,18 @@ namespace w32 {
     namespace ts {}
 }
 
-#include "../w32/__compiler-intro__.hpp"
-#   include <w32.ts-2/Action.hpp>
-#   include <w32.ts-2/Actions.hpp>
-#   include <w32.ts-2/Definition.hpp>
-#   include <w32.ts-2/Execution.hpp>
-#   include <w32.ts-2/Executions.hpp>
-#   include <w32.ts-2/Folder.hpp>
-#   include <w32.ts-2/Folders.hpp>
-#   include <w32.ts-2/Handler.hpp>
-#   include <w32.ts-2/Principal.hpp>
-#   include <w32.ts-2/Registration.hpp>
-#   include <w32.ts-2/Registrations.hpp>
-#   include <w32.ts-2/Service.hpp>
-#   include <w32.ts-2/State.hpp>
-#include "../w32/__compiler-outro__.hpp"
+#include <w32.ts-2/Action.hpp>
+#include <w32.ts-2/Actions.hpp>
+#include <w32.ts-2/Definition.hpp>
+#include <w32.ts-2/Execution.hpp>
+#include <w32.ts-2/Executions.hpp>
+#include <w32.ts-2/Folder.hpp>
+#include <w32.ts-2/Folders.hpp>
+#include <w32.ts-2/Handler.hpp>
+#include <w32.ts-2/Principal.hpp>
+#include <w32.ts-2/Registration.hpp>
+#include <w32.ts-2/Registrations.hpp>
+#include <w32.ts-2/Service.hpp>
+#include <w32.ts-2/State.hpp>
 
 #endif /* _w32_ts_hpp__ */

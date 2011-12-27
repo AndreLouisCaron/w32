@@ -15,7 +15,4 @@ namespace w32 {
 }
 
 
-#include "../w32/__compiler-intro__.hpp"
-#include "../w32/__compiler-outro__.hpp"
-
 #endif /* _w32_sy_hpp__ */

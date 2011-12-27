@@ -20,10 +20,10 @@ if(MSVC)
   # translation of hardware exceptions to C++
   # exceptions.
   set(CMAKE_CXX_FLAGS
-    "/DWIN32 /D_WINDOWS /EHsc /wd4355"
+    "/DWIN32 /D_WINDOWS /EHsc /WX /wd4355 /wd4251 /wd4250 /wd4996"
     CACHE STRING "Release compiler flags" FORCE)
   set(CMAKE_CXX_FLAGS_DEBUG
-    "/DWIN32 /D_WINDOWS /WX /wd4355"
+    "/DWIN32 /D_WINDOWS /EHsc /WX /wd4355 /wd4251 /wd4250 /wd4996"
     CACHE STRING "Debug compiler flags" FORCE)
 endif()
 

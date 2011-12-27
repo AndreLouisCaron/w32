@@ -14,16 +14,13 @@ namespace w32 {
     namespace msi {}
 }
 
-    // Include all public headers.
-#include "../w32/__compiler-intro__.hpp"
-#   include <w32.msi/Columns.hpp>
-#   include <w32.msi/Database.hpp>
-#   include <w32.msi/Error.hpp>
-#   include <w32.msi/ErrorRecord.hpp>
-#   include <w32.msi/Hash.hpp>
-#   include <w32.msi/Product.hpp>
-#   include <w32.msi/Products.hpp>
-#   include <w32.msi/View.hpp>
-#include "../w32/__compiler-outro__.hpp"
+#include <w32.msi/Columns.hpp>
+#include <w32.msi/Database.hpp>
+#include <w32.msi/Error.hpp>
+#include <w32.msi/ErrorRecord.hpp>
+#include <w32.msi/Hash.hpp>
+#include <w32.msi/Product.hpp>
+#include <w32.msi/Products.hpp>
+#include <w32.msi/View.hpp>
 
 #endif /* _w32_msi_hpp__ */

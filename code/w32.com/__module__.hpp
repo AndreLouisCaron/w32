@@ -15,18 +15,16 @@ namespace w32{
 }
 
 
-#include "../w32/__compiler-intro__.hpp"
-#   include <w32.com/Allocator.hpp>
-#   include <w32.com/cast.hpp>
-#   include <w32.com/Error.hpp>
-#   include <w32.com/Factory.hpp>
-#   include <w32.com/Guid.hpp>
-#   include <w32.com/instantiate.hpp>
-#   include <w32.com/Library.hpp>
-#   include <w32.com/Model.hpp>
-#   include <w32.com/Object.hpp>
-#   include <w32.com/Ptr.hpp>
-#   include <w32.com/Result.hpp>
-#include "../w32/__compiler-outro__.hpp"
+#include <w32.com/Allocator.hpp>
+#include <w32.com/cast.hpp>
+#include <w32.com/Error.hpp>
+#include <w32.com/Factory.hpp>
+#include <w32.com/Guid.hpp>
+#include <w32.com/instantiate.hpp>
+#include <w32.com/Library.hpp>
+#include <w32.com/Model.hpp>
+#include <w32.com/Object.hpp>
+#include <w32.com/Ptr.hpp>
+#include <w32.com/Result.hpp>
 
 #endif /* _com_hpp__ */

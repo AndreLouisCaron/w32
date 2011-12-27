@@ -14,14 +14,12 @@ namespace w32 {
     namespace rgs {}
 }
 
-#include "../w32/__compiler-intro__.hpp"
-#   include <w32.rgs/Access.hpp>
-#   include <w32.rgs/clean.hpp>
-#   include <w32.rgs/Key.hpp>
-#   include <w32.rgs/Keys.hpp>
-#   include <w32.rgs/Value.hpp>
-#   include <w32.rgs/Values.hpp>
-#   include <w32.rgs/Type.hpp>
-#include "../w32/__compiler-outro__.hpp"
+#include <w32.rgs/Access.hpp>
+#include <w32.rgs/clean.hpp>
+#include <w32.rgs/Key.hpp>
+#include <w32.rgs/Keys.hpp>
+#include <w32.rgs/Value.hpp>
+#include <w32.rgs/Values.hpp>
+#include <w32.rgs/Type.hpp>
 
 #endif /* _w32_rgs_hpp__ */

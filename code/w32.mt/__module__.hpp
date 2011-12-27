@@ -15,21 +15,19 @@ namespace w32 {
 }
 
 
-#include "../w32/__compiler-intro__.hpp"
-#   include <w32.mt/AutoResetEvent.hpp>
-#   include <w32.mt/CriticalSection.hpp>
-#   include <w32.mt/ManualResetEvent.hpp>
-#   include <w32.mt/Mutex.hpp>
-#   include <w32.mt/Semaphore.hpp>
-#   include <w32.mt/Thread.hpp>
-#   include <w32.mt/ThreadLocalPointer.hpp>
-#   if (_WIN32_WINNT >= 0x600)
-#       include <w32.mt/ConditionVariable.hpp>
-#       include <w32.mt/ReadWriteLock.hpp>
-#       include <w32.mt/Pool.hpp>
-#       include <w32.mt/Queue.hpp>
-#       include <w32.mt/Cleanup.hpp>
-#   endif
-#include "../w32/__compiler-outro__.hpp"
+#include <w32.mt/AutoResetEvent.hpp>
+#include <w32.mt/CriticalSection.hpp>
+#include <w32.mt/ManualResetEvent.hpp>
+#include <w32.mt/Mutex.hpp>
+#include <w32.mt/Semaphore.hpp>
+#include <w32.mt/Thread.hpp>
+#include <w32.mt/ThreadLocalPointer.hpp>
+#if (_WIN32_WINNT >= 0x600)
+#    include <w32.mt/ConditionVariable.hpp>
+#    include <w32.mt/ReadWriteLock.hpp>
+#    include <w32.mt/Pool.hpp>
+#    include <w32.mt/Queue.hpp>
+#    include <w32.mt/Cleanup.hpp>
+#endif
 
 #endif /* _w32_mt_hpp__ */

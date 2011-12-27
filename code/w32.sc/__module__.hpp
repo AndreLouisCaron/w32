@@ -14,10 +14,8 @@ namespace w32 {
     namespace sc {}
 }
 
-#include "../w32/__compiler-intro__.hpp"
-#   include <w32.sc/Database.hpp>
-#   include <w32.sc/Object.hpp>
-#   include <w32.sc/Service.hpp>
-#include "../w32/__compiler-outro__.hpp"
+#include <w32.sc/Database.hpp>
+#include <w32.sc/Object.hpp>
+#include <w32.sc/Service.hpp>
 
 #endif /* _w32_sc_hpp__ */

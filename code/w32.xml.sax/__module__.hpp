@@ -14,14 +14,12 @@ namespace w32 { namespace xml {
     namespace sax {}
 } }
 
-#include "../w32/__compiler-intro__.hpp"
-#   include <w32.xml.sax/Attributes.hpp>
-#   include <w32.xml.sax/ContentHandler.hpp>
-#   include <w32.xml.sax/DtdHandler.hpp>
-#   include <w32.xml.sax/ErrorHandler.hpp>
-#   include <w32.xml.sax/LexicalHandler.hpp>
-#   include <w32.xml.sax/Locator.hpp>
-#   include <w32.xml.sax/Reader.hpp>
-#include "../w32/__compiler-outro__.hpp"
+#include <w32.xml.sax/Attributes.hpp>
+#include <w32.xml.sax/ContentHandler.hpp>
+#include <w32.xml.sax/DtdHandler.hpp>
+#include <w32.xml.sax/ErrorHandler.hpp>
+#include <w32.xml.sax/LexicalHandler.hpp>
+#include <w32.xml.sax/Locator.hpp>
+#include <w32.xml.sax/Reader.hpp>
 
 #endif /* _w32_xml_sax_hpp__ */

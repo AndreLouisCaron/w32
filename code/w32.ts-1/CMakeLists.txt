@@ -6,7 +6,9 @@ file(GLOB ${module}_headers
 file(GLOB ${module}_sources
   ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
 )
-#set(${module}_libraries ...)
+set(${module}_libraries
+  MsTask.lib
+)
 set(${module}_dependencies
   w32
 )

@@ -12,22 +12,20 @@
 
 namespace w32 {}
 
-#include "../w32/__compiler-intro__.hpp"
-#   include <w32.shl/Attributes.hpp>
-#   include <w32.shl/Browser.hpp>
-#   include <w32.shl/Data.hpp>
-#   include <w32.shl/Dropping.hpp>
-#   include <w32.shl/Folder.hpp>
-#   include <w32.shl/Item.hpp>
-#   include <w32.shl/Listing.hpp>
-#   include <w32.shl/Location.hpp>
-#   include <w32.shl/Path.hpp>
-#   include <w32.shl/Stat.hpp>
-#   include <w32.shl/Storage.hpp>
-#   include <w32.shl/Stream.hpp>
-#   include <w32.shl/streambuf.hpp>
-#   include <w32.shl/TaskbarIcon.hpp>
-#   include <w32.shl/wallpaper.hpp>
-#include "../w32/__compiler-outro__.hpp"
+#include <w32.shl/Attributes.hpp>
+#include <w32.shl/Browser.hpp>
+#include <w32.shl/Data.hpp>
+#include <w32.shl/Dropping.hpp>
+#include <w32.shl/Folder.hpp>
+#include <w32.shl/Item.hpp>
+#include <w32.shl/Listing.hpp>
+#include <w32.shl/Location.hpp>
+#include <w32.shl/Path.hpp>
+#include <w32.shl/Stat.hpp>
+#include <w32.shl/Storage.hpp>
+#include <w32.shl/Stream.hpp>
+#include <w32.shl/streambuf.hpp>
+#include <w32.shl/TaskbarIcon.hpp>
+#include <w32.shl/wallpaper.hpp>
 
 #endif /* _w32_shl_hpp__ */

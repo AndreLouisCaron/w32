@@ -14,20 +14,18 @@ namespace w32 { namespace xml {
     namespace dom {}
 } }
 
-#include "../w32/__compiler-intro__.hpp"
-#   include <w32.xml.dom/Attribute.hpp>
-#   include <w32.xml.dom/Attributes.hpp>
-#   include <w32.xml.dom/CData.hpp>
-#   include <w32.xml.dom/Comment.hpp>
-#   include <w32.xml.dom/Document.hpp>
-#   include <w32.xml.dom/Element.hpp>
-#   include <w32.xml.dom/Error.hpp>
-#   include <w32.xml.dom/Instruction.hpp>
-#   include <w32.xml.dom/List.hpp>
-#   include <w32.xml.dom/Node.hpp>
-#   include <w32.xml.dom/Text.hpp>
-#   include <w32.xml.dom/Visitor.hpp>
-#   include <w32.xml.dom/walk.hpp>
-#include "../w32/__compiler-outro__.hpp"
+#include <w32.xml.dom/Attribute.hpp>
+#include <w32.xml.dom/Attributes.hpp>
+#include <w32.xml.dom/CData.hpp>
+#include <w32.xml.dom/Comment.hpp>
+#include <w32.xml.dom/Document.hpp>
+#include <w32.xml.dom/Element.hpp>
+#include <w32.xml.dom/Error.hpp>
+#include <w32.xml.dom/Instruction.hpp>
+#include <w32.xml.dom/List.hpp>
+#include <w32.xml.dom/Node.hpp>
+#include <w32.xml.dom/Text.hpp>
+#include <w32.xml.dom/Visitor.hpp>
+#include <w32.xml.dom/walk.hpp>
 
 #endif /* _w32_xml_dom_hpp__ */

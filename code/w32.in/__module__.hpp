@@ -15,13 +15,11 @@ namespace w32 {
     namespace in {}
 }
 
-#include "../w32/__compiler-intro__.hpp"
-#   include <w32.in/check.hpp>
-#   include <w32.in/IStream.hpp>
-#   include <w32.in/Session.hpp>
-#   include <w32.in/Url.hpp>
-#   include <w32.in/ftp.hpp>
-#   include <w32.in/http.hpp>
-#include "../w32/__compiler-outro__.hpp"
+#include <w32.in/check.hpp>
+#include <w32.in/IStream.hpp>
+#include <w32.in/Session.hpp>
+#include <w32.in/Url.hpp>
+#include <w32.in/ftp.hpp>
+#include <w32.in/http.hpp>
 
 #endif /* _w32_in_hpp__ */

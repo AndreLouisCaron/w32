@@ -16,13 +16,7 @@
 #include <MsiDefs.h>
 #include <MsiQuery.h>
 
-#include "../w32/__compiler-intro__.hpp"
-#   include <w32/string.hpp>
-#   include <w32/types.hpp>
-#include "../w32/__compiler-outro__.hpp"
-
-#ifdef _MSC_VER
-#   pragma comment ( lib, "Msi.lib" )
-#endif
+#include <w32/string.hpp>
+#include <w32/types.hpp>
 
 #endif /* _w32_msi_configure_hpp__ */

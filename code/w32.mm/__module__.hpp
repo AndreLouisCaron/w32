@@ -14,14 +14,12 @@ namespace w32 {
     namespace mm {}
 }
 
-#include "../w32/__compiler-intro__.hpp"
-#   include <w32.mm/Aligned.hpp>
-#   include <w32.mm/Global.hpp>
-#   include <w32.mm/Heap.hpp>
-#   include <w32.mm/Local.hpp>
-#   include <w32.mm/Mapping.hpp>
-#   include <w32.mm/Shared.hpp>
-#   include <w32.mm/Virtual.hpp>
-#include "../w32/__compiler-outro__.hpp"
+#include <w32.mm/Aligned.hpp>
+#include <w32.mm/Global.hpp>
+#include <w32.mm/Heap.hpp>
+#include <w32.mm/Local.hpp>
+#include <w32.mm/Mapping.hpp>
+#include <w32.mm/Shared.hpp>
+#include <w32.mm/Virtual.hpp>
 
 #endif /* _w32_mm_hpp__ */

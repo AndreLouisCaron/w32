@@ -13,16 +13,10 @@
 #include <mstask.h>
 #include <msterr.h>
 
-#include "../w32/__compiler-intro__.hpp"
-#   include <w32/string.hpp>
-#   include <w32/types.hpp>
-#include "../w32/__compiler-outro__.hpp"
+#include <w32/string.hpp>
+#include <w32/types.hpp>
 
     // Yet another COM-based Windows API!
 #include <w32.com.hpp>
-
-#ifdef _MSC_VER
-#   pragma comment ( lib, "Mstask.lib" )
-#endif
 
 #endif /* _w32_ts_configure_hpp__ */
