@@ -32,7 +32,6 @@ file(GLOB ${module}_headers
   Waitable.hpp
 )
 file(GLOB ${module}_sources
-  __module__.cpp
   Architecture.cpp
   astring.cpp
   bstring.cpp

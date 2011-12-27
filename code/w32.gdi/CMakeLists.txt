@@ -109,7 +109,6 @@ file(GLOB ${module}_headers
   WindowEvents.hpp
 )
 file(GLOB ${module}_sources
-  __module__.cpp
   Animation.cpp
   Atom.cpp
   Bitmap.cpp
@@ -140,7 +139,6 @@ file(GLOB ${module}_sources
   Group.cpp
   Header.cpp
   Icon.cpp
-  image.cpp
   ImageList.cpp
   IpAddress.cpp
   Key.cpp

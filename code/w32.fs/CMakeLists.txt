@@ -19,7 +19,6 @@ file(GLOB ${module}_headers
   unlink.hpp
 )
 file(GLOB ${module}_sources 
-  __module__.cpp
   absolute.cpp
   Attributes.cpp
   Changes.cpp

@@ -13,7 +13,6 @@ file(GLOB ${module}_headers
   Virtual.hpp
 )
 file(GLOB ${module}_sources
-  __module__.cpp
   Aligned.cpp
   Global.cpp
   Heap.cpp

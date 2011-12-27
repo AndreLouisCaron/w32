@@ -21,7 +21,6 @@ file(GLOB ${module}_headers
   Timespan.hpp
 )
 file(GLOB ${module}_sources
-  __module__.cpp
   Buffer.cpp
   Context.cpp
   DatagramSocket.cpp

@@ -11,7 +11,6 @@ file(GLOB ${module}_headers
   Trigger.hpp
 )
 file(GLOB ${module}_sources 
-  __module__.cpp
   Editor.cpp
   Scheduler.cpp
   Status.cpp

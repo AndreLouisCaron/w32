@@ -39,10 +39,3 @@ int wmain ( int argc, wchar_t ** argv )
     
     return (EXIT_SUCCESS);
 }
-
-namespace w32 {
-
-        // Can't be "declspec(dllexport)"ed.
-    std::locale::id Error::Put::id;
-
-}

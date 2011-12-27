@@ -16,7 +16,6 @@ file(GLOB ${module}_headers
   View.hpp
 )
 file(GLOB ${module}_sources 
-  __module__.cpp
   Columns.cpp
   Database.cpp
   Error.cpp

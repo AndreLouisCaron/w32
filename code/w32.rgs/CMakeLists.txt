@@ -12,7 +12,6 @@ file(GLOB ${module}_headers
   Values.hpp
 )
 file(GLOB ${module}_sources
-  __module__.cpp
   Access.cpp
   clean.cpp
   Key.cpp

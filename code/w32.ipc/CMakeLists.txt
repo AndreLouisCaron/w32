@@ -11,7 +11,6 @@ file(GLOB ${module}_headers
   Threads.hpp
 )
 file(GLOB ${module}_sources
-  __module__.cpp
   Job.cpp
   Modules.cpp
   Process.cpp

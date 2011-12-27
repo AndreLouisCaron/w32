@@ -8,7 +8,6 @@ file(GLOB ${module}_headers
   StructuredException.hpp
 )
 file(GLOB ${module}_sources
-  __module__.cpp
   Event.cpp
   Log.cpp
   StructuredException.cpp

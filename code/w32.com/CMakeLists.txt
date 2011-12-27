@@ -20,14 +20,11 @@ file(GLOB ${module}_headers
   Wrapper.hpp
 )
 file(GLOB ${module}_sources
-  __module__.cpp
   Allocator.cpp
   Context.cpp
   Error.cpp
-  Factory.cpp
   Guid.cpp
   Library.cpp
-  Model.cpp
   Object.cpp
   Result.cpp
   Threading.cpp

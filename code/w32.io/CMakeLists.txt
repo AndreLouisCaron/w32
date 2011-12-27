@@ -23,7 +23,6 @@ file(GLOB ${module}_headers
   Transfer.hpp
 )
 file(GLOB ${module}_sources
-  __module__.cpp
   AnonymousPipe.cpp
   Channel.cpp
   CompletionPort.cpp

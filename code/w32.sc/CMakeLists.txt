@@ -8,7 +8,6 @@ file(GLOB ${module}_headers
   Service.hpp
 )
 file(GLOB ${module}_sources
-  __module__.cpp
   Database.cpp
   Object.cpp
   Service.cpp

@@ -12,7 +12,6 @@ file(GLOB ${module}_headers A
   Reader.hpp
 )
 file(GLOB ${module}_sources
-  __module__.cpp
   Attributes.cpp
   Locator.cpp
 )

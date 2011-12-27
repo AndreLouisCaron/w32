@@ -18,7 +18,6 @@ file(GLOB ${module}_headers
   walk.hpp
 )
 file(GLOB ${module}_sources
-  __module__.cpp
   Attribute.cpp
   Attributes.cpp
   CData.cpp

@@ -18,7 +18,6 @@ file(GLOB ${module}_headers
   State.hpp
 )
 file(GLOB ${module}_sources 
-  __module__.cpp
   Action.cpp
   Actions.cpp
   Definition.cpp

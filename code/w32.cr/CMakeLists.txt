@@ -9,7 +9,6 @@ file(GLOB ${module}_headers
   Provider.hpp
 )
 file(GLOB ${module}_sources
-  __module__.cpp
   Blob.cpp
   Hash.cpp
   Key.cpp

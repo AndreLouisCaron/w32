@@ -20,7 +20,6 @@ file(GLOB ${module}_headers
   Timer.hpp
 )
 file(GLOB ${module}_sources
-  __module__.cpp
   atomic.cpp
   AutoResetEvent.cpp
   Cleanup.cpp

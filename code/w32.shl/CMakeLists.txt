@@ -22,7 +22,6 @@ file(GLOB ${module}_headers
   wallpaper.hpp
 )
 file(GLOB ${module}_sources
-  __module__.cpp
   Attributes.cpp
   Binding.cpp
   Browser.cpp

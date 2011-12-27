@@ -17,7 +17,6 @@ file(GLOB ${module}_headers
   Tooltip.hpp
 )
 file(GLOB ${module}_sources
-  __module__.cpp
   ColumnProvider.cpp
   ContextMenu.cpp
   DropTarget.cpp

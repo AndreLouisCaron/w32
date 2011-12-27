@@ -12,7 +12,6 @@ file(GLOB ${module}_headers
   Token.hpp
 )
 file(GLOB ${module}_sources
-  __module__.cpp
   AccessControlList.cpp
   Attributes.cpp
   Descriptor.cpp

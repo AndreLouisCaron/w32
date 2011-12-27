@@ -30,4 +30,6 @@ namespace w32 {
         return (message.str());
     }
 
+    std::locale::id Error::Put::id;
+
 }
