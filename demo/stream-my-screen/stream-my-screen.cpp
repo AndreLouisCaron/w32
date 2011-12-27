@@ -11,7 +11,6 @@
 #include <functional>
 
 #include <revel.h>
-#pragma comment ( lib, "revel.lib")
 
 namespace {
 
@@ -175,9 +174,3 @@ namespace {
 }
 
 #include <w32/gdi/windows-program.cpp>
-
-    // Link automagically.
-#pragma comment ( lib, "w32.lib" )
-#pragma comment ( lib, "w32.dbg.lib" )
-#pragma comment ( lib, "w32.gdi.lib" )
-#pragma comment ( lib, "w32.mt.lib" )

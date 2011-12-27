@@ -55,9 +55,3 @@ namespace {
 }
 
 #include <w32/app/service-program.cpp>
-
-#pragma comment ( lib, "w32.lib" )
-#pragma comment ( lib, "w32.dbg.lib" )
-#pragma comment ( lib, "w32.rgs.lib" )
-#pragma comment ( lib, "w32.mt.lib" )
-#pragma comment ( lib, "w32.sc.lib" )

@@ -60,6 +60,8 @@ file(GLOB ${module}_sources
 )
 set(${module}_libraries
   kernel32.lib
+  KtmW32.lib
+  PSApi.lib
 )
 
 add_library(${module}

@@ -118,10 +118,3 @@ namespace {
 }
 
 #include <w32/app/console-program.cpp>
-
-    // Link automagically.
-#pragma comment ( lib, "w32.lib" )
-#pragma comment ( lib, "w32.dbg.lib" )
-#pragma comment ( lib, "w32.ipc.lib" )
-#pragma comment ( lib, "w32.mm.lib" )
-#pragma comment ( lib, "w32.mt.lib" )

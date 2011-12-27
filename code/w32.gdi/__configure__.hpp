@@ -26,8 +26,4 @@
 #   undef PropertySheet
 #endif
 
-#ifdef _MSC_VER
-#   pragma comment ( lib, "ComCtl32.lib" )
-#endif
-
 #endif /* _w32_gdi_configure_hpp__ */

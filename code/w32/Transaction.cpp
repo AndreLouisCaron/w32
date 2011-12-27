@@ -2,7 +2,6 @@
 #include <w32/Transaction.hpp>
 #include <w32/Error.hpp>
 #include <KtmW32.h>
-#pragma comment ( lib, "KtmW32.lib" )
 
 namespace {
 

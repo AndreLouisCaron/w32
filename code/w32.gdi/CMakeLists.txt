@@ -188,7 +188,9 @@ file(GLOB ${module}_sources
   Window.cpp
   WindowEvents.cpp
 )
-#set(${module}_libraries ...)
+set(${module}_libraries
+  ComCtl32.lib
+)
 set(${module}_dependencies
   w32
 )

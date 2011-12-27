@@ -37,7 +37,9 @@ file(GLOB ${module}_sources
   StreamSocket.cpp
   Timespan.cpp
 )
-#set(${module}_libraries ...)
+set(${module}_libraries
+  ws2_32.lib
+)
 set(${module}_dependencies
   w32
 )

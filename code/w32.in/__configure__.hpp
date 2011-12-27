@@ -14,8 +14,4 @@
 #   include <Wininet.h>
 #endif
 
-#ifdef _MSC_VER
-#   pragma comment ( lib, "Wininet.lib" )
-#endif
-
 #endif /* _w32_in_configure_hpp__ */

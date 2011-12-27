@@ -12,8 +12,4 @@
 
 #include <WinCrypt.h>
 
-#ifdef _MSC_VER
-#   pragma comment ( lib, "Crypt32.lib" )
-#endif
-
 #endif /* _w32_cr_configure__hpp__ */

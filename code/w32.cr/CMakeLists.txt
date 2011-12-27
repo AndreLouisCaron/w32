@@ -14,7 +14,9 @@ file(GLOB ${module}_sources
   Key.cpp
   Provider.cpp
 )
-#set(${module}_libraries ...)
+set(${module}_libraries
+  Crypt32.lib
+)
 set(${module}_dependencies
   w32
 )

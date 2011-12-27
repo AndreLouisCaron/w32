@@ -135,11 +135,3 @@ namespace {
 }
 
 #include <w32/app/console-program.cpp>
-
-#pragma comment ( lib, "w32.lib" )
-#pragma comment ( lib, "w32.dbg.lib" )
-#pragma comment ( lib, "w32.mt.lib" )
-#pragma comment ( lib, "w32.ipc.lib" )
-#pragma comment ( lib, "w32.net.lib" )
-#pragma comment ( lib, "w32.net.ipv4.lib" )
-#pragma comment ( lib, "w32.net.tcp.lib" )

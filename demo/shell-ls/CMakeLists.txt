@@ -9,6 +9,8 @@ file(GLOB ${demo-project}_sources
 set(${demo-project}_libraries
   w32
   w32.com
+  w32.dbg
+  w32.rgs
   w32.shl
 )
 

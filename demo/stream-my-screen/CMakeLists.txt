@@ -8,7 +8,10 @@ file(GLOB ${demo-project}_sources
 )
 set(${demo-project}_libraries
   w32
+  w32.dbg
   w32.gdi
+  w32.mt
+  revel.lib
 )
 
 add_executable(${demo-project}

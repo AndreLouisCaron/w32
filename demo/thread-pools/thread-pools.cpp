@@ -70,6 +70,3 @@ namespace {
 }
 
 #include <w32/app/console-program.cpp>
-
-    // Link automagically.
-#pragma comment ( lib, "w32.dbg.lib" )

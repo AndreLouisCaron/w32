@@ -10,9 +10,6 @@
 
     // Require process status API for "GetModuleBaseName()".
 #include "../w32.ipc/__configure__.hpp"
-#ifdef _MSC_VER
-#   pragma comment ( lib, "PSApi.lib" )
-#endif
 
 namespace {
 

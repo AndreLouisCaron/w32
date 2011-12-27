@@ -8,7 +8,12 @@ file(GLOB ${demo-project}_sources
 )
 set(${demo-project}_libraries
   w32
+  w32.dbg
   w32.gdi
+  w32.io
+  w32.mt
+  libpng
+  zlib
 )
 
 add_executable(${demo-project}

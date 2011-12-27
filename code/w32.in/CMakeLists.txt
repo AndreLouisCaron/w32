@@ -19,7 +19,9 @@ file(GLOB ${module}_sources
   Session.cpp
   Url.cpp
 )
-#set(${module}_libraries ...)
+set(${module}_libraries
+  Wininet.lib
+)
 set(${module}_dependencies
   w32
 )

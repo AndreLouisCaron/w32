@@ -73,8 +73,6 @@ extern "C" {
 // Override operator new() to force use of COM allocator.
 
 /*
-#pragma warning ( disable : 4290 )
-
 void * operator new ( size_t size ) throw (std::bad_alloc)
 {
     void *const block = ::CoTaskMemAlloc(size);

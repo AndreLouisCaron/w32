@@ -264,10 +264,6 @@ namespace w32 { namespace gdi {
         return (Rectangle(area));
     }
 
-#if (defined(MICROSOFT_COMPILER))
-#   pragma warning ( push )
-#   pragma warning ( disable : 4244 )
-#endif
     void Window::extra ( void * pointer )
     {
         ::SetWindowLongPtrA(
@@ -279,10 +275,6 @@ namespace w32 { namespace gdi {
     {
         return ((void*)::GetWindowLongPtrA(handle(),GWL_USERDATA));
     }
-
-#if (defined(MICROSOFT_COMPILER))
-#   pragma warning ( pop )
-#endif
 
     void Window::focus ()
     {

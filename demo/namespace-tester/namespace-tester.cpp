@@ -63,10 +63,6 @@ namespace {
 
 #include <w32/app/console-program.cpp>
 
-    // Link automagically.
-#pragma comment ( lib, "w32.com.lib" )
-#pragma comment ( lib, "w32.dbg.lib" )
-
 template<> inline w32::com::Guid
     w32::com::guidof< ::IPersistFolder > ()
 {
