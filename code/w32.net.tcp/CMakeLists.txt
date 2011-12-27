@@ -1,10 +1,13 @@
 # w32 module.
 
 file(GLOB ${module}_headers
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
+  __configure__.hpp
+  Listener.hpp
+  Stream.hpp
 )
 file(GLOB ${module}_sources
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+  Listener.cpp
+  Stream.cpp
 )
 #set(${module}_libraries ...)
 set(${module}_dependencies

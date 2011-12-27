@@ -1,10 +1,17 @@
 # w32 module.
 
 file(GLOB ${module}_headers
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
+  __configure__.hpp
+  __module__.hpp
+  Database.hpp
+  Object.hpp
+  Service.hpp
 )
 file(GLOB ${module}_sources
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+  __module__.cpp
+  Database.cpp
+  Object.cpp
+  Service.cpp
 )
 #set(${module}_libraries ...)
 set(${module}_dependencies

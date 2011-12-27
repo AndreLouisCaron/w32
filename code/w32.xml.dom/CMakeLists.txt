@@ -1,10 +1,35 @@
 # w32 module.
 
 file(GLOB ${module}_headers
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
+  __configure__.hpp
+  __module__.hpp
+  Attribute.hpp
+  Attributes.hpp
+  CData.hpp
+  Comment.hpp
+  Document.hpp
+  Element.hpp
+  Error.hpp
+  Instruction.hpp
+  List.hpp
+  Node.hpp
+  Text.hpp
+  Visitor.hpp
+  walk.hpp
 )
 file(GLOB ${module}_sources
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+  __module__.cpp
+  Attribute.cpp
+  Attributes.cpp
+  CData.cpp
+  Comment.cpp
+  Document.cpp
+  Element.cpp
+  Error.cpp
+  Instruction.cpp
+  List.cpp
+  Node.cpp
+  Text.cpp
 )
 #set(${module}_libraries ...)
 set(${module}_dependencies

@@ -1,10 +1,25 @@
 # w32 module.
 
 file(GLOB ${module}_headers
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
+  __configure__.hpp
+  __module__.hpp
+  AccessControlList.hpp
+  Attributes.hpp
+  Descriptor.hpp
+  Identifier.hpp
+  Impersonation.hpp
+  ImpersonationLevel.hpp
+  Token.hpp
 )
 file(GLOB ${module}_sources
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+  __module__.cpp
+  AccessControlList.cpp
+  Attributes.cpp
+  Descriptor.cpp
+  Identifier.cpp
+  Impersonation.cpp
+  ImpersonationLevel.cpp
+  Token.cpp
 )
 #set(${module}_libraries ...)
 set(${module}_dependencies

@@ -1,10 +1,24 @@
 # w32 module.
 
 file(GLOB ${module}_headers
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
+  __configure__.hpp
+  __module__.hpp
+  check.hpp
+  Connection.hpp
+  ftp.hpp
+  http.hpp
+  IStream.hpp
+  Session.hpp
+  Url.hpp
 )
 file(GLOB ${module}_sources
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+  __module__.cpp
+  check.cpp
+  Connection.cpp
+  ftp.cpp
+  IStream.cpp
+  Session.cpp
+  Url.cpp
 )
 #set(${module}_libraries ...)
 set(${module}_dependencies

@@ -1,10 +1,36 @@
 # w32 module.
 
 file(GLOB ${module}_headers
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
+  __configure__.hpp
+  __module__.hpp
+  Allocator.hpp
+  cast.hpp
+  Context.hpp
+  Error.hpp
+  Factory.hpp
+  Guid.hpp
+  instantiate.hpp
+  Library.hpp
+  Model.hpp
+  Object.hpp
+  Ptr.hpp
+  Result.hpp
+  String.hpp
+  Threading.hpp
+  Wrapper.hpp
 )
 file(GLOB ${module}_sources
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+  __module__.cpp
+  Allocator.cpp
+  Context.cpp
+  Error.cpp
+  Factory.cpp
+  Guid.cpp
+  Library.cpp
+  Model.cpp
+  Object.cpp
+  Result.cpp
+  Threading.cpp
 )
 set(${module}_libraries
   kernel32.lib

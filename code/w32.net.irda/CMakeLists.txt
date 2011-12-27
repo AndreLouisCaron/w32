@@ -1,10 +1,10 @@
 # w32 module.
 
 file(GLOB ${module}_headers
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
+  DeviceSearch.hpp
 )
 file(GLOB ${module}_sources
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+  DeviceSearch.cpp
 )
 #set(${module}_libraries ...)
 set(${module}_dependencies

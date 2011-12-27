@@ -1,10 +1,47 @@
 # w32 module.
 
 file(GLOB ${module}_headers
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
+  __configure__.hpp
+  __module__.hpp
+  AnonymousPipe.hpp
+  Channel.hpp
+  CompletionPort.hpp
+  ConsoleInput.hpp
+  ConsoleOutput.hpp
+  InputFile.hpp
+  InputStream.hpp
+  NamedPipe.hpp
+  Null.hpp
+  OutputFile.hpp
+  OutputStream.hpp
+  SerialPort.hpp
+  StandardError.hpp
+  StandardInput.hpp
+  StandardOutput.hpp
+  Stream.hpp
+  streambuf.hpp
+  Transfer.hpp
 )
 file(GLOB ${module}_sources
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+  __module__.cpp
+  AnonymousPipe.cpp
+  Channel.cpp
+  CompletionPort.cpp
+  ConsoleInput.cpp
+  ConsoleOutput.cpp
+  InputFile.cpp
+  InputStream.cpp
+  NamedPipe.cpp
+  Null.cpp
+  OutputFile.cpp
+  OutputStream.cpp
+  SerialPort.cpp
+  StandardError.cpp
+  StandardInput.cpp
+  StandardOutput.cpp
+  Stream.cpp
+  streambuf.cpp
+  Transfer.cpp
 )
 #set(${module}_libraries ...)
 set(${module}_dependencies

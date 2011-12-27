@@ -1,10 +1,33 @@
 # w32 module.
 
 file(GLOB ${module}_headers
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
+  __configure__.hpp
+  __module__.hpp
+  Columns.hpp
+  Database.hpp
+  Error.hpp
+  ErrorRecord.hpp
+  Guid.hpp
+  Hash.hpp
+  Object.hpp
+  Product.hpp
+  Products.hpp
+  Record.hpp
+  View.hpp
 )
-file(GLOB ${module}_sources
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+file(GLOB ${module}_sources 
+  __module__.cpp
+  Columns.cpp
+  Database.cpp
+  Error.cpp
+  ErrorRecord.cpp
+  Guid.cpp
+  Hash.cpp
+  Object.cpp
+  Product.cpp
+  Products.cpp
+  Record.cpp
+  View.cpp
 )
 set(${module}_libraries
   msi.lib

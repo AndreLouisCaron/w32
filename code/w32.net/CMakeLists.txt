@@ -1,10 +1,42 @@
 # w32 module.
 
 file(GLOB ${module}_headers
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
+  __configure__.hpp
+  __module__.hpp
+  Buffer.hpp
+  Context.hpp
+  DatagramSocket.hpp
+  Event.hpp
+  Family.hpp
+  Host.hpp
+  hostname.hpp
+  integers.hpp
+  irda.hpp
+  select.hpp
+  Set.hpp
+  Socket.hpp
+  sockstream.hpp
+  streambuf.hpp
+  StreamSocket.hpp
+  Timespan.hpp
 )
 file(GLOB ${module}_sources
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+  __module__.cpp
+  Buffer.cpp
+  Context.cpp
+  DatagramSocket.cpp
+  Event.cpp
+  Family.cpp
+  Host.cpp
+  hostname.cpp
+  integers.cpp
+  select.cpp
+  Set.cpp
+  Socket.cpp
+  sockstream.cpp
+  streambuf.cpp
+  StreamSocket.cpp
+  Timespan.cpp
 )
 #set(${module}_libraries ...)
 set(${module}_dependencies

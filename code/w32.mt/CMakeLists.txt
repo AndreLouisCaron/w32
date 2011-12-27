@@ -1,10 +1,41 @@
 # w32 module.
 
 file(GLOB ${module}_headers
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
+  __configure__.hpp
+  __module__.hpp
+  atomic.hpp
+  AutoResetEvent.hpp
+  Cleanup.hpp
+  ConditionVariable.hpp
+  CriticalSection.hpp
+  List.hpp
+  ManualResetEvent.hpp
+  Mutex.hpp
+  Pool.hpp
+  Queue.hpp
+  ReadWriteLock.hpp
+  Semaphore.hpp
+  Thread.hpp
+  ThreadLocalPointer.hpp
+  Timer.hpp
 )
 file(GLOB ${module}_sources
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+  __module__.cpp
+  atomic.cpp
+  AutoResetEvent.cpp
+  Cleanup.cpp
+  ConditionVariable.cpp
+  CriticalSection.cpp
+  List.cpp
+  ManualResetEvent.cpp
+  Mutex.cpp
+  Pool.cpp
+  Queue.cpp
+  ReadWriteLock.cpp
+  Semaphore.cpp
+  Thread.cpp
+  ThreadLocalPointer.cpp
+  Timer.cpp
 )
 #set(${module}_libraries ...)
 set(${module}_dependencies

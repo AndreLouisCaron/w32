@@ -1,10 +1,63 @@
 # w32 module.
 
 file(GLOB ${module}_headers
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
+  __configure__.hpp
+  __module__.hpp
+  Architecture.hpp
+  astring.hpp
+  bstring.hpp
+  Codepage.hpp
+  computername.hpp
+  Console.hpp
+  currentdirectory.hpp
+  Environment.hpp
+  Error.hpp
+  HandleClone.hpp
+  Language.hpp
+  Module.hpp
+  mstring.hpp
+  NotCopyable.hpp
+  Object.hpp
+  Reference.hpp
+  Resource.hpp
+  string.hpp
+  strings.hpp
+  System.hpp
+  Time.hpp
+  Timespan.hpp
+  Transaction.hpp
+  types.hpp
+  Variant.hpp
+  Version.hpp
+  Waitable.hpp
 )
 file(GLOB ${module}_sources
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+  __module__.cpp
+  Architecture.cpp
+  astring.cpp
+  bstring.cpp
+  Codepage.cpp
+  computername.cpp
+  Console.cpp
+  currentdirectory.cpp
+  Environment.cpp
+  Error.cpp
+  HandleClone.cpp
+  Language.cpp
+  Module.cpp
+  mstring.cpp
+  NotCopyable.cpp
+  Object.cpp
+  Resource.cpp
+  string.cpp
+  strings.cpp
+  System.cpp
+  Time.cpp
+  Timespan.cpp
+  Transaction.cpp
+  Variant.cpp
+  Version.cpp
+  Waitable.cpp
 )
 set(${module}_libraries
   kernel32.lib
