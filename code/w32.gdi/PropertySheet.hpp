@@ -39,52 +39,25 @@ namespace w32 { namespace gdi {
 
         /* construction. */
     protected:
-        PageInfo ()
-        {
-            ::ZeroMemory(&myData,sizeof(myData));
-            myData.dwSize = sizeof(myData);
-        }
+        PageInfo ();
 
         /* methods. */
     public:
-        const ::PROPSHEETPAGEW& get () const {
-            return (myData);
-        }
+        const ::PROPSHEETPAGEW& get () const;
 
-        void title ( const wchar_t * value ) {
-            myData.dwFlags |= PSP_USETITLE;
-            myData.pszTitle = value;
-        }
+        void title ( const wchar_t * value );
 
-        void callback ( ::LPFNPSPCALLBACKW function ) {
-            myData.dwFlags |= PSP_USECALLBACK;
-            myData.pfnCallback = function;
-        }
+        void callback ( ::LPFNPSPCALLBACKW function );
 
-        void template_ ( const Resource& template_ )
-        {
-            myData.hInstance = template_.module().handle();
-            myData.pszTemplate = template_.identifier();
-        }
+        void template_ ( const Resource& template_ );
 
-        void template_ ( const Dialog::Template& template_ )
-        {
-            myData.dwFlags = PSP_DLGINDIRECT;
-            myData.pResource = &template_.data();
-        }
+        void template_ ( const Dialog::Template& template_ );
 
-        void icon ( const w32::gdi::Icon& image ) {
-            myData.dwFlags |= PSP_USEHICON;
-            myData.hIcon = image.handle();
-        }
+        void icon ( const w32::gdi::Icon& image );
 
-        void dialog ( ::DLGPROC procedure ) {
-            myData.pfnDlgProc = procedure;
-        }
+        void dialog ( ::DLGPROC procedure );
 
-        void parameter ( void * pointer ) {
-            myData.lParam = reinterpret_cast<::LPARAM>(pointer);
-        }
+        void parameter ( void * pointer );
     };
 
     class PropertySheet::Page :
@@ -96,25 +69,13 @@ namespace w32 { namespace gdi {
 
         /* construction. */
     public:
-        Page ( const PageInfo& info )
-            : myHandle(::CreatePropertySheetPageW(&info.get()))
-        {
-            if ( myHandle == 0 ) {
-                const ::DWORD error = ::GetLastError();
-                UNCHECKED_WIN32C_ERROR(CreatePropertySheetPage,error);
-            }
-        }
+        Page ( const PageInfo& info );
 
-        ~Page ()
-        {
-            ::DestroyPropertySheetPage(myHandle);
-        }
+        ~Page ();
 
         /* methods. */
     public:
-        ::HPROPSHEETPAGE handle () const {
-            return (myHandle);
-        }
+        ::HPROPSHEETPAGE handle () const;
     };
 
         /*!
@@ -129,41 +90,13 @@ namespace w32 { namespace gdi {
 
         /* construction. */
     public:
-        PageAdder ( ::LPFNADDPROPSHEETPAGE function, ::LPARAM parameter )
-            : myFunction(function), myParameter(parameter)
-        {}
+        PageAdder ( ::LPFNADDPROPSHEETPAGE function, ::LPARAM parameter );
 
         /* operators. */
     public:
-        void operator() ( const Page& page )
-        {
-            const ::BOOL result = myFunction(
-                page.handle(), myParameter
-                );
-            if ( result == FALSE ) {
-                const ::DWORD error = ::GetLastError();
-                UNCHECKED_WIN32C_ERROR(AddPropSheetPageCallback,error);
-            }
-        }
+        void operator() ( const Page& page );
 
-        void operator() ( const PageInfo& info )
-        {
-                // Create a page that will automagically be destroyed.
-            const ::HPROPSHEETPAGE page = ::CreatePropertySheetPageW(
-                &info.get()
-                );
-            if ( page == 0 ) {
-                const ::DWORD error = ::GetLastError();
-                UNCHECKED_WIN32C_ERROR(CreatePropertySheetPage,error);
-            }
-
-                // Add it!
-            const ::BOOL result = myFunction(page,myParameter);
-            if ( result == FALSE ) {
-                const ::DWORD error = ::GetLastError();
-                UNCHECKED_WIN32C_ERROR(AddPropSheetPageCallback,error);
-            }
-        }
+        void operator() ( const PageInfo& info );
     };
 
 } }
