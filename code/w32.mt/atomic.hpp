@@ -10,64 +10,286 @@
 
 #include "__configure__.hpp"
 #include <w32/types.hpp>
+#include <w32.mt/and.hpp>
+#include <w32.mt/compare-exchange.hpp>
+#include <w32.mt/decrement.hpp>
+#include <w32.mt/exchange.hpp>
+#include <w32.mt/increment.hpp>
+#include <w32.mt/or.hpp>
+#include <w32.mt/xor.hpp>
 
 namespace w32 { namespace mt {
 
-    template<typename> class atomic;
+    template<typename T> class atomic;
 
+    /*!
+     * @brief Thread-safe 32-bit signed integer.
+     */
     template<> class atomic<int32>
     {
-        volatile ::LONG myValue; // has to be aligned!
+        /* nested types. */
+    private:
+        typedef atomic<int32> self;
+
     public:
-        atomic<int32>& operator++ ()
+        /*!
+         * @brief Native representation.
+         */
+        typedef volatile __declspec(align(32)) ::LONG Value;
+
+        /* data. */
+    private:
+        Value myValue;
+
+        /* construction. */
+    public:
+        atomic ( int32 value=0 )
+            : myValue(value)
+        {}
+
+        /* methods. */
+    public:
+        self& exchange ( int32 replacement )
         {
-            ::InterlockedIncrement(&myValue);
+            mt::exchange
+                (myValue, replacement);
             return (*this);
         }
-        atomic<int32>& operator-- ()
+
+        self& exchange_acquire ( int32 replacement )
         {
-            ::InterlockedDecrement(&myValue);
+            mt::exchange_acquire
+                (myValue, replacement);
             return (*this);
         }
+
+        self& compare_exchange ( int32 test, int32 replacement )
+        {
+            mt::compare_exchange
+                (test, myValue, replacement);
+            return (*this);
+        }
+
+        self& compare_exchange_acquire ( int32 test, int32 replacement )
+        {
+            mt::compare_exchange_acquire
+                (test, myValue, replacement);
+            return (*this);
+        }
+
+        /* operators. */
+    public:
+        // compiler-generated version is not atomic.
+        self& operator= ( const self& rhs )
+        {
+            return (exchange(rhs));
+        }
+
+        self& operator= ( int32 rhs )
+        {
+            return (exchange(rhs));
+        }
+
         operator int32 () const
         {
-            return (static_cast<int32>(myValue));
+            return (myValue);
+        }
+
+        self& operator++ ()
+        {
+            increment(myValue); return (*this);
+        }
+
+        self& operator-- ()
+        {
+            decrement(myValue); return (*this);
+        }
+
+        self& operator&= ( int32 rhs )
+        {
+            and(myValue, rhs); return (*this);
+        }
+
+        self& operator|= ( int32 rhs )
+        {
+            or(myValue, rhs); return (*this);
+        }
+
+        self& operator^= ( int32 rhs )
+        {
+            xor(myValue, rhs); return (*this);
         }
     };
 
+    /*!
+     * @brief Thread-safe 64-bit signed integer.
+     */
     template<> class atomic<int64>
     {
-        volatile ::LONGLONG myValue; // has to be aligned!
+        /* nested types. */
+    private:
+        typedef atomic<int64> self;
+
     public:
-        atomic<int64>& operator++ ()
+        /*!
+         * @brief Native representation.
+         */
+        typedef volatile __declspec(align(64)) ::LONG Value;
+
+        /* data. */
+    private:
+        Value myValue;
+
+        /* construction. */
+    public:
+        atomic ( int64 value=0 )
+            : myValue(value)
+        {}
+
+        /* methods. */
+    public:
+        self& exchange ( int64 replacement )
         {
-            ::InterlockedIncrement64(&myValue);
+            mt::exchange
+                (myValue, replacement);
             return (*this);
         }
-        atomic<int64>& operator-- ()
+
+        self& exchange_acquire ( int64 replacement )
         {
-            ::InterlockedDecrement64(&myValue);
+            mt::exchange_acquire
+                (myValue, replacement);
             return (*this);
         }
+
+        self& compare_exchange ( int64 test, int64 replacement )
+        {
+            mt::compare_exchange
+                (test, myValue, replacement);
+            return (*this);
+        }
+
+        self& compare_exchange_acquire ( int64 test, int64 replacement )
+        {
+            mt::compare_exchange_acquire
+                (test, myValue, replacement);
+            return (*this);
+        }
+
+        /* operators. */
+    public:
+        // compiler-generated version is not atomic.
+        self& operator= ( const self& rhs )
+        {
+            return (exchange(rhs));
+        }
+
+        self& operator= ( int64 rhs )
+        {
+            return (exchange(rhs));
+        }
+
         operator int64 () const
         {
-            return (static_cast<int64>(myValue));
+            return (myValue);
+        }
+
+        self& operator++ ()
+        {
+            increment(myValue); return (*this);
+        }
+
+        self& operator-- ()
+        {
+            decrement(myValue); return (*this);
+        }
+
+        self& operator&= ( int64 rhs )
+        {
+            and(myValue, rhs); return (*this);
+        }
+
+        self& operator|= ( int64 rhs )
+        {
+            or(myValue, rhs); return (*this);
+        }
+
+        self& operator^= ( int64 rhs )
+        {
+            xor(myValue, rhs); return (*this);
         }
     };
 
+    /*!
+     * @brief Thread-safe pointer variable.
+     */
     template<> class atomic<void*>
     {
-        volatile ::PVOID myValue; // has to be aligned!
+        /* nested types. */
+    private:
+        typedef atomic<void*> self;
+
     public:
-        atomic ( void * value = 0 )
+        /*!
+         * @brief Native representation.
+         */
+#if defined(_M_IX86)
+        typedef volatile __declspec(align(32)) ::PVOID Value;
+#else
+        typedef volatile __declspec(align(64)) ::PVOID Value;
+#endif
+
+        /* data. */
+    private:
+        Value myValue;
+
+        /* construction. */
+    public:
+        atomic ( void * value=0 )
             : myValue(value)
+        {}
+
+        /* methods. */
+    public:
+        self& exchange ( void * replacement )
         {
+            mt::exchange
+                (myValue, replacement);
+            return (*this);
         }
 
-        void * swapif ( void * comparand, void * substitute )
+        self& exchange_acquire ( void * replacement )
         {
-            return ::InterlockedCompareExchangePointer
-                (&myValue, substitute, comparand);
+            mt::exchange_acquire
+                (myValue, replacement);
+            return (*this);
+        }
+
+        self& compare_exchange ( void * test, void * replacement )
+        {
+            mt::compare_exchange
+                (test, myValue, replacement);
+            return (*this);
+        }
+
+        self& compare_exchange_acquire ( void * test, void * replacement )
+        {
+            mt::compare_exchange_acquire
+                (test, myValue, replacement);
+            return (*this);
+        }
+
+        /* operators. */
+    public:
+        // compiler-generated version is not atomic.
+        self& operator= ( const self& rhs )
+        {
+            return (exchange(rhs));
+        }
+
+        self& operator= ( void * rhs )
+        {
+            return (exchange(rhs));
         }
 
         operator void* () const
