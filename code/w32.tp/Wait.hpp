@@ -12,6 +12,10 @@
 #include <w32/Reference.hpp>
 #include <w32.tp/Queue.hpp>
 
+// See the documentation on thread pools on MSDN, it has a pretty good summary.  There
+// are general recommendations in the "best practices" section which merit attention.
+//   {{ http://msdn.microsoft.com/en-us/library/windows/desktop/ms686760.aspx }}
+
 namespace w32 { namespace tp {
 
     class Hints;
