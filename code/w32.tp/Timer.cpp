@@ -62,6 +62,11 @@ namespace w32 { namespace tp {
         ::SetThreadpoolTimer(myHandle, &deadline, period, 0);
     }
 
+    bool Timer::active () const
+    {
+        return (::IsThreadpoolTimerSet(myHandle) != FALSE);
+    }
+
     void Timer::cancel ()
     {
         ::SetThreadpoolTimer(myHandle, 0, 0, 0);

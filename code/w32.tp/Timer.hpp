@@ -61,6 +61,7 @@ namespace w32 { namespace tp {
         const Handle& handle () const;
 
         void start ( ::DWORD delai, ::DWORD period=0 );
+        bool active () const;
         void cancel ();
 
         void wait ( bool cancel_pending=false );
