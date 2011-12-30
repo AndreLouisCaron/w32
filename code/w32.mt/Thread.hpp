@@ -61,42 +61,37 @@ namespace w32 { namespace mt {
              * @brief Required function signature.
              * @see Parameter
              * @see Status
-             * @see adapt
+             * @see function
+             * @see method
              */
         typedef Status(__stdcall*Function)(Parameter);
 
-            /*!
-             * @brief Converts functions to enfore the required signature.
-             *
-             * The required function signature is meant to be generally useful,
-             * but may not suit you. In particular, if you do not require using
-             * the context parameter or status code, you need to provide your
-             * function with an unsued argument, and/or fixed status code
-             * (typically 0). This adapter allows you to use functions with no
-             * argument and/or no status code, yet allowing you to use both.
-             *
-             * Template parameter @c R must be @c void or @c dword.
-             * Template parameter @c A must be @c void or @c void*.
-             *
-             * @note Although this only binds with a function at compile-time,
-             *   this class is designed to cast to @c Function, so you can
-             *   easily resort to casting all candiate functions to @c Function)
-             *   and select one of those at run-time.
-             *
-             * @see Function
-             */
-        template<typename R, typename A, R(*F)(A)>
-        struct adapt;
+        template<dword(*)(void*)> struct function;
+        template<typename T, dword(T::*)()> struct method;
 
         /* class methods. */
     public:
         static Thread current ();
         static Thread open ( Identifier identifier );
 
+    private:
+        static ::HANDLE allocate
+            ( ::LPTHREAD_START_ROUTINE function, ::LPVOID context );
+
         /* construction. */
     public:
         explicit Thread ( const Handle& handle );
         explicit Thread ( Function function, Parameter parameter = 0 );
+
+        template<dword(*F)(void*)>
+        Thread ( function<F> function, void * context=0 )
+        {
+        }
+
+        template<typename T, void(T::*M)()>
+        Thread ( T& object, method<T,M> method )
+        {
+        }
 
         /* methods. */
     public:
@@ -201,63 +196,34 @@ namespace w32 { namespace mt {
         operator Waitable () const;
     };
 
-        // "Full-fledged" case.
-    template<Thread::Status(*F)(void*)>
-    struct Thread::adapt<Thread::Status,void*,F>
+    // compile-time binding of free function to callback function.
+    template<dword(*F)(void*)>
+    struct Thread::function
     {
-        operator Thread::Function () const {
-            return (result);
-        }
-    private:
-            // Actual implementation.
-        static ::DWORD __stdcall result ( ::LPVOID p )
+        operator ::LPTHREAD_START_ROUTINE () const
         {
-            return (F(p));
+            return (&entry_point);
+        }
+
+    private:
+        static ::DWORD __stdcall entry_point ( ::LPVOID context )
+        {
+            return (F(context));
         }
     };
 
-        // For threads that "never fail" and require no context.
-    template<void(*F)()>
-    struct Thread::adapt<void,void,F>
+    template<typename T, dword(T::*M)()>
+    struct Thread::method
     {
-        operator Thread::Function () const {
-            return (result);
-        }
-    private:
-            // Actual implementation.
-        static ::DWORD __stdcall result ( ::LPVOID p )
+        operator ::LPTHREAD_START_ROUTINE () const
         {
-            F(); return (0);
+            return (&entry_point);
         }
-    };
 
-        // For threads that "never fail".
-    template<void(*F)(void*)>
-    struct Thread::adapt<void,void*,F>
-    {
-        operator Thread::Function () const {
-            return (result);
-        }
     private:
-            // Actual implementation.
-        static ::DWORD __stdcall result ( ::LPVOID p )
+        static ::DWORD __stdcall entry_point ( ::LPVOID context )
         {
-            F(p); return (0);
-        }
-    };
-
-        // For threads requiring no context but wishing to report errors.
-    template<Thread::Status(*F)()>
-    struct Thread::adapt<Thread::Status,void,F>
-    {
-        operator Thread::Function () const {
-            return (result);
-        }
-    private:
-            // Actual implementation.
-        static ::DWORD __stdcall Thread::result ( ::LPVOID )
-        {
-            return (F());
+            return ((static_cast<T*>(context)->*M)());
         }
     };
 

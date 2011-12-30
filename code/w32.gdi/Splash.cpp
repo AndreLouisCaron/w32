@@ -16,7 +16,7 @@
 
 namespace {
 
-    void do_splash_screen ( void * context )
+    w32::dword do_splash_screen ( void * context )
     {
             // Fetch instance data: this is a static function (yuck)!
         w32::gdi::Bitmap& background =
@@ -31,12 +31,13 @@ namespace {
             
             // Display the window while we wait...
         window.show(), w32::gdi::loop();
+
+        return (0);
     }
 
     w32::mt::Thread::Function callback ()
     {
-        return (w32::mt::Thread::adapt<
-            void, void*, &do_splash_screen>());
+        return (w32::mt::Thread::function<&do_splash_screen>());
     }
 
 }

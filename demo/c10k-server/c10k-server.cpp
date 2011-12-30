@@ -21,8 +21,8 @@ namespace {
     // TODO: verify use of overlapped structure...
 
         // Background thread execution functions.
-    void wait ( void * context );
-    void work ( void * context );
+    w32::dword wait ( void * context );
+    w32::dword work ( void * context );
 
         // Server-side per-connection information.
     class Client
@@ -105,14 +105,14 @@ namespace {
             for ( w32::size_t i = 0; (i < processors); ++i )
             {
                 const w32::mt::Thread worker
-                    (w32::mt::Thread::adapt<void,void*,&work>(), this);
+                    (w32::mt::Thread::function<&work>(), this);
                 myWorkers.push_back(worker);
                 myThreads |= worker.handle();
             }
             
                 // Start accepting incoming connections.
             myListener.reset(new w32::mt::Thread(
-                w32::mt::Thread::adapt<void,void*,&wait>(), this));
+                w32::mt::Thread::function<&wait>(), this));
             myThreads |= myListener->handle();
             
                 // Allow threads to go ahead!
@@ -169,7 +169,7 @@ namespace {
         }
     };
 
-    void wait ( void * context )
+    w32::dword wait ( void * context )
     try
     {
         Server& server = *reinterpret_cast< Server* >(context);
@@ -217,13 +217,17 @@ namespace {
         while ( !server.closing() );
         
         std::cout << "Listener: over and out!" << std::endl;
+
+        return (0);
     }
     catch ( const w32::Error& error )
     {
         std::cerr << "Listener: " << error << "!" << std::endl;
+
+        return (1);
     }
 
-    void work ( void * context )
+    w32::dword work ( void * context )
     try
     {
         Server& server = *reinterpret_cast< Server* >(context);
@@ -262,10 +266,14 @@ namespace {
          while ( !server.closing() );
          
          std::cout << "Worker: over and out!" << std::endl;
+
+         return (0);
     }
     catch ( const w32::Error& error )
     {
         std::cerr << "Worker: " << error << "!" << std::endl;
+
+        return (1);
     }
 
 }

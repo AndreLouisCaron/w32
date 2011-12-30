@@ -10,20 +10,6 @@
 
 namespace {
 
-    ::HANDLE allocate ( ::LPTHREAD_START_ROUTINE function, ::LPVOID parameter )
-    {
-        ::DWORD identifier = 0;
-        const ::HANDLE result = ::CreateThread(
-            0, 0, function, parameter, 0, &identifier
-            );
-        if ( result == INVALID_HANDLE_VALUE )
-        {
-            const ::DWORD error = ::GetLastError();
-            UNCHECKED_WIN32C_ERROR(CreateThread, error);
-        }
-        return (result);
-    }
-
     ::HANDLE find ( ::DWORD id )
     {
         const ::HANDLE result = ::OpenThread(
@@ -39,6 +25,22 @@ namespace {
 }
 
 namespace w32 { namespace mt {
+
+    ::HANDLE Thread::allocate
+        ( ::LPTHREAD_START_ROUTINE function, ::LPVOID context )
+    {
+        ::DWORD identifier = 0;
+        const ::HANDLE result = ::CreateThread(
+            0, 0, function, context, 0, &identifier
+            );
+        if ( result == INVALID_HANDLE_VALUE )
+        {
+            const ::DWORD error = ::GetLastError();
+            UNCHECKED_WIN32C_ERROR(CreateThread, error);
+        }
+        return (result);
+    }
+
 
     Thread Thread::current ()
     {
@@ -58,7 +60,7 @@ namespace w32 { namespace mt {
     }
 
     Thread::Thread ( Function function, Parameter parameter )
-        : Object(Object::claim(::allocate(function, parameter)))
+        : Object(Object::claim(allocate(function, parameter)))
     {
     }
 

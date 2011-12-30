@@ -76,7 +76,7 @@ namespace {
     };
 
         // Background thread watching changes in the current directory.
-    void watch ( void * context )
+    w32::dword watch ( void * context )
     {
             // Usy synchronous calls to list changes.
         w32::mt::ManualResetEvent& done =
@@ -92,6 +92,8 @@ namespace {
         for ( ; (w32::Waitable::any(handles) == 0); changes.next() ) {
             std::cout << "Something changed!" << std::endl;
         }
+
+        return (0);
     }
 
 }
@@ -108,7 +110,7 @@ namespace {
             // Watch changes in the current directory.
         w32::mt::ManualResetEvent done;
         w32::mt::Thread thread(
-            w32::mt::Thread::adapt<void,void*,&::watch>(), &done);
+            w32::mt::Thread::function<&::watch>(), &done);
         
             // Show a splash screen while loading!
         { w32::gdi::Splash _(L".tests/shiina.bmp");
