@@ -8,6 +8,16 @@
 #include <w32.tp/Work.hpp>
 #include <w32/Error.hpp>
 
+namespace {
+
+    void abandon ( ::PTP_WORK object ) {}
+    void destroy ( ::PTP_WORK object )
+    {
+        ::CloseThreadpoolWork(object);
+    }
+
+}
+
 namespace w32 { namespace tp {
 
     ::PTP_WORK Work::setup ( ::PTP_CALLBACK_ENVIRON queue,
@@ -23,9 +33,24 @@ namespace w32 { namespace tp {
         return (handle);
     }
 
-    Work::~Work ()
+    Work::Handle Work::claim ( ::PTP_WORK object )
     {
-        ::CloseThreadpoolWork(myHandle);
+        return (Handle(object, &::destroy));
+    }
+
+    Work::Handle Work::proxy ( ::PTP_WORK object )
+    {
+        return (Handle(object, &::abandon));
+    }
+
+    Work::Work ( const Handle& handle )
+        : myHandle(handle)
+    {
+    }
+
+    const Work::Handle& Work::handle () const
+    {
+        return (myHandle);
     }
 
     void Work::submit ()

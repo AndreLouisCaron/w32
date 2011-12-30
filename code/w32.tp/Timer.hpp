@@ -9,6 +9,7 @@
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
 #include "__configure__.hpp"
+#include <w32/Reference.hpp>
 #include <w32.tp/Queue.hpp>
 
 namespace w32 { namespace tp {
@@ -23,34 +24,42 @@ namespace w32 { namespace tp {
         template<void(*F)(Hints&,void*)> struct function;
         template<typename T, void(T::*M)(Hints&)> struct method;
 
+        typedef Reference<::PTP_TIMER> Handle;
+
         /* class methods. */
     private:
         static ::PTP_TIMER setup
         ( ::PTP_CALLBACK_ENVIRON queue,
           ::PTP_TIMER_CALLBACK callback, void * context );
 
+    public:
+        static Handle claim ( ::PTP_TIMER object );
+        static Handle proxy ( ::PTP_TIMER object );
+
         /* data. */
     private:
-        ::PTP_TIMER myHandle;
+        Handle myHandle;
 
         /* construction. */
-    public:
+    public: 
+        explicit Timer ( const Handle& handle );
+
         template<void(*F)(Hints&,void*)>
         Timer ( Queue& queue, function<F> function, void * context=0 )
-            : myHandle(setup(&queue.data(), function, context))
+            : myHandle(claim(setup(&queue.data(), function, context)))
         {
         }
 
         template<typename T, void(T::*M)(Hints&)>
         Timer ( Queue& queue, T& object, method<T,M> method )
-            : myHandle(setup(&queue.data(), method, &object))
+            : myHandle(claim(setup(&queue.data(), method, &object)))
         {
         }
 
-        ~Timer ();
-
         /* methods. */
     public:
+        const Handle& handle () const;
+
         void start ( ::DWORD delai, ::DWORD period=0 );
         void cancel ();
 

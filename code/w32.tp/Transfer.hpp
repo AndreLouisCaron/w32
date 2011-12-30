@@ -9,6 +9,7 @@
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
 #include "__configure__.hpp"
+#include <w32/Reference.hpp>
 #include <w32.tp/Queue.hpp>
 
 namespace w32 { namespace tp {
@@ -30,36 +31,44 @@ namespace w32 { namespace tp {
         template<void(*)(Hints&,void*,Result)> struct function;
         template<typename T, void(T::*M)(Hints&,Result)> struct method;
 
+        typedef Reference<::PTP_IO> Handle;
+
         /* class methods. */
     private:
         static ::PTP_IO setup
         ( ::PTP_CALLBACK_ENVIRON queue, ::HANDLE stream,
           ::PTP_WIN32_IO_CALLBACK callback, void * context );
 
+    public:
+        static Handle claim ( ::PTP_IO object );
+        static Handle proxy ( ::PTP_IO object );
+
         /* data. */
     private:
-        ::PTP_IO myHandle;
+        Handle myHandle;
 
         /* construction. */
     public:
+        explicit Transfer ( const Handle& handle );
+
         template<void(*F)(Hints&,void*,Result)>
         Transfer ( Queue& queue, ::HANDLE stream,
                    function<F> function, void * context=0 )
-            : myHandle(setup(&queue.data(), stream, function, context))
+            : myHandle(claim(setup(&queue.data(), stream, function, context)))
         {
         }
 
         template<typename T, void(T::*M)(Hints&,Result)>
         Transfer ( Queue& queue, ::HANDLE stream,
                    T& object, method<T,M> method )
-            : myHandle(setup(&queue.data(), stream, method, &object))
+            : myHandle(claim(setup(&queue.data(), stream, method, &object)))
         {
         }
 
-        ~Transfer ();
-
         /* methods. */
     public:
+        const Handle& handle () const;
+
         // Call if I/O operation fails.
         void cancel ();
         void wait ( bool cancel_pending=false );

@@ -8,6 +8,16 @@
 #include <w32.tp/Transfer.hpp>
 #include <w32/Error.hpp>
 
+namespace {
+
+    void abandon ( ::PTP_IO object ) {}
+    void destroy ( ::PTP_IO object )
+    {
+        ::CloseThreadpoolIo(object);
+    }
+
+}
+
 namespace w32 { namespace tp {
 
     ::PTP_IO Transfer::setup ( ::PTP_CALLBACK_ENVIRON queue, ::HANDLE stream,
@@ -18,15 +28,30 @@ namespace w32 { namespace tp {
         if ( handle == 0 )
         {
             const ::DWORD error = ::GetLastError();
-            UNCHECKED_WIN32C_ERROR(CreateThreadpoolTimer, error);
+            UNCHECKED_WIN32C_ERROR(CreateThreadpoolIo, error);
         }
         ::StartThreadpoolIo(handle);
         return (handle);
     }
 
-    Transfer::~Transfer ()
+    Transfer::Handle Transfer::claim ( ::PTP_IO object )
     {
-        ::CloseThreadpoolIo(myHandle);
+        return (Handle(object, &::destroy));
+    }
+
+    Transfer::Handle Transfer::proxy ( ::PTP_IO object )
+    {
+        return (Handle(object, &::abandon));
+    }
+
+    Transfer::Transfer ( const Handle& handle )
+        : myHandle(handle)
+    {
+    }
+
+    const Transfer::Handle& Transfer::handle () const
+    {
+        return (myHandle);
     }
 
     void Transfer::cancel ()

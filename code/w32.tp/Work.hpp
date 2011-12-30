@@ -9,6 +9,7 @@
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
 #include "__configure__.hpp"
+#include <w32/Reference.hpp>
 #include <w32.tp/Queue.hpp>
 
 namespace w32 { namespace tp {
@@ -23,34 +24,42 @@ namespace w32 { namespace tp {
         template<void(*)(Hints&,void*)> struct function;
         template<typename T, void(T::*M)(Hints&)> struct method;
 
+        typedef Reference<::PTP_WORK> Handle;
+
         /* class methods. */
     private:
         static ::PTP_WORK setup
         ( ::PTP_CALLBACK_ENVIRON queue,
           ::PTP_WORK_CALLBACK callback, void * context );
 
+    public:
+        static Handle claim ( ::PTP_WORK object );
+        static Handle proxy ( ::PTP_WORK object );
+
         /* data. */
     private:
-        ::PTP_WORK myHandle;
+        Handle myHandle;
 
         /* construction. */
     public:
+        explicit Work ( const Handle& handle );
+
         template<void(*F)(Hints&,void*)>
         Work ( Queue& queue, function<F> function, void * context=0 )
-            : myHandle(setup(&queue.data(), function, context))
+            : myHandle(claim(setup(&queue.data(), function, context)))
         {
         }
 
         template<typename T, void(T::*M)(Hints&)>
         Work ( Queue& queue, T& object, method<T,M> method )
-            : myHandle(setup(&queue.data(), method, &object))
+            : myHandle(claim(setup(&queue.data(), method, &object)))
         {
         }
 
-        ~Work ();
-
         /* methods. */
     public:
+        const Handle& handle () const;
+
         // Call to queue to the threadpool, may be called repeatedly.
         void submit ();
         void wait ( bool cancel_pending=false );

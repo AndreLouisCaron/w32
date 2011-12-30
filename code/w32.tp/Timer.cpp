@@ -8,6 +8,16 @@
 #include <w32.tp/Timer.hpp>
 #include <w32/Error.hpp>
 
+namespace {
+
+    void abandon ( ::PTP_TIMER object ) {}
+    void destroy ( ::PTP_TIMER object )
+    {
+        ::CloseThreadpoolTimer(object);
+    }
+
+}
+
 namespace w32 { namespace tp {
 
     ::PTP_TIMER Timer::setup ( ::PTP_CALLBACK_ENVIRON queue,
@@ -23,9 +33,24 @@ namespace w32 { namespace tp {
         return (handle);
     }
 
-    Timer::~Timer ()
+    Timer::Handle Timer::claim ( ::PTP_TIMER object )
     {
-        ::CloseThreadpoolTimer(myHandle);
+        return (Handle(object, &::destroy));
+    }
+
+    Timer::Handle Timer::proxy ( ::PTP_TIMER object )
+    {
+        return (Handle(object, &::abandon));
+    }
+
+    Timer::Timer ( const Handle& handle )
+        : myHandle(handle)
+    {
+    }
+
+    const Timer::Handle& Timer::handle () const
+    {
+        return (myHandle);
     }
 
     void Timer::start ( ::DWORD delai, ::DWORD period )

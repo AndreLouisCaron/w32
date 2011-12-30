@@ -9,6 +9,7 @@
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
 #include "__configure__.hpp"
+#include <w32/Reference.hpp>
 #include <w32.tp/Queue.hpp>
 
 namespace w32 { namespace tp {
@@ -23,35 +24,43 @@ namespace w32 { namespace tp {
         template<void(*F)(Hints&,void*)> struct function;
         template<typename T, void(T::*M)(Hints&)> struct method;
 
+        typedef Reference<::PTP_WAIT> Handle;
+
         /* class methods. */
     private:
         static ::PTP_WAIT setup
         ( ::PTP_CALLBACK_ENVIRON queue, ::HANDLE waitable,
           ::PTP_WAIT_CALLBACK function, void * context );
 
+    public:
+        static Handle claim ( ::PTP_WAIT object );
+        static Handle proxy ( ::PTP_WAIT object );
+
         /* data. */
     private:
-        ::PTP_WAIT myHandle;
+        Handle myHandle;
 
         /* construction. */
     public:
+        explicit Wait ( const Handle& handle );
+
         template<void(*F)(Hints&,void*)>
         Wait ( Queue& queue, ::HANDLE waitable,
                function<F> function, void * context=0 )
-            : myHandle(setup(&queue.data(), waitable, function, context))
+            : myHandle(claim(setup(&queue.data(), waitable, function, context)))
         {
         }
 
         template<typename T, void(T::*M)(Hints&)>
         Wait ( Queue& queue, ::HANDLE waitable, T& object, method<T,M> method )
-            : myHandle(setup(&queue.data(), waitable, method, &object))
+            : myHandle(claim(setup(&queue.data(), waitable, method, &object)))
         {
         }
 
-        ~Wait ();
-
         /* methods. */
     public:
+        const Handle& handle () const;
+
         void wait ( bool cancel_pending=false );
     };
 

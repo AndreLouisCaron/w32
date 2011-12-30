@@ -8,6 +8,16 @@
 #include <w32.tp/Wait.hpp>
 #include <w32/Error.hpp>
 
+namespace {
+
+    void abandon ( ::PTP_WAIT object ) {}
+    void destroy ( ::PTP_WAIT object )
+    {
+        ::CloseThreadpoolWait(object);
+    }
+
+}
+
 namespace w32 { namespace tp {
 
     ::PTP_WAIT Wait::setup ( ::PTP_CALLBACK_ENVIRON queue, ::HANDLE waitable,
@@ -29,9 +39,24 @@ namespace w32 { namespace tp {
         return (handle);
     }
 
-    Wait::~Wait ()
+    Wait::Handle Wait::claim ( ::PTP_WAIT object )
     {
-        ::CloseThreadpoolWait(myHandle);
+        return (Handle(object, &::destroy));
+    }
+
+    Wait::Handle Wait::proxy ( ::PTP_WAIT object )
+    {
+        return (Handle(object, &::abandon));
+    }
+
+    Wait::Wait ( const Handle& handle )
+        : myHandle(handle)
+    {
+    }
+
+    const Wait::Handle& Wait::handle () const
+    {
+        return (myHandle);
     }
 
     void Wait::wait ( bool cancel_pending )
