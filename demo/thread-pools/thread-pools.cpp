@@ -39,10 +39,6 @@ namespace {
         w32::tp::Pool pool; pool.threads(1);
         w32::tp::Queue queue(pool);
         
-            // Pretty please, with sugar on top, clean the fucking car.
-        w32::tp::Cleanup cleanup;
-        queue.cleanup(cleanup, &::meh);
-        
             // Dummy context.
         int a = 0; int b = 1; int c = 2;
         std::cout << "&a = 0x" << &a << std::endl;
@@ -57,10 +53,6 @@ namespace {
         
             // Wait for 'foo()' to finish, but not 'bar()'.
         w32::mt::sleep(w32::Timespan(4000));
-        bar.cancel();
-        
-            // Pretty please, with sugar on top, clean the fucking car.
-        cleanup.close(true, &c);
         
         return (EXIT_SUCCESS);
     }
