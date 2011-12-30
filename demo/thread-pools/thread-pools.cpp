@@ -7,22 +7,18 @@
 
 #include <w32.hpp>
 #include <w32.mt.hpp>
+#include <w32.tp.hpp>
 
 namespace {
 
-    void foo ()
+    void foo ( w32::tp::Hints&, void * context )
     {
-        std::cout << "foo()" << std::endl;
+        std::cout << "foo(0x" << context << ")" << std::endl;
     }
 
-    void bar ( void * context )
+    void bar ( w32::tp::Hints&, void * context )
     {
         std::cout << "bar(0x" << context << ")" << std::endl;
-        
-            // Re-schedule indefinitely.
-        /*w32::mt::Queue& queue = *static_cast<w32::mt::Queue*>(context);
-        const w32::Timespan bardelai( 250);
-        queue.submit(w32::mt::Queue::adapt<void*,&bar>(), bardelai, &queue);*/
     }
 
     void __stdcall meh ( void * object, void * cleanup )
@@ -40,26 +36,28 @@ namespace {
     int run ( int argc, wchar_t ** argv )
     {
             // Create a thread pool and associated work queue.
-        w32::mt::Pool pool; pool.threads(1);
-        w32::mt::Queue queue; queue.pool(pool);
+        w32::tp::Pool pool; pool.threads(1);
+        w32::tp::Queue queue(pool);
         
             // Pretty please, with sugar on top, clean the fucking car.
-        w32::mt::Cleanup cleanup;
-        //queue.cleanup(cleanup, &::meh);
+        w32::tp::Cleanup cleanup;
+        queue.cleanup(cleanup, &::meh);
         
             // Dummy context.
         int a = 0; int b = 1; int c = 2;
         std::cout << "&a = 0x" << &a << std::endl;
         std::cout << "&b = 0x" << &b << std::endl;
+        std::cout << "&c = 0x" << &c << std::endl;
         
             // Queue jobs.
-        const w32::Timespan foodelai(2000);
-        const w32::Timespan bardelai( 250);
-        queue.submit(w32::mt::Queue::adapt<void ,&::foo>(), foodelai, &a);
-        queue.submit(w32::mt::Queue::adapt<void*,&::bar>(), bardelai, &queue);
+        w32::tp::Timer foo(queue, w32::tp::Timer::function<&::foo>(), &a); 
+        w32::tp::Timer bar(queue, w32::tp::Timer::function<&::bar>(), &b);
+        foo.start(2000);
+        bar.start(5000);
         
             // Wait for 'foo()' to finish, but not 'bar()'.
-        w32::mt::sleep(w32::Timespan(3000));
+        w32::mt::sleep(w32::Timespan(4000));
+        bar.cancel();
         
             // Pretty please, with sugar on top, clean the fucking car.
         cleanup.close(true, &c);

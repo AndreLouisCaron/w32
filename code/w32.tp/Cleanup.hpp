@@ -1,7 +1,7 @@
-#ifndef _w32_mt_Pool_hpp__
-#define _w32_mt_Pool_hpp__
+#ifndef _w32_tp_Cleanup_hpp__
+#define _w32_tp_Cleanup_hpp__
 
-// Copyright(c) Andre Caron, 2009-2010
+// Copyright(c) Andre Caron, 2009-2011
 //
 // This document is covered by the Artistic License 2.0 (Open Source Initiative
 // approved license). A copy of the license should have been provided alongside
@@ -9,21 +9,20 @@
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
 #include "__configure__.hpp"
-#include <w32/types.hpp>
 #include <w32/Reference.hpp>
 
-namespace w32 { namespace mt {
+namespace w32 { namespace tp {
 
-    class Pool
+    class Cleanup
     {
         /* nested types. */
     public:
-        typedef Reference< ::PTP_POOL > Handle;
+        typedef Reference< ::PTP_CLEANUP_GROUP > Handle;
 
         /* class methods. */
     public:
-        static const Handle claim ( ::PTP_POOL handle );
-        static const Handle proxy ( ::PTP_POOL handle );
+        const Handle claim ( ::PTP_CLEANUP_GROUP object );
+        const Handle proxy ( ::PTP_CLEANUP_GROUP object );
 
         /* data. */
     private:
@@ -31,16 +30,15 @@ namespace w32 { namespace mt {
 
         /* construction. */
     public:
-        Pool ();
+        Cleanup ();
 
         /* methods. */
     public:
         const Handle& handle () const;
 
-        void threads ( dword count );
-        void threads ( dword minimum, dword maximum );
+        void close ( bool cancel, void * context = 0 );
     };
 
 } }
 
-#endif /* _w32_mt_Pool_hpp__ */
+#endif /* _w32_tp_Cleanup_hpp__ */

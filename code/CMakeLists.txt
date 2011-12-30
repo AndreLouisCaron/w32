@@ -25,6 +25,7 @@ else()
    w32.shl
    w32.shl.ext
    w32.sy
+   w32.tp
    w32.ts-1
    w32.ts-2
    w32.xml.dom

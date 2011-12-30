@@ -10,6 +10,7 @@ set(${demo-project}_libraries
   w32
   w32.dbg
   w32.mt
+  w32.tp
 )
 
 add_executable(${demo-project}
