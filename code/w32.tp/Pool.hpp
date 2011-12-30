@@ -32,10 +32,14 @@ namespace w32 { namespace tp {
         /* construction. */
     public:
         Pool ();
+        explicit Pool ( const Handle& handle );
 
         /* methods. */
     public:
         const Handle& handle () const;
+
+        void minimum_threads ( dword count );
+        void maximum_threads ( dword count );
 
         void threads ( dword count );
         void threads ( dword minimum, dword maximum );

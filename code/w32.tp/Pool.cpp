@@ -46,9 +46,24 @@ namespace w32 { namespace tp {
     {
     }
 
+    Pool::Pool ( const Handle& handle )
+        : myHandle(handle)
+    {
+    }
+
     const Pool::Handle& Pool::handle () const
     {
         return (myHandle);
+    }
+
+    void Pool::minimum_threads ( dword minimum )
+    {
+        ::SetThreadpoolThreadMinimum(handle(), minimum);
+    }
+
+    void Pool::maximum_threads ( dword maximum )
+    {
+        ::SetThreadpoolThreadMaximum(handle(), maximum);
     }
 
     void Pool::threads ( dword count )
@@ -58,8 +73,8 @@ namespace w32 { namespace tp {
 
     void Pool::threads ( dword minimum, dword maximum )
     {
-        ::SetThreadpoolThreadMinimum(handle(), minimum);
-        ::SetThreadpoolThreadMaximum(handle(), maximum);
+        minimum_threads(minimum);
+        maximum_threads(maximum);
     }
 
 } }
