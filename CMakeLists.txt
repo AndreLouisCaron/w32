@@ -25,15 +25,6 @@ if(MSVC)
   set(CMAKE_CXX_FLAGS_DEBUG
     "/DWIN32 /D_WINDOWS /EHsc /WX /wd4355 /wd4251 /wd4250 /wd4996"
     CACHE STRING "Debug compiler flags" FORCE)
-  set(CMAKE_EXE_LINKER_FLAGS
-    "${CMAKE_EXE_LINKER_FLAGS_INIT} /ignore:4221"
-    CACHE STRING "EXE linker flags." FORCE)
-  set(CMAKE_SHARED_LINKER_FLAGS
-    "${CMAKE_SHARED_LINKER_FLAGS_INIT} /ignore:4221"
-    CACHE STRING "DLL linker flags." FORCE)
-  set(CMAKE_MODULE_LINKER_FLAGS
-    "${CMAKE_MODULE_LINKER_FLAGS_INIT} /ignore:4221"
-    CACHE STRING "LIB linker flags" FORCE)
 endif()
 
 # Put all libraries and executables in the build folder root.
