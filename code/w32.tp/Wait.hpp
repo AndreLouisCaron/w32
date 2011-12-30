@@ -61,6 +61,9 @@ namespace w32 { namespace tp {
     public:
         const Handle& handle () const;
 
+        void watch ( ::HANDLE waitable );
+        void clear ();
+
         void wait ( bool cancel_pending=false );
     };
 

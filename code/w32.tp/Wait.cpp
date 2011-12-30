@@ -23,19 +23,13 @@ namespace w32 { namespace tp {
     ::PTP_WAIT Wait::setup ( ::PTP_CALLBACK_ENVIRON queue, ::HANDLE waitable,
                              ::PTP_WAIT_CALLBACK function, void * context )
     {
-        // this specific wait cannot timeout.
         const ::PTP_WAIT handle =
             ::CreateThreadpoolWait(function, context, queue);
         if ( handle == 0 )
         {
             const ::DWORD error = ::GetLastError();
-            std::cerr
-                << "CreateThreadPoolWait(): " << error << "."
-                << std::endl;
+            UNCHECKED_WIN32C_ERROR(CreateThreadpoolWait, error);
         }
-        // indefinite block on the specified handle.
-        SetThreadpoolWait(handle, waitable, 0);
-        // finished preparing!
         return (handle);
     }
 
@@ -57,6 +51,16 @@ namespace w32 { namespace tp {
     const Wait::Handle& Wait::handle () const
     {
         return (myHandle);
+    }
+
+    void Wait::watch ( ::HANDLE waitable )
+    {
+        ::SetThreadpoolWait(myHandle, waitable, 0);
+    }
+
+    void Wait::clear ()
+    {
+        ::SetThreadpoolWait(myHandle, 0, 0);
     }
 
     void Wait::wait ( bool cancel_pending )
