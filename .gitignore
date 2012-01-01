@@ -1,9 +1,3 @@
 # git ls-files --others --exclude-from=.git/info/exclude
-.build/
-*.vcproj.*.user
-*.ncb
-*.suo
-code/jpeglib/
-code/libpng/
-code/zlib/
 demo/*/3rd-party/
+help/html/

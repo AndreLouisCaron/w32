@@ -25,13 +25,13 @@ DOXYFILE_ENCODING      = UTF-8
 # The PROJECT_NAME tag is a single word (or a sequence of words surrounded 
 # by quotes) that should identify the project.
 
-PROJECT_NAME           = w32++
+PROJECT_NAME           = @PROJECT_NAME@
 
 # The PROJECT_NUMBER tag can be used to enter a project or revision number. 
 # This could be handy for archiving the generated documentation or 
 # if some version control system is used.
 
-PROJECT_NUMBER         = latest
+PROJECT_NUMBER         = @PROJECT_VERSION@
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description 
 # for a project that appears at the top of each page and should give viewer 
@@ -51,7 +51,7 @@ PROJECT_LOGO           =
 # If a relative path is entered, it will be relative to the location 
 # where doxygen was started. If left blank the current directory will be used.
 
-OUTPUT_DIRECTORY       = ./.build/api/
+OUTPUT_DIRECTORY       = @PROJECT_SOURCE_DIR@/help/
 
 # If the CREATE_SUBDIRS tag is set to YES, then doxygen will create 
 # 4096 sub-directories (in 2 levels) under the output directory of each output 
@@ -82,9 +82,9 @@ OUTPUT_LANGUAGE        = English
 
 BRIEF_MEMBER_DESC      = YES
 
-# If the REPEAT_BRIEF tag is set to YES (the default) Doxygen will prepend 
-# the brief description of a member or function before the detailed description. 
-# Note: if both HIDE_UNDOC_MEMBERS and BRIEF_MEMBER_DESC are set to NO, the 
+# If the REPEAT_BRIEF tag is set to YES (the default) Doxygen will prepend the
+# brief description of a member or function before the detailed description.
+# Note: if both HIDE_UNDOC_MEMBERS and BRIEF_MEMBER_DESC are set to NO, the
 # brief descriptions will be completely suppressed.
 
 REPEAT_BRIEF           = YES
@@ -230,15 +230,16 @@ OPTIMIZE_FOR_FORTRAN   = NO
 
 OPTIMIZE_OUTPUT_VHDL   = NO
 
-# Doxygen selects the parser to use depending on the extension of the files it 
-# parses. With this tag you can assign which parser to use for a given extension. 
-# Doxygen has a built-in mapping, but you can override or extend it using this 
-# tag. The format is ext=language, where ext is a file extension, and language 
-# is one of the parsers supported by doxygen: IDL, Java, Javascript, CSharp, C, 
-# C++, D, PHP, Objective-C, Python, Fortran, VHDL, C, C++. For instance to make 
-# doxygen treat .inc files as Fortran files (default is PHP), and .f files as C 
-# (default is Fortran), use: inc=Fortran f=C. Note that for custom extensions 
-# you also need to set FILE_PATTERNS otherwise the files are not read by doxygen.
+# Doxygen selects the parser to use depending on the extension of the files it
+# parses. With this tag you can assign which parser to use for a given
+# extension.  Doxygen has a built-in mapping, but you can override or extend it
+# using this tag. The format is ext=language, where ext is a file extension, and
+# language is one of the parsers supported by doxygen: IDL, Java, Javascript,
+# CSharp, C, C++, D, PHP, Objective-C, Python, Fortran, VHDL, C, C++. For
+# instance to make doxygen treat .inc files as Fortran files (default is PHP),
+# and .f files as C (default is Fortran), use: inc=Fortran f=C. Note that for
+# custom extensions you also need to set FILE_PATTERNS otherwise the files are
+# not read by doxygen.
 
 EXTENSION_MAPPING      = 
 
@@ -256,17 +257,17 @@ BUILTIN_STL_SUPPORT    = YES
 
 CPP_CLI_SUPPORT        = NO
 
-# Set the SIP_SUPPORT tag to YES if your project consists of sip sources only. 
-# Doxygen will parse them like normal C++ but will assume all classes use public 
+# Set the SIP_SUPPORT tag to YES if your project consists of sip sources only.
+# Doxygen will parse them like normal C++ but will assume all classes use public
 # instead of private inheritance when no explicit protection keyword is present.
 
 SIP_SUPPORT            = NO
 
-# For Microsoft's IDL there are propget and propput attributes to indicate getter 
-# and setter methods for a property. Setting this option to YES (the default) 
-# will make doxygen replace the get and set methods by a property in the 
-# documentation. This will only work if the methods are indeed getting or 
-# setting a simple type. If this is not the case, or you want to show the 
+# For Microsoft's IDL there are propget and propput attributes to indicate
+# getter and setter methods for a property. Setting this option to YES (the
+# default) will make doxygen replace the get and set methods by a property in
+# the documentation. This will only work if the methods are indeed getting or
+# setting a simple type. If this is not the case, or you want to show the
 # methods anyway, you should set this option to NO.
 
 IDL_PROPERTY_SUPPORT   = YES
@@ -303,18 +304,17 @@ INLINE_GROUPED_CLASSES = NO
 
 TYPEDEF_HIDES_STRUCT   = YES
 
-# The SYMBOL_CACHE_SIZE determines the size of the internal cache use to 
-# determine which symbols to keep in memory and which to flush to disk. 
-# When the cache is full, less often used symbols will be written to disk. 
-# For small to medium size projects (<1000 input files) the default value is 
-# probably good enough. For larger projects a too small cache size can cause 
-# doxygen to be busy swapping symbols to and from disk most of the time 
-# causing a significant performance penalty. 
-# If the system has enough physical memory increasing the cache will improve the 
-# performance by keeping more symbols in memory. Note that the value works on 
-# a logarithmic scale so increasing the size by one will roughly double the 
-# memory usage. The cache size is given by this formula: 
-# 2^(16+SYMBOL_CACHE_SIZE). The valid range is 0..9, the default is 0, 
+# The SYMBOL_CACHE_SIZE determines the size of the internal cache use to
+# determine which symbols to keep in memory and which to flush to disk.  When
+# the cache is full, less often used symbols will be written to disk.  For small
+# to medium size projects (<1000 input files) the default value is probably good
+# enough. For larger projects a too small cache size can cause doxygen to be
+# busy swapping symbols to and from disk most of the time causing a significant
+# performance penalty.  If the system has enough physical memory increasing the
+# cache will improve the performance by keeping more symbols in memory. Note
+# that the value works on a logarithmic scale so increasing the size by one will
+# roughly double the memory usage. The cache size is given by this formula:
+# 2^(16+SYMBOL_CACHE_SIZE). The valid range is 0..9, the default is 0,
 # corresponding to a cache size of 2^16 = 65536 symbols
 
 SYMBOL_CACHE_SIZE      = 0
@@ -522,9 +522,9 @@ MAX_INITIALIZER_LINES  = 30
 
 SHOW_USED_FILES        = YES
 
-# If the sources in your project are distributed over multiple directories 
-# then setting the SHOW_DIRECTORIES tag to YES will show the directory hierarchy 
-# in the documentation. The default is NO.
+# If the sources in your project are distributed over multiple directories then
+# setting the SHOW_DIRECTORIES tag to YES will show the directory hierarchy in
+# the documentation. The default is NO.
 
 SHOW_DIRECTORIES       = NO
 
@@ -540,13 +540,13 @@ SHOW_FILES             = YES
 
 SHOW_NAMESPACES        = YES
 
-# The FILE_VERSION_FILTER tag can be used to specify a program or script that 
-# doxygen should invoke to get the current version for each file (typically from 
-# the version control system). Doxygen will invoke the program by executing (via 
-# popen()) the command <command> <input-file>, where <command> is the value of 
-# the FILE_VERSION_FILTER tag, and <input-file> is the name of an input file 
-# provided by doxygen. Whatever the program writes to standard output 
-# is used as the file version. See the manual for examples.
+# The FILE_VERSION_FILTER tag can be used to specify a program or script that
+# doxygen should invoke to get the current version for each file (typically from
+# the version control system). Doxygen will invoke the program by executing (via
+# popen()) the command <command> <input-file>, where <command> is the value of
+# the FILE_VERSION_FILTER tag, and <input-file> is the name of an input file
+# provided by doxygen. Whatever the program writes to standard output is used as
+# the file version. See the manual for examples.
 
 FILE_VERSION_FILTER    = 
 
@@ -614,12 +614,12 @@ WARN_LOGFILE           =
 # configuration options related to the input files
 #---------------------------------------------------------------------------
 
-# The INPUT tag can be used to specify the files and/or directories that contain 
-# documented source files. You may enter file names like "myfile.cpp" or 
-# directories like "/usr/src/myproject". Separate the files or directories 
-# with spaces.
+# The INPUT tag can be used to specify the files and/or directories that contain
+# documented source files. You may enter file names like "myfile.cpp" or
+# directories like "/usr/src/myproject". Separate the files or directories with
+# spaces.
 
-INPUT                  = ./code/
+INPUT                  = @PROJECT_SOURCE_DIR@/code/
 
 # This tag can be used to specify the character encoding of the source files 
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding, which is 
@@ -700,7 +700,7 @@ EXAMPLE_RECURSIVE      = NO
 # directories that contain image that are included in the documentation (see 
 # the \image command).
 
-IMAGE_PATH             = 
+IMAGE_PATH             = @CMAKE_CURRENT_BINARY_DIR@
 
 # The INPUT_FILTER tag can be used to specify a program that doxygen should 
 # invoke to filter for each input file. Doxygen will invoke the filter program 
@@ -739,9 +739,9 @@ FILTER_SOURCE_PATTERNS =
 # configuration options related to source browsing
 #---------------------------------------------------------------------------
 
-# If the SOURCE_BROWSER tag is set to YES then a list of source files will 
-# be generated. Documented entities will be cross-referenced with these sources. 
-# Note: To get rid of all source code in the generated output, make sure also 
+# If the SOURCE_BROWSER tag is set to YES then a list of source files will be
+# generated. Documented entities will be cross-referenced with these sources.
+# Note: To get rid of all source code in the generated output, make sure also
 # VERBATIM_HEADERS is set to NO.
 
 SOURCE_BROWSER         = YES
@@ -896,9 +896,9 @@ HTML_COLORSTYLE_SAT    = 100
 
 HTML_COLORSTYLE_GAMMA  = 80
 
-# If the HTML_TIMESTAMP tag is set to YES then the footer of each generated HTML 
-# page will contain the date and time when the page was generated. Setting 
-# this to NO can help when comparing the output of multiple runs.
+# If the HTML_TIMESTAMP tag is set to YES then the footer of each generated HTML
+# page will contain the date and time when the page was generated. Setting this
+# to NO can help when comparing the output of multiple runs.
 
 HTML_TIMESTAMP         = YES
 
@@ -929,9 +929,9 @@ HTML_DYNAMIC_SECTIONS  = NO
 
 GENERATE_DOCSET        = NO
 
-# When GENERATE_DOCSET tag is set to YES, this tag determines the name of the 
-# feed. A documentation feed provides an umbrella under which multiple 
-# documentation sets from a single provider (such as a company or product suite) 
+# When GENERATE_DOCSET tag is set to YES, this tag determines the name of the
+# feed. A documentation feed provides an umbrella under which multiple
+# documentation sets from a single provider (such as a company or product suite)
 # can be grouped.
 
 DOCSET_FEEDNAME        = "Doxygen generated docs"
@@ -943,9 +943,9 @@ DOCSET_FEEDNAME        = "Doxygen generated docs"
 
 DOCSET_BUNDLE_ID       = org.doxygen.Project
 
-# When GENERATE_PUBLISHER_ID tag specifies a string that should uniquely identify 
-# the documentation publisher. This should be a reverse domain-name style 
-# string, e.g. com.mycompany.MyDocSet.documentation.
+# When GENERATE_PUBLISHER_ID tag specifies a string that should uniquely
+# identify the documentation publisher. This should be a reverse domain-name
+# style string, e.g. com.mycompany.MyDocSet.documentation.
 
 DOCSET_PUBLISHER_ID    = org.doxygen.Publisher
 
@@ -1456,11 +1456,11 @@ INCLUDE_FILE_PATTERNS  =
 
 PREDEFINED             = 
 
-# If the MACRO_EXPANSION and EXPAND_ONLY_PREDEF tags are set to YES then 
-# this tag can be used to specify a list of macro names that should be expanded. 
-# The macro definition that is found in the sources will be used. 
-# Use the PREDEFINED tag if you want to use a different macro definition that 
-# overrules the definition found in the source code.
+# If the MACRO_EXPANSION and EXPAND_ONLY_PREDEF tags are set to YES then this
+# tag can be used to specify a list of macro names that should be expanded.  The
+# macro definition that is found in the sources will be used.  Use the
+# PREDEFINED tag if you want to use a different macro definition that overrules
+# the definition found in the source code.
 
 EXPAND_AS_DEFINED      = 
 
