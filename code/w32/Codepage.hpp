@@ -13,6 +13,11 @@
 
 namespace w32 {
 
+    /*!
+     * @ingroup w32
+     * @brief Character set for ANSI strings.
+     * @see astring
+     */
     class Codepage
     {
         /* nested types. */

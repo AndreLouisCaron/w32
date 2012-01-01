@@ -17,6 +17,7 @@
 namespace w32 {
 
     /*!
+     * @ingroup w32
      * @brief Wrapper for common manipulations of the variant structure.
      *
      * The variant structure is a hideous beast: it is a blunt substitute

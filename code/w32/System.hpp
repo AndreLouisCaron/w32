@@ -14,6 +14,10 @@
 
 namespace w32 {
 
+    /*!
+     * @ingroup w32
+     * @brief Information about the operating system's hardware architecture.
+     */
     class System
     {
         /* nested types. */

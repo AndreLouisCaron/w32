@@ -15,6 +15,10 @@
 
 namespace w32 {
 
+    /*!
+     * @ingroup w32
+     * @brief Loaded executable image: program or library.
+     */
     class Module
     {
         /* nested types. */

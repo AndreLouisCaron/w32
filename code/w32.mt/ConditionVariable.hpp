@@ -21,6 +21,19 @@
 
 namespace w32 { namespace mt {
 
+    /*!
+     * @ingroup w32-mt
+     * @brief Signal that some condition has been satisfied.
+     *
+     * In contrast with event objects, condition variables do not stay signaled.
+     * Rather, they release any threads blocked on the condition at the moment
+     * where the condition variable is signaled.  They support both the use case
+     * of automatic reset events and manual reset events in that they can
+     * release either a single waiting thread or all currently waiting threads.
+     *
+     * @see AutoResetEvent
+     * @see ManualResetEvent
+     */
     class ConditionVariable :
         private NotCopyable
     {

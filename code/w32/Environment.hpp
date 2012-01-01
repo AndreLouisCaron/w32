@@ -14,6 +14,10 @@
 
 namespace w32 {
 
+    /*!
+     * @ingroup w32
+     * @brief Process environment variables.
+     */
     class Environment :
         public mstring
     {

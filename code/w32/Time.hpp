@@ -13,6 +13,10 @@
 
 namespace w32 {
 
+    /*!
+     * @ingroup w32
+     * @brief System time.
+     */
     class Time
     {
         /* nested types. */

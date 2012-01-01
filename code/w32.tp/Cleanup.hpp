@@ -13,6 +13,10 @@
 
 namespace w32 { namespace tp {
 
+    /*!
+     * @ingroup w32-tp
+     * @brief Thread pool resource cleanup group.
+     */
     class Cleanup
     {
         /* nested types. */

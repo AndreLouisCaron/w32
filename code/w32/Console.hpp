@@ -13,6 +13,10 @@
 
 namespace w32 {
 
+    /*!
+     * @ingroup w32
+     * @brief Console object for Windows applications.
+     */
     class Console :
         private NotCopyable
     {

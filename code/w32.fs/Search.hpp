@@ -17,6 +17,10 @@
 
 namespace w32 { namespace fs {
 
+    /*!
+     * @ingroup w32-fs
+     * @brief Folder listing, possibly filtered by name (using wildcards).
+     */
     class Search :
         public Object
     {

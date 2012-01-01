@@ -13,6 +13,11 @@
 
 namespace w32 { namespace mt {
 
+    /*!
+     * @ingroup w32-mt
+     * @brief Light-weight, in-process mutual exclusion (mutex) lock.
+     * @see mutex
+     */
     class CriticalSection :
         private NotCopyable
     {

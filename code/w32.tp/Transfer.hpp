@@ -16,12 +16,17 @@ namespace w32 { namespace tp {
 
     class Hints;
 
-    // Use for notification of completion of overlapped I/O operations.
-    // This object only handles notifications.  I/O operations must be
-    // started using regular overlapped I/O operations (e.g. "ReadFile()").
-    //
-    // Don't use a stream with FILE_SKIP_COMPLETION_PORT_ON_SUCCESS
-    // notification mode.
+    /*!
+     * @ingroup w32-tp
+     * @brief Registration for notification of I/O completion events.
+     *
+     * Use for notification of completion of overlapped I/O operations.
+     * This object only handles notifications.  I/O operations must be
+     * started using regular overlapped I/O operations (e.g. @c ReadFile()).
+     *
+     * @warning Don't use a stream with the @c
+     *  FILE_SKIP_COMPLETION_PORT_ON_SUCCESS notification mode.
+     */
     class Transfer
     {
         /* nested types. */

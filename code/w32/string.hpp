@@ -19,6 +19,10 @@ namespace w32 {
     class astring;
     class bstring;
 
+    /*!
+     * @ingroup w32
+     * @brief Unicode character string.
+     */
     class string
     {
         /* nested types. */

@@ -17,6 +17,10 @@ namespace w32 { namespace tp {
     class Cleanup;
     class Pool;
 
+    /*!
+     * @ingroup w32-tp
+     * @brief Dispatch queue for a group of threads.
+     */
     class Queue :
         private NotCopyable
     {

@@ -16,6 +16,10 @@
 
 namespace w32 { namespace fs {
 
+    /*!
+     * @ingroup w32-fs
+     * @brief Manipulator for a folder or directory.
+     */
     class Folder :
         public Object
     {

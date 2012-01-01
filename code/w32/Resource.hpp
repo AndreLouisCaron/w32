@@ -15,6 +15,10 @@
 
 namespace w32 {
 
+    /*!
+     * @ingroup w32
+     * @brief Access to a loaded executable image's resources.
+     */
     class Resource
     {
         /* nested types. */

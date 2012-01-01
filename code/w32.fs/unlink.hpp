@@ -13,6 +13,10 @@
 
 namespace w32 { namespace fs {
 
+    /*!
+     * @ingroup w32-fs
+     * @brief Remove a name for a file or folder, deleting it if necessary.
+     */
     void unlink ( const string& path );
 
 } }

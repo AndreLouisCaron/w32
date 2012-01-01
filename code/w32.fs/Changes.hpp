@@ -15,9 +15,10 @@
 
 namespace w32 { namespace fs {
 
-        /*!
-         * @brief Mechanism for notification of changes on the file-system.
-         */
+    /*!
+     * @ingroup w32-fs
+     * @brief Registration for notification of changes on the file-system.
+     */
     class Changes :
         public Object
     {

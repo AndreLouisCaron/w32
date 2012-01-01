@@ -15,6 +15,10 @@
 
 namespace w32 {
 
+    /*!
+     * @ingroup w32
+     * @brief Multiple strings delimited by null characeters.
+     */
     class mstring
     {
         /* nested types. */

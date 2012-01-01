@@ -15,11 +15,10 @@ namespace w32 {
 
     class System;
 
-        /*!
-         * @brief Enumeration of hardware architecture family.
-         *
-         * @ingroup w32
-         */
+    /*!
+     * @ingroup w32
+     * @brief Enumeration of hardware architecture family.
+     */
     class Architecture
     {
         /* nested types. */

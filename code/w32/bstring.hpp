@@ -17,6 +17,10 @@ namespace w32 {
 
     class string;
 
+    /*!
+     * @ingroup w32
+     * @brief Visual Basic string.
+     */
     class bstring
     {
         /* nested types. */

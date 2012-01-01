@@ -16,7 +16,10 @@ namespace w32 { namespace tp {
 
     class Hints;
 
-    // Use for general timer facilities (timeouts on non-I/O operations).
+    /*!
+     * @ingroup w32-tp
+     * @brief Registration for notification based on a deadline.
+     */
     class Timer
     {
         /* nested types. */

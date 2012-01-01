@@ -14,6 +14,10 @@
 
 namespace w32 {
 
+    /*!
+     * @ingroup w32
+     * @brief Base class for kernel objects.
+     */
     class Object
     {
         /* nested types. */

@@ -14,6 +14,10 @@
 
 namespace w32 { namespace mt {
 
+    /*!
+     * @ingroup w32-mt
+     * @brief Storage location with a (possibly) distinct value in each thread.
+     */
     class ThreadLocalPointer :
         private NotCopyable
     {

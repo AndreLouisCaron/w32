@@ -16,7 +16,10 @@ namespace w32 { namespace tp {
 
     class Hints;
 
-    // Use for queuing CPU-bound work.
+    /*!
+     * @ingroup w32-tp
+     * @brief Registration for execution of a computation-bound task.
+     */
     class Work
     {
         /* nested types. */

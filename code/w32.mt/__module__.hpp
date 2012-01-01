@@ -14,6 +14,14 @@ namespace w32 {
     namespace mt {}
 }
 
+/*!
+ * @defgroup w32-mt Multi-threading services.
+ *
+ * This group contains services for implementation of programs based on
+ * multi-threading for efficient use of multi-processor architectures.  It
+ * contains facilities for starting and controlling threads, as well as
+ * synchronization primitives.
+ */
 
 #include <w32.mt/AutoResetEvent.hpp>
 #include <w32.mt/CriticalSection.hpp>

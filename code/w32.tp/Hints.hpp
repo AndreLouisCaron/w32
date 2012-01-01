@@ -5,6 +5,10 @@
 
 namespace w32 { namespace tp {
 
+    /*!
+     * @ingroup w32-tp
+     * @brief Mechanism to provide the thread pool with hints about thread use.
+     */
     class Hints
     {
     private:

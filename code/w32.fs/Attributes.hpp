@@ -13,6 +13,10 @@
 
 namespace w32 { namespace fs {
 
+    /*!
+     * @ingroup w32-fs
+     * @brief File attributes.
+     */
     class Attributes
     {
         /* data. */

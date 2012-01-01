@@ -18,6 +18,11 @@ namespace w32 {
 
     class string;
 
+    /*!
+     * @ingroup w32
+     * @brief ANSI string.
+     * @see Codepage
+     */
     class astring
     {
         /* nested types. */

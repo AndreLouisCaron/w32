@@ -38,17 +38,18 @@ namespace w32 {
          */
 
     /*!
-    * @brief Occurs when a Win32c library call fails.
-    *
-    * This is merely a debugging aid used because Microsoft's documentation
-    * for the Win32c API does not specify which error codes may be
-    * returned by it's functions. This is a backup for errors that were not
-    * specifically checked for in order to prevent silent failures.
-    *
-    * When a function does not document it's errors, simply throw this. As
-    * specific error codes are discovered for that function, add a check
-    * for that error code and signal a specific error.
-    */
+     * @ingroup w32
+     * @brief Occurs when a Win32c library call fails.
+     *
+     * This is merely a debugging aid used because Microsoft's documentation
+     * for the Win32c API does not specify which error codes may be
+     * returned by it's functions. This is a backup for errors that were not
+     * specifically checked for in order to prevent silent failures.
+     *
+     * When a function does not document it's errors, simply throw this. As
+     * specific error codes are discovered for that function, add a check
+     * for that error code and signal a specific error.
+     */
     class Error
     {
         /* nested types. */

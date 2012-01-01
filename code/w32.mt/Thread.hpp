@@ -15,21 +15,22 @@
 
 namespace w32 { namespace mt {
 
-        /*!
-         * @brief Entity within a process that can be scheduled for execution.
-         *
-         * All threads of a process share its virtual address space and system
-         * resources. In addition, each thread maintains exception handlers, a
-         * scheduling priority, thread local storage, a unique thread
-         * identifier, and a set of structures the system will use to save the
-         * thread context until it is scheduled. The thread context includes
-         * the thread's set of machine registers, the kernel stack, a thread
-         * environment block, and a user stack in the address space of the
-         * thread's process.
-         *
-         * Threads can also have their own security context, which can be used
-         * for impersonating clients.
-         */
+    /*!
+     * @ingroup w32-mt
+     * @brief Entity within a process that can be scheduled for execution.
+     *
+     * All threads of a process share its virtual address space and system
+     * resources. In addition, each thread maintains exception handlers, a
+     * scheduling priority, thread local storage, a unique thread
+     * identifier, and a set of structures the system will use to save the
+     * thread context until it is scheduled. The thread context includes
+     * the thread's set of machine registers, the kernel stack, a thread
+     * environment block, and a user stack in the address space of the
+     * thread's process.
+     *
+     * Threads can also have their own security context, which can be used
+     * for impersonating clients.
+     */
     class Thread :
         public Object
     {

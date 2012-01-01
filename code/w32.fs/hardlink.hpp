@@ -13,6 +13,11 @@
 
 namespace w32 { namespace fs {
 
+    /*!
+     * @ingroup w32-fs
+     * @brief Create a new name for an existing file.
+     * @see junction()
+     */
     void hardlink ( const string& alias, const string& target );
 
 } }

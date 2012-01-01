@@ -13,6 +13,10 @@
 
 namespace w32 { namespace fs {
 
+    /*!
+     * @ingroup w32-fs
+     * @brief Listing of all virtual drives in the file system.
+     */
     mstring drives ();
 
 } }

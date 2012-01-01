@@ -15,9 +15,11 @@
 
 namespace w32 { namespace mt {
 
-        /*!
-         * @brief Mutual-exclusion lock.
-         */
+    /*!
+     * @ingroup w32-mt
+     * @brief Mutual exclusion lock with support for sharing between processes.
+     * @see CriticalSection
+     */
     class Mutex :
         public Object
     {

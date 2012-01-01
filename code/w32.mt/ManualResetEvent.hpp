@@ -14,6 +14,25 @@
 
 namespace w32 { namespace mt {
 
+    /*!
+     * @ingroup w32-mt
+     * @brief Signal that some condition has been satisfied.
+     *
+     * Contrarily to an automatic reset event, a manual reset event's state is
+     * not cleared after a wait on the object is satisfied.  This means that a
+     * variable number of threads may see the state of the event as signaled
+     * before one of them resets the state.  As such, it is poorly suited to
+     * producer-consumer scenarios and subject to race conditions when misused.
+     *
+     * @warning Manual reset events are one of the most misused synchronization
+     *  primitives.  It is strongly recommended that you avoid them unless
+     *  another entity requires a manual reset event or some existing software
+     *  using one must be ported to this framework (hopefully as a first step
+     *  to refactoring).
+     *
+     * @see ConditionVariable
+     * @see AutoResetEvent
+     */
     class ManualResetEvent :
         public Object
     {

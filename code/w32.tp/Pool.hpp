@@ -14,6 +14,10 @@
 
 namespace w32 { namespace tp {
 
+    /*!
+     * @ingroup w32-tp
+     * @brief Group of threads.
+     */
     class Pool
     {
         /* nested types. */

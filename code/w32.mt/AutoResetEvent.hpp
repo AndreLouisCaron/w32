@@ -14,6 +14,17 @@
 
 namespace w32 { namespace mt {
 
+    /*!
+     * @ingroup w32-mt
+     * @brief Signal that some condition has been satisfied.
+     *
+     * The signal stays signaled until some wait on the object has been
+     * satisfied.  The behavior is similar to a mutex except that lock is
+     * "acquired" by one thread and "released" by another.
+     *
+     * @see ConditionVariable
+     * @see ManualResetEvent
+     */
     class AutoResetEvent :
         public Object
     {

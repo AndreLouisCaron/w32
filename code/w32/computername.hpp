@@ -13,6 +13,10 @@
 
 namespace w32 {
 
+    /*!
+     * @ingroup w32
+     * @brief Get the registered NetBIOS computer name.
+     */
     string computername ();
 
 }

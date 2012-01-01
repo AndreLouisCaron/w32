@@ -14,6 +14,10 @@
 
 namespace w32 {
 
+    /*!
+     * @ingroup w32
+     * @brief Operating system version.
+     */
     class Version
     {
         /* nested types. */

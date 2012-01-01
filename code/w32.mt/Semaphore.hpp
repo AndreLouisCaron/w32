@@ -15,6 +15,11 @@
 
 namespace w32 { namespace mt {
 
+    /*!
+     * @ingroup w32-mt
+     * @brief Thread-safe counter, often used in producer-consumer scenarios.
+     * @see Mutex
+     */
     class Semaphore :
         public Object
     {

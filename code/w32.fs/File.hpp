@@ -15,6 +15,10 @@
 
 namespace w32 { namespace fs {
 
+    /*!
+     * @ingroup w32-fs
+     * @brief Manipulation of a file's metadata and state.
+     */
     class File :
         public Object
     {

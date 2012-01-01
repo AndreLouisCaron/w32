@@ -14,6 +14,21 @@ namespace w32 {
     namespace tp {}
 }
 
+/*!
+ * @defgroup w32-tp New thread pool API.
+ *
+ * This group contains a generalized threading API for programs using an
+ * asynchronous design.  Thread pools support CPU-bound work, I/O-bound work,
+ * waiting for kernel objects (e.g. synchronization objects and external
+ * processes) and timers.  The thread pool manages thread creation and
+ * destruction and attemps to make efficient use of system resources.  For
+ * example, wait for kernel objects are grouped in bundles of @c
+ * MAXIMUM_WAIT_OBJECTS to ensure minimal overhead.  Remember that this pool is
+ * designed by experts with deep knowledge of Windows internals and it may be
+ * very hard to beat them at efficient use of threads.
+ *
+ * @see http://msdn.microsoft.com/en-us/library/windows/desktop/ms686760.aspx
+ */
 
 #if (_WIN32_WINNT >= 0x600)
 #  include <w32.tp/Cleanup.hpp>

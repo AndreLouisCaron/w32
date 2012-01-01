@@ -13,6 +13,13 @@
 
 namespace w32 { namespace fs {
 
+    /*!
+     * @ingroup w32-fs
+     * @brief Copy a file.
+     * @see move()
+     * @see hardlink()
+     * @see junction()
+     */
     void copy ( const string& destination, const string& source );
 
 } }

@@ -15,6 +15,10 @@
 
 namespace w32 {
 
+    /*!
+     * @ingroup w32
+     * @brief Kernel object that implements wait semantics.
+     */
     class Waitable :
         public Object
     {

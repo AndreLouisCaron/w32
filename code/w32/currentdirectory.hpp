@@ -13,6 +13,10 @@
 
 namespace w32 {
 
+    /*!
+     * @ingroup w32
+     * @brief Absolute path to the process's current working directory.
+     */
     string currentdirectory ();
 
 }

@@ -19,6 +19,20 @@
 
 namespace w32 { namespace mt {
 
+    /*!
+     * @ingroup w32-mt
+     * @brief Mutual exclusion lock with exclusive or shared access.
+     *
+     * For some problems, pure mutual exclusion locks are too restrictive.  When
+     * read-only access to a resource is already thread-safe, it makes no sense
+     * for reader threads to deny each other concurrent access.  Reader-writer
+     * locks grant exclusive write-safe access for write operations (this blocks
+     * any other reader or writer) or shared read-safe access for read
+     * operations (this blocks out all writers but allows other readers).
+     *
+     * @see CriticalSection
+     * @see Mutex
+     */
     class ReadWriteLock :
         private NotCopyable
     {

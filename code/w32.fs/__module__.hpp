@@ -13,6 +13,12 @@
 namespace w32 {
     namespace fs {}
 }
+/*!
+ * @defgroup w32-fs Filesystem services.
+ *
+ * Services used to inspect and manipulate drives, folders and files.  This
+ * group does not provide facilities for input and output to files and devices.
+ */
 
 #include <w32.fs/Attributes.hpp>
 #include <w32.fs/Changes.hpp>

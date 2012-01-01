@@ -13,7 +13,7 @@
 namespace w32 {}
 
 /*!
- * @defgroup w32 Basic services
+ * @defgroup w32 Core services.
  *
  * This group contains very basic services (e.g. string manipulation) or
  * services that have not been categorized into a particular category.
