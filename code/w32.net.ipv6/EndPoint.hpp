@@ -2,7 +2,7 @@
 #define _w32_net_ipv6_EndPoint_hpp__
 
 /*!
- * @file EndPoint.hpp
+ * @file w32.net.ipv6/EndPoint.hpp
  * @author Andre Caron
  */
 

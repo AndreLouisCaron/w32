@@ -15,10 +15,11 @@
 
 namespace w32 { namespace mm {
 
-        /*!
-         * @brief Named chunk of memory that can subsequently be mapped onto
-         *   other processes' address spaces.
-         */
+    /*!
+     * @ingroup w32-mm
+     * @brief Named chunk of memory that can subsequently be mapped onto
+     *   other processes' address spaces.
+     */
     class Shared :
         virtual public Object
     {

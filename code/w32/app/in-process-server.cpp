@@ -1,5 +1,5 @@
 /*!
- * @file com/in-process-server.cpp
+ * @file w32/app/in-process-server.cpp
  * @author Andre Caron
  *
  * @brief Boiler-plate code for an in-process COM server.

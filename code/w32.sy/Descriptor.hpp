@@ -2,7 +2,7 @@
 #define _w32_sy_Descriptor_hpp__
 
 /*!
- * @file w32/sct/Descriptor.hpp
+ * @file w32.sy/Descriptor.hpp
  * @author Andre Caron
  */
 

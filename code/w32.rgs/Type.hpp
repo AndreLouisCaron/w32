@@ -15,9 +15,10 @@ namespace w32 { namespace rgs {
 
     class Value;
 
-        /*!
-         * @brief Enumerates all types of value we can store under a registry key.
-         */
+    /*!
+     * @ingroup w32-rgs
+     * @brief Enumerates all types of value we can store under a registry key.
+     */
     class Type
     {
         /* nested types. */

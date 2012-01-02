@@ -14,6 +14,10 @@ namespace w32 {
     namespace mm {}
 }
 
+/*!
+ * @defgroup w32-mm Memory management.
+ */
+
 #include <w32.mm/Aligned.hpp>
 #include <w32.mm/Global.hpp>
 #include <w32.mm/Heap.hpp>

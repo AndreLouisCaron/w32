@@ -2,7 +2,7 @@
 #define _w32_net_tcp_Stream_hpp__
 
 /*!
- * @file w32/net/tcp/Stream.hpp
+ * @file w32.net.tcp/Stream.hpp
  * @author Andre Caron
  */
 
@@ -21,9 +21,10 @@ namespace w32 { namespace io {
 
 namespace w32 { namespace net { namespace tcp {
 
-        /*!
-         * @brief Transfer Control Protocol, connection socket.
-         */
+    /*!
+     * @ingroup w32-net
+     * @brief Transfer Control Protocol, connection socket.
+     */
     class Stream :
         public StreamSocket
     {

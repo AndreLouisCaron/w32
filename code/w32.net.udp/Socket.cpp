@@ -1,5 +1,5 @@
 /*!
- * @file w32/net/udp/Socket.cpp
+ * @file w32.net.udp/Socket.cpp
  * @author Andre Caron
  */
 

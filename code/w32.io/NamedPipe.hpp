@@ -9,7 +9,7 @@
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
 /*!
- * @file w32/io/NamedPipe.hpp
+ * @file w32.io/NamedPipe.hpp
  * @author Andre Caron (andre.l.caron@gmail.com)
  *
  * @brief Pseudo-socket with a UNC name used for inter-process communication.

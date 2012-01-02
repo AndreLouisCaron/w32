@@ -2,7 +2,7 @@
 #define _w32_net_udp_Socket_hpp__
 
 /*!
- * @file w32/net/udp/Socket.hpp
+ * @file w32.net.udp/Socket.hpp
  * @author Andre Caron
  */
 
@@ -11,6 +11,9 @@
 
 namespace w32 { namespace net { namespace udp {
 
+    /*!
+     * @ingroup w32-net
+     */
     class Socket :
         public DatagramSocket
     {

@@ -14,6 +14,9 @@ namespace w32 {
     namespace ipc {}
 }
 
+/*!
+ * @defgroup w32-ipc Process control services.
+ */
 #include <w32.ipc/Job.hpp>
 #include <w32.ipc/Modules.hpp>
 #include <w32.ipc/Process.hpp>

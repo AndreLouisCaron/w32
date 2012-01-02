@@ -1,5 +1,5 @@
 /*!
- * @file w32/sy/Attributes.cpp
+ * @file w32.sy/Attributes.cpp
  * @author Andre Caron
  */
 

@@ -12,12 +12,13 @@
 
 namespace w32 { namespace rgs {
 
-        /*!
-         * @brief Enumerates access types for registry keys.
-         * @note The access is given when opening a registry key and only
-         *   defines the access the given handle will allow you (i.e. this is
-         *   not persistent.
-         */
+    /*!
+     * @ingroup w32-rgs
+     * @brief Enumerates access types for registry keys.
+     * @note The access is given when opening a registry key and only
+     *   defines the access the given handle will allow you (i.e. this is
+     *   not persistent.
+     */
     class Access
     {
         /* nested types. */

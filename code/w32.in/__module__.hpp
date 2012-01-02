@@ -10,10 +10,13 @@
 
 #include "__configure__.hpp"
 
-
 namespace w32 {
     namespace in {}
 }
+
+/*!
+ * @defgroup w32-in Internet services (FTP, HTTP).
+ */
 
 #include <w32.in/check.hpp>
 #include <w32.in/IStream.hpp>

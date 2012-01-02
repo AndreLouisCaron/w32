@@ -1,5 +1,5 @@
 /*!
- * @file w32/sy/Descriptor.cpp
+ * @file w32.sy/Descriptor.cpp
  * @author Andre Caron
  */
 

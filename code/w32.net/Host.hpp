@@ -21,6 +21,9 @@ namespace w32 { namespace net {
 
     using std::bad_cast;
 
+    /*!
+     * @ingroup w32-net
+     */
     class Host
     {
         /* nested types. */

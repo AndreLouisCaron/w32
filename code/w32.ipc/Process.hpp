@@ -17,15 +17,16 @@
 
 namespace w32 { namespace ipc {
 
-        /*!
-         * @brief Program execution context.
-         *
-         * Each process provides the resources needed to execute a program. A
-         * process has a virtual address space, executable code, open handles to
-         * system objects, a security context, a unique process identifier,
-         * environment variables, a priority class, minimum and maximum working
-         * set sizes, and at least one thread of execution.
-         */
+    /*!
+     * @ingroup w32-ipc
+     * @brief Program execution context.
+     *
+     * Each process provides the resources needed to execute a program. A
+     * process has a virtual address space, executable code, open handles to
+     * system objects, a security context, a unique process identifier,
+     * environment variables, a priority class, minimum and maximum working
+     * set sizes, and at least one thread of execution.
+     */
     class Process :
         public Object
     {

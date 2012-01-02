@@ -14,9 +14,10 @@
 
 namespace w32 { namespace msi {
 
-        /*!
-         * @brief Extracts information about columns affected by an SQL query.
-         */
+    /*!
+     * @ingroup w32-msi
+     * @brief Extracts information about columns affected by an SQL query.
+     */
     class Columns :
         public Record
     {

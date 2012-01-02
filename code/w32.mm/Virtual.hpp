@@ -15,32 +15,33 @@
 
 namespace w32 { namespace mm {
 
-        /*!
-         * @brief Lowest-level memory allocation scheme.
-         *
-         * Strictly speaking, virual memory allocation is a technique used to
-         * give an application program the impression that it has contiguous
-         * working memory (called the address space) while in fact it may be
-         * physically fragmented and may even overflow on to disk storage.
-         *
-         * This low-level facility is used to allocate very large amounts of
-         * memory (the smallest granularity is a @e page of memory), or to
-         * have fine grained control over access to the allocated memory.
-         *
-         * @note Do not be fooled into using other memory allocation shemes
-         *   to avoid having your memory overflow to disk storage. This
-         *   mechanism applies to all memory in the operating system: all
-         *   other allocation schemes, including @c malloc() eventually
-         *   resort to allocating virtual memory (albeit through other
-         *   system memory allocators).
-         *
-         * @warning For conveniance, this class implements the @c Allocator
-         *   interface. However, this requires returning a non-@c const pointer
-         *   even when allocating read-only memory blocks. Write operations on
-         *   read-only blocks causes access violations.
-         *
-         * @see w32::dbg::StructuredException
-         */
+    /*!
+     * @ingroup w32-mm
+     * @brief Lowest-level memory allocation scheme.
+     *
+     * Strictly speaking, virual memory allocation is a technique used to
+     * give an application program the impression that it has contiguous
+     * working memory (called the address space) while in fact it may be
+     * physically fragmented and may even overflow on to disk storage.
+     *
+     * This low-level facility is used to allocate very large amounts of
+     * memory (the smallest granularity is a @e page of memory), or to
+     * have fine grained control over access to the allocated memory.
+     *
+     * @note Do not be fooled into using other memory allocation shemes
+     *   to avoid having your memory overflow to disk storage. This
+     *   mechanism applies to all memory in the operating system: all
+     *   other allocation schemes, including @c malloc() eventually
+     *   resort to allocating virtual memory (albeit through other
+     *   system memory allocators).
+     *
+     * @warning For conveniance, this class implements the @c Allocator
+     *   interface. However, this requires returning a non-@c const pointer
+     *   even when allocating read-only memory blocks. Write operations on
+     *   read-only blocks causes access violations.
+     *
+     * @see w32::dbg::StructuredException
+     */
     class Virtual :
         public Allocator
     {

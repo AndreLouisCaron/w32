@@ -13,6 +13,10 @@
 
 namespace w32 { namespace msi {
 
+    /*!
+     * @ingroup w32-msi
+     * @brief
+     */
     class Hash
     {
         /* nested types. */

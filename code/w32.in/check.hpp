@@ -13,7 +13,16 @@
 
 namespace w32 { namespace in {
 
+    /*!
+     * @ingroup w32-in
+     * @brief
+     */
     void check ( bool force=false );
+
+    /*!
+     * @ingroup w32-in
+     * @brief
+     */
     void check ( const string& url, bool force=false );
 
 } }

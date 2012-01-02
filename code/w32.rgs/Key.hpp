@@ -16,9 +16,10 @@
 
 namespace w32 { namespace rgs {
 
-        /*!
-         * @brief Allows manipulation of registry keys from different sources.
-         */
+    /*!
+     * @ingroup w32-rgs
+     * @brief Allows manipulation of registry keys from different sources.
+     */
     class Key
     {
         /* nested types. */

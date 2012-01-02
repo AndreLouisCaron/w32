@@ -2,7 +2,7 @@
 #define _w32_sy_Attributes_hpp__
 
 /*!
- * @file w32/sct/Attributes.hpp
+ * @file w32.sy/Attributes.hpp
  * @author Andre Caron
  */
 

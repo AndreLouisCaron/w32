@@ -28,7 +28,7 @@ namespace w32{ namespace com {
     public:
             /*!
              * @brief Acquire extra COM reference to object.
-             * @param COM object to acquire.
+             * @param object COM Object to acquire.
              *
              * This function exists mainly to enforce that the class compiles
              * only for classes that derive from IUnknown.
@@ -43,7 +43,7 @@ namespace w32{ namespace com {
 
             /*!
              * @brief Release COM reference to object.
-             * @param COM object to release.
+             * @param object COM object to release.
              *
              * This function exists mainly to enforce that the class compiles
              * only for classes that derive from IUnknown.

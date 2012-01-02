@@ -15,6 +15,9 @@
 
 namespace w32 { namespace net {
 
+    /*!
+     * @ingroup w32-net
+     */
     class sockstream :
         public std::iostream
     {

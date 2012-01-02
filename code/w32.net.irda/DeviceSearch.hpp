@@ -2,7 +2,7 @@
 #define _w32_net_irda_DeviceSearch_hpp__
 
 /*!
- * @file w32/net/irda/DeviceSearch.hpp
+ * @file w32.net.irda/DeviceSearch.hpp
  * @author Andre Caron
  */
 

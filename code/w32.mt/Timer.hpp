@@ -103,7 +103,7 @@ namespace w32 { namespace mt {
 
             /*!
              * @brief Block the thread until the timer elapses.
-             * @param timespan Maximum delai to wait for the timer.
+             * @param timeout Maximum delai to wait for the timer.
              * @return @c true if the timer elapsed, @c false if the timeout
              *  delai was reached before the timer elapsed.
              */

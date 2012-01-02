@@ -15,6 +15,10 @@
 
 namespace w32 { namespace ipc {
 
+    /*!
+     * @ingroup w32-ipc
+     * @brief Enumerate all visible processes running on the system.
+     */
     class Processes :
         public Object
     {

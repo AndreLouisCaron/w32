@@ -29,6 +29,10 @@ namespace w32 { namespace in { namespace http {
     // Once all the response has been read, the request object may be re-used.
     // In particular, set the INTERNET_FLAG_KEEP_CONNECTION flag in
     // HttpOpenRequest() to enable HTTP keep alive for multiple downloads.
+    /*!
+     * @ingroup w32-in
+     * @brief
+     */
     class Request
     {
     };

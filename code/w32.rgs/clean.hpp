@@ -14,7 +14,14 @@
 
 namespace w32 { namespace rgs {
 
+    /*!
+     * @ingroup w32-rgs
+     */
     void clean ( Key& root );
+
+    /*!
+     * @ingroup w32-rgs
+     */
     void clean ( Key& root, const string& path );
 
 } }

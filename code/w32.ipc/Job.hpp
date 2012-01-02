@@ -15,16 +15,17 @@
 
 namespace w32 { namespace ipc {
 
-        /*!
-         * @brief Group of processes.
-         *
-         * This is a tool for management of multiple sub-processes and is ideal
-         * for a control process. Operations performed on the job object are
-         * propagated to all processes associated with the job.
-         *
-         * By default, all child processes of a process in a job are also
-         * assigned to the job. It is possible to override this behaviour.
-         */
+    /*!
+     * @ingroup w32-ipc
+     * @brief Group of processes.
+     *
+     * This is a tool for management of multiple sub-processes and is ideal
+     * for a control process. Operations performed on the job object are
+     * propagated to all processes associated with the job.
+     *
+     * By default, all child processes of a process in a job are also
+     * assigned to the job. It is possible to override this behaviour.
+     */
     class Job :
         public Object
     {

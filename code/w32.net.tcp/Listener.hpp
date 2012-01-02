@@ -13,9 +13,10 @@
 
 namespace w32 { namespace net { namespace tcp {
 
-        /*!
-         * @brief Transfer control protocol "server" socket.
-         */
+    /*!
+     * @ingroup w32-net
+     * @brief Transfer control protocol "server" socket.
+     */
     class Listener :
         public Socket
     {

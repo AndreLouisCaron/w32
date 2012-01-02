@@ -31,6 +31,10 @@ namespace w32 { namespace in {
 
 namespace w32 { namespace in { namespace ftp {
 
+    /*!
+     * @ingroup w32-in
+     * @brief
+     */
     class Connection :
         public in::Connection
     {
@@ -64,6 +68,10 @@ namespace w32 { namespace in { namespace ftp {
     // FtpFindFirstFile()
     // InternetFindNextFile()
     // InternetCloseHandle()
+    /*!
+     * @ingroup w32-in
+     * @brief
+     */
     class Listing
     {
         /* nested types. */
@@ -91,6 +99,10 @@ namespace w32 { namespace in { namespace ftp {
         bool next ( Result& result );
     };
 
+    /*!
+     * @ingroup w32-in
+     * @brief
+     */
     class Listing::Result :
         private NotCopyable
     {

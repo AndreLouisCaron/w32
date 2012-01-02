@@ -15,6 +15,9 @@
 
 namespace w32 { namespace mm {
 
+    /*!
+     * @ingroup w32-mm
+     */
     class Local
     {
         /* nested types. */

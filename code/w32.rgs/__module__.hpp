@@ -14,6 +14,10 @@ namespace w32 {
     namespace rgs {}
 }
 
+/*!
+ * @defgroup w32-rgs Windows registry services.
+ */
+
 #include <w32.rgs/Access.hpp>
 #include <w32.rgs/clean.hpp>
 #include <w32.rgs/Key.hpp>

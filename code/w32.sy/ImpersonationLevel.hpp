@@ -2,7 +2,7 @@
 #define _w32_sy_ImpersonationLevel_hpp__
 
 /*!
- * @file w32/sct/ImpersonationLevel.hpp
+ * @file w32.sy/ImpersonationLevel.hpp
  * @author Andre Caron
  */
 

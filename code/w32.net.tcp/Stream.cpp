@@ -5,6 +5,11 @@
 // this software package (see "license.rtf"). If not, the license is available
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
+/*!
+ * @file w32.net.tcp/Stream.cpp
+ * @author Andre Caron
+ */
+
 #include <w32.net.tcp/Stream.hpp>
 #include <w32/Error.hpp>
 #include <w32.io/InputStream.hpp>

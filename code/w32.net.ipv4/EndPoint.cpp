@@ -1,5 +1,5 @@
 /*!
- * @file w32/net/ipv4/EndPoint.cpp
+ * @file w32.net.ipv4/EndPoint.cpp
  * @author Andre Caron
  */
 

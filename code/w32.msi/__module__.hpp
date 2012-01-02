@@ -14,6 +14,10 @@ namespace w32 {
     namespace msi {}
 }
 
+/*!
+ * @defgroup w32-msi Microsoft Installer services.
+ */
+
 #include <w32.msi/Columns.hpp>
 #include <w32.msi/Database.hpp>
 #include <w32.msi/Error.hpp>

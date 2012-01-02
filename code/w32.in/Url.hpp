@@ -15,6 +15,10 @@ namespace w32 { namespace in {
 
     typedef ::INTERNET_PORT Port;
 
+    /*!
+     * @ingroup w32-in
+     * @brief
+     */
     class Url
     {
         /* nested types. */

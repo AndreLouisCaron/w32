@@ -16,11 +16,12 @@
 
 namespace w32 { namespace rgs {
 
-        /*!
-         * @brief Allows manipulation of registry key values.
-         *
-         * @todo Only handles strings and dwords for now.
-         */
+    /*!
+     * @ingroup w32-rgs
+     * @brief Allows manipulation of registry key values.
+     *
+     * @todo Only handles strings and dwords for now.
+     */
     class Value
     {
         /* data. */

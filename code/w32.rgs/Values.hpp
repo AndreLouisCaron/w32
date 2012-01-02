@@ -14,9 +14,10 @@
 
 namespace w32 { namespace rgs {
 
-        /*!
-         * @brief Enumerates a given key's values.
-         */
+    /*!
+     * @ingroup w32-rgs
+     * @brief Enumerates a given key's values.
+     */
     class Values :
         private NotCopyable
     {

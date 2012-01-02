@@ -2,7 +2,7 @@
 #define _win32c_net_ipv6_Address_hpp__
 
 /*!
- * @file Address.hpp
+ * @file w32.net.ipv6/Address.hpp
  * @author Andre Caron
  */
 
@@ -13,6 +13,9 @@
 
 namespace w32 { namespace net { namespace ipv6 {
 
+    /*!
+     * @ingroup w32-net
+     */
     class Address
     {
         /* nested types. */

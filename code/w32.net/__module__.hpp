@@ -14,6 +14,10 @@ namespace w32 {
     namespace net {}
 }
 
+/*!
+ * @defgroup w32-net Networking services.
+ */
+
 #include <w32.net/Buffer.hpp>
 #include <w32.net/Context.hpp>
 #include <w32.net/Event.hpp>

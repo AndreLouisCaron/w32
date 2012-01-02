@@ -15,6 +15,9 @@ namespace w32 { namespace net {
 
     class Socket;
 
+    /*!
+     * @ingroup w32-net
+     */
     class Event
     {
         /* nested types. */

@@ -15,12 +15,13 @@
 
 namespace w32 { namespace mm {
 
-        /*!
-         * @brief Legacy memory allocation protocol.
-         *
-         * You should not use this class unless a given interface requires you
-         * to: modern mechanisms, which are also more convenient, exist.
-         */
+    /*!
+     * @ingroup w32-mm
+     * @brief Legacy memory allocation protocol.
+     *
+     * You should not use this class unless a given interface requires you
+     * to: modern mechanisms, which are also more convenient, exist.
+     */
     class Global
     {
         /* nested types. */

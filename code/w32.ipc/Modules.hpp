@@ -16,6 +16,10 @@
 
 namespace w32 { namespace ipc {
 
+    /*!
+     * @ingroup w32-ipc
+     * @brief Enumerate all modules loaded into a process.
+     */
     class Modules :
         public Object
     {

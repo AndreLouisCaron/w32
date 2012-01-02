@@ -14,9 +14,10 @@
 
 namespace w32 { namespace rgs {
 
-        /*!
-         * @brief Enumerates a given key's direct children(sub-keys).
-         */
+    /*!
+     * @ingroup w32-rgs
+     * @brief Enumerates a given key's direct children(sub-keys).
+     */
     class Keys :
         private NotCopyable
     {

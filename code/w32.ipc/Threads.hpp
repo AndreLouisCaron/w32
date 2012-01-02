@@ -16,6 +16,10 @@
 
 namespace w32 { namespace ipc {
 
+    /*!
+     * @ingroup w32-ipc
+     * @brief Enumerate all threads running a process.
+     */
     class Threads :
         public Object
     {

@@ -2,7 +2,7 @@
 #define _w32_net_ipv4_Address_hpp__
 
 /*!
- * @file w32/net/ipv4/Address.hpp
+ * @file w32.net.ipv4/Address.hpp
  * @author Andre Caron
  */
 
@@ -14,6 +14,9 @@
 
 namespace w32 { namespace net { namespace ipv4 {
 
+    /*!
+     * @ingroup w32-net
+     */
     class Address
     {
         /* nested types. */

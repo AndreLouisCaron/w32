@@ -1,5 +1,5 @@
 /*!
- * @file w32/com/com.instantiate.cpp
+ * @file w32/app/com.instantiate.cpp
  * @author Andre Caron
  *
  * @brief Utility to check if a COM object is well registered.

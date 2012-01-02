@@ -16,13 +16,14 @@
 
 namespace w32 { namespace msi {
 
-        /*!
-         * @brief Wraps an msi object.
-         *
-         * Installer objects are actually miniature relational databases. Thus,
-         * the internal file format is hidden under the hood of a database and
-         * is opaque.
-         */
+    /*!
+     * @ingroup w32-msi
+     * @brief Wraps an msi object.
+     *
+     * Installer objects are actually miniature relational databases. Thus,
+     * the internal file format is hidden under the hood of a database and
+     * is opaque.
+     */
     class Database :
         public Object
     {

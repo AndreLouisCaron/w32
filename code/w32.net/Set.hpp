@@ -14,13 +14,14 @@
 
 namespace w32 { namespace net {
 
-        /*!
-         * @brief List of sockets to pass to select().
-         *
-         * @note The underlying implementation is a fixed-capacity array of
-         *   which we add or remove elements on demand (i.e. the size never
-         *   changes, but we ensure
-         */
+    /*!
+     * @ingroup w32-net
+     * @brief List of sockets to pass to select().
+     *
+     * @note The underlying implementation is a fixed-capacity array of
+     *   which we add or remove elements on demand (i.e. the size never
+     *   changes, but we ensure
+     */
     class Set :
         private NotCopyable
     {

@@ -63,8 +63,8 @@ namespace w32 { namespace mt {
 
             /*!
              * @brief Makes the lock available for another thread.
-             * @param Number of shares to release.
-             * @param Number of available shares, after the release operation.
+             * @param count Number of shares to release.
+             * @return Number of available shares, after the release operation.
              */
         long release ( long count = 1 );
 

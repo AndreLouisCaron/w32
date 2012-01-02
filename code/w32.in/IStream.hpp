@@ -17,6 +17,10 @@ namespace w32 { namespace in {
 
     class Session;
 
+    /*!
+     * @ingroup w32-in
+     * @brief
+     */
     class IStream
     {
         /* nested types. */

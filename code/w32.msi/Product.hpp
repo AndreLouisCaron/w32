@@ -14,6 +14,10 @@
 
 namespace w32 { namespace msi {
 
+    /*!
+     * @ingroup w32-msi
+     * @brief
+     */
     class Product
     {
         /* nested types. */

@@ -1,5 +1,5 @@
 /*!
- * @file w32/net/irda/DeviceSearch.cpp
+ * @file w32.net.irda/DeviceSearch.cpp
  * @author Andre Caron
  */
 

@@ -16,9 +16,10 @@
 
 namespace w32 { namespace msi {
 
-        /*!
-         * @brief Wraps an SQL query to an msi database.
-         */
+    /*!
+     * @ingroup w32-msi
+     * @brief Wraps an SQL query to an msi database.
+     */
     class View :
         public Object
     {

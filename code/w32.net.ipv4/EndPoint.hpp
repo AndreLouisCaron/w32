@@ -2,7 +2,7 @@
 #define _w32_net_ipv4_EndPoint_hpp__
 
 /*!
- * @file w32/net/ipv4/EndPoint.hpp
+ * @file w32.net.ipv4/EndPoint.hpp
  * @author Andre Caron
  */
 
@@ -14,9 +14,10 @@
 
 namespace w32 { namespace net { namespace ipv4 {
 
-        /*!
-         * @brief Internet Protocol address (including port) version 4.
-         */
+    /*!
+     * @ingroup w32-net
+     * @brief Internet Protocol address (including port) version 4.
+     */
     class EndPoint
     {
         /* nested types. */

@@ -41,7 +41,7 @@ namespace w32 { namespace io {
     public:
             /*!
              * @brief Build a stream buffer that uses a Tcp/Ip stream.
-             * @param channel The i/o channel to use.
+             * @param stream The i/o channel to use.
              */
         istreambuf ( InputStream& stream );
 

@@ -14,6 +14,9 @@
 
 namespace w32 { namespace net {
 
+    /*!
+     * @ingroup w32-net
+     */
     class Timespan
     {
         /* nested types. */

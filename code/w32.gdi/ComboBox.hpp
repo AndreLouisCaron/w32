@@ -60,7 +60,7 @@ namespace w32 { namespace gdi {
         string text () const;
 
             /*!
-             * @brife Obtains the number of items in the list box.
+             * @brief Obtains the number of items in the list box.
              */
         size_type size () const;
 

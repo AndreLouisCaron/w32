@@ -2,7 +2,7 @@
 #define _win32c_com_String_hpp__
 
 /*!
- * @file String.hpp
+ * @file w32.com/String.hpp
  * @author Andre Caron
  */
 

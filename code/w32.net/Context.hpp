@@ -15,9 +15,10 @@
 
 namespace w32 { namespace net {
 
-        /*!
-         * @brief RAII object to initialize the WinSock2 library.
-         */
+    /*!
+     * @ingroup w32-net
+     * @brief RAII object to initialize the WinSock2 library.
+     */
     class Context :
         private NotCopyable
     {
