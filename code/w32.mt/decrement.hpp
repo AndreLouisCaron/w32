@@ -28,7 +28,7 @@ namespace w32 { namespace mt {
         return InterlockedDecrementAcquire(&x);
     }
 
-#ifdef _WIN64
+#ifdef _M_IA64
     inline ::LONGLONG decrement_acquire ( volatile ::LONGLONG& x )
     {
         return InterlockedDecrementAcquire64(&x);
@@ -40,7 +40,7 @@ namespace w32 { namespace mt {
         return InterlockedDecrementRelease(&x);
     }
 
-#ifdef _WIN64
+#ifdef _M_IA64
     inline ::LONGLONG decrement_release ( volatile ::LONGLONG& x )
     {
         return InterlockedDecrementRelease64(&x);

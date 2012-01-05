@@ -28,7 +28,7 @@ namespace {
     }
 
     ::IShellFolder * open
-        ( ::IShellFolder * parent, const ::ITEMIDLIST * path )
+        ( ::IShellFolder * parent, ::LPCITEMIDLIST path )
     {
         const w32::com::Guid& I = w32::com::guidof< ::IShellFolder >();
         ::IShellFolder * folder = 0;

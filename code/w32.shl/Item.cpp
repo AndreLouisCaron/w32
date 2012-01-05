@@ -14,7 +14,7 @@
 
 namespace {
 
-    ::IShellItem * open ( const ::ITEMIDLIST * path )
+    ::IShellItem * open ( ::LPCITEMIDLIST path )
     {
         ::IShellItem * item = 0;
         const w32::com::Result result =
@@ -25,7 +25,7 @@ namespace {
         return (item);
     }
 
-    ::IShellItem * open ( ::IShellFolder * parent, const ::ITEMIDLIST * path )
+    ::IShellItem * open ( ::IShellFolder * parent, ::LPCITEMIDLIST path )
     {
         ::IShellItem * item = 0;
         const w32::com::Result result =

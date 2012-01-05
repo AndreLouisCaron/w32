@@ -52,7 +52,7 @@ namespace w32 { namespace mt {
 
     List::iterator List::begin ()
     {
-        return (iterator(&myData.Next));
+        return (iterator(::RtlFirstEntrySList(&myData)));
     }
 
     List::iterator List::end ()
@@ -66,7 +66,7 @@ namespace w32 { namespace mt {
 
     List::const_iterator List::begin () const
     {
-        return (const_iterator(&myData.Next));
+        return (const_iterator(::RtlFirstEntrySList(&myData)));
     }
 
     List::const_iterator List::end () const

@@ -267,13 +267,13 @@ namespace w32 { namespace gdi {
     void Window::extra ( void * pointer )
     {
         ::SetWindowLongPtrA(
-            handle(), GWL_USERDATA, ::LONG_PTR(pointer)
+            handle(), GWLP_USERDATA, ::LONG_PTR(pointer)
             );
     }
 
     void * Window::extra () const
     {
-        return ((void*)::GetWindowLongPtrA(handle(),GWL_USERDATA));
+        return ((void*)::GetWindowLongPtrA(handle(),GWLP_USERDATA));
     }
 
     void Window::focus ()
@@ -332,7 +332,7 @@ namespace w32 { namespace gdi {
             );
         return (IconProxy(reinterpret_cast<::HICON>(result)));
 #else
-        const ::LONG_PTR result = ::GetClassLongPtr(handle(), GCL_HICON);
+        const ::LONG_PTR result = ::GetClassLongPtr(handle(), GCLP_HICON);
         const Icon::Handle handle(Icon::proxy(reinterpret_cast<::HICON>(result)));
         return (Icon(handle));
 #endif
@@ -346,7 +346,7 @@ namespace w32 { namespace gdi {
             );
         return (IconProxy(reinterpret_cast<::HICON>(result)));
 #else
-        const ::LONG_PTR result = ::GetClassLongPtr(handle(), GCL_HICONSM);
+        const ::LONG_PTR result = ::GetClassLongPtr(handle(), GCLP_HICONSM);
         const Icon::Handle handle(Icon::proxy(reinterpret_cast<::HICON>(result)));
         return (Icon(handle));
 #endif
@@ -370,12 +370,12 @@ namespace w32 { namespace gdi {
 
     Window::Callback Window::callback () const
     {
-        return (reinterpret_cast<Callback>(::get(handle(), GWL_WNDPROC)));
+        return (reinterpret_cast<Callback>(::get(handle(), GWLP_WNDPROC)));
     }
 
     Window::Callback Window::callback ( Callback callback )
     {
-        return (reinterpret_cast<Callback>(::set(handle(), GWL_WNDPROC,
+        return (reinterpret_cast<Callback>(::set(handle(), GWLP_WNDPROC,
             reinterpret_cast< ::LONG_PTR >(callback))));
     }
 

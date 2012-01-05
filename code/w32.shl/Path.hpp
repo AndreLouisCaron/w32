@@ -19,7 +19,7 @@ namespace w32 { namespace shl {
 
     class Path;
 
-    Path manage ( ::ITEMIDLIST * path );
+    Path manage ( ::LPITEMIDLIST path );
 
         /*!
          * @brief Singly-linked list of heterogenous component identifiers.
@@ -39,7 +39,7 @@ namespace w32 { namespace shl {
          */
     class Path
     {
-    friend Path manage ( ::ITEMIDLIST * path );
+    friend Path manage ( ::LPITEMIDLIST path );
 
         /* nested types. */
     public:
@@ -52,7 +52,7 @@ namespace w32 { namespace shl {
         {
             /* data. */
         private:
-            const ::ITEMIDLIST * myPosition;
+            ::LPCITEMIDLIST myPosition;
 
             /* construction. */
         public:
@@ -60,13 +60,13 @@ namespace w32 { namespace shl {
                  : myPosition(0)
             {}
 
-            iterator ( const ::ITEMIDLIST * position )
+            iterator ( ::LPCITEMIDLIST position )
                 : myPosition(position)
             {}
 
             /* methods. */
         public:
-            const ::ITEMIDLIST * position () const {
+            ::LPCITEMIDLIST position () const {
                 return (myPosition);
             }
 
@@ -76,7 +76,7 @@ namespace w32 { namespace shl {
                 return (*myPosition);
             }
 
-            const ::ITEMIDLIST* operator-> () const {
+            ::LPCITEMIDLIST operator-> () const {
                 return (myPosition);
             }
 
@@ -104,7 +104,7 @@ namespace w32 { namespace shl {
 
         /* data. */
     private:
-        ::ITEMIDLIST * myBackend;
+        ::LPITEMIDLIST myBackend;
 
         /* static methods. */
     public:
@@ -124,21 +124,21 @@ namespace w32 { namespace shl {
             /*!
              * @brief Gains ownership of an existing path.
              */
-        static Path box ( ::ITEMIDLIST * path ) {
+        static Path box ( ::LPITEMIDLIST path ) {
             return (manage(path));
         }
 
         /* construction. */
     public:
         Path ();
-        explicit Path ( const ::ITEMIDLIST * list );
+        explicit Path ( ::LPCITEMIDLIST list );
         Path ( const Path& list );
         Path ( const string& path );
 
             /*!
              * @brief Concatenates two identifier lists.
              */
-        Path ( const ::ITEMIDLIST * parent, const ::ITEMIDLIST * child );
+        Path ( ::LPCITEMIDLIST parent, ::LPCITEMIDLIST child );
 
             /*!
              * @brief Concatenates two identifier lists.
@@ -157,12 +157,12 @@ namespace w32 { namespace shl {
             /*!
              * @brief Obtains read-only access to the native representation.
              */
-        const ::ITEMIDLIST * backend () const;
+        ::LPCITEMIDLIST backend () const;
 
             /*!
              * @brief Requests manual management of the native representation.
              */
-        ::ITEMIDLIST * release ();
+        ::LPITEMIDLIST release ();
 
             /*!
              * @brief Constant-time swap of the two paths.
@@ -189,7 +189,7 @@ namespace w32 { namespace shl {
         /* operators. */
     public:
         Path& operator= ( const Path& other );
-        Path& operator= ( const ::ITEMIDLIST * other );
+        Path& operator= ( ::LPCITEMIDLIST other );
         operator bool () const;
         bool operator! () const;
 
@@ -212,7 +212,7 @@ namespace w32 { namespace shl {
         /*!
          * @brief Gains ownership of an existing path.
          */
-    inline Path manage ( ::ITEMIDLIST * path )
+    inline Path manage ( ::LPITEMIDLIST path )
     {
         Path result;
         result.myBackend = path;

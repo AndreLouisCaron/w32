@@ -15,7 +15,7 @@ namespace w32 { namespace shl {
     {
     }
 
-    Path::Path ( const ::ITEMIDLIST * list )
+    Path::Path ( ::LPCITEMIDLIST list )
         : myBackend(ILClone(list))
     {
     }
@@ -30,7 +30,7 @@ namespace w32 { namespace shl {
     {
     }
 
-    Path::Path ( const ::ITEMIDLIST * parent, const ::ITEMIDLIST * child )
+    Path::Path ( ::LPCITEMIDLIST parent, ::LPCITEMIDLIST child )
         : myBackend(ILCombine(parent,child))
     {
     }
@@ -53,21 +53,21 @@ namespace w32 { namespace shl {
         }
     }
 
-    const ::ITEMIDLIST * Path::backend () const
+    ::LPCITEMIDLIST Path::backend () const
     {
         return (myBackend);
     }
 
-    ::ITEMIDLIST * Path::release ()
+    ::LPITEMIDLIST Path::release ()
     {
-        ::ITEMIDLIST *const backend = myBackend;
+        const ::LPITEMIDLIST backend = myBackend;
         myBackend = 0;
         return (backend);
     }
 
     void Path::swap ( Path& other )
     {
-        ::ITEMIDLIST *const temporary = myBackend;
+        const ::LPITEMIDLIST temporary = myBackend;
         myBackend = other.myBackend;
         other.myBackend = temporary;
     }
@@ -87,7 +87,7 @@ namespace w32 { namespace shl {
         size_type count = 0;
         if ( myBackend != 0 )
         {
-            const ::ITEMIDLIST * current = myBackend;
+            ::LPCITEMIDLIST current = myBackend;
             while ( current->mkid.cb > 0 ) {
                 ++count, current = ILNext(current);
             }
@@ -119,7 +119,7 @@ namespace w32 { namespace shl {
         return (*this);
     }
 
-    Path& Path::operator= ( const ::ITEMIDLIST * other )
+    Path& Path::operator= ( ::LPCITEMIDLIST other )
     {
         Path(other).swap(*this);
         return (*this);

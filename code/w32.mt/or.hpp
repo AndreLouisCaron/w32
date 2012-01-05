@@ -18,7 +18,7 @@ namespace w32 { namespace mt {
     inline ::LONG or ( volatile ::LONG& x, ::LONG y )
     {
 #if defined(InterlockedOr)
-        return Ineterlockedor(&x, y);
+        return InterlockedOr(&x, y);
 #else
         LONG i;
         LONG j;

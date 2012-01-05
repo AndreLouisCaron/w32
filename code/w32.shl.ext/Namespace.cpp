@@ -54,7 +54,7 @@ namespace w32 { namespace shl { namespace ext {
         }
 
         virtual hresult __stdcall Next
-            ( ulong count, ::ITEMIDLIST ** items, ulong * fetched )
+            ( ulong count, ::LPITEMIDLIST * items, ulong * fetched )
         {
                 // No items for now...
             if ( fetched != 0 ) {
@@ -177,8 +177,7 @@ namespace w32 { namespace shl { namespace ext {
         return (S_OK);
     }
 
-    hresult __stdcall Namespace::Initialize
-        ( const ::ITEMIDLIST * path )
+    hresult __stdcall Namespace::Initialize ( ::LPCITEMIDLIST path )
     {
         myRoot = Path(path);
         myPath = myRoot;
@@ -186,28 +185,25 @@ namespace w32 { namespace shl { namespace ext {
         return (S_OK);
     }
 
-    hresult __stdcall Namespace::GetCurFolder
-        ( ::ITEMIDLIST ** path )
+    hresult __stdcall Namespace::GetCurFolder ( ::LPITEMIDLIST * path )
     {
         Path clone(myPath);
         (*path) = clone.release();
         return (S_OK);
     }
 
-    hresult __stdcall Namespace::GetIDList
-        ( ::ITEMIDLIST ** path )
+    hresult __stdcall Namespace::GetIDList ( ::LPITEMIDLIST * path )
     {
         return (GetCurFolder(path));
     }
 
-    hresult __stdcall Namespace::SetIDList
-        ( const ::ITEMIDLIST * path )
+    hresult __stdcall Namespace::SetIDList ( ::LPCITEMIDLIST path )
     {
         return (E_NOTIMPL);
     }
 
     hresult __stdcall Namespace::BindToObject (
-        const ::ITEMIDLIST * path, ::IBindCtx * context,
+        ::LPCITEMIDLIST path, ::IBindCtx * context,
         const ::IID& model, void ** instance )
     {
             // Return requested item.
@@ -220,14 +216,14 @@ namespace w32 { namespace shl { namespace ext {
     }
 
     hresult __stdcall Namespace::BindToStorage (
-        const ::ITEMIDLIST * path, ::IBindCtx * context,
+        ::LPCITEMIDLIST path, ::IBindCtx * context,
         const ::IID& model, void ** instance )
     {
         return (BindToObject(path, context, model, instance));
     }
 
     hresult __stdcall Namespace::CompareIDs (
-        lparam param, const ::ITEMIDLIST * lhs, const ::ITEMIDLIST * rhs )
+        lparam param, ::LPCITEMIDLIST lhs, ::LPCITEMIDLIST rhs )
     {
         return (E_NOTIMPL);
     }
@@ -264,19 +260,19 @@ namespace w32 { namespace shl { namespace ext {
     }
 
     hresult __stdcall Namespace::GetAttributesOf
-        ( uint count, const ::ITEMIDLIST ** paths, ::SFGAOF * mask )
+        ( uint count, ::LPCITEMIDLIST * paths, ::SFGAOF * mask )
     {
         return (E_NOTIMPL);
     }
 
     hresult __stdcall Namespace::GetDisplayNameOf
-        ( const ::ITEMIDLIST * path, ::SHGDNF flags, ::STRRET * name )
+        ( ::LPCITEMIDLIST path, ::SHGDNF flags, ::STRRET * name )
     {
         return (E_NOTIMPL);
     }
 
     hresult __stdcall Namespace::GetUIObjectOf (
-        hwnd owner, uint count, const ::ITEMIDLIST ** paths,
+        hwnd owner, uint count, ::LPCITEMIDLIST * paths,
         const ::IID& model, uint *, void ** instance )
     {
         return (E_NOTIMPL);
@@ -284,14 +280,14 @@ namespace w32 { namespace shl { namespace ext {
 
     hresult __stdcall Namespace::ParseDisplayName (
         hwnd owner, ::IBindCtx * context, wchar_t * name,
-        ulong * eaten, ::ITEMIDLIST ** path, ulong * attributes )
+        ulong * eaten, ::LPITEMIDLIST * path, ulong * attributes )
     {
         return (E_NOTIMPL);
     }
 
     hresult __stdcall Namespace::SetNameOf (
-        hwnd owner, const ::ITEMIDLIST * path, const wchar_t * name,
-        ::SHGDNF flags, ::ITEMIDLIST ** npath )
+        hwnd owner, ::LPCITEMIDLIST path, const wchar_t * name,
+        ::SHGDNF flags, ::LPITEMIDLIST * npath )
     {
         return (E_NOTIMPL);
     }
@@ -326,14 +322,14 @@ namespace w32 { namespace shl { namespace ext {
     }
 
     hresult __stdcall Namespace::GetDetailsEx (
-        const ::ITEMIDLIST * path, const ::SHCOLUMNID * column,
+        ::LPCITEMIDLIST path, const ::SHCOLUMNID * column,
         ::VARIANT * variant )
     {
         return (E_NOTIMPL);
     }
 
     hresult __stdcall Namespace::GetDetailsOf
-        ( const ::ITEMIDLIST * path, uint column, ::SHELLDETAILS * details )
+        ( ::LPCITEMIDLIST path, uint column, ::SHELLDETAILS * details )
     {
         return (E_NOTIMPL);
     }

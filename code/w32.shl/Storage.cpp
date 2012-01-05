@@ -15,7 +15,7 @@
 
 namespace {
 
-    ::IStorage * child ( ::IShellFolder * folder, const ::ITEMIDLIST * path )
+    ::IStorage * child ( ::IShellFolder * folder, ::LPCITEMIDLIST path )
     {
         const w32::com::Guid I = w32::com::guidof< ::IStorage >();
         ::IStorage * storage = 0;

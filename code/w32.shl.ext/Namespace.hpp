@@ -73,45 +73,41 @@ namespace w32 { namespace shl { namespace ext {
             ( ::CLSID * guid );
 
             // IPersistFolder
-        virtual hresult __stdcall Initialize
-            ( const ::ITEMIDLIST * path );
+        virtual hresult __stdcall Initialize (  ::LPCITEMIDLIST path );
 
             // IPersistFolder2
-        virtual hresult __stdcall GetCurFolder
-            ( ::ITEMIDLIST ** path );
+        virtual hresult __stdcall GetCurFolder ( ::LPITEMIDLIST * path );
 
             // IPersistIDList
-        virtual hresult __stdcall GetIDList
-            ( ::ITEMIDLIST ** path );
-        virtual hresult __stdcall SetIDList
-            ( const ::ITEMIDLIST * path );
+        virtual hresult __stdcall GetIDList ( ::LPITEMIDLIST * path );
+        virtual hresult __stdcall SetIDList ( ::LPCITEMIDLIST path );
 
             // IShellFolder
         virtual hresult __stdcall BindToObject (
-            const ::ITEMIDLIST * path, ::IBindCtx * context,
+            ::LPCITEMIDLIST path, ::IBindCtx * context,
             const ::IID& model, void ** instance );
         virtual hresult __stdcall BindToStorage (
-            const ::ITEMIDLIST * path, ::IBindCtx * context,
+            ::LPCITEMIDLIST path, ::IBindCtx * context,
             const ::IID& model, void ** instance );
         virtual hresult __stdcall CompareIDs (
-            lparam param, const ::ITEMIDLIST * lhs, const ::ITEMIDLIST * rhs );
+            lparam param, ::LPCITEMIDLIST lhs, ::LPCITEMIDLIST rhs );
         virtual hresult __stdcall CreateViewObject
             ( hwnd owner, const ::IID& model, void ** instance );
         virtual hresult __stdcall EnumObjects
             ( hwnd owner, ::SHCONTF flags, ::IEnumIDList ** list );
         virtual hresult __stdcall GetAttributesOf
-            ( uint count, const ::ITEMIDLIST ** paths, ::SFGAOF * mask );
+            ( uint count, ::LPCITEMIDLIST * paths, ::SFGAOF * mask );
         virtual hresult __stdcall GetDisplayNameOf
-            ( const ::ITEMIDLIST * path, ::SHGDNF flags, ::STRRET * name );
+            ( ::LPCITEMIDLIST path, ::SHGDNF flags, ::STRRET * name );
         virtual hresult __stdcall GetUIObjectOf (
-            hwnd owner, uint count, const ::ITEMIDLIST ** paths,
+            hwnd owner, uint count, ::LPCITEMIDLIST * paths,
             const ::IID& model, uint *, void ** instance );
         virtual hresult __stdcall ParseDisplayName (
             hwnd owner, ::IBindCtx * context, wchar_t * name,
-            ulong * eaten, ::ITEMIDLIST ** path, ulong * attributes );
+            ulong * eaten, ::LPITEMIDLIST * path, ulong * attributes );
         virtual hresult __stdcall SetNameOf (
-            hwnd owner, const ::ITEMIDLIST * path, const wchar_t * name,
-            ::SHGDNF flags, ::ITEMIDLIST ** npath );
+            hwnd owner, ::LPCITEMIDLIST path, const wchar_t * name,
+            ::SHGDNF flags, ::LPITEMIDLIST * npath );
 
             // IShellFolder2
         virtual hresult __stdcall EnumSearches
@@ -122,10 +118,10 @@ namespace w32 { namespace shl { namespace ext {
             ( uint column, ::SHCOLSTATEF * flags );
         virtual hresult __stdcall GetDefaultSearchGUID ( ::GUID * search );
         virtual hresult __stdcall GetDetailsEx (
-            const ::ITEMIDLIST * path, const ::SHCOLUMNID * column,
+            ::LPCITEMIDLIST path, const ::SHCOLUMNID * column,
             ::VARIANT * variant );
         virtual hresult __stdcall GetDetailsOf (
-            const ::ITEMIDLIST * path, uint column, ::SHELLDETAILS * details );
+            ::LPCITEMIDLIST path, uint column, ::SHELLDETAILS * details );
         virtual hresult __stdcall MapColumnToSCID
             ( uint column, ::SHCOLUMNID * identifier );
 

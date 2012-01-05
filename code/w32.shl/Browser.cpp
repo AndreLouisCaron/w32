@@ -27,7 +27,7 @@ namespace w32 { namespace shl {
 
     Path Browser::prompt ()
     {
-        const ::PIDLIST_ABSOLUTE result = ::SHBrowseForFolderW(&myData);
+        const ::LPCITEMIDLIST result = ::SHBrowseForFolderW(&myData);
         if ( result == 0 ) {
             return (L"");
         }
