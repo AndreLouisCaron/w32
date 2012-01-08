@@ -17,6 +17,9 @@ namespace w32 { namespace cr {
     class Hash;
     class Provider;
 
+    //! @addtogroup w32-cr
+    //! @{
+
     class Key
     {
         /* nested types. */
@@ -71,6 +74,8 @@ namespace w32 { namespace cr {
     public:
         operator Value () const;
     };
+
+    //! @}
 
 } }
 

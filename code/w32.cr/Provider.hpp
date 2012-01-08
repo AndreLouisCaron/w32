@@ -1,7 +1,7 @@
 #ifndef _w32_cr_Provider_hpp__
 #define _w32_cr_Provider_hpp__
 
-// Copyright(c) Andre Caron, 2009-2010
+// Copyright(c) Andre Caron, 2009-2012
 //
 // This document is covered by the Artistic License 2.0 (Open Source Initiative
 // approved license). A copy of the license should have been provided alongside
@@ -19,12 +19,16 @@ namespace w32 {
 
 namespace w32 { namespace cr {
 
+    //! @addtogroup w32-cr
+    //! @{
+
     class Provider
     {
         /* nested types. */
     public:
         typedef Reference< ::HCRYPTPROV > Handle;
 
+        class Hints;
         class Type;
 
         /* class methods. */
@@ -39,6 +43,7 @@ namespace w32 { namespace cr {
         /* construction. */
     public:
         Provider ( const Type& type );
+        Provider ( const Type& type, const Hints& hints );
 
         /* methods. */
     public:
@@ -79,6 +84,36 @@ namespace w32 { namespace cr {
     public:
         operator Value () const;
     };
+
+    class Provider::Hints
+    {
+        /* nested types. */
+    public:
+        typedef ::DWORD Value;
+
+        /* data. */
+    private:
+        Value myValue;
+
+        /* construction. */
+    public:
+        Hints ();
+
+        /* methods. */
+    public:
+        Hints& verifyContext ();
+        Hints& newKeySet ();
+        Hints& machineKeySet ();
+        Hints& deleteKeySet ();
+        Hints& silent ();
+        Hints& defaultContainerOptional ();
+
+        /* operators. */
+    public:
+        operator Value () const;
+    };
+
+    //! @}
 
 } }
 

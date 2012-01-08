@@ -31,6 +31,7 @@ set(demo-projects
   registry
   screen-capture
   service
+  sha1
   shell-ls
   splash-screen
 #  stream-my-screen

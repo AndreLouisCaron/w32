@@ -1,7 +1,7 @@
 #ifndef _w32_cr_Hash_hpp__
 #define _w32_cr_Hash_hpp__
 
-// Copyright(c) Andre Caron, 2009-2010
+// Copyright(c) Andre Caron, 2009-2012
 //
 // This document is covered by the Artistic License 2.0 (Open Source Initiative
 // approved license). A copy of the license should have been provided alongside
@@ -23,6 +23,9 @@ namespace w32 { namespace cr {
     class Blob;
     class Key;
     class Provider;
+
+    //! @addtogroup w32-cr
+    //! @{
 
     class Hash
     {
@@ -66,8 +69,14 @@ namespace w32 { namespace cr {
 
         /* class methods. */
     public:
+        static const Type md2 ();
+        static const Type md4 ();
         static const Type md5 ();
         static const Type rc2 ();
+        static const Type sha1 ();
+        static const Type sha256 ();
+        static const Type sha384 ();
+        static const Type sha512 ();
 
         static const Type of ( const Hash& hash );
 
@@ -83,6 +92,11 @@ namespace w32 { namespace cr {
     public:
         operator Value () const;
     };
+
+    Hash md5 ( const Provider& provider, const void * data, dword size );
+    Hash sha1 ( const Provider& provider, const void * data, dword size );
+
+    //! @}
 
 } }
 

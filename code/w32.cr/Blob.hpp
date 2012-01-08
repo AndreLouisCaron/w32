@@ -21,6 +21,9 @@ namespace w32 { namespace cr {
 
     class Provider;
 
+    //! @addtogroup w32-cr
+    //! @{
+
     class Blob
     {
         /* data. */
@@ -104,12 +107,14 @@ namespace w32 { namespace cr {
     }
 
     template<typename Number>
-    inline void random ( const Provider& provider )
+    inline Number random ( const Provider& provider )
     {
         Number number;
         random(provider, &number, sizeof(number));
         return (number);
     }
+
+    //! @}
 
 } }
 

@@ -40,20 +40,8 @@ namespace {
         }
     }
 
-    ::DWORD getsize ( ::HCRYPTHASH hash, ::DWORD key, ::DWORD flags=0 )
-    {
-        ::DWORD size = 0;
-        const ::BOOL result = ::CryptGetHashParam(hash, key, 0, &size, flags);
-        if ( result == FALSE )
-        {
-            const ::DWORD error = ::GetLastError();
-            UNCHECKED_WIN32C_ERROR(CryptGetHashParam, error);
-        }
-        return (size);
-    }
-
-    void getdata ( ::HCRYPTHASH hash, ::DWORD key,
-        void * data, ::DWORD size, ::DWORD flags=0 )
+    void getparam ( ::HCRYPTHASH hash, ::DWORD key,
+        void * data, ::DWORD& size, ::DWORD flags=0 )
     {
         const ::BOOL result = ::CryptGetHashParam
             (hash, key, static_cast<::BYTE*>(data), &size, flags);
@@ -111,7 +99,7 @@ namespace w32 { namespace cr {
 
     Blob Hash::data () const
     {
-        Blob lhs(::getsize(handle(), HP_HASHVAL));
+        Blob lhs(size());
         ::DWORD lhssize = lhs.size();
         const ::BOOL result = ::CryptGetHashParam(
             handle(), HP_HASHVAL, lhs.data(), &lhssize, 0
@@ -132,9 +120,10 @@ namespace w32 { namespace cr {
 
     dword Hash::size () const
     {
-        ::DWORD size = 0;
-        ::getdata(handle(), HP_HASHSIZE, &size, 4);
-        return (size);
+        ::DWORD data = 0;
+        ::DWORD size = 4;
+        ::getparam(handle(), HP_HASHSIZE, &data, size);
+        return (data);
     }
 
     bool Hash::verify ( const Key& key, const Blob& signature )
@@ -153,6 +142,16 @@ namespace w32 { namespace cr {
         return (true);
     }
 
+    const Hash::Type Hash::Type::md2 ()
+    {
+        return (CALG_MD2);
+    }
+
+    const Hash::Type Hash::Type::md4 ()
+    {
+        return (CALG_MD4);
+    }
+
     const Hash::Type Hash::Type::md5 ()
     {
         return (CALG_MD5);
@@ -163,11 +162,32 @@ namespace w32 { namespace cr {
         return (CALG_RC2);
     }
 
+    const Hash::Type Hash::Type::sha1 ()
+    {
+        return (CALG_SHA1);
+    }
+
+    const Hash::Type Hash::Type::sha256 ()
+    {
+        return (CALG_SHA_256);
+    }
+
+    const Hash::Type Hash::Type::sha384 ()
+    {
+        return (CALG_SHA_384);
+    }
+
+    const Hash::Type Hash::Type::sha512 ()
+    {
+        return (CALG_SHA_512);
+    }
+
     const Hash::Type Hash::Type::of ( const Hash& hash )
     {
-        ::DWORD type = 0;
-        ::getdata(hash.handle(), HP_ALGID, &type, 4);
-        return (type);
+        ::DWORD data = 0;
+        ::DWORD size = 4;
+        ::getparam(hash.handle(), HP_ALGID, &data, size);
+        return (data);
     }
 
     Hash::Type::Type ( Value value )
@@ -178,6 +198,20 @@ namespace w32 { namespace cr {
     Hash::Type::operator Hash::Type::Value () const
     {
         return (myValue);
+    }
+
+    Hash md5 ( const Provider& provider, const void * data, dword size )
+    {
+        Hash hash(provider, Hash::Type::md5());
+	hash.put(data, size);
+        return (hash);
+    }
+
+    Hash sha1 ( const Provider& provider, const void * data, dword size )
+    {
+        Hash hash(provider, Hash::Type::sha1());
+	hash.put(data, size);
+        return (hash);
     }
 
 } }

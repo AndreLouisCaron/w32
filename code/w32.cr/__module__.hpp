@@ -14,6 +14,10 @@ namespace w32 {
     namespace cr {}
 }
 
+/*!
+ * @defgroup w32-cr Cryptography services.
+ */
+
 #include <w32.cr/Blob.hpp>
 #include <w32.cr/Hash.hpp>
 #include <w32.cr/Key.hpp>

@@ -1,4 +1,4 @@
-// Copyright(c) Andre Caron, 2009-2010
+// Copyright(c) Andre Caron, 2009-2012
 //
 // This document is covered by the Artistic License 2.0 (Open Source Initiative
 // approved license). A copy of the license should have been provided alongside
@@ -13,11 +13,11 @@
 
 namespace {
 
-    ::HCRYPTPROV acquire ( ::DWORD type )
+    ::HCRYPTPROV acquire ( ::DWORD type, ::DWORD flags )
     {
         ::HCRYPTPROV handle = 0;
         const ::BOOL result = ::CryptAcquireContext
-            (&handle, 0, 0, type, 0);
+            (&handle, 0, 0, type, flags);
         if ( result == FALSE )
         {
             const ::DWORD error = ::GetLastError();
@@ -65,7 +65,12 @@ namespace w32 { namespace cr {
     }
 
     Provider::Provider ( const Type& type )
-        : myHandle(claim(::acquire(type)))
+        : myHandle(claim(::acquire(type, 0)))
+    {
+    }
+
+    Provider::Provider ( const Type& type, const Hints& hints )
+        : myHandle(claim(::acquire(type, hints)))
     {
     }
 
@@ -170,6 +175,52 @@ namespace w32 { namespace cr {
     }
 
     Provider::Type::operator Provider::Type::Value () const
+    {
+        return (myValue);
+    }
+
+    Provider::Hints::Hints ()
+        : myValue(0)
+    {
+    }
+
+    Provider::Hints& Provider::Hints::verifyContext ()
+    {
+        myValue |= CRYPT_VERIFYCONTEXT;
+        return (*this);
+    }
+
+    Provider::Hints& Provider::Hints::newKeySet ()
+    {
+        myValue |= CRYPT_NEWKEYSET;
+        return (*this);
+    }
+
+    Provider::Hints& Provider::Hints::machineKeySet ()
+    {
+        myValue |= CRYPT_MACHINE_KEYSET;
+        return (*this);
+    }
+
+    Provider::Hints& Provider::Hints::deleteKeySet ()
+    {
+        myValue |= CRYPT_DELETEKEYSET;
+        return (*this);
+    }
+
+    Provider::Hints& Provider::Hints::silent ()
+    {
+        myValue |= CRYPT_SILENT;
+        return (*this);
+    }
+
+    Provider::Hints& Provider::Hints::defaultContainerOptional ()
+    {
+        myValue |= CRYPT_DEFAULT_CONTAINER_OPTIONAL;
+        return (*this);
+    }
+
+    Provider::Hints::operator Value () const
     {
         return (myValue);
     }
