@@ -1,4 +1,4 @@
-// Copyright(c) Andre Caron, 2009-2010
+// Copyright(c) Andre Caron, 2009-2012
 //
 // This document is covered by the Artistic License 2.0 (Open Source Initiative
 // approved license). A copy of the license should have been provided alongside
@@ -121,6 +121,7 @@ namespace w32 { namespace cr {
             const ::DWORD error = ::GetLastError();
             UNCHECKED_WIN32C_ERROR(CryptHashData, error);
         }
+	lhs.truncate(lhssize);
         return (lhs);
     }
 

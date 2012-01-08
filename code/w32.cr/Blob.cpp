@@ -1,4 +1,4 @@
-// Copyright(c) Andre Caron, 2009-2010
+// Copyright(c) Andre Caron, 2009-2012
 //
 // This document is covered by the Artistic License 2.0 (Open Source Initiative
 // approved license). A copy of the license should have been provided alongside
@@ -79,6 +79,11 @@ namespace w32 { namespace cr {
     {
         std::swap(mySize, rhs.mySize);
         std::swap(myData, rhs.myData);
+    }
+
+    void Blob::truncate ( dword size )
+    {
+        mySize = std::min(mySize, size);
     }
 
     Blob& Blob::operator= ( const Blob& rhs )

@@ -1,7 +1,7 @@
 #ifndef _w32_cr_Blob_hpp__
 #define _w32_cr_Blob_hpp__
 
-// Copyright(c) Andre Caron, 2009-2010
+// Copyright(c) Andre Caron, 2009-2012
 //
 // This document is covered by the Artistic License 2.0 (Open Source Initiative
 // approved license). A copy of the license should have been provided alongside
@@ -40,6 +40,7 @@ namespace w32 { namespace cr {
         byte * data ();
         const byte * data () const;
         void swap ( Blob& rhs );
+        void truncate ( dword size );
 
         /* operators. */
     public:
