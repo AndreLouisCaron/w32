@@ -5,6 +5,11 @@
 // this software package (see "license.rtf"). If not, the license is available
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
+/*!
+ * @file w32.io/AnonymousPipe.cpp
+ * @author Andre Caron (andre.l.caron@gmail.com)
+ */
+
 #include <w32.io/AnonymousPipe.hpp>
 #include <w32/Error.hpp>
 

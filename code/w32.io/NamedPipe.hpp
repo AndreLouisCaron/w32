@@ -23,6 +23,7 @@
 namespace w32 { namespace io {
 
     /*!
+     * @ingroup w32-io
      * @brief Full duplex communication channel for local IPC.
      */
     class NamedPipe :

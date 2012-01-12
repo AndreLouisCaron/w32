@@ -8,16 +8,22 @@
 // this software package (see "license.rtf"). If not, the license is available
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
+/*!
+ * @file w32.io/Stream.hpp
+ * @author Andre Caron (andre.l.caron@gmail.com)
+ */
+
 #include "__configure__.hpp"
 #include <w32/Object.hpp>
 
 namespace w32 { namespace io {
 
-        /*!
-         * @brief Base class for input/output streams.
-         *
-         * Provides access to the stream's handle, for low-level manipulation.
-         */
+    /*!
+     * @ingroup w32-io
+     * @brief Base class for input/output streams.
+     *
+     * Provides access to the stream's handle, for low-level manipulation.
+     */
     class Stream :
         public Object
     {

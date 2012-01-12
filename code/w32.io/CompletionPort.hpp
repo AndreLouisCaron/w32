@@ -8,6 +8,11 @@
 // this software package (see "license.rtf"). If not, the license is available
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
+/*!
+ * @file w32.io/CompletionPort.hpp
+ * @author Andre Caron (andre.l.caron@gmail.com)
+ */
+
 #include "__configure__.hpp"
 #include <w32/Object.hpp>
 #include <w32/Timespan.hpp>
@@ -17,6 +22,9 @@
 
 namespace w32 { namespace io {
 
+    /*!
+     * @ingroup w32-io
+     */
     class CompletionPort :
         public Object
     {

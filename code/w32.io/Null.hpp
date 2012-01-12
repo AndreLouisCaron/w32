@@ -8,14 +8,20 @@
 // this software package (see "license.rtf"). If not, the license is available
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
+/*!
+ * @file w32.io/Null.hpp
+ * @author Andre Caron (andre.l.caron@gmail.com)
+ */
+
 #include "__configure__.hpp"
 #include <w32.io/Channel.hpp>
 
 namespace w32 { namespace io {
 
-        /*!
-         * @brief Special file for infinite writes and zero reads.
-         */
+    /*!
+     * @ingroup w32-io
+     * @brief Special file for infinite writes and zero reads.
+     */
     class Null :
         public Channel
     {

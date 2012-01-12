@@ -8,6 +8,11 @@
 // this software package (see "license.rtf"). If not, the license is available
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
+/*!
+ * @file w32.io/streambuf.hpp
+ * @author Andre Caron (andre.l.caron@gmail.com)
+ */
+
 #include "__configure__.hpp"
 #include <w32.io/Channel.hpp>
 #include <w32.io/InputStream.hpp>
@@ -16,9 +21,10 @@
 
 namespace w32 { namespace io {
 
-        /*!
-         * @brief Standard I/O stream adapter for input streams.
-         */
+    /*!
+     * @ingroup w32-io
+     * @brief Standard I/O stream adapter for input streams.
+     */
     class istreambuf :
         public std::basic_streambuf< char, std::char_traits<char> >
     {

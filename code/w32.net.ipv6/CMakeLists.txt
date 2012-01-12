@@ -6,7 +6,7 @@ file(GLOB ${module}_headers
   EndPoint.hpp
 )
 file(GLOB ${module}_sources
-  Address_.cpp
+  Address.cpp
   EndPoint.cpp
 )
 #set(${module}_libraries ...)

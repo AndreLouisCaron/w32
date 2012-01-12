@@ -14,6 +14,10 @@ namespace w32 {
     namespace io {}
 }
 
+/*!
+ * @defgroup w32-io Input/output services.
+ */
+
 #include <w32.io/AnonymousPipe.hpp>
 #include <w32.io/Channel.hpp>
 #include <w32.io/CompletionPort.hpp>

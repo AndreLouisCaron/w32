@@ -1,7 +1,7 @@
 #ifndef _w32_cr_hpp__
 #define _w32_cr_hpp__
 
-// Copyright(c) Andre Caron, 2009-2010
+// Copyright(c) Andre Caron, 2009-2012
 //
 // This document is covered by the Artistic License 2.0 (Open Source Initiative
 // approved license). A copy of the license should have been provided alongside

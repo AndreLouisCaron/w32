@@ -8,29 +8,37 @@
 // this software package (see "license.rtf"). If not, the license is available
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
+/*!
+ * @file w32.io/OutputStream.hpp
+ * @author Andre Caron (andre.l.caron@gmail.com)
+ */
+
 #include "__configure__.hpp"
 #include <w32/types.hpp>
 #include <w32.io/Stream.hpp>
 
 namespace w32 { namespace io {
 
-     class OutputStream :
-         public Stream
-     {
-         /* construction. */
-     public:
-         explicit OutputStream ( const Handle& handle );
+    /*!
+     * @ingroup w32-io
+     */
+    class OutputStream :
+        public Stream
+    {
+        /* construction. */
+    public:
+        explicit OutputStream ( const Handle& handle );
 
-         /* methods. */
-     public:
-            /*!
-             * @param buffer Pointer to the first free character in the buffer.
-             * @param bytes Number of bytes in the buffer.
-             *
-             * @return The number of characters successfully written.
-             */
-         dword put ( const byte * buffer, dword bytes );
-     };
+        /* methods. */
+    public:
+           /*!
+            * @param buffer Pointer to the first free character in the buffer.
+            * @param bytes Number of bytes in the buffer.
+            *
+            * @return The number of characters successfully written.
+            */
+        dword put ( const byte * buffer, dword bytes );
+    };
 
 } }
 
