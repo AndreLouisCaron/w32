@@ -21,6 +21,7 @@ namespace w32 {
 #include <w32.ipc/Modules.hpp>
 #include <w32.ipc/Process.hpp>
 #include <w32.ipc/Processes.hpp>
+#include <w32.ipc/Startup.hpp>
 #include <w32.ipc/Threads.hpp>
 
 #endif /* _w32_ipc_hpp__ */
