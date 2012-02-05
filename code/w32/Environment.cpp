@@ -21,6 +21,7 @@ namespace {
             const ::DWORD error = ::GetLastError();
             if ( error == ERROR_ENVVAR_NOT_FOUND )
             {
+                return (0);
             }
             UNCHECKED_WIN32C_ERROR(GetEnvironmentVariable, error);
         }
@@ -34,7 +35,8 @@ namespace {
         if ( result == 0 )
         {
             const ::DWORD error = ::GetLastError();
-            if ( error == ERROR_ENVVAR_NOT_FOUND ) {
+            if ( error == ERROR_ENVVAR_NOT_FOUND )
+            {
             }
             UNCHECKED_WIN32C_ERROR(GetEnvironmentVariable, error);
         }
@@ -122,12 +124,14 @@ namespace w32 {
 
     string Environment::get ( const string& variable )
     {
-            // Allocate memory.
-        string result(::length(variable.c_str()));
-        
+            // Query required array size.
+        const ::DWORD size = ::length(variable.c_str());
+        if ( size == 0 ) {
+            return (string());
+        }
             // Fetch value.
+        string result(size);
         ::fetch(variable.c_str(), result.c_str(), result.length());
-        
         return (result);
     }
 
@@ -137,8 +141,7 @@ namespace w32 {
         const iterator match =
             std::find_if(begin(), end, ::matches(variable));
         if (match == end) {
-            const ::DWORD error = ERROR_ENVVAR_NOT_FOUND;
-            UNCHECKED_WIN32C_ERROR(GetEnvironmentVariable, error);
+            return (string());
         }
             // Remove "name=" part.
         return (string(::wcschr(*match, L'=')+1));
