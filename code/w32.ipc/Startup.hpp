@@ -9,9 +9,11 @@
 // online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
 
 #include "__configure__.hpp"
+#include <w32/Environment.hpp>
 #include <w32/string.hpp>
 #include <w32/types.hpp>
 #include <w32/Object.hpp>
+#include <map>
 
 namespace w32 { namespace io {
 
@@ -36,7 +38,7 @@ namespace w32 { namespace ipc {
         string myLocation;
         dword myFlags;
         bool myInherit;
-        // environment.
+        std::map<string,string> myEnvironment;
 
         dword myState;
 
@@ -60,6 +62,33 @@ namespace w32 { namespace ipc {
         Startup& program ( const string& path );
         Startup& location ( const string& path );
         Startup& command ( const string& command );
+        Startup& clear_environment ();
+
+        /*!
+         * @brief Insert all of the current process' environment variables.
+         * @return The startup instance, for method chaining.
+         *
+         * Duplicates do not overwrite existing values.
+         */
+        Startup& inherit_environment ();
+
+        /*!
+         * @brief Insert all environment variables in a specific environment.
+         * @param environment The environment to merge.
+         * @return The startup instance, for method chaining.
+         *
+         * Duplicates do not overwrite existing values.
+         */
+        Startup& inherit_environment( const Environment::Map& environment );
+
+        /*!
+         * @brief Insert a variables in the environment.
+         * @param field The variable's name.
+         * @param value The variable's value.
+         *
+         * Duplicates do not overwrite existing values.
+         */
+        Startup& add_to_environment( const string& field, const string& value );
 
         Startup& breakawayFromJob ();
         Startup& defaultErrorMode ();

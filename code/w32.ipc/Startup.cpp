@@ -16,6 +16,7 @@ namespace w32 { namespace ipc {
     Startup::Startup ()
         : myFlags(0), myInherit(FALSE), myState(0)
     {
+        myFlags |= CREATE_UNICODE_ENVIRONMENT;
     }
 
     Startup& Startup::program ( const string& path )
@@ -33,6 +34,31 @@ namespace w32 { namespace ipc {
     Startup& Startup::command ( const string& command )
     {
         myCommand = command;
+        return (*this);
+    }
+
+    Startup& Startup::clear_environment ()
+    {
+        myEnvironment.clear();
+        return (*this);
+    }
+
+    Startup& Startup::inherit_environment ()
+    {
+        return (inherit_environment(w32::Environment()));
+    }
+
+    Startup& Startup::inherit_environment
+        ( const w32::Environment::Map& environment )
+    {
+        myEnvironment.insert(environment.begin(), environment.end());
+        return (*this);
+    }
+
+    Startup& Startup::add_to_environment
+        ( const string& field, const string& value )
+    {
+        myEnvironment.insert(std::make_pair(field, value));
         return (*this);
     }
 
@@ -111,18 +137,21 @@ namespace w32 { namespace ipc {
     Startup& Startup::stdi ( io::InputStream stream )
     {
         myStdi = stream.handle();
+        myState |= STARTF_USESTDHANDLES;
         return (inheritHandles());
     }
 
     Startup& Startup::stdo ( io::OutputStream stream )
     {
         myStdo = stream.handle();
+        myState |= STARTF_USESTDHANDLES;
         return (inheritHandles());
     }
 
     Startup& Startup::stde ( io::OutputStream stream )
     {
         myStde = stream.handle();
+        myState |= STARTF_USESTDHANDLES;
         return (inheritHandles());
     }
 
@@ -179,13 +208,13 @@ namespace w32 { namespace ipc {
         const ::LPCWSTR program = myProgram.empty()? 0 : myProgram.data();
         const ::LPWSTR command = cmdline.empty()? 0 : cmdline.data();
         const ::LPCWSTR location = myLocation.empty()? 0 : myLocation.data();
-        const ::LPVOID environment = 0;
+        w32::string environment = w32::Environment::format(myEnvironment);
         // Ask the system to spawn the new process.
         ::PROCESS_INFORMATION process;
         ::ZeroMemory(&process, sizeof(process));
         const ::BOOL result = ::CreateProcessW(
              program, command, 0, 0, myInherit, myFlags,
-             environment, location, &startup, &process);
+             environment.data(), location, &startup, &process);
         if ( result == FALSE )
         {
             const ::DWORD error = ::GetLastError();
