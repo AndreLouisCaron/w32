@@ -102,6 +102,42 @@ namespace {
         }
     };
 
+    ::DWORD environment_size ( const w32::Environment::Map& environment )
+    {
+        typedef w32::Environment::Map::const_iterator iterator;
+
+        ::DWORD size = 0;
+        iterator current = environment.begin();
+        const iterator end = environment.end();
+        for (; current != end; ++current) {
+            const w32::string& field = current->first;
+            const w32::string& value = current->second;
+            // count '+' and '\0' delimiters.
+            size += field.size() + value.size() + 2;
+        }
+        // count final '\0' delimiter.
+        return (size + 1);
+    }
+
+    void copy_environment
+        ( const w32::Environment::Map& environment, ::LPWSTR data )
+    {
+        typedef w32::Environment::Map::const_iterator iterator;
+
+        ::DWORD used = 0;
+        iterator current = environment.begin();
+        const iterator end = environment.end();
+        for (; current != end; ++current) {
+            const w32::string& field = current->first;
+            const w32::string& value = current->second;
+            std::copy(field.begin(), field.end(), data+used);
+            data[(used += field.size())++] = L'=';
+            std::copy(value.begin(), value.end(), data+used);
+            data[(used += value.size())++] = L'\0';
+        }
+        data[used++] = L'\0';
+    }
+
 }
 
 namespace w32 {
@@ -110,6 +146,14 @@ namespace w32 {
     {
         static const wchar_t block[] = { L'\0', L'\0' };
         return (Environment(block));
+    }
+
+    w32::string Environment::format ( const Map& map )
+    {
+        const dword size = ::environment_size(map);
+        const ::LPWSTR data = new ::WCHAR[size];
+        ::copy_environment(map, data);
+        return (w32::string(w32::string::box(data, size)));
     }
 
     Environment::Environment ()
@@ -145,6 +189,25 @@ namespace w32 {
         }
             // Remove "name=" part.
         return (string(::wcschr(*match, L'=')+1));
+    }
+
+    Environment::operator Environment::Map () const
+    {
+        Map map;
+        iterator current = mstring::begin();
+        const iterator end = mstring::end();
+        for (; (current != end); ++current)
+        {
+            const wchar_t *const pair = *current;
+            std::size_t delimitor = 0;
+            while (pair[delimitor] != L'=') {
+                ++delimitor;
+            }
+            w32::string field(pair, delimitor);
+            w32::string value(pair+delimitor+1);
+            map.insert(std::make_pair(field, value));
+        }
+        return (map);
     }
 
 }

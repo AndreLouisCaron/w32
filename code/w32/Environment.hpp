@@ -11,6 +11,7 @@
 #include "__configure__.hpp"
 #include <w32/mstring.hpp>
 #include <w32/string.hpp>
+#include <map>
 
 namespace w32 {
 
@@ -21,10 +22,16 @@ namespace w32 {
     class Environment :
         public mstring
     {
+        /* nested types. */
+    public:
+        typedef std::map<string, string> Map;
+
         /* class methods. */
     public:
         static string get ( const string& variable );
         static Environment empty ();
+
+        static w32::string format ( const Map& map );
 
         /* construction. */
     public:
@@ -36,6 +43,10 @@ namespace w32 {
         /* methods. */
     public:
         string operator[] ( const string& variable ) const;
+
+        /* operators. */
+    public:
+        operator Map () const;
     };
 
 }
