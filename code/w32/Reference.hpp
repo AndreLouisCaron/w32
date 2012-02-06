@@ -26,6 +26,10 @@ namespace w32 {
         typedef Reference< Resource, Cleanup > self_type;
         typedef const self_type * link_type;
 
+        /* class methods. */
+    private:
+        static void abandon ( Resource ) {}
+
         /* data. */
     private:
         Resource myResource;
@@ -36,7 +40,7 @@ namespace w32 {
         /* construction. */
     public:
         Reference ()
-            : myResource(), myCleanup()
+            : myResource(), myCleanup(&Reference::abandon)
         {
             myHead = myTail = this;
         }
