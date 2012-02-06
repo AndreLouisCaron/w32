@@ -12,6 +12,7 @@
 
 #include <w32.io/InputStream.hpp>
 #include <w32/Error.hpp>
+#include <w32/Waitable.hpp>
 
 namespace w32 { namespace io {
 
@@ -26,11 +27,20 @@ namespace w32 { namespace io {
         const ::BOOL result = ::ReadFile(
             handle(), buffer, bytes, &read, 0
             );
-        if ( result == 0 ) {
+        if ( result == 0 )
+        {
             const ::DWORD error = ::GetLastError();
+            if (error == ERROR_BROKEN_PIPE) {
+                return (0);
+            }
             UNCHECKED_WIN32C_ERROR(ReadFile, error);
         }
         return (read);
+    }
+
+    InputStream::operator w32::Waitable () const
+    {
+        return (w32::Waitable(handle()));
     }
 
 } }

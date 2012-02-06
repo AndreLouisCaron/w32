@@ -17,6 +17,12 @@
 #include <w32/types.hpp>
 #include <w32.io/Stream.hpp>
 
+namespace w32 {
+
+    class Waitable;
+
+}
+
 namespace w32 { namespace io {
 
     /*!
@@ -38,6 +44,10 @@ namespace w32 { namespace io {
             * @return The number of characters successfully read.
             */
         dword get ( byte * buffer, dword bytes );
+
+        /* operators. */
+    public:
+        operator w32::Waitable () const;
     };
 
 } }
