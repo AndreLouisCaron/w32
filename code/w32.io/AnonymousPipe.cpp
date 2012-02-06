@@ -17,7 +17,11 @@ namespace {
 
     void allocate ( ::PHANDLE input, ::PHANDLE output )
     {
-        const ::BOOL result = ::CreatePipe(input, output, 0, 0);
+        ::SECURITY_ATTRIBUTES attributes;
+        attributes.nLength = sizeof(attributes);
+        attributes.lpSecurityDescriptor = 0;
+        attributes.bInheritHandle = TRUE;
+        const ::BOOL result = ::CreatePipe(input, output, &attributes, 0);
         if ( result == FALSE )
         {
             const ::DWORD error = ::GetLastError();
