@@ -80,9 +80,15 @@ namespace w32 {
 
         /* operators. */
     public:
+        value_type operator[] ( size_type i ) const;
+
         Set& operator|= ( value_type value );
         Set& operator&= ( value_type value );
         bool operator& ( value_type value );
+
+        Set& operator|= ( const Waitable& object );
+        Set& operator&= ( const Waitable& object );
+        bool operator& ( const Waitable& object );
     };
 
 }

@@ -109,6 +109,11 @@ namespace w32 {
         return (myData);
     }
 
+    Waitable::Set::value_type Waitable::Set::operator[] ( size_type i ) const
+    {
+        return (myData[i]);
+    }
+
     Waitable::Set& Waitable::Set::operator|= ( value_type value )
     {
             // Fixed capacity, sorry!
@@ -133,6 +138,21 @@ namespace w32 {
     bool Waitable::Set::operator& ( value_type value )
     {
         return (std::find(begin(), end(), value) != end());
+    }
+
+    Waitable::Set& Waitable::Set::operator|= ( const Waitable& object )
+    {
+        return ((*this) |= object.handle());
+    }
+
+    Waitable::Set& Waitable::Set::operator&= ( const Waitable& object )
+    {
+        return ((*this) &= object.handle());
+    }
+
+    bool Waitable::Set::operator& ( const Waitable& object )
+    {
+        return ((*this) & object.handle());
     }
 
 }
