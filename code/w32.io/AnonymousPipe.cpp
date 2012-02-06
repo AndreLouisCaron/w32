@@ -50,7 +50,7 @@ namespace w32 { namespace io {
 
     AnonymousPipe::operator OutputStream () const
     {
-        return (OutputStream(myHandles[0]));
+        return (OutputStream(myHandles[1]));
     }
 
 } }
