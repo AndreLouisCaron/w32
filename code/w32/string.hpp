@@ -104,6 +104,11 @@ namespace w32 {
         bool operator== ( const string& rhs ) const;
         bool operator!= ( const string& rhs ) const;
 
+        bool operator< ( const string& rhs ) const;
+        bool operator<= ( const string& rhs ) const;
+        bool operator> ( const string& rhs ) const;
+        bool operator>= ( const string& rhs ) const;
+
         string& operator+= ( const string& rhs );
         string operator+ ( const string& rhs ) const;
 

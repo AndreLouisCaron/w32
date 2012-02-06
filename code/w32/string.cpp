@@ -272,6 +272,26 @@ namespace w32 {
         return (std::wcscmp(data(), rhs.data()) != 0);
     }
 
+    bool string::operator< ( const string& rhs ) const
+    {
+        return (std::wcscmp(data(), rhs.data()) < 0);
+    }
+
+    bool string::operator<= ( const string& rhs ) const
+    {
+        return (std::wcscmp(data(), rhs.data()) <= 0);
+    }
+
+    bool string::operator> ( const string& rhs ) const
+    {
+        return (std::wcscmp(data(), rhs.data()) > 0);
+    }
+
+    bool string::operator>= ( const string& rhs ) const
+    {
+        return (std::wcscmp(data(), rhs.data()) >= 0);
+    }
+
     string& string::operator+= ( const string& rhs )
     {
         if ( length() == 0 ) {
