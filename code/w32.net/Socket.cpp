@@ -82,6 +82,12 @@ namespace w32 { namespace net {
         if ( result != 0 )
         {
             const int error = ::WSAGetLastError();
+            if (error == WSAECONNABORTED) {
+                return;
+            }
+            if (error == WSAECONNRESET) {
+                return;
+            }
             UNCHECKED_WIN32C_ERROR(shutdown, error);
         }
     }
