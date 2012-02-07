@@ -5,6 +5,7 @@
 
 #include <w32.net.ipv4/EndPoint.hpp>
 #include <w32/Error.hpp>
+#include <w32.net./StreamSocket.hpp>
 #include <iostream>
 
 namespace w32 { namespace net { namespace ipv4 {
@@ -15,10 +16,9 @@ namespace w32 { namespace net { namespace ipv4 {
         myData.sin_family = AF_INET;
     }
 
-    EndPoint::EndPoint ( const Data& address )
+    EndPoint::EndPoint ( const Data& data )
     {
-        ::ZeroMemory(&myData, sizeof(myData));
-        myData.sin_family = AF_INET;
+        ::CopyMemory(&myData, &data, sizeof(myData));
     }
 
     EndPoint::EndPoint ( uint32 address, uint16 port )
@@ -90,6 +90,50 @@ namespace w32 { namespace net { namespace ipv4 {
             myData.sin_addr.S_un.S_un_b.s_b2,
             myData.sin_addr.S_un.S_un_b.s_b3,
             myData.sin_addr.S_un.S_un_b.s_b4));
+    }
+
+    EndPoint& EndPoint::operator= ( const Data& data )
+    {
+        ::CopyMemory(&myData, &data, sizeof(myData));
+        return (*this);
+    }
+
+    EndPoint host ( const StreamSocket& socket )
+    {
+        const ::SOCKET handle = socket.handle();
+
+        ::sockaddr_in endpoint;
+        ::ZeroMemory(&endpoint, sizeof(endpoint));
+        endpoint.sin_family = AF_INET;
+
+        int size = sizeof(endpoint);
+        const int result = ::getsockname
+            (handle, reinterpret_cast<::sockaddr*>(&endpoint), &size);
+        if (result == SOCKET_ERROR)
+        {
+            const int error = ::WSAGetLastError();
+            UNCHECKED_WIN32C_ERROR(getsockname, error);
+        }
+        return (EndPoint(endpoint));
+    }
+
+    EndPoint peer ( const StreamSocket& socket )
+    {
+        const ::SOCKET handle = socket.handle();
+
+        ::sockaddr_in endpoint;
+        ::ZeroMemory(&endpoint, sizeof(endpoint));
+        endpoint.sin_family = AF_INET;
+
+        int size = sizeof(endpoint);
+        const int result = ::getpeername
+            (handle, reinterpret_cast<::sockaddr*>(&endpoint), &size);
+        if (result == SOCKET_ERROR)
+        {
+            const int error = ::WSAGetLastError();
+            UNCHECKED_WIN32C_ERROR(getsockname, error);
+        }
+        return (EndPoint(endpoint));
     }
 
     std::istream& operator>> ( std::istream& stream, EndPoint& value )

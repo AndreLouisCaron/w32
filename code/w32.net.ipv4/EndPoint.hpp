@@ -12,6 +12,12 @@
 #include <w32.net.ipv4/Address.hpp>
 #include <iosfwd>
 
+namespace w32 { namespace net {
+
+    class StreamSocket;
+
+} }
+
 namespace w32 { namespace net { namespace ipv4 {
 
     /*!
@@ -31,7 +37,7 @@ namespace w32 { namespace net { namespace ipv4 {
         /* construction. */
     public:
         EndPoint ();
-        EndPoint ( const Data& address );
+        EndPoint ( const Data& data );
         EndPoint ( uint32 address, uint16 port );
         EndPoint ( uint8 b1, uint8 b2, uint8 b3, uint8 b4, uint16 port );
         EndPoint ( const Address& address, uint16 port );
@@ -46,7 +52,14 @@ namespace w32 { namespace net { namespace ipv4 {
         const Data& data () const;
         uint16 port () const;
         Address address () const;
+
+        /* operators. */
+    public:
+        EndPoint& operator= ( const Data& data );
     };
+
+    EndPoint host ( const StreamSocket& socket );
+    EndPoint peer ( const StreamSocket& socket );
 
     std::istream& operator>>
         ( std::istream& in, EndPoint& value );
