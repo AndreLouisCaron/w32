@@ -25,6 +25,8 @@ namespace w32 {
 
 namespace w32 { namespace io {
 
+    class Transfer;
+
     /*!
      * @ingroup w32-io
      */
@@ -38,12 +40,14 @@ namespace w32 { namespace io {
         /* methods. */
     public:
            /*!
-            * @param buffer Pointer to the first free character in the buffer.
-            * @param bytes Number of bytes in the buffer.
+            * @param data Pointer to the first free character in the buffer.
+            * @param size Number of bytes in the buffer.
             *
             * @return The number of characters successfully read.
             */
-        dword get ( byte * buffer, dword bytes );
+        dword get ( void * data, dword size );
+
+        bool get ( void * data, dword size, Transfer& xfer, dword& xferred );
 
         /* operators. */
     public:

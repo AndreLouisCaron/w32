@@ -11,6 +11,7 @@
  */
 
 #include <w32.io/InputStream.hpp>
+#include <w32.io/Transfer.hpp>
 #include <w32/Error.hpp>
 #include <w32/Waitable.hpp>
 
@@ -21,11 +22,11 @@ namespace w32 { namespace io {
     {
     }
 
-    dword InputStream::get ( byte * buffer, dword bytes )
+    dword InputStream::get ( void * data, dword size )
     {
-        ::DWORD read = 0;
+        ::DWORD xferred = 0;
         const ::BOOL result = ::ReadFile(
-            handle(), buffer, bytes, &read, 0
+            handle(), data, size, &xferred, 0
             );
         if ( result == 0 )
         {
@@ -35,7 +36,24 @@ namespace w32 { namespace io {
             }
             UNCHECKED_WIN32C_ERROR(ReadFile, error);
         }
-        return (read);
+        return (xferred);
+    }
+
+    bool InputStream::get
+        ( void * data, dword size, Transfer& xfer, dword& xferred )
+    {
+        const ::BOOL result = ::ReadFile(
+            handle(), data, size, &xferred, &xfer.data()
+            );
+        if ( result == 0 )
+        {
+            const ::DWORD error = ::GetLastError();
+            if (error == ERROR_IO_PENDING) {
+                return (false);
+            }
+            UNCHECKED_WIN32C_ERROR(ReadFile, error);
+        }
+        return (true);
     }
 
     InputStream::operator w32::Waitable () const
