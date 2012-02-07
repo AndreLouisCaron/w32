@@ -20,7 +20,7 @@ namespace {
 
 namespace w32 { namespace tp {
 
-    ::PTP_WAIT Wait::setup ( ::PTP_CALLBACK_ENVIRON queue, ::HANDLE waitable,
+    ::PTP_WAIT Wait::setup ( ::PTP_CALLBACK_ENVIRON queue,
                              ::PTP_WAIT_CALLBACK function, void * context )
     {
         const ::PTP_WAIT handle =

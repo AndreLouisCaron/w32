@@ -32,7 +32,7 @@ namespace w32 { namespace tp {
         /* class methods. */
     private:
         static ::PTP_WAIT setup
-        ( ::PTP_CALLBACK_ENVIRON queue, ::HANDLE waitable,
+        ( ::PTP_CALLBACK_ENVIRON queue,
           ::PTP_WAIT_CALLBACK function, void * context );
 
     public:
@@ -48,15 +48,14 @@ namespace w32 { namespace tp {
         explicit Wait ( const Handle& handle );
 
         template<void(*F)(Hints&,void*)>
-        Wait ( Queue& queue, ::HANDLE waitable,
-               function<F> function, void * context=0 )
-            : myHandle(claim(setup(&queue.data(), waitable, function, context)))
+        Wait ( Queue& queue, function<F> function, void * context=0 )
+            : myHandle(claim(setup(&queue.data(), function, context)))
         {
         }
 
         template<typename T, void(T::*M)(Hints&)>
-        Wait ( Queue& queue, ::HANDLE waitable, T& object, method<T,M> method )
-            : myHandle(claim(setup(&queue.data(), waitable, method, &object)))
+        Wait ( Queue& queue, T& object, method<T,M> method )
+            : myHandle(claim(setup(&queue.data(), method, &object)))
         {
         }
 
