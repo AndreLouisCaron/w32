@@ -20,10 +20,8 @@ namespace w32 { namespace net {
         public Socket
     {
         /* construction. */
-    protected:
-        StreamSocket ( const Handle& handle );
-
     public:
+        StreamSocket ( const Handle& handle );
         ~StreamSocket ();
 
         /* methods. */
