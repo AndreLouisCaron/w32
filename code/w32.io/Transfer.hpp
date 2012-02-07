@@ -15,8 +15,11 @@
 
 #include "__configure__.hpp"
 #include <w32/NotCopyable.hpp>
+#include <w32/types.hpp>
 
 namespace w32 { namespace io {
+
+    class InputStream;
 
     /*!
      * @ingroup w32-io
@@ -43,7 +46,9 @@ namespace w32 { namespace io {
 
         void clear ();
 
-        bool complete () const;
+        bool done () const;
+
+        dword finish ( InputStream stream );
     };
 
 } }

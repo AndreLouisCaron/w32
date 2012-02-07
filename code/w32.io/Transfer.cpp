@@ -11,6 +11,8 @@
  */
 
 #include <w32.io/Transfer.hpp>
+#include <w32.io/InputStream.hpp>
+#include <w32/Error.hpp>
 
 namespace w32 { namespace io {
 
@@ -34,9 +36,22 @@ namespace w32 { namespace io {
         ::ZeroMemory(&myData, sizeof(myData));
     }
 
-    bool Transfer::complete () const
+    bool Transfer::done () const
     {
         return (HasOverlappedIoCompleted(&myData));
+    }
+
+    dword Transfer::finish ( InputStream stream )
+    {
+        dword xferred = 0;
+        const ::BOOL result = ::GetOverlappedResult
+            (stream.handle(), &myData, &xferred, TRUE);
+        if (result == FALSE)
+        {
+            const ::DWORD error = ::GetLastError();
+            UNCHECKED_WIN32C_ERROR(GetOverlappedResult, error);
+        }
+        return (xferred);
     }
 
 } }
