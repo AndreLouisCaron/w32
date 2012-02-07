@@ -41,6 +41,8 @@ namespace w32 { namespace io {
         Data& data ();
         const Data& data () const;
 
+        void clear ();
+
         bool complete () const;
     };
 

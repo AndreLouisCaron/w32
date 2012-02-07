@@ -29,6 +29,11 @@ namespace w32 { namespace io {
         return (myData);
     }
 
+    void Transfer::clear ()
+    {
+        ::ZeroMemory(&myData, sizeof(myData));
+    }
+
     bool Transfer::complete () const
     {
         return (HasOverlappedIoCompleted(&myData));
