@@ -41,8 +41,8 @@ namespace w32 { namespace net {
         Handle myHandle;
 
         /* construction. */
-    protected:
-        Socket ( Handle handle );
+    public:
+        explicit Socket ( Handle handle );
 
     public:
         virtual ~Socket ();
