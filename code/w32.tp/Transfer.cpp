@@ -30,7 +30,6 @@ namespace w32 { namespace tp {
             const ::DWORD error = ::GetLastError();
             UNCHECKED_WIN32C_ERROR(CreateThreadpoolIo, error);
         }
-        ::StartThreadpoolIo(handle);
         return (handle);
     }
 
@@ -52,6 +51,11 @@ namespace w32 { namespace tp {
     const Transfer::Handle& Transfer::handle () const
     {
         return (myHandle);
+    }
+
+    void Transfer::start ()
+    {
+        ::StartThreadpoolIo(handle());
     }
 
     void Transfer::cancel ()

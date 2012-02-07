@@ -74,6 +74,8 @@ namespace w32 { namespace tp {
     public:
         const Handle& handle () const;
 
+        void start ();
+
         // Call if I/O operation fails.
         void cancel ();
         void wait ( bool cancel_pending=false );
