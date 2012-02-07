@@ -49,6 +49,46 @@ namespace w32 { namespace net {
         return (result);
     }
 
+    bool StreamSocket::put ( const void * data, dword size,
+                             io::Transfer& transfer, dword& xferred )
+    {
+        const ::SOCKET socket = this->handle();
+        const ::HANDLE handle = reinterpret_cast<::HANDLE>(socket);
+
+        const ::BOOL result = ::WriteFile(
+            handle, data, size, &xferred, &transfer.data()
+            );
+        if ( result == 0 )
+        {
+            const ::DWORD error = ::GetLastError();
+            if (error == ERROR_IO_PENDING) {
+                return (false);
+            }
+            UNCHECKED_WIN32C_ERROR(ReadFile, error);
+        }
+        return (true);
+    }
+
+    bool StreamSocket::get ( void * data, dword size,
+                             io::Transfer& transfer, dword& xferred )
+    {
+        const ::SOCKET socket = this->handle();
+        const ::HANDLE handle = reinterpret_cast<::HANDLE>(socket);
+
+        const ::BOOL result = ::ReadFile(
+            handle, data, size, &xferred, &transfer.data()
+            );
+        if ( result == 0 )
+        {
+            const ::DWORD error = ::GetLastError();
+            if (error == ERROR_IO_PENDING) {
+                return (false);
+            }
+            UNCHECKED_WIN32C_ERROR(ReadFile, error);
+        }
+        return (true);
+    }
+
     int StreamSocket::put ( Buffer& buffer )
     {
         ::DWORD bytes = 0; ::DWORD flags = 0;
