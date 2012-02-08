@@ -62,6 +62,7 @@ if(MSVC)
   add_definitions(
     -D_SCL_SECURE_NO_WARNINGS
     -D_CRT_SECURE_NO_WARNINGS
+    -D_WIN32_WINNT=0x601
   )
   # Enable structured exception handling to support
   # translation of hardware exceptions to C++
