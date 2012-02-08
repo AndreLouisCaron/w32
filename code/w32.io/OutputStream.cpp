@@ -20,18 +20,18 @@ namespace w32 { namespace io {
     {
     }
 
-    dword OutputStream::put ( const byte * buffer, dword bytes )
+    dword OutputStream::put ( const void * data, dword size )
     {
-        ::DWORD written = 0;
+        ::DWORD xferred = 0;
         const ::BOOL result = ::WriteFile(
-            handle(), buffer, bytes, &written, 0
+            handle(), data, size, &xferred, 0
             );
         if ( result == 0 )
         {
             const ::DWORD error = ::GetLastError();
             UNCHECKED_WIN32C_ERROR(WriteFile, error);
         }
-        return (written);
+        return (xferred);
     }
 
 } }

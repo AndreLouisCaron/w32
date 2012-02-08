@@ -32,12 +32,12 @@ namespace w32 { namespace io {
         /* methods. */
     public:
            /*!
-            * @param buffer Pointer to the first free character in the buffer.
-            * @param bytes Number of bytes in the buffer.
+            * @param data Pointer to the first free character in the buffer.
+            * @param size Number of bytes in the buffer.
             *
             * @return The number of characters successfully written.
             */
-        dword put ( const byte * buffer, dword bytes );
+        dword put ( const void * dat, dword size );
     };
 
 } }
