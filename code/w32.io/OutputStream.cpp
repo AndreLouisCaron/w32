@@ -29,6 +29,9 @@ namespace w32 { namespace io {
         if ( result == 0 )
         {
             const ::DWORD error = ::GetLastError();
+            if (error == ERROR_NO_DATA) {
+                return (0);
+            }
             UNCHECKED_WIN32C_ERROR(WriteFile, error);
         }
         return (xferred);

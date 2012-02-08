@@ -64,7 +64,7 @@ namespace w32 { namespace net {
             if (error == ERROR_IO_PENDING) {
                 return (false);
             }
-            UNCHECKED_WIN32C_ERROR(ReadFile, error);
+            UNCHECKED_WIN32C_ERROR(WriteFile, error);
         }
         return (true);
     }
@@ -83,6 +83,9 @@ namespace w32 { namespace net {
             const ::DWORD error = ::GetLastError();
             if (error == ERROR_IO_PENDING) {
                 return (false);
+            }
+            if (error == ERROR_NETNAME_DELETED) {
+                xferred = 0; return (true);
             }
             UNCHECKED_WIN32C_ERROR(ReadFile, error);
         }
