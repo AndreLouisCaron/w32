@@ -10,8 +10,6 @@
 #include <w32.tp/Pool.hpp>
 #include <w32/Error.hpp>
 
-#include <iostream>
-
 namespace w32 { namespace tp {
 
     Queue::Queue ( Pool& pool )
