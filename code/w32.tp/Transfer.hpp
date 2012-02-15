@@ -103,6 +103,11 @@ namespace w32 { namespace tp {
             return (myStatus);
         }
 
+        bool failed () const
+        {
+            return (myStatus != NO_ERROR);
+        }
+
         bool succeeded () const
         {
             return (status() == NO_ERROR);
@@ -135,12 +140,26 @@ namespace w32 { namespace tp {
             ::PTP_CALLBACK_INSTANCE instance,
             void * context,
             void * overlapped,
-            ::ULONG result,
+            ::ULONG status,
             ::ULONG_PTR size,
             ::PTP_IO handle
             )
         {
-            F(Hints(instance), context, Result(overlapped,result,size));
+            try {
+                F(Hints(instance), context, Result(overlapped,status,size));
+            }
+            catch (const w32::Error& error)
+            {
+                std::cerr
+                    << "Work handler: windows error " << error.code() << "."
+                    << std::endl;
+            }
+            catch ( ... )
+            {
+                std::cerr
+                    << "Exception raised from work handler."
+                    << std::endl;
+            }
         }
     };
 
@@ -157,13 +176,27 @@ namespace w32 { namespace tp {
             ::PTP_CALLBACK_INSTANCE instance,
             void * context,
             void * overlapped,
-            ::ULONG result,
+            ::ULONG status,
             ::ULONG_PTR size,
             ::PTP_IO handle
             )
         {
-            (static_cast<T*>(context)->*M)
-                (Hints(instance), Result(overlapped,result,size));
+            try {
+                (static_cast<T*>(context)->*M)
+                    (Hints(instance), Result(overlapped,status,size));
+            }
+            catch (const w32::Error& error)
+            {
+                std::cerr
+                    << "Transfer handler: windows error " << error.code() << "."
+                    << std::endl;
+            }
+            catch ( ... )
+            {
+                std::cerr
+                    << "Exception raised from transfer handler."
+                    << std::endl;
+            }
         }
     };
 

@@ -86,7 +86,21 @@ namespace w32 { namespace tp {
             ::TP_WAIT_RESULT result
             )
         {
-            F(Hints(instance), context);
+            try {
+                F(Hints(instance), context);
+            }
+            catch (const w32::Error& error)
+            {
+                std::cerr
+                    << "Work handler: windows error " << error.code() << "."
+                    << std::endl;
+            }
+            catch ( ... )
+            {
+                std::cerr
+                    << "Exception raised from work handler."
+                    << std::endl;
+            }
         }
     };
 
@@ -106,7 +120,21 @@ namespace w32 { namespace tp {
             ::TP_WAIT_RESULT result
             )
         {
-            (static_cast<T*>(context)->*M)(Hints(instance));
+            try {
+                (static_cast<T*>(context)->*M)(Hints(instance));
+            }
+            catch (const w32::Error& error)
+            {
+                std::cerr
+                    << "Wait handler: windows error " << error.code() << "."
+                    << std::endl;
+            }
+            catch ( ... )
+            {
+                std::cerr
+                    << "Exception raised from wait handler."
+                    << std::endl;
+            }
         }
     };
 
