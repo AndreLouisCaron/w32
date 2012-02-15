@@ -11,6 +11,7 @@
  */
 
 #include <w32.io/streambuf.hpp>
+#include <iostream>
 
 namespace w32 { namespace io {
 
