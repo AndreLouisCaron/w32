@@ -50,14 +50,13 @@ namespace w32 { namespace net {
     }
 
     bool StreamSocket::put ( const void * data, dword size,
-                             io::Transfer& transfer, dword& xferred )
+                             io::Transfer& transfer )
     {
         const ::SOCKET socket = this->handle();
         const ::HANDLE handle = reinterpret_cast<::HANDLE>(socket);
 
-        const ::BOOL result = ::WriteFile(
-            handle, data, size, &xferred, &transfer.data()
-            );
+        const ::BOOL result = ::WriteFile
+            (handle, data, size, 0, &transfer.data());
         if ( result == 0 )
         {
             const ::DWORD error = ::GetLastError();
@@ -70,22 +69,18 @@ namespace w32 { namespace net {
     }
 
     bool StreamSocket::get ( void * data, dword size,
-                             io::Transfer& transfer, dword& xferred )
+                             io::Transfer& transfer )
     {
         const ::SOCKET socket = this->handle();
         const ::HANDLE handle = reinterpret_cast<::HANDLE>(socket);
 
-        const ::BOOL result = ::ReadFile(
-            handle, data, size, &xferred, &transfer.data()
-            );
+        const ::BOOL result = ::ReadFile
+            (handle, data, size, 0, &transfer.data());
         if ( result == 0 )
         {
             const ::DWORD error = ::GetLastError();
             if (error == ERROR_IO_PENDING) {
                 return (false);
-            }
-            if (error == ERROR_NETNAME_DELETED) {
-                xferred = 0; return (true);
             }
             UNCHECKED_WIN32C_ERROR(ReadFile, error);
         }
@@ -132,7 +127,6 @@ namespace w32 { namespace net {
             if ( error != WSA_IO_PENDING ) {
                 UNCHECKED_WIN32C_ERROR(WSASend, error);
             }
-            std::cerr << "StreamSocket: output request pending!" << std::endl;
         }
     }
 
@@ -147,8 +141,68 @@ namespace w32 { namespace net {
             if ( error != WSA_IO_PENDING ) {
                 UNCHECKED_WIN32C_ERROR(WSARecv, error);
             }
-            std::cerr << "StreamSocket: input request pending!" << std::endl;
         }
+    }
+
+    void StreamSocket::cancel ()
+    {
+        const ::SOCKET socket = this->handle();
+        const ::HANDLE handle = reinterpret_cast<::HANDLE>(socket);
+
+        #if _WIN32_WINNT < _WIN32_WINNT_VISTA
+        const ::BOOL result = ::CancelIo(handle);
+        if (result == FALSE)
+        {
+            const ::DWORD error = ::GetLastError();
+            UNCHECKED_WIN32C_ERROR(CancelIo, error);
+        }
+        #else
+        const ::BOOL result = ::CancelIoEx(handle, 0);
+        if (result == FALSE)
+        {
+            const ::DWORD error = ::GetLastError();
+            UNCHECKED_WIN32C_ERROR(CancelIoEx, error);
+        }
+        #endif
+    }
+
+    bool StreamSocket::cancel ( io::Transfer& transfer )
+    {
+        const ::SOCKET socket = this->handle();
+        const ::HANDLE handle = reinterpret_cast<::HANDLE>(socket);
+
+        const ::BOOL result = ::CancelIoEx(handle, &transfer.data());
+        if (result == FALSE)
+        {
+            const ::DWORD error = ::GetLastError();
+            if (error == ERROR_NOT_FOUND) {
+                return (false);
+            }
+            UNCHECKED_WIN32C_ERROR(CancelIoEx, error);
+        }
+        return (true);
+    }
+
+    dword StreamSocket::finish ( io::Transfer& transfer )
+    {
+        const ::SOCKET socket = this->handle();
+        const ::HANDLE handle = reinterpret_cast<::HANDLE>(socket);
+
+        dword xferred = 0;
+        const ::BOOL result = ::GetOverlappedResult
+            (handle, &transfer.data(), &xferred, TRUE);
+        if (result == FALSE)
+        {
+            const ::DWORD error = ::GetLastError();
+            if (result == ERROR_NOT_FOUND) {
+                return (0);
+            }
+            if (result == ERROR_HANDLE_EOF) {
+                return (0);
+            }
+            UNCHECKED_WIN32C_ERROR(GetOverlappedResult, error);
+        }
+        return (xferred);
     }
 
     StreamSocket::operator io::Channel () const

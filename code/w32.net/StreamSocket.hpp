@@ -28,14 +28,30 @@ namespace w32 { namespace net {
     public:
         int put ( const void * buffer, int length );
         int get ( void * buffer, int length );
-        bool put ( const void * data, dword size,
-                   io::Transfer& transfer, dword& xferred );
-        bool get ( void * data, dword size,
-                   io::Transfer& transfer, dword& xferred );
+        bool put ( const void * data, dword size, io::Transfer& transfer );
+        bool get ( void * data, dword size, io::Transfer& transfer );
         int put ( Buffer& buffer );
         int get ( Buffer& buffer );
         void put ( Buffer& buffer, io::Transfer& transfer );
         void get ( Buffer& buffer, io::Transfer& transfer );
+
+        /*!
+         * @brief Cancel all pending I/O operations for the stream.
+         *
+         * @note Prior to Windows Vista, this only cancels pending I/O
+         *  operations issued by the calling thread.
+         */
+        void cancel ();
+
+        /*!
+         * @brief Cancel a specific pending I/O request.
+         */
+        bool cancel ( io::Transfer& transfer );
+
+        /*!
+         * @brief Block until the transfer finishes.
+         */
+        dword finish ( io::Transfer& transfer );
 
         /* operators. */
     public:

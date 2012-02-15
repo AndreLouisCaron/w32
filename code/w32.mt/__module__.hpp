@@ -35,4 +35,7 @@ namespace w32 {
 #    include <w32.mt/ReadWriteLock.hpp>
 #endif
 
+#include <w32.mt/increment.hpp>
+#include <w32.mt/decrement.hpp>
+
 #endif /* _w32_mt_hpp__ */
