@@ -1,37 +1,58 @@
-#ifndef _win32c_gdi_NamedProperty_hpp__
-#define _win32c_gdi_NamedProperty_hpp__
+#ifndef _w32_gdi_NamedProperty_hpp__
+#define _w32_gdi_NamedProperty_hpp__
 
-// Copyright(c) Andre Caron, 2009-2010
+// Copyright (c) 2009-2012, Andre Caron (andre.l.caron@gmail.com)
+// All rights reserved.
+// 
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions are
+// met:
 //
-// This document is covered by the Artistic License 2.0 (Open Source Initiative
-// approved license). A copy of the license should have been provided alongside
-// this software package (see "license.rtf"). If not, the license is available
-// online at "http://www.opensource.org/licenses/artistic-license-2.0.php".
+//  * Redistributions of source code must retain the above copyright
+//    notice, this list of conditions and the following disclaimer.
+//
+//  * Redistributions in binary form must reproduce the above copyright
+//    notice, this list of conditions and the following disclaimer in the
+//    documentation and/or other materials provided with the distribution.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+// HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include <win32c/gdi/Property.hpp>
+#include "__configure__.hpp"
+#include <w32/string.hpp>
+#include <w32.gdi/Property.hpp>
 
-namespace win32c { namespace gdi {
+namespace w32 { namespace gdi {
 
     class NamedProperty :
         public Property
     {
         /* data. */
     private:
-        const std::string myName;
+        const string myName;
 
         /* construction. */
     public:
-        NamedProperty ( Window& owner, const std::string& name )
+        NamedProperty ( Window& owner, const string& name )
             : Property(owner), myName(name)
         {}
 
         /* overrides. */
     public:
-        const char * name () const {
-            return (myName.c_str());
+        const wchar_t * name () const {
+            return (myName.data());
         }
     };
 
 } }
 
-#endif /* _win32c_gdi_NamedProperty_hpp__ */
+#endif /* _w32_gdi_NamedProperty_hpp__ */
