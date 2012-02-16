@@ -75,7 +75,6 @@ endif()
 
 # Build selected modules.
 foreach(module ${modules})
-  message(STATUS "Module '${module}': ${build_${module}}.")
   if(${build_${module}})
     add_subdirectory(${module})
   endif()
