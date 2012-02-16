@@ -145,7 +145,7 @@ namespace w32 { namespace cr {
         return (CRYPT_STRING_BASE64X509CRLHEADER);
     }
 
-#if _WIN32_WINNT > 0x0600
+#ifdef CRYPT_STRING_STRICT
     const Format Format::asn1 ()
     {
         return (CRYPT_STRING_STRICT);
