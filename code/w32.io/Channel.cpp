@@ -40,12 +40,12 @@ namespace w32 { namespace io {
     {
     }
 
-    dword Channel::get ( byte * data, dword size )
+    dword Channel::get ( void * data, dword size )
     {
         return (InputStream(*this).get(data, size));
     }
 
-    dword Channel::put ( const byte * data, dword size )
+    dword Channel::put ( const void * data, dword size )
     {
         return (OutputStream(*this).put(data, size));
     }

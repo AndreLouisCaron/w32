@@ -53,8 +53,8 @@ namespace w32 { namespace io {
 
         /* methods. */
     public:
-         dword get ( byte * buffer, dword bytes );
-         dword put ( const byte * buffer, dword bytes );
+         dword get ( void * data, dword size );
+         dword put ( const void * data, dword size );
 
         /* operators. */
     public:
