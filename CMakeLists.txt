@@ -109,14 +109,12 @@ include_directories(${w32_include_dir})
 # Build all libraries.
 add_subdirectory(code)
 
-# When building in standalone mode, build demo projects.
+# When building in standalone mode, build demo projects and documentation.
 if(${PROJECT_NAME} STREQUAL ${CMAKE_PROJECT_NAME})
   add_subdirectory(demo)
+  configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile
+    ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY
+  )
+  add_api_documentation(help)
 endif()
-
-# Compile inline API documentation.
-configure_file(
-  ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile
-  ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY
-)
-add_api_documentation(help)
