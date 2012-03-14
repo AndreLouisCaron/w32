@@ -228,7 +228,7 @@ namespace w32 { namespace sc {
         signal();
     }
 
-    Service::Status Service::Handler::current () const volatile
+    Service::Status Service::Handler::status () const volatile
     {
         Service::Status status = Service::Status::stopped;
         

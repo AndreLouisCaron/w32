@@ -110,7 +110,7 @@ namespace w32 { namespace sc {
     public:
         void signal () const volatile;
         void signal ( const Status& status ) volatile;
-        Status current () const volatile;
+        Status status () const volatile;
         void exit ( dword code ) volatile;
 
             // Serve a double purpose... change this!
