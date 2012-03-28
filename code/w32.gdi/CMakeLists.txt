@@ -224,5 +224,7 @@ add_library(${module}
   ${${module}_headers}
   ${${module}_sources}
 )
-target_link_libraries(${module} ${${module}_libraries})
+target_link_libraries(${module}
+   ${${module}_libraries} ComCtl32.lib OpenGL32.lib
+)
 add_dependencies(${module} ${${module}_dependencies})

@@ -51,6 +51,7 @@ namespace w32 { namespace cr {
         typedef Reference< ::HCRYPTKEY > Handle;
 
         class Type;
+        class Hints;
 
         /* class methods. */
     public:
@@ -58,6 +59,8 @@ namespace w32 { namespace cr {
         static const Handle proxy ( ::HCRYPTKEY object );
 
         static Key generate ( const Provider& provider, const Type& type );
+        static Key generate ( const Provider& provider,
+                              const Type& type, const Hints& hints );
         static Key derive ( const Provider& provider,
             const Hash& hash, const Hash::Type& algorithm );
 
@@ -93,6 +96,29 @@ namespace w32 { namespace cr {
         /* construction. */
     private:
         Type ( Value value );
+
+        /* operators. */
+    public:
+        operator Value () const;
+    };
+
+    class Key::Hints
+    {
+        /* nested types. */
+    public:
+        typedef ::DWORD Value;
+
+        /* data. */
+    private:
+        Value myValue;
+
+        /* construction. */
+    public:
+        Hints ();
+
+        /* methods. */
+    public:
+        Hints& exportable ();
 
         /* operators. */
     public:

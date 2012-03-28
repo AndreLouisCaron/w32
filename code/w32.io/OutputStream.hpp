@@ -38,6 +38,8 @@
 
 namespace w32 { namespace io {
 
+    class Transfer;
+
     /*!
      * @ingroup w32-io
      */
@@ -57,6 +59,11 @@ namespace w32 { namespace io {
             * @return The number of characters successfully written.
             */
         dword put ( const void * dat, dword size );
+
+        bool put ( const void * data, dword size, Transfer& xfer );
+
+        bool put ( const void * data, dword size,
+                   Transfer& xfer, dword& xferred );
     };
 
 } }

@@ -24,19 +24,30 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-file(GLOB ${module}_headers
+set(${module}_headers
   __configure__.hpp
   __module__.hpp
   Blob.hpp
+  Buffer.hpp
+  Certificate.hpp
+  Chain.hpp
+  Channel.hpp
+  Credentials.hpp
   Hash.hpp
   Key.hpp
   Provider.hpp
+  Store.hpp
 )
-file(GLOB ${module}_sources
+set(${module}_sources
   Blob.cpp
+  Certificate.cpp
+  Chain.cpp
+  Channel.cpp
+  Credentials.cpp
   Hash.cpp
   Key.cpp
   Provider.cpp
+  Store.cpp
 )
 set(${module}_libraries
   Crypt32.lib
@@ -50,5 +61,5 @@ add_library(${module}
   ${${module}_headers}
   ${${module}_sources}
 )
-target_link_libraries(${module} ${${module}_libraries})
+target_link_libraries(${module} ${${module}_libraries} Secur32.lib Crypt32.lib)
 add_dependencies(${module} ${${module}_dependencies})

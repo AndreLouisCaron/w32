@@ -30,7 +30,7 @@
 namespace {
 
     ::BOOL __stdcall EnumerationProcedure (
-        ::HWND window, ::LPSTR name, ::HANDLE value, ::ULONG_PTR data
+        ::HWND window, ::LPWSTR name, ::HANDLE value, ::ULONG_PTR data
         )
     {
         w32::gdi::PropertySearch *const search =
@@ -50,7 +50,7 @@ namespace w32 { namespace gdi {
     void PropertySearch::enumerate ( const Window& owner )
     {
         const ::ULONG_PTR data = reinterpret_cast<::ULONG_PTR>(this);
-        ::EnumPropsExA(owner.handle(), &::EnumerationProcedure, data);
+        ::EnumPropsExW(owner.handle(), &::EnumerationProcedure, data);
     }
 
 } }

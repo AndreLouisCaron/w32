@@ -38,8 +38,12 @@ namespace w32 {
  */
 
 #include <w32.cr/Blob.hpp>
+#include <w32.cr/Certificate.hpp>
+#include <w32.cr/Channel.hpp>
 #include <w32.cr/Hash.hpp>
 #include <w32.cr/Key.hpp>
+#include <w32.cr/Listing.hpp>
 #include <w32.cr/Provider.hpp>
+#include <w32.cr/Store.hpp>
 
 #endif /* _w32_cr_hpp__ */

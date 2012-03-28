@@ -42,10 +42,10 @@ namespace {
         return (handle);
     }
 
-    ::HCRYPTKEY generate ( ::HCRYPTPROV provider, ::DWORD type )
+    ::HCRYPTKEY generate ( ::HCRYPTPROV provider, ::DWORD type, ::DWORD flags )
     {
         ::HCRYPTKEY handle = 0;
-        const ::BOOL result = ::CryptGenKey(provider, type, 0, &handle);
+        const ::BOOL result = ::CryptGenKey(provider, type, flags, &handle);
         if ( result == FALSE )
         {
             const ::DWORD error = ::GetLastError();
@@ -96,8 +96,15 @@ namespace w32 { namespace cr {
 
     Key Key::generate ( const Provider& provider, const Type& type )
     {
-        return (Key(claim(::generate(provider.handle(), type))));
+        return (Key(claim(::generate(provider.handle(), type, 0))));
     }
+
+    Key Key::generate ( const Provider& provider,
+                        const Type& type, const Hints& hints )
+    {
+        return (Key(claim(::generate(provider.handle(), type, hints))));
+    }
+
 
     Key Key::derive ( const Provider& provider,
         const Hash& hash, const Hash::Type& algorithm )
@@ -136,6 +143,21 @@ namespace w32 { namespace cr {
     }
 
     Key::Type::operator Key::Type::Value () const
+    {
+        return (myValue);
+    }
+
+    Key::Hints::Hints ()
+        : myValue(0)
+    {
+    }
+
+    Key::Hints& Key::Hints::exportable ()
+    {
+        myValue |= CRYPT_EXPORTABLE; return (*this);
+    }
+
+    Key::Hints::operator Key::Hints::Value () const
     {
         return (myValue);
     }

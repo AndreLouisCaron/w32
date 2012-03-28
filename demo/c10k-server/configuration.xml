@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE server SYSTEM "server.dtd">
+<server>
+
+  <!-- Tweak for optimal performance on your system. -->
+  <core><threads count="8"/></core>
+
+  <!-- Login using regular Windows accounts. -->
+  <account-database name="active-directory">
+    <sspi provider="ntlm" domain="pcevolution.com"/>
+  </account-database>
+
+  <!-- Allow to upload website code. -->
+  <ftp ip="192.168.18.32" secure="yes">
+    <accounts database="active-directory"/>
+  </ftp>
+
+  <!-- HTTP hosting for static pages. -->
+  <http ip="192.168.18.32" host="media.pcevolutionenr.ca">
+    <location url-prefix="/">
+      <document-root path="C:/www/media/"/>
+    </location>
+  </http>
+
+  <!-- HTTP hosting for dynamic application. -->
+  <http ip="192.168.18.32" host="porkroast.pcevolutionenr.ca">
+    <accounts database="active-directory"/>
+    <location url-prefix="/static/">
+      <document-root path="C:/www/media/"/>
+    </location>
+    <location url-prefix="/">
+      <wsgi script="C:/www/wsgi-handler.py"/>
+    </location>
+  </http>
+
+</server>

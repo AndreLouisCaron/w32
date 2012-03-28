@@ -34,6 +34,7 @@ namespace w32 {
 
     typedef ::UINT uint;
     typedef ::ULONG ulong;
+    typedef ::USHORT ushort;
 
     typedef ::BYTE byte;
     typedef ::WORD word;

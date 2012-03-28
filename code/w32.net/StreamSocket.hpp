@@ -28,10 +28,18 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "__configure__.hpp"
-#include <w32.io/Channel.hpp>
-#include <w32.io/Transfer.hpp>
 #include <w32.net/Buffer.hpp>
 #include <w32.net/Socket.hpp>
+
+namespace w32 { namespace io {
+
+    class Channel;
+    class InputStream;
+    class OutputStream;
+    class Stream;
+    class Transfer;
+
+} }
 
 namespace w32 { namespace net {
 
@@ -74,8 +82,11 @@ namespace w32 { namespace net {
 
         /* operators. */
     public:
-            // This kind of sucks.
+        // This kind of sucks.
         operator io::Channel () const;
+        operator io::InputStream () const;
+        operator io::OutputStream () const;
+        operator io::Stream () const;
     };
 
 } }

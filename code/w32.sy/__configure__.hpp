@@ -29,6 +29,13 @@
 
 #include "../w32/__configure__.hpp"
 
-#include <Sddl.h>
+// Local system security rules, ACLs, etc.
+#include <sddl.h>
+
+// Cryptographic and network security services.
+#include <WinCrypt.h>
+#include <SChnlSp.h>
+#include <Security.h>
+#include <sspi.h>
 
 #endif /* _w32_configure_hpp__ */

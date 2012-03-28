@@ -25,6 +25,7 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <w32/Time.hpp>
+#include <w32/Delta.hpp>
 #include <w32/Error.hpp>
 
 namespace w32 {
@@ -97,6 +98,29 @@ namespace w32 {
     word Time::millisecond () const
     {
         return (myData.wMilliseconds);
+    }
+
+    Time& Time::operator+= ( const Delta& delta )
+    {
+        // Convert to file time.
+        ::FILETIME time; ::SystemTimeToFileTime(&myData, &time);
+
+        // Perform computation in number of ticks.
+        ::ULARGE_INTEGER result =
+            { time.dwLowDateTime, time.dwHighDateTime };
+        result.QuadPart += delta.ticks();
+        time.dwLowDateTime = result.LowPart;
+        time.dwHighDateTime = result.HighPart;
+
+        // Convert back to system time.
+        ::FileTimeToSystemTime(&time, &myData);
+
+        return (*this);
+    }
+
+    Time operator+ ( const Time& time, const Delta& delta )
+    {
+        Time result = time; result += delta; return (result);
     }
 
 }

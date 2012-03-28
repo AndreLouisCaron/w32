@@ -29,7 +29,7 @@
 
 /*!
  * @file w32.sy/Descriptor.hpp
- * @author Andre Caron
+ * @brief Low-level operating system services access control.
  */
 
 #include "__configure__.hpp"
@@ -39,12 +39,15 @@
 
 namespace w32 { namespace sy {
 
-        /*!
-         * @brief Low-level security descriptor.
-         *
-         * Expresses the level of access to operating system services such as
-         * the filesystem, the network and process management.
-         */
+    //! @addtogroup w32-sy
+    //! @{
+
+    /*!
+     * @brief Low-level security descriptor.
+     *
+     * Expresses the level of access to operating system services such as
+     * the filesystem, the network and process management.
+     */
     class Descriptor :
         private NotCopyable
     {
@@ -71,6 +74,8 @@ namespace w32 { namespace sy {
         dword length () const;
         bool valid () const;
     };
+
+    //! @}
 
 } }
 

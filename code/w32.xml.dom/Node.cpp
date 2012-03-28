@@ -28,6 +28,8 @@
 #include <w32.xml.dom/Attributes.hpp>
 #include <w32.xml.dom/Document.hpp>
 #include <w32.xml.dom/Element.hpp>
+#include <w32.xml.dom/List.hpp>
+#include <w32/Variant.hpp>
 
 namespace w32 { namespace xml { namespace dom {
 
@@ -49,6 +51,16 @@ namespace w32 { namespace xml { namespace dom {
     Node::Ptr Node::get () const
     {
         return (myPtr);
+    }
+
+    Node::operator bool () const
+    {
+        return (myPtr.ok());
+    }
+
+    bool Node::operator! () const
+    {
+        return (myPtr.bad());
     }
 
     void Node::append ( const Node& node )
@@ -165,6 +177,36 @@ namespace w32 { namespace xml { namespace dom {
     Node::Type Node::type () const
     {
         return (Type::of(*this));
+    }
+
+    Node Node::match ( const string& query ) const
+    {
+        ::IXMLDOMNode * node = 0;
+        const com::Result result = myPtr->selectSingleNode(query.value(), &node);
+        if ( result.bad() ) {
+            UNCHECKED_COM_ERROR(IXMLDOMDocument, selectNodes, result);
+        }
+        return (Node::Ptr(node));
+    }
+
+    List Node::matches ( const string& query ) const
+    {
+        ::IXMLDOMNodeList * list = 0;
+        const com::Result result = myPtr->selectNodes(query.value(), &list);
+        if ( result.bad() ) {
+            UNCHECKED_COM_ERROR(IXMLDOMDocument, selectNodes, result);
+        }
+        return (List::Ptr(list));
+    }
+
+    string Node::value () const
+    {
+        Variant value;
+        const com::Result result = myPtr->get_nodeValue(&value.value());
+        if ( result.bad() ) {
+            UNCHECKED_COM_ERROR(IXMLDOMDocument, get_nodeValue, result);
+        }
+        return (value);
     }
 
     const Node::Type Node::Type::element ()

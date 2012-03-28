@@ -63,6 +63,7 @@ namespace w32 { namespace io {
         Data& data ();
         const Data& data () const;
 
+        void at ( qword offset );
         void clear ();
 
         bool done () const;

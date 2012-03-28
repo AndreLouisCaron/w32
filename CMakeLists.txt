@@ -30,8 +30,8 @@ project(w32++)
 
 # Locate documentation tools.
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR})
-find_package(java)
-find_package(plantuml)
+find_package(java QUIET)
+find_package(plantuml QUIET)
 find_package(doxygen)
 configure_file(
   ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile
@@ -87,6 +87,7 @@ if(MSVC)
     -D_SCL_SECURE_NO_WARNINGS
     -D_CRT_SECURE_NO_WARNINGS
     -D_WIN32_WINNT=0x601
+    -DSECURITY_WIN32
   )
   # Enable structured exception handling to support
   # translation of hardware exceptions to C++

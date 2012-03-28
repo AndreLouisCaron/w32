@@ -24,6 +24,11 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+/*!
+ * @file w32.sy/Identifier.cpp
+ * @brief Unique identifier for a user account on the network.
+ */
+
 #include <w32.sy/Identifier.hpp>
 #include <w32/Error.hpp>
 #include <w32/string.hpp>

@@ -34,4 +34,13 @@ namespace w32 {
 }
 
 
+#include "AccessControlList.hpp"
+#include "Attributes.hpp"
+#include "authenticate.hpp"
+#include "Context.hpp"
+#include "Identifier.hpp"
+#include "Impersonation.hpp"
+#include "ImpersonationLevel.hpp"
+#include "Token.hpp"
+
 #endif /* _w32_sy_hpp__ */

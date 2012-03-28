@@ -30,6 +30,7 @@
  */
 
 #include <w32.io/OutputStream.hpp>
+#include <w32.io/Transfer.hpp>
 #include <w32/Error.hpp>
 
 namespace w32 { namespace io {
@@ -54,6 +55,38 @@ namespace w32 { namespace io {
             UNCHECKED_WIN32C_ERROR(WriteFile, error);
         }
         return (xferred);
+    }
+
+    bool OutputStream::put ( const void * data, dword size, Transfer& xfer )
+    {
+        const ::BOOL result = ::WriteFile
+            (handle(), data, size, 0, &xfer.data());
+        if ( result == 0 )
+        {
+            const ::DWORD error = ::GetLastError();
+            if (error == ERROR_IO_PENDING) {
+                return (false);
+            }
+            UNCHECKED_WIN32C_ERROR(WriteFile, error);
+        }
+        return (true);
+    }
+
+    bool OutputStream::put
+        ( const void * data, dword size, Transfer& xfer, dword& xferred )
+    {
+        const ::BOOL result = ::WriteFile(
+            handle(), data, size, &xferred, &xfer.data()
+            );
+        if ( result == 0 )
+        {
+            const ::DWORD error = ::GetLastError();
+            if (error == ERROR_IO_PENDING) {
+                return (false);
+            }
+            UNCHECKED_WIN32C_ERROR(WriteFile, error);
+        }
+        return (true);
     }
 
 } }

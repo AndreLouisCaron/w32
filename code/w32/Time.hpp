@@ -27,10 +27,16 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+/*!
+ * @file w32/Time.hpp
+ */
+
 #include "__configure__.hpp"
 #include <w32/types.hpp>
 
 namespace w32 {
+
+    class Delta;
 
     /*!
      * @ingroup w32
@@ -67,7 +73,13 @@ namespace w32 {
         word minute () const;
         word second () const;
         word millisecond () const;
+
+        /* operators. */
+    public:
+        Time& operator+= ( const Delta& delta );
     };
+
+    Time operator+ ( const Time& time, const Delta& delta );
 
 }
 

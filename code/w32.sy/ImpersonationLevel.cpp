@@ -26,7 +26,7 @@
 
 /*!
  * @file w32.sy/ImpersonationLevel.cpp
- * @author Andre Caron
+ * @brief User context impersonation services.
  */
 
 #include <w32.sy/ImpersonationLevel.hpp>
@@ -34,15 +34,27 @@
 
 namespace w32 { namespace sy {
 
-    const ImpersonationLevel ImpersonationLevel::anonymous(SecurityAnonymous);
-    const ImpersonationLevel
-    ImpersonationLevel::identification(SecurityIdentification);
-    const ImpersonationLevel
-    ImpersonationLevel::impersonation(SecurityImpersonation);
-    const ImpersonationLevel ImpersonationLevel::delegation(SecurityDelegation);
+    const ImpersonationLevel ImpersonationLevel::anonymous ()
+    {
+        return (SecurityAnonymous);
+    }
 
-    ImpersonationLevel::ImpersonationLevel
-        ( ::SECURITY_IMPERSONATION_LEVEL value )
+    const ImpersonationLevel ImpersonationLevel::identification ()
+    {
+        return (SecurityIdentification);
+    }
+
+    const ImpersonationLevel ImpersonationLevel::impersonation ()
+    {
+        return (SecurityImpersonation);
+    }
+
+    const ImpersonationLevel ImpersonationLevel::delegation ()
+    {
+        return (SecurityDelegation);
+    }
+
+    ImpersonationLevel::ImpersonationLevel ( Value value )
         : myValue(value)
     {
     }

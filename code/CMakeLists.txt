@@ -29,11 +29,14 @@ set(modules
   w32.com
   w32.cr
   w32.dbg
+  w32.dv
   w32.fs
   w32.gdi
+  w32.http
   w32.in
   w32.io
   w32.ipc
+  w32.ldap
   w32.mm
   w32.msi
   w32.mt

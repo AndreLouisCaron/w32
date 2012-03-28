@@ -82,6 +82,9 @@ namespace w32 { namespace xml { namespace dom {
               * @brief XPath query expecting multiple results.
               */
         List matches ( const string& query ) const;
+
+        string text () const;
+        void text ( const string& text );
     };
 
 } } }

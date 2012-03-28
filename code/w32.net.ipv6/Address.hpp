@@ -69,7 +69,7 @@ namespace w32 { namespace net { namespace ipv6 {
     bool operator== ( const Address& lhs, const Address& rhs );
     bool operator!= ( const Address& lhs, const Address& rhs );
 
-    std::istream& operator<< ( std::istream& in, Address& address );
+    std::istream& operator>> ( std::istream& in, Address& address );
 
     std::ostream& operator<< ( std::ostream& out, const Address& address );
 

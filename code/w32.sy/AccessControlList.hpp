@@ -28,19 +28,31 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 /*!
- * @file AccessControlList.hpp
- * @author Andre Caron
+ * @file w32.sy/AccessControlList.hpp
+ * @brief List of effective security protections.
  */
 
 #include <Windows.h>
 
 namespace w32 { namespace sy {
 
-        /*!
-         */
-     class AccessControlList
-     {
-     };
+    //! @addtogroup w32-sy
+    //! @{
+
+    /*!
+     * @brief List of effective security protections.
+     *
+     * A list of security protections that applies to an object.  (An object
+     * can be a file, process, event, or anything else having a security
+     * descriptor.)  An entry in an access control list (ACL) is an access
+     * control entry (ACE).  There are two types of access control list,
+     * discretionary and system.
+     */
+    class AccessControlList
+    {
+    };
+
+    //! @}
 
 } }
 

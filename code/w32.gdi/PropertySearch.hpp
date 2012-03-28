@@ -53,7 +53,7 @@ namespace w32 { namespace gdi {
              * or add any new ones. You should be careful about what yielding
              * control to other tasks.
              */
-        virtual void result ( const char * name, void * value ) = 0;
+        virtual void result ( const wchar_t * name, void * value ) = 0;
     };
 
 } }

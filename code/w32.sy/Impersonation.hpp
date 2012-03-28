@@ -27,6 +27,11 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+/*!
+ * @file w32.sy/Impersonation.hpp
+ * @brief User context impersonation services.
+ */
+
 #include "__configure__.hpp"
 #include <w32/NotCopyable.hpp>
 
@@ -39,6 +44,9 @@ namespace w32 {
 namespace w32 { namespace sy {
 
     class Token;
+
+    //! @addtogroup w32-sy
+    //! @{
 
     void clear ( string& password );
 
@@ -56,6 +64,8 @@ namespace w32 { namespace sy {
         Impersonation ( const Token& token );
         ~Impersonation ();
     };
+
+    //! @}
 
 } }
 

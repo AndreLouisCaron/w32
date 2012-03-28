@@ -26,7 +26,7 @@
 
 /*!
  * @file w32.sy/Attributes.cpp
- * @author Andre Caron
+ * @brief
  */
 
 #include <w32.sy/Attributes.hpp>

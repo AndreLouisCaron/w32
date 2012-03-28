@@ -38,7 +38,7 @@ namespace w32 { namespace xml { namespace sax {
 
     typedef com::Ptr< ::ISAXXMLReader > Reader;
 
-    Reader new_reader ( const com::Library& )
+    inline Reader new_reader ( const com::Library& )
     {
         ::ISAXXMLReader * reader = 0;
         const com::Result result = ::CoCreateInstance(
@@ -51,7 +51,7 @@ namespace w32 { namespace xml { namespace sax {
         return (Reader(reader));
     }
 
-    void put ( Reader reader, ErrorHandler handler )
+    inline void put ( Reader reader, ErrorHandler handler )
     {
         const com::Result result = reader->putErrorHandler(handler.value());
         if ( result.bad() ) {
@@ -59,7 +59,7 @@ namespace w32 { namespace xml { namespace sax {
         }
     }
 
-    void put ( Reader reader, DtdHandler handler )
+    inline void put ( Reader reader, DtdHandler handler )
     {
         const com::Result result = reader->putDTDHandler(handler.value());
         if ( result.bad() ) {
@@ -67,7 +67,7 @@ namespace w32 { namespace xml { namespace sax {
         }
     }
 
-    void put ( Reader reader, ContentHandler handler )
+    inline void put ( Reader reader, ContentHandler handler )
     {
         const com::Result result = reader->putContentHandler(handler.value());
         if ( result.bad() ) {
@@ -75,7 +75,7 @@ namespace w32 { namespace xml { namespace sax {
         }
     }
 
-    void feature ( Reader reader, const string& name, bool enable )
+    inline void feature ( Reader reader, const string& name, bool enable )
     {
         const ::VARIANT_BOOL state = (enable)? VARIANT_TRUE : VARIANT_FALSE;
         const com::Result result = reader->putFeature(name.data(), state);
@@ -84,7 +84,7 @@ namespace w32 { namespace xml { namespace sax {
         }
     }
 
-    void property_ ( Reader reader, const string& name, LexicalHandler handler )
+    inline void property_ ( Reader reader, const string& name, LexicalHandler handler )
     {
         w32::Variant variant; variant = handler.value();
         const com::Result result =
@@ -94,7 +94,7 @@ namespace w32 { namespace xml { namespace sax {
         }
     }
 
-    void baseurl ( Reader reader, const string& url )
+    inline void baseurl ( Reader reader, const string& url )
     {
         const com::Result result = reader->putBaseURL(url.data());
         if ( result.bad() ) {
@@ -102,7 +102,7 @@ namespace w32 { namespace xml { namespace sax {
         }
     }
 
-    void parse ( Reader reader, const string& url )
+    inline void parse ( Reader reader, const string& url )
     {
         const com::Result result = reader->parseURL(url.data());
         if ( result.bad() ) {

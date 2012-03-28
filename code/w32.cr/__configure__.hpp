@@ -30,5 +30,7 @@
 #include "../w32/__configure__.hpp"
 
 #include <WinCrypt.h>
+#include <SChnlSp.h>
+#include <Security.h>
 
 #endif /* _w32_cr_configure__hpp__ */

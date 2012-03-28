@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    This file contains a sample of how the configuration would
+    evolve to if this server design was completed successfully.
+  -->
+
+<!--
+  Root element. Host as many services as required!
+  -->
+<!ELEMENT server
+    (core?, account-database*, ftp*, http*, ssh*)>
+
+<!--
+  Core settings, global to all services simultaneously.
+  -->
+<!ELEMENT core (threads?)>
+<!ELEMENT threads EMPTY>
+  <!ATTLIST threads count CDATA #IMPLIED>
+
+<!--
+  User account definitions.
+  -->
+<!ELEMENT account-database (sspi|ldap|(account+))>
+  <!ATTLIST account-database name ID #REQUIRED>
+
+<!-- SSPI: security support provider interface. -->
+<!ELEMENT sspi (account*)>
+  <!ATTLIST sspi provider (ntlm|kerberos) #REQUIRED>
+  <!ATTLIST sspi domain CDATA #REQUIRED>
+
+<!-- LDAP: lightweight directory access protocol. -->
+<!ELEMENT ldap (account*)>
+  <!ATTLIST ldap ip CDATA #REQUIRED>
+  <!ATTLIST ldap port CDATA #IMPLIED>
+  <!ATTLIST ldap secure (yes|no) #IMPLIED>
+
+<!-- Account definitions. -->
+<!ELEMENT account (#PCDATA)>
+  <!ATTLIST account username CDATA #REQUIRED>
+  <!ATTLIST account password CDATA #IMPLIED>
+
+<!-- Reference to account database. -->
+<!ELEMENT accounts EMPTY>
+  <!ATTLIST accounts database CDATA #REQUIRED>
+
+<!--
+  FTP: file transfer protocol.
+  -->
+<!ELEMENT ftp (accounts)>
+  <!ATTLIST ftp ip CDATA #REQUIRED>
+  <!ATTLIST ftp port CDATA #IMPLIED>
+  <!ATTLIST ftp secure (yes|no) #IMPLIED>
+
+<!--
+  SSH: secure shell.
+  -->
+<!ELEMENT ssh (accounts)>
+  <!ATTLIST ssh ip CDATA #REQUIRED>
+  <!ATTLIST ssh port CDATA #IMPLIED>
+
+<!--
+  HTTP: hyper-text transfer protocol.
+  -->
+<!ELEMENT http (accounts?,location+)>
+  <!ATTLIST http ip CDATA #REQUIRED>
+  <!ATTLIST http port CDATA #IMPLIED>
+  <!ATTLIST http secure (yes|no) #IMPLIED>
+  <!ATTLIST http host CDATA #REQUIRED>
+
+<!ELEMENT location (document-root|wsgi|fast-cgi)>
+  <!ATTLIST location url-prefix CDATA #REQUIRED>
+
+<!-- Static files (all MIME types). -->
+<!ELEMENT document-root EMPTY>
+  <!ATTLIST document-root path CDATA #REQUIRED>
+
+<!-- Fast Common Gateway Interface (programming language agnostic). -->
+<!ELEMENT fast-cgi (context*)>
+<!ELEMENT context EMPTY>
+  <!ATTLIST context name CDATA #REQUIRED>
+  <!ATTLIST context value CDATA #IMPLIED>
+
+<!-- Web Server Gateway Interface (Python). -->
+<!ELEMENT wsgi (#PCDATA)>
+  <!ATTLIST wsgi script CDATA #REQUIRED>

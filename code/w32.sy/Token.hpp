@@ -27,6 +27,11 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+/*!
+ * @file w32.sy/Token.hpp
+ * @brief Security token & permissions.
+ */
+
 #include "__configure__.hpp"
 #include <w32/Object.hpp>
 #include <w32/types.hpp>
@@ -40,6 +45,9 @@ namespace w32 { namespace ipc {
 namespace w32 { namespace sy {
 
     class ImpersonationLevel;
+
+    //! @addtogroup w32-sy
+    //! @{
 
     class Token :
         public Object
@@ -141,6 +149,8 @@ namespace w32 { namespace sy {
         Access operator& ( const Access& other ) const;
         Access& operator&= ( const Access& other );
     };
+
+    //! @}
 
 } }
 

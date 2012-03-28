@@ -54,7 +54,9 @@ file(GLOB ${module}_sources
   Node.cpp
   Text.cpp
 )
-#set(${module}_libraries ...)
+set(${module}_libraries
+  msxml6.lib
+)
 set(${module}_dependencies
   w32
   w32.com

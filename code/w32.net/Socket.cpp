@@ -39,6 +39,11 @@ namespace {
         }
     }
 
+    ::HANDLE as_handle ( ::SOCKET object )
+    {
+        return (reinterpret_cast< ::HANDLE >(object));
+    }
+
 }
 
 namespace w32 { namespace net {

@@ -30,6 +30,7 @@
  */
 
 #include <w32.io/Stream.hpp>
+#include <w32.io/Transfer.hpp>
 #include <w32/Error.hpp>
 
 namespace w32 { namespace io {
@@ -112,6 +113,58 @@ namespace w32 { namespace io {
         if ( result == 0 ) {
             UNCHECKED_WIN32C_ERROR(SetFilePointerEx,::GetLastError());
         }
+    }
+
+    void Stream::cancel ()
+    {
+        #if _WIN32_WINNT < _WIN32_WINNT_VISTA
+        const ::BOOL result = ::CancelIo(handle());
+        if (result == FALSE)
+        {
+            const ::DWORD error = ::GetLastError();
+            UNCHECKED_WIN32C_ERROR(CancelIo, error);
+        }
+        #else
+        const ::BOOL result = ::CancelIoEx(handle(), 0);
+        if (result == FALSE)
+        {
+            const ::DWORD error = ::GetLastError();
+            UNCHECKED_WIN32C_ERROR(CancelIoEx, error);
+        }
+        #endif
+    }
+
+    bool Stream::cancel ( Transfer& transfer )
+    {
+        const ::BOOL result = ::CancelIoEx(handle(), &transfer.data());
+        if (result == FALSE)
+        {
+            const ::DWORD error = ::GetLastError();
+            if (error == ERROR_NOT_FOUND) {
+                return (false);
+            }
+            UNCHECKED_WIN32C_ERROR(CancelIoEx, error);
+        }
+        return (true);
+    }
+
+    dword Stream::finish ( Transfer& transfer )
+    {
+        dword xferred = 0;
+        const ::BOOL result = ::GetOverlappedResult
+            (handle(), &transfer.data(), &xferred, TRUE);
+        if (result == FALSE)
+        {
+            const ::DWORD error = ::GetLastError();
+            if (result == ERROR_NOT_FOUND) {
+                return (0);
+            }
+            if (result == ERROR_HANDLE_EOF) {
+                return (0);
+            }
+            UNCHECKED_WIN32C_ERROR(GetOverlappedResult, error);
+        }
+        return (xferred);
     }
 
 } }

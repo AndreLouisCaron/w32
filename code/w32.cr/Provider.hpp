@@ -29,7 +29,7 @@
 
 /*!
  * @file w32.cr/Provider.hpp
- * @author Andre Caron (andre.l.caron@gmail.com)
+ * @brief Security provider context.
  */
 
 #include "__configure__.hpp"
@@ -46,6 +46,9 @@ namespace w32 { namespace cr {
     //! @addtogroup w32-cr
     //! @{
 
+    /*!
+     * @brief Security provider context.
+     */
     class Provider
     {
         /* nested types. */
@@ -68,11 +71,14 @@ namespace w32 { namespace cr {
     public:
         Provider ( const Type& type );
         Provider ( const Type& type, const Hints& hints );
+        Provider ( const Type& type,
+                   const Hints& hints, const string& container );
 
         /* methods. */
     public:
         const Handle& handle () const;
 
+        Type type () const;
         string name () const;
         string container () const;
     };
@@ -85,6 +91,8 @@ namespace w32 { namespace cr {
 
         /* class methods. */
     public:
+        static const Type of ( const Provider& provider );
+
         static const Type rsafull ();
         static const Type rsaaes ();
         static const Type rsasig ();

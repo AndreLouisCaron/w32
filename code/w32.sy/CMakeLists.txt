@@ -24,20 +24,24 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-file(GLOB ${module}_headers
+set(${module}_headers
   __configure__.hpp
   __module__.hpp
   AccessControlList.hpp
   Attributes.hpp
+  authenticate.hpp
+  Context.hpp
   Descriptor.hpp
   Identifier.hpp
   Impersonation.hpp
   ImpersonationLevel.hpp
   Token.hpp
 )
-file(GLOB ${module}_sources
+set(${module}_sources
   AccessControlList.cpp
   Attributes.cpp
+  authenticate.cpp
+  Context.cpp
   Descriptor.cpp
   Identifier.cpp
   Impersonation.cpp
@@ -54,5 +58,5 @@ add_library(${module}
   ${${module}_headers}
   ${${module}_sources}
 )
-target_link_libraries(${module} ${${module}_libraries})
+target_link_libraries(${module} ${${module}_libraries} Crypt32.lib Secur32.lib)
 add_dependencies(${module} ${${module}_dependencies})

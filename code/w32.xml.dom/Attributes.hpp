@@ -57,6 +57,8 @@ namespace w32 { namespace xml { namespace dom {
         size_type size () const;
         void reset ();
 
+        string valueof ( const string& name ) const;
+
         /* operators. */
     public:
         Node operator() ( size_type i ) const;

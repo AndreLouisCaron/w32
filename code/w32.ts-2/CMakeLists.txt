@@ -56,7 +56,9 @@ file(GLOB ${module}_sources
   Service.cpp
   State.cpp
 )
-#set(${module}_libraries ...)
+set(${module}_libraries
+  taskschd.lib
+)
 set(${module}_dependencies
   w32
 )

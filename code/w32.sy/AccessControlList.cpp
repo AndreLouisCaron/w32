@@ -25,8 +25,8 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 /*!
- * @file AccessControlList.cpp
- * @author Andre Caron
+ * @file w32.sy/AccessControlList.cpp
+ * @brief List of effective security protections.
  */
 
 #include <w32.sy/AccessControlList.hpp>

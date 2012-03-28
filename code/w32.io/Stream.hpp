@@ -34,8 +34,11 @@
 
 #include "__configure__.hpp"
 #include <w32/Object.hpp>
+#include <w32/types.hpp>
 
 namespace w32 { namespace io {
+
+    class Transfer;
 
     /*!
      * @ingroup w32-io
@@ -61,6 +64,24 @@ namespace w32 { namespace io {
         Size size () const;
         Position position () const;
         void position ( const Position& value ) const;
+
+        /*!
+         * @brief Cancel all pending I/O operations for the stream.
+         *
+         * @note Prior to Windows Vista, this only cancels pending I/O
+         *  operations issued by the calling thread.
+         */
+        void cancel ();
+
+        /*!
+         * @brief Cancel a specific pending I/O request.
+         */
+        bool cancel ( Transfer& transfer );
+
+        /*!
+         * @brief Block until the transfer finishes.
+         */
+        dword finish ( Transfer& transfer );
      };
 
     class Stream::Type

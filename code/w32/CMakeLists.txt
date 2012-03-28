@@ -24,7 +24,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-file(GLOB ${module}_headers
+set(${module}_headers
   __configure__.hpp
   __module__.hpp
   Architecture.hpp
@@ -34,6 +34,7 @@ file(GLOB ${module}_headers
   computername.hpp
   Console.hpp
   currentdirectory.hpp
+  Delta.hpp
   Environment.hpp
   Error.hpp
   HandleClone.hpp
@@ -55,7 +56,7 @@ file(GLOB ${module}_headers
   Version.hpp
   Waitable.hpp
 )
-file(GLOB ${module}_sources
+set(${module}_sources
   Architecture.cpp
   astring.cpp
   bstring.cpp
@@ -63,6 +64,7 @@ file(GLOB ${module}_sources
   computername.cpp
   Console.cpp
   currentdirectory.cpp
+  Delta.cpp
   Environment.cpp
   Error.cpp
   HandleClone.cpp

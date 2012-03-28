@@ -24,6 +24,11 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+/*!
+ * @file w32.sy/Impersonation.cpp
+ * @brief User context impersonation services.
+ */
+
 #include <w32.sy/Impersonation.hpp>
 #include <w32.sy/Token.hpp>
 #include <w32/Error.hpp>

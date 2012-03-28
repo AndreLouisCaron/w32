@@ -29,7 +29,7 @@
 
 /*!
  * @file w32.sy/ImpersonationLevel.hpp
- * @author Andre Caron
+ * @brief User context impersonation services.
  */
 
 #include "__configure__.hpp"
@@ -39,6 +39,9 @@ namespace w32 { namespace sy {
 
     class Token;
 
+    //! @addtogroup w32-sy
+    //! @{
+
     class ImpersonationLevel
     {
         /* nested types. */
@@ -47,10 +50,10 @@ namespace w32 { namespace sy {
 
         /* class data. */
     public:
-        static const ImpersonationLevel anonymous;
-        static const ImpersonationLevel identification;
-        static const ImpersonationLevel impersonation;
-        static const ImpersonationLevel delegation;
+        static const ImpersonationLevel anonymous ();
+        static const ImpersonationLevel identification ();
+        static const ImpersonationLevel impersonation ();
+        static const ImpersonationLevel delegation ();
 
         /* data. */
     private:
@@ -58,7 +61,7 @@ namespace w32 { namespace sy {
 
         /* construction. */
     private:
-        explicit ImpersonationLevel ( Value value );
+        ImpersonationLevel ( Value value );
 
         /* class methods. */
     public:
@@ -73,6 +76,8 @@ namespace w32 { namespace sy {
         bool operator== ( const ImpersonationLevel& other ) const;
         bool operator!= ( const ImpersonationLevel& other ) const;
     };
+
+    //! @}
 
 } }
 

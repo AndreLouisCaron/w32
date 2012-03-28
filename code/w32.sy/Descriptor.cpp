@@ -26,7 +26,7 @@
 
 /*!
  * @file w32.sy/Descriptor.cpp
- * @author Andre Caron
+ * @brief Low-level operating system services access control.
  */
 
 #include <w32.sy/Descriptor.hpp>

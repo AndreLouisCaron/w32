@@ -34,6 +34,7 @@ namespace w32 { namespace xml { namespace dom {
     class Attributes;
     class Document;
     class Element;
+    class List;
 
         /*!
          * @brief XML Document tree node.
@@ -67,6 +68,8 @@ namespace w32 { namespace xml { namespace dom {
         /* methods. */
     public:
         Ptr get () const;
+        operator bool () const;
+        bool operator! () const;
         void append ( const Node& node );
         Node parent () const;
         Node first () const;
@@ -78,7 +81,10 @@ namespace w32 { namespace xml { namespace dom {
         string tag () const;
         string text () const;
         void text ( const string& text );
+        string value () const;
         Type type () const;
+        Node match ( const string& query ) const;
+        List matches ( const string& query ) const;
     };
 
         /*!

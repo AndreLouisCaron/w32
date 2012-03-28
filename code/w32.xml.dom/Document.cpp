@@ -163,4 +163,22 @@ namespace w32 { namespace xml { namespace dom {
         return (List::Ptr(list));
     }
 
+    string Document::text () const
+    {
+        ::BSTR text = 0;
+        const com::Result result = myPtr->get_text(&text);
+        if ( result.bad() ) {
+            UNCHECKED_COM_ERROR(IXMLDOMDocument, get_text, result);
+        }
+        return ((text == 0)? string() : string(string::box(text)));
+    }
+
+    void Document::text ( const string& text )
+    {
+        const com::Result result = myPtr->put_text(text.value());
+        if ( result.bad() ) {
+            UNCHECKED_COM_ERROR(IXMLDOMDocument, put_text, result);
+        }
+    }
+
 } } }

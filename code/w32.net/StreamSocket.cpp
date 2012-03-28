@@ -26,6 +26,11 @@
 
 #include <w32.net/StreamSocket.hpp>
 #include <w32/Error.hpp>
+#include <w32.io/Channel.hpp>
+#include <w32.io/InputStream.hpp>
+#include <w32.io/OutputStream.hpp>
+#include <w32.io/Stream.hpp>
+#include <w32.io/Transfer.hpp>
 
 namespace w32 { namespace net {
 
@@ -230,6 +235,36 @@ namespace w32 { namespace net {
             // ReadFile() and WriteFile()...
         const ::SOCKET socket = handle();
         return (io::Channel(Object::proxy(
+            reinterpret_cast< ::HANDLE >(socket)
+            )));
+    }
+
+    StreamSocket::operator io::InputStream () const
+    {
+            // Yes, ::SOCKET can be cast into ::HANDLE to use in calls to
+            // ReadFile() and WriteFile()...
+        const ::SOCKET socket = handle();
+        return (io::InputStream(Object::proxy(
+            reinterpret_cast< ::HANDLE >(socket)
+            )));
+    }
+
+    StreamSocket::operator io::OutputStream () const
+    {
+            // Yes, ::SOCKET can be cast into ::HANDLE to use in calls to
+            // ReadFile() and WriteFile()...
+        const ::SOCKET socket = handle();
+        return (io::OutputStream(Object::proxy(
+            reinterpret_cast< ::HANDLE >(socket)
+            )));
+    }
+
+    StreamSocket::operator io::Stream () const
+    {
+            // Yes, ::SOCKET can be cast into ::HANDLE to use in calls to
+            // ReadFile() and WriteFile()...
+        const ::SOCKET socket = handle();
+        return (io::Stream(Object::proxy(
             reinterpret_cast< ::HANDLE >(socket)
             )));
     }

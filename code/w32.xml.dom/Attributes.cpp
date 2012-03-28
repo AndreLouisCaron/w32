@@ -62,6 +62,15 @@ namespace w32 { namespace xml { namespace dom {
         }
     }
 
+    string Attributes::valueof ( const string& name ) const
+    {
+        const Node node = (*this)(name);
+        if ( !node ) {
+            return (string());
+        }
+        return (node.value());
+    }
+
     Node Attributes::operator() ( size_type i ) const
     {
         ::IXMLDOMNode * item = 0;

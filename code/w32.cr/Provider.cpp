@@ -24,19 +24,24 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+/*!
+ * @file w32.cr/Provider.cpp
+ * @brief Security provider context.
+ */
+
 #include <w32.cr/Provider.hpp>
 #include <w32/Error.hpp>
-#include <w32/astring.hpp>
 #include <w32/string.hpp>
 #include <string>
 
 namespace {
 
-    ::HCRYPTPROV acquire ( ::DWORD type, ::DWORD flags )
+    ::HCRYPTPROV acquire ( ::LPCWSTR container, ::LPCWSTR name,
+                           ::DWORD type, ::DWORD flags )
     {
         ::HCRYPTPROV handle = 0;
-        const ::BOOL result = ::CryptAcquireContext
-            (&handle, 0, 0, type, flags);
+        const ::BOOL result = ::CryptAcquireContextW
+            (&handle, container, name, type, flags);
         if ( result == FALSE )
         {
             const ::DWORD error = ::GetLastError();
@@ -84,18 +89,30 @@ namespace w32 { namespace cr {
     }
 
     Provider::Provider ( const Type& type )
-        : myHandle(claim(::acquire(type, 0)))
+        : myHandle(claim(::acquire(0, MS_DEF_PROV_W, type, 0)))
     {
     }
 
     Provider::Provider ( const Type& type, const Hints& hints )
-        : myHandle(claim(::acquire(type, hints)))
+        : myHandle(claim(::acquire(0, MS_DEF_PROV_W, type, hints)))
+    {
+    }
+
+    Provider::Provider ( const Type& type,
+                         const Hints& hints, const string& container )
+        : myHandle(claim
+                   (::acquire(container.data(), MS_DEF_PROV_W, type, hints)))
     {
     }
 
     const Provider::Handle& Provider::handle () const
     {
         return (myHandle);
+    }
+
+    Provider::Type Provider::type () const
+    {
+        return (Type::of(*this));
     }
 
     string Provider::name () const
@@ -137,6 +154,20 @@ namespace w32 { namespace cr {
         }
         return (string(name.data(),Codepage::ansi()));
     }
+
+     const Provider::Type Provider::Type::of ( const Provider& provider )
+     {
+         ::DWORD type = 0;
+         ::DWORD size = sizeof(type);
+         const ::BOOL result = ::CryptGetProvParam
+             (provider.handle(), PP_PROVTYPE, (::BYTE*)&type, &size, 0);
+         if (result == FALSE)
+         {
+             const ::DWORD error = ::GetLastError();
+             UNCHECKED_WIN32C_ERROR(CryptGetProvParam, error);
+         }
+         return (Type(type));
+     }
 
     const Provider::Type Provider::Type::rsafull ()
     {

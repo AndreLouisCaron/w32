@@ -27,6 +27,11 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+/*!
+ * @file w32.sy/Identifier.hpp
+ * @brief Unique identifier for a user account on the network.
+ */
+
 #include "__configure__.hpp"
 #include <w32/NotCopyable.hpp>
 #include <w32/types.hpp>
@@ -41,6 +46,17 @@ namespace w32 { namespace sy {
 
     class Token;
 
+    //! @addtogroup w32-sy
+    //! @{
+
+    /*!
+     * @brief Unique identifier for a user account on the network.
+     *
+     * Identifies a user, group, and computer account. Every account on a
+     * network is issued a unique SID when the account is first created.
+     * Internal processes in Windows refer to an account's SID rather than the
+     * account's user or group name.
+     */
     class Identifier
     {
         /* nested types. */
@@ -75,6 +91,8 @@ namespace w32 { namespace sy {
     };
 
     Identifier lookup ( const string& system, const string& account );
+
+    //! @}
 
 } }
 

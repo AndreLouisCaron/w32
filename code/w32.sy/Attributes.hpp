@@ -29,7 +29,7 @@
 
 /*!
  * @file w32.sy/Attributes.hpp
- * @author Andre Caron
+ * @brief
  */
 
 #include "__configure__.hpp"
@@ -37,10 +37,12 @@
 
 namespace w32 { namespace sy {
 
-        /*!
-         * @brief Contains a sy descriptor and indicates if it is
-         *    inheritable (by who, a child process?).
-         */
+    //! @addtogroup w32-sy
+    //! @{
+
+    /*!
+     * @brief Contains a security descriptor and its inheritability state.
+     */
     class Attributes :
         private NotCopyable
     {
@@ -67,6 +69,8 @@ namespace w32 { namespace sy {
         bool inheritable () const;
         void inheritable ( bool value );
     };
+
+    //! @}
 
 } }
 

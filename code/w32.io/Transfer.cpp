@@ -60,6 +60,15 @@ namespace w32 { namespace io {
         return (HasOverlappedIoCompleted(&myData));
     }
 
+    void Transfer::at ( qword offset )
+    {
+            // Extract high & low parts.
+        ::LARGE_INTEGER value;
+        value.QuadPart    = offset;
+        myData.Offset     = value.LowPart;
+        myData.OffsetHigh = value.HighPart;
+    }
+
     dword Transfer::finish ( InputStream stream )
     {
         dword xferred = 0;
