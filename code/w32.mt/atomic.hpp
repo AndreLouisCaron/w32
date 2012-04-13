@@ -153,7 +153,7 @@ namespace w32 { namespace mt {
         /*!
          * @brief Native representation.
          */
-        typedef volatile __declspec(align(64)) ::LONG Value;
+        typedef volatile __declspec(align(64)) ::LONGLONG Value;
 
         /* data. */
     private:

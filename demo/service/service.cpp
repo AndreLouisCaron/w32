@@ -64,7 +64,7 @@ namespace {
     public:
         void operator() ()
         {
-            while ( myHandler.current() == Status::running )
+            while ( myHandler.status() == Status::running )
             {
                 w32::mt::sleep(w32::Timespan(1000));
             }
