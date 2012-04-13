@@ -77,7 +77,7 @@ if(${PROJECT_NAME} STREQUAL ${CMAKE_PROJECT_NAME})
 
   # Compile API documentation.
   configure_file(
-    ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile
+    ${CMAKE_CURRENT_SOURCE_DIR}/help/Doxyfile
     ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY
   )
   add_api_documentation(help)

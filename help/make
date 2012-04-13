@@ -1,3 +1,0 @@
-#!bash
-
-cmd //c "make.bat" $1
