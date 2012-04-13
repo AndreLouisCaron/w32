@@ -40,18 +40,31 @@ namespace w32 { namespace mm {
      *
      * You should not use this class unless a given interface requires you
      * to: modern mechanisms, which are also more convenient, exist.
+     *
+     * @see Heap
+     * @see Local
      */
     class Global
     {
         /* nested types. */
     public:
+        /*!
+         * @brief Identifier for a memory block allocated on the global heap.
+         */
         typedef Reference< ::HGLOBAL > Handle;
 
         class Lock;
 
         /* class methods. */
     public:
+        /*!
+         * @return A handle with a real deallocation function.
+         */
         static Handle claim ( ::HGLOBAL object );
+
+        /*!
+         * @return A handle with a no-operation as a deallocation function.
+         */
         static Handle proxy ( ::HGLOBAL object );
 
         /* data. */
@@ -60,10 +73,16 @@ namespace w32 { namespace mm {
 
         /* construction. */
     public:
+        /*!
+         * @param bytes Size of the requeste memory block, in bytes.
+         */
         Global ( size_t bytes );
 
         /* methods. */
     public:
+        /*!
+         * @return The local memory object's system handle.
+         */
         const Handle& handle () const;
 
             /*!
@@ -72,6 +91,9 @@ namespace w32 { namespace mm {
         std::size_t size () const;
     };
 
+    /*!
+     * @brief Lock the requested memory block for access.
+     */
     class Global::Lock :
         private w32::NotCopyable
     {
@@ -81,11 +103,24 @@ namespace w32 { namespace mm {
 
         /* construction. */
     public:
+        /*!
+         * @brief Locks @a object, granting access the contents of the memory.
+         */
         explicit Lock ( Global& object );
+
+        /*!
+         * @brief Releases the lock on the memory block.
+         *
+         * From this point on, you should not access the pointer returned by
+         * @c location() any longer.
+         */
         ~Lock ();
 
         /* methods. */
     public:
+        /*!
+         * @brief Obtains a pointer to the start of the memory block.
+         */
         void * location () const;
     };
 

@@ -41,6 +41,9 @@ namespace w32 {
     {
         /* nested types. */
     public:
+        /*!
+         * @brief Native representation.
+         */
         typedef ::SYSTEM_INFO Data;
 
         /* data. */
@@ -49,16 +52,41 @@ namespace w32 {
 
         /* construction. */
     public:
+        /*!
+         * @brief Obtains information about the runing system.
+         */
         System ();
 
         /* methods. */
     public:
+        /*!
+         * @brief Read-write access to the native structure.
+         */
         Data& data ();
+
+        /*!
+         * @brie Read-only access to the native structure.
+         */
         const Data& data () const;
 
+        /*!
+         * @brief Obtains the system's hardware architecture.
+         */
         Architecture architecture () const;
+
+        /*!
+         * @brief Obtains the size of memory pages.
+         */
         dword pagesize () const;
+
+        /*!
+         * @brief Obtains the number of CPU cores on the system.
+         */
         dword processors () const;
+
+        /*!
+         * @brief The granularity for virtual memory base addresses.
+         */
         dword granularity () const;
     };
 

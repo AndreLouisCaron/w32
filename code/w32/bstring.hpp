@@ -39,6 +39,18 @@ namespace w32 {
     /*!
      * @ingroup w32
      * @brief Visual Basic string.
+     *
+     * Encapsulates dynamic (de-)allocation of character strings for
+     * interaction with Visual Basic libraries.
+     *
+     * Similarity to @c std::wstring is intentional.  However, note that the
+     * strings in the standard library provide many methods with equivalents in
+     * the @c <algorithm> header.  As this class is designed for ease-of-use of
+     * OLE and COM APIs rather than massive use, a minimal interface, with
+     * appropriate conversions to @c std::wstring was preferred.
+     *
+     * @note The implementation attempts no optimization to reduce memory
+     *  footprint, such as copy-on-write semantics.
      */
     class bstring
     {

@@ -46,6 +46,9 @@ namespace w32 {
     {
         /* nested types. */
     public:
+        /*!
+         * @brief Native representation.
+         */
         typedef ::SYSTEMTIME Data;
 
         /* data. */
@@ -54,18 +57,41 @@ namespace w32 {
 
         /* class methods. */
     public:
+        /*!
+         * @return A snapshot of the current time in the active locale.
+         */
         static Time now ();
 
         /* construction. */
     public:
+        /*!
+         * @brief Builds a placeholder time object (all zeros).
+         */
         Time ();
+
+        /*!
+         * @brief Wrap an existing time structure.
+         */
+
         Time ( const Data& value );
+
+        /*!
+         * @brief Convert a filesystem time to a system time structure.
+         */
         Time ( const ::FILETIME& value );
 
         /* methods. */
     public:
+        /*!
+         * @brief Access the native representation.
+         */
         Data& data ();
+
+        /*!
+         * @brief Access the native representation.
+         */
         const Data& data () const;
+
         word year () const;
         word month () const;
         word day () const;
@@ -76,9 +102,15 @@ namespace w32 {
 
         /* operators. */
     public:
+        /*!
+         * @brief Apply a time delta.
+         */
         Time& operator+= ( const Delta& delta );
     };
 
+    /*!
+     * @brief Apply a time delta.
+     */
     Time operator+ ( const Time& time, const Delta& delta );
 
 }

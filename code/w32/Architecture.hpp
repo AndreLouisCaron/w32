@@ -42,13 +42,23 @@ namespace w32 {
     {
         /* nested types. */
     public:
+        /*!
+         * @brief Native representation of the enumeration values.
+         */
         typedef word Value;
 
         /* class data. */
     public:
+        /*! @brief 64-bit AMD architecture, new 64-bit Intel architecture. */
         static const Architecture x64 ();
+
+        /*! @brief Old 64-bit Intel architecture (Itanium family). */
         static const Architecture ia64 ();
+
+        /*! @brief 32-bit Intel architecture. */
         static const Architecture x86 ();
+
+        /*! @brief Placeholder for any unknown hardware architecture. */
         static const Architecture unknown ();
 
         /* data. */
@@ -57,20 +67,39 @@ namespace w32 {
 
         /* construction. */
     private:
+        // For internal use only.
         Architecture ( Value value );
 
         /* class methods. */
     public:
+        /*!
+         * @brief Extract @a system's architecture.
+         * @see System::architecture()
+         */
         static Architecture of ( const System& system );
 
         /* methods. */
     public:
+        /*!
+         * @return The native representation for the enumeration.
+         */
         Value value () const;
 
         /* operators. */
     public:
+        /*!
+         * @return The native representation for the enumeration.
+         */
         operator Value() const;
+
+        /*!
+         * @return @c true if @c *this holds the same value as @a rhs does.
+         */
         bool operator== ( const Architecture& other ) const;
+
+        /*!
+         * @return @c false if @c *this holds the same value as @a rhs does.
+         */
         bool operator!= ( const Architecture& other ) const;
     };
 

@@ -34,19 +34,87 @@
 
 namespace w32 { namespace mt {
 
+    /*!
+     * @brief Built-in thread-safe singly-linked list.
+     *
+     * The MSDN documentation states: An interlocked singly linked list (SList)
+     * eases the task of insertion and deletion from a linked list.  SLists are
+     * implemented using a nonblocking algorithm to provide atomic
+     * synchronization, increase system performance, and avoid problems such as
+     * priority inversion and lock convoys.
+     *
+     * However, the interface to this syncrhonization tool really sucks:
+     * @li although it is called a singly-linked list, it has a stack's
+     *  interface;
+     * @li @c size() does not actually return the number of items in the list;
+     * @li genericity through @c List::Item is restrictive;
+     * @li special care must be taken in memory allocation;
+     * @li there is no support for automatic cleanup;
+     * @li iterating over the items in the list is totally unsafe.
+     *
+     * If you're considering using this class to implement a producer-consumer
+     * scheme in, you might want to at lock-free queue implementations.
+     *
+     * @see http://www.drdobbs.com/high-performance-computing/208801974
+     * @see http://www.drdobbs.com/high-performance-computing/210604448
+     */
     class List :
         private NotCopyable
     {
         /* nested types. */
     public:
+        /*!
+         * @brief List header.
+         */
         typedef ::SLIST_HEADER Data;
+
+        /*!
+         * @brief Integer type representing the size of a list.
+         *
+         * Although this type is a 16-bit unsigned integer, more than 2^16
+         * items may be stored in the list: @c size() simply returns the number
+         * of elements modulo 65535.
+         */
         typedef ::USHORT size_type;
+
+        /*!
+         * @brief List item header.
+         *
+         * There are basically two ways to use this structure.  Either define
+         * a structure that has an @c Item as its first member:
+         * @code
+         *  struct MyItem
+         *  {
+         *      w32::mt::List::Item header;
+         *      // ...
+         *  };
+         * @endcode
+         * or inherit from this class:
+         * @code
+         *  struct MyItem :
+         *      w32::mt::List::Item
+         *  {
+         *      // ...
+         *  };
+         * @endcode
+         * The 2nd scenario is usually cleaner than the 1st because it doesn't
+         * require a @c reinterpret_cast when using @c push() and @c pop().
+         * Only a @c static_cast is required with @c pop().
+         *
+         * @warning No matter which scenario you select, the @c struct may
+         * @e never* contain virtual functions, because a pointer to the
+         * virtual table is stored at the beginning of the object.
+         */
         typedef ::SLIST_ENTRY Item;
+
         class iterator;
         class const_iterator;
 
         /* class data. */
     public:
+        /*!
+         * @see w32::mm::Alignment
+         */
         static const size_t alignment = MEMORY_ALLOCATION_ALIGNMENT;
 
         /* data. */
@@ -60,19 +128,55 @@ namespace w32 { namespace mt {
 
         /* methods. */
     public:
+        /*!
+         * @brief Obtain the list header.
+         */
         Data& data ();
+
+        /*!
+         * @brief Obtain the list header.
+         */
         const Data& data () const;
 
+        /*!
+         * @brief Count the number of items in the list.
+         * @return The number of elements in the list, modulus 65535.
+         */
         size_type size () const;
+
+        /*!
+         * @brief Adds @a item to the front of the list.
+         * @param item Item to add to the list.  This item must be allocated to
+         *  an @c alignment byte boundary.
+         */
         void push ( Item * item );
+
+        /*!
+         * @brief Removes the first item in the list.
+         */
         Item * pop ();
+
+        /*!
+         * @brief Removes all of the items in the list.
+         * @return A pointer to the first item in the list.
+         */
         Item * clear ();
+
         iterator begin ();
         iterator end ();
         const_iterator begin () const;
         const_iterator end () const;
     };
 
+    /*!
+     * @brief Iterator to the (mutable) list contents.
+     * @warning Although the @c push(), @c pop() and @c size() functions are
+     *  atomic, @c begin() and @c end() are not.  Moreover, the state of the
+     *  list is not guaranteed to stay the same during iteration.  If any
+     *  iteration is performed, @e all forms of access must be synchronized
+     *  using a @c w32::mt::Mutex or other locking mechanism external to the
+     *  list itself.
+     */
     class List::iterator :
         public std::iterator< std::forward_iterator_tag, std::size_t >
     {
@@ -95,6 +199,15 @@ namespace w32 { namespace mt {
         bool operator!= ( const iterator& other ) const;
     };
 
+    /*!
+     * @brief Iterator to the (immutable) list contents.
+     * @warning Although the @c push(), @c pop() and @c size() functions are
+     *  atomic, @c begin() and @c end() are not.  Moreover, the state of the
+     *  list is not guaranteed to stay the same during iteration.  If any
+     *  iteration is performed, @e all forms of access must be synchronized
+     *  using a @c w32::mt::Mutex or other locking mechanism external to the
+     *  list itself.
+     */
     class List::const_iterator :
         public std::iterator< std::forward_iterator_tag, std::size_t >
     {

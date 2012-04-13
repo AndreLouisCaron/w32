@@ -36,18 +36,33 @@ namespace w32 { namespace mm {
 
     /*!
      * @ingroup w32-mm
+     *
+     * @note New applications should use the heap functions unless the
+     *  documentation specifically states that a local function should be
+     *  used.  For example, some Windows functions allocate memory that must be
+     *  freed with @c LocalFree().
      */
     class Local
     {
         /* nested types. */
     public:
+        /*!
+         * @brief Identifier for a memory block allocated by a local heap.
+         */
         typedef Reference< ::HGLOBAL > Handle;
 
         class Lock;
 
         /* class methods. */
     public:
+        /*!
+         * @return A handle with a real deallocation function.
+         */
         static Handle claim ( ::HGLOBAL object );
+
+        /*!
+         * @return A handle with a no-operation as a deallocation function.
+         */
         static Handle proxy ( ::HGLOBAL object );
 
         /* data. */
@@ -56,18 +71,28 @@ namespace w32 { namespace mm {
 
         /* construction. */
     public:
+        /*!
+         * @brief Allocate a block of @c bytes bytes on the local heap.
+         * @param Size of the requeste memory block, in bytes.
+         */
         Local ( size_t bytes );
 
         /* methods. */
     public:
+        /*!
+         * @return The local memory object's system handle.
+         */
         const Handle& handle () const;
 
-            /*!
-             * @brief Obtains the current size of the memory block.
-             */
+        /*!
+         * @brief Obtains the current size of the memory block.
+         */
         std::size_t size () const;
     };
 
+    /*!
+     * @brief Locks the memory block for use of the memory's contents.
+     */
     class Local::Lock :
         private w32::NotCopyable
     {
@@ -77,11 +102,24 @@ namespace w32 { namespace mm {
 
         /* construction. */
     public:
+        /*!
+         * @brief Lock @a object, allowing you to access its memory.
+         */
         explicit Lock ( Local& object );
+
+        /*!
+         * @brief Releases the lock on the memory block.
+         *
+         * From this point on, you should not access the pointer returned by
+         * @c location() any longer.  
+         */
         ~Lock ();
 
         /* methods. */
     public:
+        /*!
+         * @return A pointer to the start of the memory block.
+         */
         void * location () const;
     };
 

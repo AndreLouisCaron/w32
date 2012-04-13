@@ -34,20 +34,49 @@ namespace w32 {
 
     /*!
      * @ingroup w32
-     * @brief Character set for ANSI strings.
+     * @brief Character set for byte strings.
      * @see astring
+     *
+     * A character encoding is a mapping of numeric identifiers to specific
+     * characters. Many such mappings exist.
+     *
+     * @note Although the Unicode Transformation Formats (UTF) are technically
+     * character encodings, text data in UTF-16 is not usually considered
+     * "encoded".  This is due to the fact that it is the most complete
+     * character representation and can be (possibly lossyly) encoded into any
+     * other encoding.
      */
     class Codepage
     {
         /* nested types. */
     public:
+        /*!
+         * @brief Native representation for enumerated values.
+         */
         typedef uint Value;
 
         /* class data. */
     public:
+        /*!
+         * @brief ANSI/ASCII codepage.
+         */
         static const Codepage ansi ();
+
+        /*!
+         * @brief Original Equipment Manufacturer OEM codepage.
+         *
+         * This encoding is primarily used for MS-DOS console input/output.
+         */
         static const Codepage oem ();
+
+        /*!
+         * @brief Unicode Transformation Format for 7-bit clean channels.
+         */
         static const Codepage utf7 ();
+
+        /*!
+         * @brief Unicode Transformation Format for exchange and storage.
+         */
         static const Codepage utf8 ();
 
         /* data. */
@@ -56,19 +85,36 @@ namespace w32 {
 
         /* construction. */
     private:
-            // For internal use only.
+        // For internal use only.
         Codepage ( Value value );
 
         /* methods. */
     public:
+        /*!
+         * @return The native representation for the enumeration.
+         */
         Value value () const;
+
+        /*!
+         * @return @c true if the code page number is valid.
+         */
         bool valid () const;
 
         /* operators. */
     public:
+        /*!
+         * @return The native representation for the enumeration.
+         */
         operator Value () const;
 
+        /*!
+         * @return @c true if @c *this holds the same value as @a rhs does.
+         */
         bool operator== ( const Codepage& ) const;
+
+        /*!
+         * @return @c false if @c *this holds the same value as @a rhs does.
+         */
         bool operator!= ( const Codepage& ) const;
     };
 

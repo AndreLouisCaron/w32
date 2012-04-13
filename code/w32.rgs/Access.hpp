@@ -34,24 +34,49 @@ namespace w32 { namespace rgs {
     /*!
      * @ingroup w32-rgs
      * @brief Enumerates access types for registry keys.
+     *
+     * Key access restrictions are applied on a per-handle basis, and only when
+     * opening an existing key.  The system may refuse access to certain keys
+     * for security reasons.  For instance, write access to
+     * @c HKEY_LOCAL_MACHINE is not granted unless the process is running with
+     * elevated priviledges.  If you only want to determine if a certain product
+     * is installed, you may probably enumerate @c HKEY_LOCAL_MACHINE\SOFTWARE
+     * by requesting access using @c w32::rgs::Access::read() only.
+     *
      * @note The access is given when opening a registry key and only
-     *   defines the access the given handle will allow you (i.e. this is
-     *   not persistent.
+     *  defines the access the given handle will allow you (i.e. this is
+     *  not persistent).
      */
     class Access
     {
         /* nested types. */
     public:
+        /*!
+         * @brief Native access mask representation.
+         */
         typedef ::REGSAM Value;
 
         /* class data. */
     public:
+        /*! @brief Permission to enumerate sub-keys and values. */
         static const Access list ();
+
+        /*! @brief Permission to read values. */
         static const Access get ();
+
+        /*! @brief Permission to add, change and remove values. */
         static const Access set ();
+
+        /*! @brief Permission to create and delete sub-keys. */
         static const Access create ();
+
+        /*! @brief @c list()|get(). */
         static const Access read ();
+
+        /*! @brief @c set()|create(). */
         static const Access write ();
+
+        /*! @brief @c read()|write(), default for newly created keys. */
         static const Access all ();
 
         /* members. */
@@ -65,15 +90,36 @@ namespace w32 { namespace rgs {
 
         /* methods. */
     public:
+        /*!
+         * @brief Returns the native representation for the enumeration.
+         */
         Value value () const;
 
         /* operators. */
     public:
+        /*!
+         * @brief Combine with another access mode.
+         */
         Access& operator|= ( const Access& other );
+
+        /*!
+         * @brief Combine with another access mode.
+         */
         Access operator| ( const Access& other ) const;
+
+        /*!
+         * @brief Exclude another access mode.
+         */
         Access& operator&= ( const Access& other );
+
+        /*!
+         * @brief Exclude another access mode.
+         */
         Access operator& ( const Access& other ) const;
 
+        /*!
+         * @brief Returns the native representation for the enumeration.
+         */
         operator Value () const;
     };
 

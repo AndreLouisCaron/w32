@@ -36,35 +36,73 @@ namespace w32 {
     typedef ::ULONG ulong;
     typedef ::USHORT ushort;
 
+    /*! @brief 8-bit (1-byte) unsigned integer. */
     typedef ::BYTE byte;
+
+    /*! @brief 16-bit (2-byte) unsigned integer. */
     typedef ::WORD word;
+
+    /*! @brief 32-bit (4-byte) unsigned integer. */
     typedef ::DWORD dword;
+
+    /*! @brief 64-bit (8-byte) unsigned integer. */
     typedef ::DWORDLONG qword;
 
     typedef ::LRESULT lresult;
     typedef ::WPARAM wparam;
     typedef ::LPARAM lparam;
 
-        // Resort to compiler extensions for now.
+    /*! @brief 8-bit (1-byte) signed integer. */
     typedef __int8 int8;
+
+    /*! @brief 16-bit (2-byte) signed integer. */
     typedef __int16 int16;
+
+    /*! @brief 32-bit (4-byte) signed integer. */
     typedef __int32 int32;
+
+    /*! @brief 64-bit (8-byte) signed integer. */
     typedef __int64 int64;
 
+    /*! @brief 8-bit (1-byte) unsigned integer. */
     typedef byte uint8;
+
+    /*! @brief 16-bit (2-byte) unsigned integer. */
     typedef word uint16;
+
+    /*! @brief 32-bit (4-byte) unsigned integer. */
     typedef dword uint32;
+
+    /*! @brief 64-bit (8-byte) unsigned integer. */
     typedef qword uint64;
 
+    /*!
+     * @brief Signed integer the size of a pointer.
+     */
     typedef ::INT_PTR intptr;
+
+    /*!
+     * @brief Unsigned integer the size of a pointer.
+     */
     typedef ::UINT_PTR uintptr;
+
+    /*!
+     * @brief Portable integer the size of a pointer.
+     *
+     * Used for pointer arithmetic.  This is the previledged type for portable
+     * code between 32-bit and 64-bit machines as the compiler expands it to
+     * the proper size.
+     */
     typedef ::ULONG_PTR ulongptr;
 
     typedef ::LPVOID pointer;
 
+    /*!
+     * @brief Unsigned integer type, with @c sizeof(size_t)==sizeof(pointer).
+     */
     typedef ::SIZE_T size_t;
 
-        // Cool cast to any pointer type!
+    // Cool cast to any pointer type!
     static struct {
         template<typename T> operator T* () const { return (0); }
         template<typename T>

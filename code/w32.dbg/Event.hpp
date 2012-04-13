@@ -33,6 +33,9 @@
 
 namespace w32 { namespace dbg {
 
+    /*!
+     * @brief Persistant, standard, localizable, logging mechanism.
+     */
     class Event
     {
         /* nested types. */
@@ -48,30 +51,56 @@ namespace w32 { namespace dbg {
 
         /* methods. */
     public:
+        /*!
+         * @brief System-defined event category identifier.
+         */
         virtual Type type () const = 0;
+
+        /*!
+         * @brief Application-defined numerical message identifier.
+         */
         virtual Message message () const = 0;
 
+        /*!
+         * @brief Application-defined event category identifier.
+         */
         virtual Category category () const {
             return (Category(0));
         }
 
+        /*!
+         * @brief Message argument count.
+         */
         virtual word argc () const {
             return (0);
         }
 
+        /*!
+         * @brief Message argument values.
+         */
         virtual const wchar_t ** argv () const {
             return (0);
         }
     };
 
+    /*!
+     * @brief Enumeration of system-defined event category identifiers.
+     */
     class Event::Type
     {
         /* class data. */
     public:
+        /*! @brief Indicates a noteworthy event. */
         static const Type success ();
+
+        /*! @brief Indicates failure to accomplish some action. */
         static const Type error ();
+        /*! @brief Indicates failure to accomplish some optional action. */
         static const Type warning ();
+
+        /*! @brief Regular notification, should be used by default. */
         static const Type information ();
+
         static const Type auditsuccess ();
         static const Type auditfailure ();
         static const Type all ();
@@ -86,14 +115,21 @@ namespace w32 { namespace dbg {
 
         /* construction. */
     private:
+        // For internal use only.
         Type ( Value value );
 
         /* methods. */
     public:
+        /*!
+         * @brief The native code representing the type.
+         */
         Value value () const;
 
         /* operators. */
     public:
+        /*!
+         * @brief The native code representing the type.
+         */
         operator Value () const;
     };
 

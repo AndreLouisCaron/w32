@@ -32,6 +32,13 @@
 
 namespace w32 { namespace dbg {
 
+    /*!
+     * @brief Wrapper for Microsoft's structured exception handling (SEH).
+     *
+     * This helps a lot in debugging some low-level problems. It's role is to
+     * translate nitty gritty SEH into short and sweet reports of the problems
+     * that occur by translating the SEH errors into C++ exceptions.
+     */
     class StructuredException
     {
         /* nested types. */
@@ -42,6 +49,9 @@ namespace w32 { namespace dbg {
 
         /* class data. */
     public:
+        /*!
+         * @brief Default SEH to C++ exception translation function.
+         */
         static const Filter translator ();
 
         /* construction. */
@@ -51,9 +61,15 @@ namespace w32 { namespace dbg {
 
         /* methods. */
     public:
+        /*!
+         * @return A textual description of the error.
+         */
         virtual const char * what () const = 0;
     };
 
+    /*!
+     * @brief Replaces the current SEH to C++ translation function.
+     */
     class StructuredException::FilterReplacement :
         private NotCopyable
     {
@@ -63,7 +79,15 @@ namespace w32 { namespace dbg {
 
         /* construction. */
     public:
+        /*!
+         * @brief Changes the SEH to C++ exception filter to @a filter.
+         * @param filter Filter function to use as a replacement.
+         */
         explicit FilterReplacement ( Filter filter = translator() );
+
+        /*!
+         * @brief Restores the previous SEH to C++ exception translator.
+         */
         ~FilterReplacement ();
     };
 

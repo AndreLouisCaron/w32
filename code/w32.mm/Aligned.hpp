@@ -36,6 +36,18 @@ namespace w32 { namespace mm {
 
     /*!
      * @ingroup w32-mm
+     * @brief Memory allocator that aligns pointers on a specific boundary.
+     *
+     * Some particular hardware operations mandate the use of memory aligned on
+     * a specific boundary.  Typical requests are @c dword-aligned memory.
+     * This is normally required when the hardware performs specific
+     * optimizations on pointers.  One possible use of @c dword-aligned
+     * (multiples of 4) pointers is to increase the total addressable amount of
+     * memory (the lower 2 bits are always 0, so the address may be shifted,
+     * resulting in 4 times the amount of addressable memory).
+     *
+     * @note Do not use this allocation scheme unless a particular API requests
+     *  it.
      */
     class Aligned :
         public Allocator
@@ -46,10 +58,19 @@ namespace w32 { namespace mm {
 
         /* class methods. */
     public:
+        /*!
+         * @brief Validates that the system supports the requested alignment.
+         * @param alignment Boundary on which allocation should be aligned.
+         * @return @c true if @a alignment is a non-zero power of two.
+         */
         static bool supports ( size_t alignment );
 
         /* construction. */
     public:
+        /*!
+         * @brief Builds an allocator aligning on a multiple of @a alignment.
+         * @see supports()
+         */
         Aligned ( size_t alignment );
 
         /* methods. */

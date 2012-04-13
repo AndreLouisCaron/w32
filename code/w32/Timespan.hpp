@@ -32,16 +32,33 @@
 
 namespace w32 {
 
+    /*!
+     * @brief Encodes a length of time in system counter "ticks".
+     */
     class Timespan
     {
         /* nested types. */
     public:
+        /*!
+         * @brief Unsigned integer multiple of the quantum unit.
+         *
+         * Native units are the lowest possible resolution the system
+         * recognizes.  It is a common denominator: any timespan can be
+         * expressed using an integer multiple of this unit.
+         *
+         * For backward compatibility reasons, this is a number of
+         * milliseconds, regardless of the actual quantum your hardware may
+         * provide.
+         */
         typedef dword Value;
 
         class Unit;
 
         /* class data. */
     public:
+        /*!
+         * @brief Special value representing an infinite amount of time.
+         */
         static const Timespan infinite ();
 
         /* data. */
@@ -50,20 +67,53 @@ namespace w32 {
 
         /* construction. */
     public:
+        /*!
+         * @brief Builds a null (empty) timespan (0 in any kind of units).
+         */
         Timespan ();
+
+        /*!
+         * @brief Build a timespan as a multiple of the quantum unit.
+         * @param ticks Number of ticks the timespan should represent.
+         */
         explicit Timespan ( Value ticks );
+
+        /*!
+         * @brief Build a timespan as a multiple of a specific unit.
+         * @param ticks Number of ticks the timespan should represent.
+         */
         Timespan ( Value ticks, const Unit& unit );
 
         /* methods. */
     public:
+        /*!
+         * @return @c true if the timespan equals 0 ticks, else @c false.
+         */
         bool empty () const;
 
+        /*!
+         * @brief Integer multiple of ticks the timespan represents.
+         */
         Value ticks () const;
 
+        /*!
+         * @brief Express the timespan in multiples of the quantum unit.
+         */
         double get () const;
+
+        /*!
+         * @brief Express the timespan in multiples of @a unit.
+         *
+         * This method returns a floating-point value because the timespan may
+         * not be an integer of multiple @c unit (@c unit might be longer
+         * than @c *this in duration).
+         */
         double get ( const Unit& unit ) const;
     };
 
+    /*!
+     * @brief Enumeration of common time span reference units.
+     */
     class Timespan::Unit
     {
         /* class data. */
@@ -82,18 +132,26 @@ namespace w32 {
 
         /* construction. */
     private:
+        // For internal use only.
         Unit ( Value ticks );
 
         /* methods. */
     public:
-            /*!
-            * @brief Multiple of the native resolution.
-            */
+        /*!
+         * @brief Multiple of the native resolution.
+         */
         Value ticks () const;
 
         /* operators. */
     public:
+        /*!
+         * @brief Obtain a multiple of the selected unit.
+         */
         Unit& operator*= ( Value factor );
+
+        /*!
+         * @brief Obtain a multiple of the selected unit.
+         */
         Unit& operator*= ( double factor );
     };
 

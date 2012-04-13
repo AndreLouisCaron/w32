@@ -41,9 +41,19 @@ namespace w32 {
     {
         /* nested types. */
     public:
+        /*!
+         * @brief Shared reference to the native system handle.
+         */
         typedef Reference< ::HANDLE > Handle;
 
+        /*!
+         * @brief Returns a @c Handle releasing @a object upon its destruction.
+         */
         static Handle claim ( ::HANDLE object );
+
+        /*!
+         * @brief Returns a @c Handle with a no-op cleanup.
+         */
         static Handle proxy ( ::HANDLE object );
 
         /* data. */
@@ -53,15 +63,35 @@ namespace w32 {
         /* construction. */
     protected:
         explicit Object ( const Handle& handle );
+
+        /*!
+         * This function is never, ever invoked because there is no other means
+         * than the parametric constructor to assign the object a handle.
+         * However, it is required because of virtual inheritance in some
+         * kernel objects.  This seems to be a limitation of the language
+         * ensuring a default constructor to classes such as @c w32::Waitable.
+         */
         Object ();
 
     public:
+        /*!
+         * @brief Releases the kernel object.
+         */
         virtual ~Object ();
 
         /* methods. */
     public:
+        /*!
+         * @return The system handle for the kernel object.
+         */
         const Handle& handle () const;
 
+        /*!
+         * @brief Force premature release of the kernel object.
+         *
+         * This method should really be avoided whenever possible, as using it
+         * may break class invariants.
+         */
         void destroy ();
     };
 

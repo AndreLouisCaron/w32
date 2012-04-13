@@ -36,12 +36,36 @@ namespace w32 { namespace mm {
 
     /*!
      * @ingroup w32-mm
+     * @brief Private memory allocator.
+     *
+     * Using a private heap for allocation memory in fixed-size blocks can
+     * reduce memory fragmentation and increase allocation speed considerably.
+     * Moreover, if always used by a single thread, synchronization can be
+     * disabled, further increasing speed.
+     *
+     * Upon destruction, the heap reclaims all memory allocated by the heap,
+     * returning the virtual memory pages to the system. This is the key to
+     * reducing memory fragmentation.
      */
     class Heap :
         public Object, public Allocator
     {
         /* nested types. */
     public:
+        /*!
+         * @brief Mutual exclusion lock for the heap.
+         *
+         * Acquires the critical section associated with the heap, preventing
+         * other threads from allocating memory.
+         *
+         * This mechanism is useful when walking the heap, because it prevents
+         * other threads from modifying the heap while it its entries are being
+         * enumerated.
+         *
+         * @warning Results are undefined for locking attempts on heaps for
+         *  which serialization was disabled (never applies to the default
+         *  heap).
+         */
         class Lock :
             private w32::NotCopyable
         {
@@ -64,6 +88,9 @@ namespace w32 { namespace mm {
 
             /* nested types. */
         public:
+            /*!
+             * @brief Native representation.
+             */
             typedef ::PROCESS_HEAP_ENTRY Data;
 
             /* data. */
@@ -83,6 +110,11 @@ namespace w32 { namespace mm {
             bool moveable () const;
         };
 
+        /*!
+         * @brief Enumerator for heap entries.
+         *
+         * @note You should lock the heap before you enumerate its entries.
+         */
         class Walker :
             private w32::NotCopyable
         {
@@ -93,12 +125,31 @@ namespace w32 { namespace mm {
 
             /* construction. */
         public:
+            /*!
+             * @brief Create an enumerator for memory blocks in @a heap.
+             */
             explicit Walker ( const Heap& heap );
 
             /* methods. */
         public:
+            /*!
+             * @brief Access the current heap entry.
+             */
             Entry& entry ();
+
+            /*!
+             * @brief Access the current heap entry.
+             */
             const Entry& entry () const;
+
+            /*!
+             * @brief Walks up to the next heap entry.
+             * @return If finished, @c false.
+             *
+             * The first result is obtained be the constructor, use it before
+             * calling this method.  It is best to use a do-while loop to
+             * enumerate heap entries.
+             */
             bool next ();
         };
 
@@ -113,7 +164,18 @@ namespace w32 { namespace mm {
 
         /* methods. */
     public:
+        /*!
+         * @brief Merge adjacent freed blocks of memory, reduce fragmentation.
+         *
+         * @note The heap is automatically compacted when memory is freed.
+         *  This function is only useful if you disable memory compacting for
+         *  the entire system (see Debugging Tools for Windows).
+         */
         void compact ();
+
+        /*!
+         * @return Flags set at heap creation (always 0 for the default heap).
+         */
         virtual dword flags ();
 
         /* overrides. */

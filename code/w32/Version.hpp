@@ -41,12 +41,26 @@ namespace w32 {
     {
         /* nested types. */
     public:
+        /*!
+         * @brief Native representation.
+         */
         typedef ::OSVERSIONINFOEXW Data;
 
         /* class methods. */
     public:
+        /*!
+         * @brief Windows 2000.
+         */
         static Version _2000 ();
+
+        /*!
+         * @brief Windows XP.
+         */
         static Version xp ();
+
+        /*!
+         * @brief Windows Vista.
+         */
         static Version vista ();
 
         /* data. */
@@ -55,20 +69,51 @@ namespace w32 {
 
         /* construction. */
     public:
+        /*!
+         * @brief Get the running system's version.
+         */
         Version ();
+
+        /*!
+         * @brief Select a specific version.
+         *
+         * @note The resulting structure is incomplete.  This is normally used
+         *  for performing version validation.
+         */
         Version ( dword major, dword minor );
 
         /* methods. */
     public:
+        /*!
+         * @brief Access the native representation.
+         */
         Data& data ();
+
+        /*!
+         * @brief Access the native representation.
+         */
         const Data& data () const;
+
         dword major () const;
         dword minor () const;
         dword build () const;
 
         /* operators. */
     public:
+        /*!
+         * @return @c true if two versions have the same major and minor
+         *  version numbers.
+         *
+         * @note Build/patch numbers are ignored by comparisons.
+         */
         bool operator== ( const Version& rhs ) const;
+
+        /*!
+         * @return @c true if @c *this has a lesser major version number or an
+         *  equal major version number and a lesser minor version numbers.
+         *
+         * @note Build/patch numbers are ignored by comparisons.
+         */
         bool operator< ( const Version& rhs ) const;
     };
 

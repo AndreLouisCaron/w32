@@ -44,7 +44,17 @@ namespace w32 { namespace mm {
 
         /* methods. */
     public:
+        /*!
+         * @brief Performs allocation of `amount` bytes of memory.
+         * @param amount Size of the requested chunk, in bytes.
+         * @return A pointer to the first byte in the chunk.
+         */
         virtual void * acquire ( size_t amount ) = 0;
+
+        /*!
+         * @param chunk Pointer to the first byte in the chunk.
+         * @param amount Size of the chunk of memory, in bytes.
+         */
         virtual void release ( void * start, size_t amount ) = 0;
     };
 

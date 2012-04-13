@@ -36,9 +36,19 @@ namespace w32 { namespace sc {
     {
         /* nested types. */
     public:
+        /*!
+         * @brief Holds the system identifier for the service control resource.
+         */
         typedef Reference< ::SC_HANDLE > Handle;
 
+        /*!
+         * @brief Returns a @c Handle releasing @a object upon its destruction.
+         */
         static Handle claim ( ::SC_HANDLE object );
+
+        /*!
+         * @brief Returns a @c Handle with a no-op cleanup.
+         */
         static Handle proxy ( ::SC_HANDLE object );
 
         /* data. */
@@ -47,11 +57,17 @@ namespace w32 { namespace sc {
 
         /* construction. */
     public:
+        /*!
+         * @brief Wraps an existing handle.
+         */
         explicit Object ( const Handle& handle );
         virtual ~Object ();
 
         /* methods. */
     public:
+        /*!
+         * @brief Obtains the SCM resource handle.
+         */
         const Handle& handle () const;
     };
 

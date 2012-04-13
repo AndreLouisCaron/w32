@@ -35,6 +35,13 @@
 
 namespace w32 { namespace dbg {
 
+    /*!
+     * @brief Persistant, standard, localizable, logging mechanism.
+     *
+     * @note In order to be used properly, the event log needs to be registered
+     *  when the application is installed (don't forget to unregister it when
+     *  uninstalling, your users will appreciate it :-).
+     */
     class Log
     {
         /* nested types. */
@@ -43,13 +50,36 @@ namespace w32 { namespace dbg {
 
         /* class methods. */
     public:
+        /*!
+         * @brief Creates a handle that will eventually release @a object.
+         */
         static Handle claim ( ::HANDLE object );
+
+        /*!
+         * @brief Creates a handle that will never release @a object.
+         */
         static Handle proxy ( ::HANDLE object );
 
+        /*!
+         * @brief Register an event log.
+         * @param name Name of the event source to install.
+         * @param path path to the message-only DLL containing string
+         *  resources.
+         * @param categories path to the resource-only DLL containing
+         *  application-defined message category definitions.
+         * @param count numer of application-defined message categories.
+         *
+         * @see remove()
+         */
         static void install (
             const string& name, const string& path,
             const string& categories, dword count );
 
+        /*!
+         * @brief Unregister an event log.
+         * @param name Name of the event source to uninstall.
+         * @see install()
+         */
         static void remove ( const string& name );
 
         /* data. */
@@ -57,15 +87,29 @@ namespace w32 { namespace dbg {
         Handle myHandle;
 
         /* construction. */
-    protected:
+    public:
+        /*!
+         * @brief Wrap an existing event log handle.
+         */
         explicit Log ( const Handle& handle );
 
-    public:
+        /*!
+         * @brief Opens an application event log.
+         * @param name Application event log name.
+         */
         Log ( const string& name );
 
         /* methods. */
     public:
+        /*!
+         * @return The event log's handle.
+         */
         const Handle& handle () const;
+
+        /*!
+         * @brief Report an event to the application's event log.
+         * @param event Event to store in the persistent event log.
+         */
         void report ( const Event& event );
     };
 

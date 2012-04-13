@@ -35,11 +35,28 @@ namespace w32 { namespace rgs {
 
     /*!
      * @ingroup w32-rgs
+     * @brief Recursively removes all entries under @a root.
+     * @param root Key for which all sub-keys and values will be removed.
+     *
+     * @note @a root itself is not removed. This function is designed to remove
+     *  an entire tree of registry keys when the key itself is "owned" by some
+     *  other entity (i.e. remove shell extension registration entries
+     *  associated to a particular file type and leave the file association key
+     *  itself unharmed).
      */
     void clean ( Key& root );
 
     /*!
      * @ingroup w32-rgs
+     * @brief Recursively removes all entries under @a root\@a path.
+     * @param root Key for which all sub-keys and values will be removed.
+     * @param path Path to the key under the selected root.
+     *
+     * @note @a root\@a path itself is not removed. This function is designed
+     *  to remove an entire tree of registry keys when the key itself is
+     *  "owned" by some other entity (i.e. remove shell extension registration
+     *  entries associated to a particular file type and leave the file
+     *  association key itself unharmed).
      */
     void clean ( Key& root, const string& path );
 

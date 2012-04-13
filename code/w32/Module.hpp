@@ -37,18 +37,43 @@ namespace w32 {
     /*!
      * @ingroup w32
      * @brief Loaded executable image: program or library.
+     *
+     * Native executable image; this covers both executables (EXE) and
+     * dynamically-linked librairies (DLL). This class allows refering to
+     * loaded modules, including the current module, as well as loading
+     * external modules at run-time.
      */
     class Module
     {
         /* nested types. */
     public:
+        /*!
+         * @brief Native identifier for a module.
+         */
         typedef Reference< ::HMODULE, void(*)(::HMODULE) > Handle;
 
         /* class methods. */
     public:
+        /*!
+         * @param object Existing module handle.
+         * @return A handle that will release @a object.
+         */
         static Handle claim ( ::HMODULE object );
+
+        /*!
+         * @param object Existing module handle.
+         * @return A handle that will @e not release @a object.
+         */
         static Handle proxy ( ::HMODULE object );
 
+        /*!
+         * @param path Executable or dynamic library file path.
+         * @return A fully loaded module.
+         *
+         * @note Loading is subject to library search paths when using only a
+         *  file name.  If you know exactly where the module can be found,
+         *  providing the absolute path is safer.
+         */
         static Module load ( const string& path );
 
         /* data. */
@@ -57,18 +82,57 @@ namespace w32 {
 
         /* construction. */
     public:
+        /*!
+         * @brief Wrap an existing module handle.
+         */
         explicit Module ( const Handle& handle );
+
+        /*!
+         * @brief Get the executable module for the current process.
+         */
         Module ();
+
+        /*!
+         * @brief Locates an already loaded module by name.
+         * @param name Name of the module to find.
+         */
         explicit Module ( const string& name );
 
         /* methods. */
     public:
+        /*!
+         * @return The module's handle.
+         */
         const Handle& handle () const;
 
+        /*!
+         * @return The module's file name.
+         */
         string name () const;
+
+        /*!
+         * @return The module's absolute file path.
+         */
         string path () const;
 
+        /*!
+         * @brief Obtains a raw pointer to a DLL-exported symbol by name.
+         * @param symbol The requested symbol's name.
+         * @return A pointer to the requested symbol if found, else 0.
+         *
+         * The symbol's type is not part of the export information, so it is up
+         * to the caller to cast the pointer to the appropriate type.
+         */
         void * get ( const astring& symbol ) const;
+
+        /*!
+         * @brief Obtains a typed pointer to a DLL-exported symbol by name.
+         * @param symbol The requested symbol's name.
+         * @return A pointer to the requested symbol if found, else 0.
+         *
+         * The symbol's type is not part of the export information, so it is up
+         * to the caller to cast the pointer to the appropriate type.
+         */
         template<typename Pointer>
         Pointer get ( const astring& symbol ) const
         {

@@ -37,13 +37,26 @@ namespace w32 {
     /*!
      * @ingroup w32
      * @brief Kernel object that implements wait semantics.
+     *
+     * This interface is not designed to be used directly by user code.  It
+     * should be avoided by using specific methods of derived classs.  Some
+     * derived classes may provide special resource acquisition semantics to
+     * @c wait() and @c test().
      */
     class Waitable :
         public Object
     {
         /* nested types. */
     public:
+        /*!
+         * @brief Thrown to signal an expected wait time out.
+         *
+         * Scoped locks acquire a resource in their constructor and cannot
+         * return a success value. This is thrown to prevent the guarded
+         * block's execution.
+         */
         class Timeout {};
+
         class Set;
 
         /* class methods. */
@@ -59,8 +72,24 @@ namespace w32 {
 
         /* methods. */
     public:
+        /*!
+         * @brief Waits indefinitely for the object to be signaled.
+         */
         void wait () const;
+
+        /*!
+         * @brief Waits for the object to be signaled.
+         * @param timeout Amount of time to wait before abandonning the wait.
+         * @return @c true if the object is, or just entered, the signaled
+         *  state.
+         */
         bool wait ( const Timespan& timeout ) const;
+
+        /*!
+         * @brief Non-blocking check for the object's state.
+         * @return @c true if the object is, or just entered, the signaled
+         *  state.
+         */
         bool test () const;
     };
 
