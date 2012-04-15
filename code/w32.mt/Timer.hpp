@@ -151,6 +151,11 @@ namespace w32 { namespace mt {
              */
         void set ( const fs::Time& expiry, long period=0 );
 
+        /*!
+         * @brief Schedule the timer to execute at regular intervals.
+         */
+        void periodic ( const Delta& period );
+
         /* operators. */
     public:
             /*!

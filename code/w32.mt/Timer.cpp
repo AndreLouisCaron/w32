@@ -25,6 +25,7 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "Timer.hpp"
+#include <w32/Delta.hpp>
 #include <w32/Error.hpp>
 
 namespace {
@@ -108,6 +109,20 @@ namespace w32 { namespace mt {
         data.u.LowPart = expiry.low();
         const ::BOOL result = ::SetWaitableTimer
             (handle(), &data, period, 0, 0, FALSE);
+        if ( result == FALSE )
+        {
+            const ::DWORD error = ::GetLastError();
+            UNCHECKED_WIN32C_ERROR(SetWaitableTimer, error);
+        }
+    }
+
+    void Timer::periodic ( const Delta& period )
+    {
+        ::LARGE_INTEGER data;
+        data.QuadPart = period.ticks();
+        data.u.HighPart = -data.u.HighPart;
+        const ::BOOL result = ::SetWaitableTimer
+            (handle(), &data, period.milliseconds(), 0, 0, FALSE);
         if ( result == FALSE )
         {
             const ::DWORD error = ::GetLastError();
