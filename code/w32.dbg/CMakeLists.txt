@@ -29,14 +29,18 @@ file(GLOB ${module}_headers
   __module__.hpp
   Event.hpp
   Log.hpp
+  Stopwatch.hpp
   StructuredException.hpp
 )
 file(GLOB ${module}_sources
   Event.cpp
   Log.cpp
+  Stopwatch.cpp
   StructuredException.cpp
 )
-#set(${module}_libraries ...)
+set(${module}_libraries
+  w32
+)
 set(${module}_dependencies
   w32
 )

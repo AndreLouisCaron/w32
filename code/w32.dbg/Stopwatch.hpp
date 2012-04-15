@@ -1,5 +1,5 @@
-#ifndef _w32_dbg_hpp__
-#define _w32_dbg_hpp__
+#ifndef _w32_dbg_Stopwatch_hpp__
+#define _w32_dbg_Stopwatch_hpp__
 
 // Copyright (c) 2009-2012, Andre Caron (andre.l.caron@gmail.com)
 // All rights reserved.
@@ -28,14 +28,55 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "__configure__.hpp"
+#include <w32/types.hpp>
 
 namespace w32 {
-    namespace dbg {}
+
+    class Delta;
+
 }
 
-#include <w32.dbg/Event.hpp>
-#include <w32.dbg/Log.hpp>
-#include <w32.dbg/Stopwatch.hpp>
-#include <w32.dbg/StructuredException.hpp>
+namespace w32 { namespace dbg {
 
-#endif /* _w32_dbg_hpp__ */
+    //! @addtogroup w32-dbg
+    //! @{
+
+    /*!
+     * @brief High-resolution performance counter.
+     */
+    class Stopwatch
+    {
+        /* data. */
+    private:
+        int64 myFrequency;
+        int64 myReference;
+
+        /* construction. */
+    public:
+        /*!
+         * @brief Create a stopwatch and establish the reference time.
+         *
+         * @see reset()
+         */
+        Stopwatch ();
+
+        /* methods. */
+    public:
+        /*!
+         * @brief Reset the stopwatch's reference time.
+         * @return Time elapsed since the previous call to @c reset().
+         */
+        Delta reset ();
+
+        /*!
+         * @brief Read the time elapsed since the reference time.
+         * @return Time elapsed since the previous call to @c reset().
+         */
+        Delta read () const;
+    };
+
+    //! @}
+
+} }
+
+#endif /* _w32_dbg_Stopwatch_hpp__ */
