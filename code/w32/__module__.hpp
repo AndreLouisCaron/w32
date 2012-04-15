@@ -46,6 +46,7 @@ namespace w32 {}
 #include <w32/currentdirectory.hpp>
 #include <w32/Console.hpp>
 #include <w32/Environment.hpp>
+#include <w32/Delta.hpp>
 #include <w32/Error.hpp>
 #include <w32/Module.hpp>
 #include <w32/mstring.hpp>

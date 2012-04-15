@@ -73,6 +73,11 @@ namespace w32 {
         return (366*year());
     }
 
+    Delta::Delta ()
+        : myTicks(0)
+    {
+    }
+
     Delta::Delta ( qword ticks )
         : myTicks(ticks)
     {
@@ -83,9 +88,29 @@ namespace w32 {
         return (myTicks);
     }
 
+    dword Delta::milliseconds () const
+    {
+        return (ticks() / millisecond().ticks());
+    }
+
+    dword Delta::microseconds () const
+    {
+        return (ticks() / microsecond().ticks());
+    }
+
+    dword Delta::seconds () const
+    {
+        return (ticks() / second().ticks());
+    }
+
     Delta& Delta::operator*= ( int rhs )
     {
         myTicks *= rhs; return (*this);
+    }
+
+    Delta& Delta::operator/= ( int rhs )
+    {
+        myTicks /= rhs; return (*this);
     }
 
     Delta& Delta::operator+= ( const Delta& rhs )
@@ -116,6 +141,36 @@ namespace w32 {
     Delta operator* ( int lhs, const Delta& rhs )
     {
         Delta result = rhs; result *= lhs; return (result);
+    }
+
+    Delta operator/ ( const Delta& lhs, int rhs )
+    {
+        Delta result = lhs; result /= rhs; return (result);
+    }
+
+    double operator/ ( const Delta& lhs, const Delta& rhs )
+    {
+        return (double(lhs.ticks()) / double(rhs.ticks()));
+    }
+
+    bool operator> ( const Delta& lhs, const Delta& rhs )
+    {
+        return (lhs.ticks() > rhs.ticks());
+    }
+
+    bool operator< ( const Delta& lhs, const Delta& rhs )
+    {
+        return (lhs.ticks() < rhs.ticks());
+    }
+
+    bool operator<= ( const Delta& lhs, const Delta& rhs )
+    {
+        return (lhs.ticks() <= rhs.ticks());
+    }
+
+    bool operator>= ( const Delta& lhs, const Delta& rhs )
+    {
+        return (lhs.ticks() >= rhs.ticks());
     }
 
 }

@@ -121,12 +121,21 @@ namespace w32 {
          */
         qword ticks () const;
 
+        dword microseconds () const;
+        dword milliseconds () const;
+        dword seconds () const;
+
         /* operators. */
     public:
         /*!
          * @brief Compute an integer multiple of the delta.
          */
         Delta& operator*= ( int rhs );
+
+        /*!
+         * @brief Compute an integer fraction of the delta.
+         */
+        Delta& operator/= ( int rhs );
 
         /*!
          * @brief Increase the time delta.
@@ -158,6 +167,21 @@ namespace w32 {
      * @brief Compute an integer multiple of a delta.
      */
     Delta operator* ( int lhs, const Delta& rhs );
+
+    /*!
+     * @brief Compute an integer fraction of a delta.
+     */
+    Delta operator/ ( const Delta& lhs, int rhs );
+
+    /*!
+     * @brief Compute the relative size of two delta.
+     */
+    double operator/ ( const Delta& lhs, const Delta& rhs );
+
+    bool operator> ( const Delta& lhs, const Delta& rhs );
+    bool operator< ( const Delta& lhs, const Delta& rhs );
+    bool operator<= ( const Delta& lhs, const Delta& rhs );
+    bool operator>= ( const Delta& lhs, const Delta& rhs );
 
     //! @}
 
