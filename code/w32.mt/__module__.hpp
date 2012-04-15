@@ -47,6 +47,7 @@ namespace w32 {
 #include <w32.mt/ManualResetEvent.hpp>
 #include <w32.mt/Mutex.hpp>
 #include <w32.mt/Semaphore.hpp>
+#include <w32.mt/Timer.hpp>
 #include <w32.mt/Thread.hpp>
 #include <w32.mt/ThreadLocalPointer.hpp>
 #if (_WIN32_WINNT >= 0x600)
@@ -54,7 +55,14 @@ namespace w32 {
 #    include <w32.mt/ReadWriteLock.hpp>
 #endif
 
-#include <w32.mt/increment.hpp>
+#include <w32.mt/and.hpp>
+#include <w32.mt/atomic.hpp>
+#include <w32.mt/barrier.hpp>
+#include <w32.mt/compare-exchange.hpp>
 #include <w32.mt/decrement.hpp>
+#include <w32.mt/exchange.hpp>
+#include <w32.mt/increment.hpp>
+#include <w32.mt/or.hpp>
+#include <w32.mt/xor.hpp>
 
 #endif /* _w32_mt_hpp__ */
