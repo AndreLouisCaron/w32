@@ -105,11 +105,13 @@ namespace w32 { namespace mt {
 
         template<dword(*F)(void*)>
         Thread ( function<F> function, void * context=0 )
+            : Object(allocate(function, context))
         {
         }
 
-        template<typename T, void(T::*M)()>
+        template<typename T, dword(T::*M)()>
         Thread ( T& object, method<T,M> method )
+            : Object(allocate(method, &object))
         {
         }
 
