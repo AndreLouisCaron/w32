@@ -128,9 +128,9 @@ namespace w32 { namespace io {
         return (myData);
     }
 
-    void SerialPort::Control::parity ( const Parity& parity )
+    SerialPort::Control& SerialPort::Control::parity ( const Parity& parity )
     {
-        myData.Parity = parity;
+        myData.Parity = parity; return (*this);
         //myData.fParity = TRUE;?
     }
 
@@ -139,9 +139,9 @@ namespace w32 { namespace io {
         return (Parity::of(*this));
     }
 
-    void SerialPort::Control::rate ( const Rate& rate )
+    SerialPort::Control& SerialPort::Control::rate ( const Rate& rate )
     {
-        myData.BaudRate = rate;
+        myData.BaudRate = rate; return (*this);
     }
 
     SerialPort::Rate SerialPort::Control::rate () const
@@ -149,9 +149,9 @@ namespace w32 { namespace io {
         return (Rate::of(*this));
     }
 
-    void SerialPort::Control::size ( const Size& size )
+    SerialPort::Control& SerialPort::Control::size ( const Size& size )
     {
-        myData.ByteSize = size;
+        myData.ByteSize = size; return (*this);
     }
 
     SerialPort::Size SerialPort::Control::size () const
@@ -159,9 +159,9 @@ namespace w32 { namespace io {
         return (Size::of(*this));
     }
 
-    void SerialPort::Control::stop ( const Stop& stop )
+    SerialPort::Control& SerialPort::Control::stop ( const Stop& stop )
     {
-        myData.StopBits = stop;
+        myData.StopBits = stop; return (*this);
     }
 
     SerialPort::Stop SerialPort::Control::stop () const
@@ -169,9 +169,9 @@ namespace w32 { namespace io {
         return (Stop::of(*this));
     }
 
-    void SerialPort::Control::binary ( bool binary )
+    SerialPort::Control& SerialPort::Control::binary ( bool binary )
     {
-        myData.fBinary = binary? TRUE : FALSE;
+        myData.fBinary = binary? TRUE : FALSE; return (*this);
     }
 
     bool SerialPort::Control::binary () const
@@ -195,6 +195,23 @@ namespace w32 { namespace io {
     const SerialPort::Timeouts::Data& SerialPort::Timeouts::data () const
     {
         return (myData);
+    }
+
+    Timespan SerialPort::Timeouts::read_timeout () const
+    {
+        return (Timespan(myData.ReadIntervalTimeout));
+    }
+
+    SerialPort::Timeouts&
+        SerialPort::Timeouts::read_timeout ( Timespan timeout )
+    {
+        myData.ReadIntervalTimeout = timeout.ticks(); return (*this);
+    }
+
+    SerialPort::Timeouts& SerialPort::Timeouts::blocking_read ()
+    {
+        myData.ReadIntervalTimeout = MAXDWORD;
+        return (*this);
     }
 
     SerialPort::Parity SerialPort::Parity::none ()

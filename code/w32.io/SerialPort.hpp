@@ -35,6 +35,7 @@
 #include "__configure__.hpp"
 #include <w32/NotCopyable.hpp>
 #include <w32/string.hpp>
+#include <w32/Timespan.hpp>
 #include <w32.io/Channel.hpp>
 
 namespace w32 { namespace io {
@@ -90,16 +91,16 @@ namespace w32 { namespace io {
         Data& data ();
         const Data& data () const;
 
-        void parity ( const Parity& parity );
+        Control& parity ( const Parity& parity );
         Parity parity () const;
-        void rate ( const Rate& rate );
+        Control& rate ( const Rate& rate );
         Rate rate () const;
-        void size ( const Size& size );
+        Control& size ( const Size& size );
         Size size () const;
-        void stop ( const Stop& stop );
+        Control& stop ( const Stop& stop );
         Stop stop () const;
 
-        void binary ( bool binary );
+        Control& binary ( bool binary );
         bool binary () const;
     };
 
@@ -123,6 +124,10 @@ namespace w32 { namespace io {
     public:
         Data& data ();
         const Data& data () const;
+
+        Timespan read_timeout () const;
+        Timeouts& read_timeout ( Timespan timeout );
+        Timeouts& blocking_read ();
     };
 
     class SerialPort::Parity
