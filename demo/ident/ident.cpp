@@ -24,11 +24,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include <WinSock2.h>
-#include <Ws2TcpIp.h>
-#include <IpHlpApi.h>
-#include <Windows.h>
-
+#include <w32.net.hpp>
 #include <w32.hpp>
 #include <w32.cr.hpp>
 #include <w32.ipc.hpp>
@@ -39,33 +35,6 @@
 #include <sstream>
 
 namespace {
-
-    ::PMIB_TCPTABLE2 read_tcp_table ()
-    {
-        ::DWORD size = 0;
-        ::PMIB_TCPTABLE2 data = 0;
-        ::ULONG error = ::GetTcpTable2(0, &size, FALSE);
-        while (error == ERROR_INSUFFICIENT_BUFFER)
-        {
-            operator delete(data);
-            data = static_cast<::PMIB_TCPTABLE2>(operator new(size));
-            error = ::GetTcpTable2(data, &size, FALSE);
-        }
-        if (error != NO_ERROR)
-        {
-            operator delete(data); data = 0;
-            if (error == ERROR_INVALID_PARAMETER)
-            {
-                // ...
-            }
-            if (error == ERROR_NOT_SUPPORTED)
-            {
-                // ...
-            }
-            std::cerr << "Error: " << error << std::endl;
-        }
-        return (data);
-    }
 
     w32::string mangle ( const w32::string& username )
     {
@@ -169,37 +138,34 @@ namespace {
             return (EXIT_FAILURE);
         }
 
-        // Fetch current table state.
-        ::PMIB_TCPTABLE2 table = ::read_tcp_table();
+        // Fetch a snapshot of current TCP connections.
+        w32::net::tcp::Connections connections;
 
         // Locate a process with a connection that matches the query.
         std::string username;
-        for (::DWORD i=0; (i < table->dwNumEntries); ++i)
+        for (w32::dword i=0; (i < connections.size()); ++i)
         {
             // Port numbers in TCP table are in network byte order.
-            const ::MIB_TCPROW2& row = table->table[i];
-            if ((row.dwState == MIB_TCP_STATE_ESTAB) &&
-                (row.dwLocalPort  == ::ntohs(server_port)) &&
-                (row.dwRemotePort == ::ntohs(client_port)))
+            const w32::net::tcp::Connection connection = connections[i];
+            if ((connection.state() == w32::net::tcp::State::established())
+                && (connection.host_port() == server_port)
+                && (connection.peer_port() == client_port))
             {
                 // Find the user account owning the process.
                 w32::ipc::Process::Access access;
                 access
                     .query_information()
                     ;
-                w32::ipc::Process process(row.dwOwningPid, access);
+                w32::ipc::Process process(connection.process(), access);
                 w32::sy::Token token = w32::sy::Token::of(process);
                 w32::sy::User user(token);
                 w32::sy::Account account(user);
                 const w32::string name = account.username();
 
                 // Mangle the name and encode it to ASCII.
-                username = w32::astring(mangle(name));
+                username = w32::astring(name/*mangle(name)*/);
             }
         }
-
-        // Get rid of the current state.
-        operator delete(table);
 
         // Reply.
         if (username.empty())

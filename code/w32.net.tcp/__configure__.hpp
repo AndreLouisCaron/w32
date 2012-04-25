@@ -29,4 +29,7 @@
 
 #include "../w32.net/__configure__.hpp"
 
+#include <Ws2TcpIp.h>
+#include <IpHlpApi.h>
+
 #endif /* _w32_net_tcp_configure_hpp__ */

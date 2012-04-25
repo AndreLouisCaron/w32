@@ -35,10 +35,8 @@ set(${demo-project}_libraries
   w32.ipc
   w32.mt
   w32.net
+  w32.net.tcp
   w32.sy
-
-  IpHlpApi
-  ws2_32
 )
 
 add_executable(${demo-project}

@@ -1,6 +1,3 @@
-#ifndef _w32_net_hpp__
-#define _w32_net_hpp__
-
 // Copyright (c) 2009-2012, Andre Caron (andre.l.caron@gmail.com)
 // All rights reserved.
 // 
@@ -27,33 +24,39 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include "__configure__.hpp"
+#include "State.hpp"
+#include "Connection.hpp"
 
-namespace w32 {
-    namespace net {}
-}
+namespace w32 { namespace net { namespace tcp {
 
-/*!
- * @defgroup w32-net Networking services.
- */
+    State State::established ()
+    {
+        return (MIB_TCP_STATE_ESTAB);
+    }
 
-#include <w32.net/Buffer.hpp>
-#include <w32.net/Context.hpp>
-#include <w32.net/Event.hpp>
-#include <w32.net/Host.hpp>
-#include <w32.net/integers.hpp>
-#include <w32.net/select.hpp>
-#include <w32.net/Set.hpp>
-#include <w32.net/sockstream.hpp>
-#include <w32.net/Timespan.hpp>
-#include <w32.net.ipv4/Address.hpp>
-#include <w32.net.ipv4/EndPoint.hpp>
-#include <w32.net.ipv6/Address.hpp>
-#include <w32.net.tcp/Connection.hpp>
-#include <w32.net.tcp/Connections.hpp>
-#include <w32.net.tcp/Listener.hpp>
-#include <w32.net.tcp/State.hpp>
-#include <w32.net.tcp/Stream.hpp>
-#include <w32.net.udp/Socket.hpp>
+    State State::of ( const Connection& connection )
+    {
+        return (connection.data().dwState);
+    }
 
-#endif /* _w32_net_hpp__ */
+    State::State ( Value value )
+        : myValue(value)
+    {
+    }
+
+    State::operator Value () const
+    {
+        return (myValue);
+    }
+
+    bool State::operator== ( const State& rhs ) const
+    {
+        return (myValue == rhs.myValue);
+    }
+
+    bool State::operator!= ( const State& rhs ) const
+    {
+        return (myValue != rhs.myValue);
+    }
+
+} } }

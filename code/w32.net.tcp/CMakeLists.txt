@@ -24,16 +24,25 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-file(GLOB ${module}_headers
+set(${module}_headers
   __configure__.hpp
+  Connection.hpp
+  Connections.hpp
   Listener.hpp
+  State.hpp
   Stream.hpp
 )
-file(GLOB ${module}_sources
+set(${module}_sources
+  Connection.cpp
+  Connections.cpp
   Listener.cpp
+  State.cpp
   Stream.cpp
 )
-#set(${module}_libraries ...)
+set(${module}_libraries
+  IpHlpApi
+  ws2_32
+)
 set(${module}_dependencies
   w32
   w32.net

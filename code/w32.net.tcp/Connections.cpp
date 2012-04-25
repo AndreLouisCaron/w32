@@ -1,6 +1,3 @@
-#ifndef _w32_net_hpp__
-#define _w32_net_hpp__
-
 // Copyright (c) 2009-2012, Andre Caron (andre.l.caron@gmail.com)
 // All rights reserved.
 // 
@@ -27,33 +24,53 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include "__configure__.hpp"
+#include "Connections.hpp"
+#include "Connection.hpp"
+#include <w32/Error.hpp>
 
-namespace w32 {
-    namespace net {}
+namespace {
+
+    ::PMIB_TCPTABLE2 read_tcp_table ()
+    {
+        ::DWORD size = 0;
+        ::PMIB_TCPTABLE2 data = 0;
+        ::ULONG error = ::GetTcpTable2(0, &size, FALSE);
+        while (error == ERROR_INSUFFICIENT_BUFFER)
+        {
+            operator delete(data);
+            data = static_cast<::PMIB_TCPTABLE2>(operator new(size));
+            error = ::GetTcpTable2(data, &size, FALSE);
+        }
+        if (error != NO_ERROR)
+        {
+            operator delete(data); data = 0;
+            UNCHECKED_WIN32C_ERROR(GetTcpTable2, error);
+        }
+        return (data);
+    }
+
 }
 
-/*!
- * @defgroup w32-net Networking services.
- */
+namespace w32 { namespace net { namespace tcp {
 
-#include <w32.net/Buffer.hpp>
-#include <w32.net/Context.hpp>
-#include <w32.net/Event.hpp>
-#include <w32.net/Host.hpp>
-#include <w32.net/integers.hpp>
-#include <w32.net/select.hpp>
-#include <w32.net/Set.hpp>
-#include <w32.net/sockstream.hpp>
-#include <w32.net/Timespan.hpp>
-#include <w32.net.ipv4/Address.hpp>
-#include <w32.net.ipv4/EndPoint.hpp>
-#include <w32.net.ipv6/Address.hpp>
-#include <w32.net.tcp/Connection.hpp>
-#include <w32.net.tcp/Connections.hpp>
-#include <w32.net.tcp/Listener.hpp>
-#include <w32.net.tcp/State.hpp>
-#include <w32.net.tcp/Stream.hpp>
-#include <w32.net.udp/Socket.hpp>
+    Connections::Connections ()
+        : myHandle(::read_tcp_table())
+    {
+    }
+            
+    Connections::~Connections ()
+    {
+        operator delete(myHandle); myHandle = 0;
+    }
 
-#endif /* _w32_net_hpp__ */
+    dword Connections::size () const
+    {
+        return (myHandle->dwNumEntries);
+    }
+
+    Connection Connections::operator[] (dword i) const
+    {
+        return (myHandle->table[i]);
+    }
+
+} } }
