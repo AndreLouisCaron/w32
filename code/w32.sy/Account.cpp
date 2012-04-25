@@ -1,6 +1,3 @@
-#ifndef _w32_sy_hpp__
-#define _w32_sy_hpp__
-
 // Copyright (c) 2009-2012, Andre Caron (andre.l.caron@gmail.com)
 // All rights reserved.
 // 
@@ -27,22 +24,46 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include "__configure__.hpp"
+/*!
+ * @file w32.sy/Account.cpp
+ */
 
-namespace w32 {
-    namespace sy {}
-}
-
-
-#include "AccessControlList.hpp"
 #include "Account.hpp"
-#include "Attributes.hpp"
-#include "authenticate.hpp"
-#include "Context.hpp"
 #include "Identifier.hpp"
-#include "Impersonation.hpp"
-#include "ImpersonationLevel.hpp"
-#include "Token.hpp"
 #include "User.hpp"
 
-#endif /* _w32_sy_hpp__ */
+#include <w32/Error.hpp>
+
+namespace w32 { namespace sy {
+
+    Account::Account ( const User& user )
+    {
+        const Identifier identifier = user.identifier();
+        ::DWORD dsize = 0;
+        ::DWORD usize = 0;
+        ::SID_NAME_USE use = ::SidTypeUser;
+        ::LookupAccountSidW
+            (0, identifier.handle(), 0, &usize, 0, &dsize, &use);
+        myDomain.resize(dsize);
+        myUsername.resize(usize);
+        const ::BOOL result = ::LookupAccountSidW
+            (0, identifier.handle(), myUsername.data(),
+             &usize, myDomain.data(), &dsize, &use);
+        if ( result == 0 )
+        {
+            const ::DWORD error = ::GetLastError();
+            UNCHECKED_WIN32C_ERROR(LookupAccountSid, error);
+        }
+    }
+
+    const string& Account::domain () const
+    {
+        return (myDomain);
+    }
+
+    const string& Account::username () const
+    {
+        return (myUsername);
+    }
+
+} }

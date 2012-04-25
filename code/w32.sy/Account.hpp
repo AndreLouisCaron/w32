@@ -1,5 +1,5 @@
-#ifndef _w32_sy_hpp__
-#define _w32_sy_hpp__
+#ifndef _w32_sy_Account_hpp__
+#define _w32_sy_Account_hpp__
 
 // Copyright (c) 2009-2012, Andre Caron (andre.l.caron@gmail.com)
 // All rights reserved.
@@ -27,22 +27,39 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+/*!
+ * @file w32.sy/Account.hpp
+ */
+
 #include "__configure__.hpp"
+#include <w32/string.hpp>
 
-namespace w32 {
-    namespace sy {}
-}
+namespace w32 { namespace sy {
 
+    class User;
 
-#include "AccessControlList.hpp"
-#include "Account.hpp"
-#include "Attributes.hpp"
-#include "authenticate.hpp"
-#include "Context.hpp"
-#include "Identifier.hpp"
-#include "Impersonation.hpp"
-#include "ImpersonationLevel.hpp"
-#include "Token.hpp"
-#include "User.hpp"
+    //! @addtogroup w32-sy
+    //! @{
 
-#endif /* _w32_sy_hpp__ */
+    class Account
+    {
+        /* data. */
+    private:
+        string myDomain;
+        string myUsername;
+
+        /* construction. */
+    public:
+        Account ( const User& user );
+
+        /* methods. */
+    public:
+        const string& domain () const;
+        const string& username () const;
+    };
+
+    //! @}
+
+} }
+
+#endif /* _w32_sy_Account_hpp__ */

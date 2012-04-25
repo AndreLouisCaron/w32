@@ -1,5 +1,5 @@
-#ifndef _w32_sy_hpp__
-#define _w32_sy_hpp__
+#ifndef _w32_sy_User_hpp__
+#define _w32_sy_User_hpp__
 
 // Copyright (c) 2009-2012, Andre Caron (andre.l.caron@gmail.com)
 // All rights reserved.
@@ -27,22 +27,49 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+/*!
+ * @file w32.sy/User.hpp
+ */
+
 #include "__configure__.hpp"
+#include <w32/NotCopyable.hpp>
+#include <w32/types.hpp>
 
-namespace w32 {
-    namespace sy {}
-}
+namespace w32 { namespace sy {
 
+    class Identifier;
+    class Token;
 
-#include "AccessControlList.hpp"
-#include "Account.hpp"
-#include "Attributes.hpp"
-#include "authenticate.hpp"
-#include "Context.hpp"
-#include "Identifier.hpp"
-#include "Impersonation.hpp"
-#include "ImpersonationLevel.hpp"
-#include "Token.hpp"
-#include "User.hpp"
+    //! @addtogroup w32-sy
+    //! @{
 
-#endif /* _w32_sy_hpp__ */
+    class User :
+        private NotCopyable
+    {
+        /* nested types. */
+    public:
+        typedef ::TOKEN_USER Data;
+
+        /* data. */
+    private:
+        void* myData;
+
+        /* construction. */
+    public:
+        User ( const Token& token );
+        ~User ();
+
+        /* methods. */
+    public:
+        Data& data ();
+        const Data& data () const;
+
+        dword attributes () const;
+        Identifier identifier () const;
+    };
+
+    //! @}
+
+} }
+
+#endif /* _w32_sy_User_hpp__ */

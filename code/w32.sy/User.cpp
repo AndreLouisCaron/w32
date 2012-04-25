@@ -1,6 +1,3 @@
-#ifndef _w32_sy_hpp__
-#define _w32_sy_hpp__
-
 // Copyright (c) 2009-2012, Andre Caron (andre.l.caron@gmail.com)
 // All rights reserved.
 // 
@@ -27,22 +24,58 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include "__configure__.hpp"
-
-namespace w32 {
-    namespace sy {}
-}
-
-
-#include "AccessControlList.hpp"
-#include "Account.hpp"
-#include "Attributes.hpp"
-#include "authenticate.hpp"
-#include "Context.hpp"
-#include "Identifier.hpp"
-#include "Impersonation.hpp"
-#include "ImpersonationLevel.hpp"
-#include "Token.hpp"
 #include "User.hpp"
 
-#endif /* _w32_sy_hpp__ */
+#include "Identifier.hpp"
+#include "Token.hpp"
+
+#include <w32/Error.hpp>
+
+namespace w32 { namespace sy {
+
+    User::User ( const Token& token )
+        : myData(0)
+    {
+        ::DWORD size = 0;
+        ::BOOL status = ::GetTokenInformation
+            (token.handle(), ::TokenUser, 0, 0, &size);
+        ::DWORD error = ::GetLastError();
+        while ((status == 0) && (error == ERROR_INSUFFICIENT_BUFFER))
+        {
+            myData = operator new(size);
+            ::ZeroMemory(myData, size);
+            status = ::GetTokenInformation
+                (token.handle(), ::TokenUser, myData, size, &size);
+            error = ::GetLastError();
+        }
+        if (status == 0) {
+            UNCHECKED_WIN32C_ERROR(GetTokenInformation, error);
+        }
+    }
+
+    User::~User ()
+    {
+        operator delete(myData); myData = 0;
+    }
+
+    User::Data& User::data ()
+    {
+        return (*static_cast<Data*>(myData));
+    }
+
+    const User::Data& User::data () const
+    {
+        return (*static_cast<const Data*>(myData));
+    }
+
+    dword User::attributes () const
+    {
+        return (data().User.Attributes);
+    }
+
+    Identifier User::identifier () const
+    {
+        return (Identifier(data().User.Sid));
+    }
+
+} }
