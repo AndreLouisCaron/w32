@@ -78,11 +78,9 @@ namespace {
         return (information.hProcess);
     }
 
-    ::HANDLE find ( ::DWORD id )
+    ::HANDLE find ( ::DWORD id, ::DWORD access=PROCESS_ALL_ACCESS )
     {
-        const ::HANDLE result = ::OpenProcess(
-            PROCESS_ALL_ACCESS, FALSE, id
-            );
+        const ::HANDLE result = ::OpenProcess(access, FALSE, id);
         if ( result == NULL ) {
             UNCHECKED_WIN32C_ERROR(OpenProcess, ::GetLastError());
         }
@@ -111,6 +109,11 @@ namespace w32 { namespace ipc {
 
     Process::Process ( Identifier identifier )
         : Object(Object::claim(::find(identifier)))
+    {
+    }
+
+    Process::Process ( Identifier identifier, Access access )
+        : Object(Object::claim(::find(identifier, access)))
     {
     }
 
@@ -368,6 +371,106 @@ namespace w32 { namespace ipc {
     Process::operator Waitable () const
     {
         return Waitable(handle());
+    }
+
+    Process::Access::Access ()
+        : myMask(0)
+    {
+    }
+
+    Process::Access& Process::Access::delete_ ()
+    {
+        myMask |= DELETE; return (*this);
+    }
+
+    Process::Access& Process::Access::read_control ()
+    {
+        myMask |= READ_CONTROL; return (*this);
+    }
+
+    Process::Access& Process::Access::synchronize ()
+    {
+        myMask |= SYNCHRONIZE; return (*this);
+    }
+
+    Process::Access& Process::Access::write_dacl ()
+    {
+        myMask |= WRITE_DAC; return (*this);
+    }
+
+    Process::Access& Process::Access::write_owner ()
+    {
+        myMask |= WRITE_OWNER; return (*this);
+    }
+
+    Process::Access& Process::Access::all ()
+    {
+        myMask |= PROCESS_ALL_ACCESS; return (*this);
+    }
+
+    Process::Access& Process::Access::create_process ()
+    {
+        myMask |= PROCESS_CREATE_PROCESS; return (*this);
+    }
+
+    Process::Access& Process::Access::create_thread ()
+    {
+        myMask |= PROCESS_CREATE_THREAD; return (*this);
+    }
+
+    Process::Access& Process::Access::duplicate_handle ()
+    {
+        myMask |= PROCESS_DUP_HANDLE; return (*this);
+    }
+
+    Process::Access& Process::Access::query_information ()
+    {
+        myMask |= PROCESS_QUERY_INFORMATION; return (*this);
+    }
+
+    Process::Access& Process::Access::query_limited_information ()
+    {
+        myMask |= PROCESS_QUERY_LIMITED_INFORMATION; return (*this);
+    }
+
+    Process::Access& Process::Access::set_information ()
+    {
+        myMask |= PROCESS_SET_INFORMATION; return (*this);
+    }
+
+    Process::Access& Process::Access::set_quota ()
+    {
+        myMask |= PROCESS_SET_QUOTA; return (*this);
+    }
+
+    Process::Access& Process::Access::suspend_resume ()
+    {
+        myMask |= PROCESS_SUSPEND_RESUME; return (*this);
+    }
+
+    Process::Access& Process::Access::terminate ()
+    {
+        myMask |= PROCESS_TERMINATE; return (*this);
+    }
+
+    Process::Access& Process::Access::vm_operation ()
+    {
+        myMask |= PROCESS_VM_OPERATION; return (*this);
+    }
+
+    Process::Access& Process::Access::vm_read ()
+    {
+        myMask |= PROCESS_VM_READ; return (*this);
+    }
+
+    Process::Access& Process::Access::vm_write ()
+    {
+        myMask |= PROCESS_VM_WRITE; return (*this);
+    }
+
+    Process::Access::operator Mask () const
+    {
+        return (myMask);
     }
 
 } }

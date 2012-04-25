@@ -61,6 +61,7 @@ namespace w32 { namespace ipc {
         typedef dword Identifier;
 
         class Priority;
+        class Access;
 
         /* class methods. */
     public:
@@ -69,7 +70,20 @@ namespace w32 { namespace ipc {
         /* construction. */
     public:
         explicit Process ( const Handle& handle );
+
+        /*!
+         * @brief Access a process by identifier (full access rights).
+         * @param identifier Process identifier.
+         */
         explicit Process ( Identifier identifier );
+
+        /*!
+         * @brief Access a process by identifier (custom access rights).
+         * @param identifier Process identifier.
+         * @param access Process handle access rights.
+         */
+        explicit Process ( Identifier identifier, Access access );
+
         explicit Process ( const string& executable, bool inherit=false );
 
         /* methods. */
@@ -296,6 +310,50 @@ namespace w32 { namespace ipc {
      public:
          Value value () const;
      };
+
+    /*!
+     * @brief Process information access permissions.
+     */
+    class Process::Access
+    {
+        /* nested types. */
+    public:
+        typedef ::DWORD Mask;
+
+        /* data. */
+    private:
+        Mask myMask;
+
+        /* construction. */
+    public:
+        Access ();
+
+        /* methods. */
+    public:
+        Access& delete_ ();
+        Access& read_control ();
+        Access& synchronize ();
+        Access& write_dacl ();
+        Access& write_owner ();
+
+        Access& all ();
+        Access& create_process ();
+        Access& create_thread ();
+        Access& duplicate_handle ();
+        Access& query_information ();
+        Access& query_limited_information ();
+        Access& set_information ();
+        Access& set_quota ();
+        Access& suspend_resume ();
+        Access& terminate ();
+        Access& vm_operation ();
+        Access& vm_read ();
+        Access& vm_write ();
+
+        /* operators. */
+    public:
+        operator Mask () const;
+    };
 
         /*!
          * @brief Terminates the current process.
