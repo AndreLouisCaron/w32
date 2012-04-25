@@ -133,8 +133,8 @@ namespace {
             if (!(stream >> server_port) ||
                 (server_port == 0) || (server_port > 65535))
             {
-                std::cerr
-                    << "Invalid server port: '" << argv[1] << "'."
+                std::wcerr
+                    << L"Invalid server port: '" << argv[1] << L"'."
                     << std::endl;
                 ++errors;
             }
@@ -151,8 +151,8 @@ namespace {
             if (!(stream >> client_port) ||
                 (client_port == 0) || (client_port > 65535))
             {
-                std::cerr
-                    << "Invalid client port: '" << argv[2] << "'."
+                std::wcerr
+                    << L"Invalid client port: '" << argv[2] << L"'."
                     << std::endl;
                 ++errors;
             }
