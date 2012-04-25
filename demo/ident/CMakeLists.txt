@@ -24,55 +24,27 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Resolve our own libraries.
-link_directories(${LIBRARY_OUTPUT_PATH})
-
-# Build all demo projects.
-set(demo-projects
-  c10k-server
-  code-injection
-  com-instantiate
-#  display-jpg
-#  display-png
-  dns-resolve
-  event-source
-  ftp-client
-  hardlink
-  http-server
-  ident
-  installed-products
-  junction
-  key-generation
-  large-file-mapping
-  loaded-modules
-  named-pipe-client
-  named-pipe-server
-  namespace-ftp
-  namespace-tester
-  pnm-thumbnails
-  prefork-echo-server
-  prefork-master
-  prefork-slave
-  registry
-  screen-capture
-  self-signed-certificate
-  service
-  sha1
-  shell-ls
-  splash-screen
-  ssl
-#  stream-my-screen
-  symbolic-link
-  sy-authenticate
-  task-scheduler-1
-  tcp-client
-  tcp-server
-  tga-thumbnails
-  thread-pools
-  udp-client
-  udp-server
-  wallpaper-swapper
+set(${demo-project}_headers)
+set(${demo-project}_sources
+  ident.cpp
 )
-foreach(demo-project ${demo-projects})
-  add_subdirectory(${demo-project})
-endforeach()
+set(${demo-project}_libraries
+  w32
+  w32.cr
+  w32.dbg
+  w32.ipc
+  w32.mt
+  w32.net
+  w32.sy
+)
+
+add_executable(${demo-project}
+  ${${demo-project}_headers}
+  ${${demo-project}_sources}
+)
+if(${demo-project}_libraries)
+  target_link_libraries(${demo-project} ${${demo-project}_libraries})
+endif()
+if(${demo-project}_dependencies)
+  add_dependencies(${demo-project} ${${demo-project}_dependencies})
+endif()
