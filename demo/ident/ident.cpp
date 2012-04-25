@@ -222,7 +222,4 @@ namespace {
 
 }
 
-#pragma comment ( lib, "IpHlpApi.lib" )
-#pragma comment ( lib, "ws2_32.lib" )
-
 #include <w32/app/console-program.cpp>
