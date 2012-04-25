@@ -169,10 +169,6 @@ namespace {
             return (EXIT_FAILURE);
         }
 
-        // Port numbers in TCP table are in network byte order.
-        server_port = ::htons(server_port);
-        client_port = ::htons(client_port);
-
         // Fetch current table state.
         ::PMIB_TCPTABLE2 table = ::read_tcp_table();
 
@@ -180,10 +176,11 @@ namespace {
         std::string username;
         for (::DWORD i=0; (i < table->dwNumEntries); ++i)
         {
+            // Port numbers in TCP table are in network byte order.
             const ::MIB_TCPROW2& row = table->table[i];
             if ((row.dwState == MIB_TCP_STATE_ESTAB) &&
-                (row.dwLocalPort  == server_port)    &&
-                (row.dwRemotePort == client_port))
+                (row.dwLocalPort  == ::ntohs(server_port)) &&
+                (row.dwRemotePort == ::ntohs(client_port)))
             {
                 // Find the user account owning the process.
                 w32::ipc::Process::Access access;
