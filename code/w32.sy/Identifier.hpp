@@ -35,6 +35,7 @@
 #include "__configure__.hpp"
 #include <w32/NotCopyable.hpp>
 #include <w32/types.hpp>
+#include <w32/Reference.hpp>
 
 namespace w32 {
 
@@ -61,7 +62,12 @@ namespace w32 { namespace sy {
     {
         /* nested types. */
     public:
-        typedef ::PSID Handle;
+        typedef Reference< ::PSID > Handle;
+
+        /* class methods. */
+    public:
+        static Handle claim ( ::PSID object );
+        static Handle proxy ( ::PSID object );
 
         /* data. */
     private:
@@ -70,9 +76,9 @@ namespace w32 { namespace sy {
         /* construction. */
     public:
         Identifier ( const string& value );
+        Identifier ( ::PSID data );
         Identifier ( ::PSID data, ::DWORD size );
         Identifier ( const Identifier& other );
-        ~Identifier();
 
         /* methods. */
     public:

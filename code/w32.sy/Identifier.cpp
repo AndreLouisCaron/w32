@@ -36,13 +36,20 @@
 
 namespace {
 
-    ::PSID copy ( ::DWORD length, ::PSID model )
+    ::PSID copy ( ::PSID data, ::DWORD size )
     {
-        ::PSID duplicate = 0;
-        if ( ::CopySid(length,&duplicate,model) == 0 ) {
-            UNCHECKED_WIN32C_ERROR(FreeSid,::GetLastError());
+        ::PSID copy = operator new(size);
+        const ::BOOL status = ::CopySid(size, copy, data);
+        if ( status == 0 ) {
+            const ::DWORD error = ::GetLastError();
+            UNCHECKED_WIN32C_ERROR(CopySid, error);
         }
-        return (duplicate);
+        return (copy);
+    }
+
+    ::PSID copy ( ::PSID data )
+    {
+        return (copy(data, ::GetLengthSid(data)));
     }
 
     ::PSID parse ( const ::WCHAR * value )
@@ -57,30 +64,52 @@ namespace {
         return (handle);
     }
 
+    void abandon ( ::PSID object )
+    {
+    }
+
+    void destroy ( ::PSID object )
+    {
+        ::FreeSid(object);
+    }
+
+    void release ( ::PSID object )
+    {
+        operator delete(object);
+    }
+
 }
 
 namespace w32 { namespace sy {
 
+    Identifier::Handle Identifier::claim ( ::PSID object )
+    {
+        return (Handle(object, &::destroy));
+    }
+
+    Identifier::Handle Identifier::proxy ( ::PSID object )
+    {
+        return (Handle(object, &::abandon));
+    }
+
     Identifier::Identifier ( const string& value )
-        : myHandle(::parse(value.data()))
+        : myHandle(::parse(value.data()), &::destroy)
+    {
+    }
+
+    Identifier::Identifier ( ::PSID data )
+        : myHandle(::copy(data), &::release)
     {
     }
 
     Identifier::Identifier ( ::PSID data, ::DWORD size )
-        : myHandle( ::copy(size, data) )
+        : myHandle(::copy(data, size), &::release)
     {
     }
 
     Identifier::Identifier ( const Identifier& other )
-        : myHandle( ::copy(other.size(),other.handle()) )
+        : myHandle(::copy(other.handle(), other.size()), &::release)
     {
-    }
-
-    Identifier::~Identifier()
-    {
-        if ( ::FreeSid(myHandle) != 0 ) {
-            UNCHECKED_WIN32C_ERROR(FreeSid,::GetLastError());
-        }
     }
 
     Identifier::Handle Identifier::handle () const

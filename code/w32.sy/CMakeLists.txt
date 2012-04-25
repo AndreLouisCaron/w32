@@ -28,6 +28,7 @@ set(${module}_headers
   __configure__.hpp
   __module__.hpp
   AccessControlList.hpp
+  Account.hpp
   Attributes.hpp
   authenticate.hpp
   Context.hpp
@@ -36,9 +37,11 @@ set(${module}_headers
   Impersonation.hpp
   ImpersonationLevel.hpp
   Token.hpp
+  User.hpp
 )
 set(${module}_sources
   AccessControlList.cpp
+  Account.cpp
   Attributes.cpp
   authenticate.cpp
   Context.cpp
@@ -47,6 +50,7 @@ set(${module}_sources
   Impersonation.cpp
   ImpersonationLevel.cpp
   Token.cpp
+  User.cpp
 )
 #set(${module}_libraries ...)
 set(${module}_dependencies
