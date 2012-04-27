@@ -39,6 +39,8 @@ namespace tcp  = w32::net::tcp;
 #include <string>
 #include <sstream>
 
+#include "../ident-server/idp_iwire.h"
+
 namespace {
 
     std::ostream& usage (std::ostream& stream)
@@ -64,6 +66,35 @@ namespace {
             << std::endl);
     }
 
+    int accept_error (::idp_iwire * stream, const char * data, int size)
+    {
+        (std::cout << "error: '").write(data, size) << "'." << std::endl;
+        return (0);
+    }
+
+    int accept_opsys (::idp_iwire * stream, const char * data, int size)
+    {
+        (std::cout << "opsys: '").write(data, size) << "'." << std::endl;
+        return (0);
+    }
+
+    int accept_codec (::idp_iwire * stream, const char * data, int size)
+    {
+        (std::cout << "codec: '").write(data, size) << "'." << std::endl;
+        return (0);
+    }
+
+    int accept_token (::idp_iwire * stream, const char * data, int size)
+    {
+        (std::cout << "token: '").write(data, size) << "'." << std::endl;
+        return (0);
+    }
+
+    int accept_reply (::idp_iwire * stream)
+    {
+        std::cout << "Response complete." << std::endl;
+        return (0);
+    }
 }
 
 #include <w32/app/console-program.hpp>
@@ -108,27 +139,37 @@ namespace {
         tcp::Stream stream(ipv4::EndPoint(host, 113));
 
         client_port = stream.host().port();
-        std::cout
-            << "client-port: " << client_port
-            << std::endl
-            ;
 
         std::ostringstream query;
         query
             << server_port << ", " << client_port << "\r\n"
             ;
         put(stream, query.str());
+        std::cout << "query: '" << query.str() << "'." << std::endl;
+
+        ::idp_iwire wire;
+        ::idp_iwire_init(&wire, ::idp_iwire_reply);
+        wire.baton = 0;
+        wire.accept_error = &::accept_error;
+        wire.accept_opsys = &::accept_opsys;
+        wire.accept_codec = &::accept_codec;
+        wire.accept_token = &::accept_token;
+        wire.accept_reply = &::accept_reply;
 
         char data[512];
         int size = 512;
         int pass = 0;
         int used = 0;
+        int feed = 0;
         do {
             pass = stream.get(data+used, size-used);
+            if (pass > 0) {
+                feed += ::idp_iwire_feed(&wire, data+used, pass);
+            }
         }
-        while ((pass > 0) && ((used += pass) < size));
+        while ((pass > 0) && ((used += pass) < size) && (wire.queries == 0));
 
-        std::cout.write(data, used) << " (" << used << ")" << std::endl;
+        std::cout.write(data, used) << std::endl;
 
         // Don't send multiple queries.
         stream.shutdown();

@@ -28,6 +28,7 @@ set(${demo-project}_headers
 )
 set(${demo-project}_sources
   ident-client.cpp
+  ../ident-server/idp_iwire.c
 )
 set(${demo-project}_libraries
   w32

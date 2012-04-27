@@ -73,9 +73,9 @@ namespace idp {
             .bind(myStream, static_cast<Handler*>(this));
 
         // Initialize ident protocol query parser.
-        ::idp_iwire_init(&myWire);
-        myWire.baton = this;
-        myWire.query = &Session::query;
+        ::idp_iwire_init(&myWire, ::idp_iwire_query);
+        myWire.baton        = this;
+        myWire.accept_query = &Session::query;
 
         // Start another transfer.
         if (myStream.get(myGBuffer->next(), myGBuffer->left(), myGet))
@@ -91,8 +91,6 @@ namespace idp {
 
     Session::~Session ()
     {
-        std::cout << __FUNCSIG__ << std::endl;
-
         delete myGBuffer; myGBuffer = 0;
         delete myPBuffer; myPBuffer = 0;
     }
