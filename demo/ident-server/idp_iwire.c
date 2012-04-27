@@ -37,6 +37,34 @@ int idp_decode_server_port (idp_iwire * stream, const char * data, int size);
 int idp_separator          (idp_iwire * stream, const char * data, int size);
 int idp_expect_client_port (idp_iwire * stream, const char * data, int size);
 int idp_decode_client_port (idp_iwire * stream, const char * data, int size);
+int idp_expect_end_of_line (idp_iwire * stream, const char * data, int size);
+
+static int idp_expect_end_of_line
+    (idp_iwire * stream, const char * data, int size)
+{
+    int used = 0;
+    if (used < size)
+    {
+        if (data[used] == '\n')
+        {
+            /* update parser statistics. */
+            ++stream->queries;
+            /* invoke callback, handle pause. */
+            if (stream->query(stream)) {
+                stream->error = idp_iwire_pause;
+            }
+            /* clear parser state, prepare for next query. */
+            stream->server_port = 0;
+            stream->client_port = 0;
+            stream->state = &idp_expect_server_port;
+            return (used+1);
+        }
+        else {
+            stream->error = idp_iwire_invalid_syntax;
+       }
+    }
+    return (used);
+}
 
 static int idp_decode_client_port
     (idp_iwire * stream, const char * data, int size)
@@ -56,18 +84,15 @@ static int idp_decode_client_port
     }
     if (used < size)
     {
-        if (isspace(data[used])) {
-            /* let the caller handle the query.  at this point, the callback
-               may require the parser to pause.  if so, set a dummy error
-               code to force the feed() loop to stop. */
-            ++stream->queries;
-            if (stream->query(stream)) {
-                stream->error = idp_iwire_pause;
-            }
-            stream->server_port = 0;
-            stream->client_port = 0;
-            stream->state = &idp_expect_server_port;
+        /* tolerate abbreviated line endings. */
+        if (data[used] == '\n') {
+            stream->state = &idp_expect_end_of_line;
             return (used);
+        }
+        /* expect DOS-style line ending. */
+        if (data[used] == '\r') {
+            stream->state = &idp_expect_end_of_line;
+            return (used+1);
         }
         else {
             stream->error = idp_iwire_invalid_syntax;

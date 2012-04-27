@@ -133,7 +133,7 @@ namespace idp {
                 response
                     << server_port << ", " << client_port
                     << " : USERID : OTHER : " << username
-                    << std::endl
+                    << "\r\n"
                     ;
                 myPBuffer->put(response.str());
 
@@ -147,8 +147,7 @@ namespace idp {
             std::ostringstream response;
             response
                 << server_port << ", " << client_port
-                << " : ERROR : UNKNOWN-ERROR"
-                << std::endl
+                << " : ERROR : UNKNOWN-ERROR\r\n"
                 ;
             myPBuffer->put(response.str());
         }

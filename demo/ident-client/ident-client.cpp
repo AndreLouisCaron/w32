@@ -115,8 +115,7 @@ namespace {
 
         std::ostringstream query;
         query
-            << server_port << ", " << client_port
-            << std::endl
+            << server_port << ", " << client_port << "\r\n"
             ;
         put(stream, query.str());
 

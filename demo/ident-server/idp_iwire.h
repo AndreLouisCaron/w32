@@ -166,9 +166,6 @@ void idp_iwire_init (idp_iwire * stream);
  *  to @a size.  Note that this value being equal to @a size is not a reliable
  *  test for errors.  Consult @c stream->error after each call to this
  *  function.
- *
- * @todo Handle the boundary case where input stops after the last client port
- *  digit and there is no trailing whitespace.
  */
 int idp_iwire_feed (idp_iwire * stream, const void * data, int size);
 
