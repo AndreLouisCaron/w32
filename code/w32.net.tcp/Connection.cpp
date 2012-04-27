@@ -30,6 +30,8 @@
 
 #include "Connection.hpp"
 #include "State.hpp"
+#include <w32.net.ipv4/Address.hpp>
+#include <w32.net.ipv4/EndPoint.hpp>
 
 namespace w32 { namespace net { namespace tcp {
 
@@ -61,6 +63,26 @@ namespace w32 { namespace net { namespace tcp {
     w32::uint16 Connection::peer_port () const
     {
         return (::ntohs(static_cast<w32::uint16>(myData.dwRemotePort)));
+    }
+
+    ipv4::Address Connection::host_name () const
+    {
+        return (ipv4::Address(myData.dwLocalAddr));
+    }
+
+    ipv4::Address Connection::peer_name () const
+    {
+        return (ipv4::Address(myData.dwRemoteAddr));
+    }
+
+    ipv4::EndPoint Connection::host () const
+    {
+        return (ipv4::EndPoint(host_name(), host_port()));
+    }
+
+    ipv4::EndPoint Connection::peer () const
+    {
+        return (ipv4::EndPoint(peer_name(), peer_port()));
     }
 
     w32::dword Connection::process () const

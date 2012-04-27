@@ -34,6 +34,13 @@
 #include "__configure__.hpp"
 #include <w32/types.hpp>
 
+namespace w32 { namespace net { namespace ipv4 {
+
+    class Address;
+    class EndPoint;
+
+} } }
+
 namespace w32 { namespace net { namespace tcp {
 
     class State;
@@ -64,6 +71,12 @@ namespace w32 { namespace net { namespace tcp {
 
         w32::uint16 host_port () const;
         w32::uint16 peer_port () const;
+
+        ipv4::Address host_name () const;
+        ipv4::Address peer_name () const;
+
+        ipv4::EndPoint host () const;
+        ipv4::EndPoint peer () const;
 
         w32::dword process () const;
     };
