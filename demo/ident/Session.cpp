@@ -108,7 +108,8 @@ namespace idp {
             const tcp::Connection connection = connections[i];
             if ((connection.state() == tcp::State::established())
                 && (connection.host_port() == server_port)
-                && (connection.peer_port() == client_port))
+                && (connection.peer_port() == client_port)
+                && (connection.peer_name() == myPeer.address()))
             {
                 // Find the user account owning the process.
                 w32::ipc::Process::Access access;
