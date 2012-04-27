@@ -1,6 +1,3 @@
-#ifndef _w32_hpp__
-#define _w32_hpp__
-
 // Copyright (c) 2009-2012, Andre Caron (andre.l.caron@gmail.com)
 // All rights reserved.
 // 
@@ -27,40 +24,31 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include "__configure__.hpp"
-
-namespace w32 {}
-
 /*!
- * @defgroup w32 Core services.
- *
- * This group contains very basic services (e.g. string manipulation) or
- * services that have not been categorized into a particular category.
+ * @file w32/ConsoleEventHandler.cpp
  */
 
-#include <w32/Architecture.hpp>
-#include <w32/astring.hpp>
-#include <w32/bstring.hpp>
-#include <w32/CodePage.hpp>
-#include <w32/computername.hpp>
-#include <w32/currentdirectory.hpp>
-#include <w32/Console.hpp>
-#include <w32/ConsoleEventHandler.hpp>
-#include <w32/Environment.hpp>
-#include <w32/Delta.hpp>
-#include <w32/Error.hpp>
-#include <w32/Module.hpp>
-#include <w32/mstring.hpp>
-#include <w32/Object.hpp>
-#include <w32/Resource.hpp>
-#include <w32/string.hpp>
-#include <w32/strings.hpp>
-#include <w32/System.hpp>
-#include <w32/Time.hpp>
-#include <w32/Timespan.hpp>
-#include <w32/types.hpp>
-#include <w32/Version.hpp>
-#include <w32/Waitable.hpp>
-#include <w32/Variant.hpp>
+#include "ConsoleEventHandler.hpp"
+#include "Error.hpp"
 
-#endif /* _w32_hpp__ */
+namespace w32 {
+
+    ConsoleEventHandler::ConsoleEventHandler (Function function)
+        : myFunction(function)
+    {
+        const ::BOOL result = ::SetConsoleCtrlHandler(myFunction, TRUE);
+        if (result == FALSE) {
+            const ::DWORD error = ::GetLastError();
+            UNCHECKED_WIN32C_ERROR(SetConsoleCtrlHandler, error);
+        }
+    }
+
+    ConsoleEventHandler::~ConsoleEventHandler ()
+    {
+        const ::BOOL result = ::SetConsoleCtrlHandler(myFunction, FALSE);
+        if (result == FALSE) {
+            // ..?
+        }
+    }
+
+}

@@ -33,6 +33,7 @@ set(${module}_headers
   Codepage.hpp
   computername.hpp
   Console.hpp
+  ConsoleEventHandler.hpp
   currentdirectory.hpp
   Delta.hpp
   Environment.hpp
@@ -63,6 +64,7 @@ set(${module}_sources
   Codepage.cpp
   computername.cpp
   Console.cpp
+  ConsoleEventHandler.cpp
   currentdirectory.cpp
   Delta.cpp
   Environment.cpp
