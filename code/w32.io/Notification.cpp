@@ -1,6 +1,3 @@
-#ifndef _w32_io_hpp__
-#define _w32_io_hpp__
-
 // Copyright (c) 2009-2012, Andre Caron (andre.l.caron@gmail.com)
 // All rights reserved.
 // 
@@ -27,34 +24,59 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include "__configure__.hpp"
-
-namespace w32 {
-    namespace io {}
-}
-
 /*!
- * @defgroup w32-io Input/output services.
+ * @file w32.io/Notification.cpp
  */
 
-#include <w32.io/AnonymousPipe.hpp>
-#include <w32.io/Channel.hpp>
-#include <w32.io/CompletionPort.hpp>
-#include <w32.io/ConsoleInput.hpp>
-#include <w32.io/ConsoleOutput.hpp>
-#include <w32.io/InputFile.hpp>
-#include <w32.io/InputStream.hpp>
-#include <w32.io/NamedPipe.hpp>
-#include <w32.io/Notification.hpp>
-#include <w32.io/Null.hpp>
-#include <w32.io/OutputFile.hpp>
-#include <w32.io/OutputStream.hpp>
-#include <w32.io/SerialPort.hpp>
-#include <w32.io/StandardError.hpp>
-#include <w32.io/StandardInput.hpp>
-#include <w32.io/StandardOutput.hpp>
-#include <w32.io/Stream.hpp>
-#include <w32.io/streambuf.hpp>
-#include <w32.io/Transfer.hpp>
+#include "Notification.hpp"
+#include "Transfer.hpp"
+#include <w32/Error.hpp>
 
-#endif /* _w32_io_hpp__ */
+namespace w32 { namespace io {
+
+    Notification::Notification (dword status, ulongptr handler,
+                                Transfer * transfer, dword size)
+        : myStatus(status), myHandler(handler),
+          myTransfer(transfer), mySize(size)
+    {
+    }
+
+    dword Notification::status () const
+    {
+        return (myStatus);
+    }
+
+    bool Notification::timeout () const
+    {
+        return (myStatus == WAIT_TIMEOUT);
+    }
+
+    bool Notification::aborted () const
+    {
+        return (myStatus == ERROR_OPERATION_ABORTED);
+    }
+
+    void Notification::report_error () const
+    {
+        if (myStatus != 0) {
+            std::cout << "error=" << myStatus << std::endl;
+            throw (Error(myStatus));
+        }
+    }
+
+    Transfer * Notification::transfer () const
+    {
+        return (myTransfer);
+    }
+
+    dword Notification::size () const
+    {
+        return (mySize);
+    }
+
+    void * Notification::handler () const
+    {
+        return  (reinterpret_cast<void*>(myHandler));
+    }
+
+} }

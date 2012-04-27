@@ -150,7 +150,7 @@ namespace {
             
                 // Make all worker threads un-block.
             for ( std::size_t i = 0; (i < myWorkers.size()); ++i ) {
-                myPort.put(0, 0, 0);
+                myPort.unblock_consumers();
             }
             
                 // Wait for all threads to complete.
@@ -259,7 +259,7 @@ namespace {
             w32::dword bytes = 0;
             w32::ulongptr key = 0;
             w32::io::Transfer * transfer = 0;
-            server.port().get(bytes, key, transfer);
+            server.port().next(bytes, key, transfer);
             
                 // Efficient recovery of connection information! :-)
             Client *const client = reinterpret_cast< Client* >(key);

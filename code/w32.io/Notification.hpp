@@ -1,5 +1,5 @@
-#ifndef _w32_io_CompletionPort_hpp__
-#define _w32_io_CompletionPort_hpp__
+#ifndef _w32_io_Notification_hpp__
+#define _w32_io_Notification_hpp__
 
 // Copyright (c) 2009-2012, Andre Caron (andre.l.caron@gmail.com)
 // All rights reserved.
@@ -28,56 +28,58 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 /*!
- * @file w32.io/CompletionPort.hpp
- * @author Andre Caron (andre.l.caron@gmail.com)
+ * @file w32.io/Notification.hpp
  */
 
 #include "__configure__.hpp"
-#include <w32/Object.hpp>
-#include <w32/Timespan.hpp>
 #include <w32/types.hpp>
-#include <w32.io/Stream.hpp>
-#include <w32.io/Transfer.hpp>
 
 namespace w32 { namespace io {
 
-    class Notification;
+    class CompletionPort;
+    class Transfer;
 
-    /*!
-     * @ingroup w32-io
-     */
-    class CompletionPort :
-        public Object
+    //! @addtogroup w32-io
+    //! @{
+
+    class Notification
     {
-        /* nested types. */
-    public:
-        typedef dword Size;
-        typedef ulongptr Data;
+    friend class CompletionPort;
+
+        /* data. */
+    private:
+        dword myStatus;
+        ulongptr myHandler;
+        Transfer * myTransfer;
+        dword mySize;
 
         /* construction. */
-    public:
-        explicit CompletionPort ( dword threads = 0 );
-        CompletionPort ( const Stream& stream, Data data, dword threads = 0 );
+    private:
+        Notification (dword status, ulongptr handler,
+                      Transfer * transfer, dword size);
 
         /* methods. */
     public:
-        void bind ( ::HANDLE object, Data data );
-        void bind ( ::HANDLE object, void * data );
-        void bind ( ::SOCKET object, Data data );
-        void bind ( ::SOCKET object, void * data );
+        dword status () const;
+        bool timeout () const;
+        bool aborted () const;
+        void report_error () const;
+        Transfer * transfer () const;
+        dword size () const;
+        void * handler () const;
 
-        void bind ( const Stream& stream, Data data );
-        void bind ( const Stream& stream, void * data );
-        void next ( Size& bytes, Data& data, Transfer *& transfer );
-        bool next ( Size& bytes, Data& data,
-                    Transfer *& transfer, Timespan timeout );
-        void post ( Size bytes, Data data, Transfer * transfer );
-
-        void unblock_consumers ();
-        Notification next ();
-        Notification next ( Timespan timeout );
+        template<typename T>
+        T * handler () const;
     };
+
+    //! @}
+
+    template<typename T>
+    T * Notification::handler () const
+    {
+        return (static_cast<T*>(handler()));
+    }
 
 } }
 
-#endif /* _w32_io_CompletionPort_hpp__ */
+#endif /* _w32_io_Notification_hpp__ */

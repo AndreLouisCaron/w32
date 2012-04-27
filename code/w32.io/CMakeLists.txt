@@ -35,6 +35,7 @@ file(GLOB ${module}_headers
   InputFile.hpp
   InputStream.hpp
   NamedPipe.hpp
+  Notification.hpp
   Null.hpp
   OutputFile.hpp
   OutputStream.hpp
@@ -55,6 +56,7 @@ file(GLOB ${module}_sources
   InputFile.cpp
   InputStream.cpp
   NamedPipe.cpp
+  Notification.cpp
   Null.cpp
   OutputFile.cpp
   OutputStream.cpp

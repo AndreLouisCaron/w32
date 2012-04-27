@@ -30,14 +30,15 @@
  */
 
 #include <w32.io/CompletionPort.hpp>
+#include <w32.io/Notification.hpp>
 #include <w32/Error.hpp>
 
 namespace {
 
-    ::HANDLE allocate ( ::DWORD threads, ::HANDLE stream, ::ULONG_PTR key )
+    ::HANDLE allocate ( ::DWORD threads, ::HANDLE stream, ::ULONG_PTR data )
     {
         const ::HANDLE result =
-            ::CreateIoCompletionPort(stream, 0, key, threads);
+            ::CreateIoCompletionPort(stream, 0, data, threads);
         if ( result == 0 )
         {
             const ::DWORD error = ::GetLastError();
@@ -61,15 +62,15 @@ namespace w32 { namespace io {
     }
 
     CompletionPort::CompletionPort
-        ( const Stream& stream, Key key, dword threads )
-        : Object(claim( ::allocate(threads, stream.handle(), key) ))
+        ( const Stream& stream, Data data, dword threads )
+        : Object(claim( ::allocate(threads, stream.handle(), data) ))
     {
     }
 
-    void CompletionPort::bind ( const Stream& stream, Key key )
+    void CompletionPort::bind ( ::HANDLE object, Data data )
     {
         const ::HANDLE result = ::CreateIoCompletionPort
-            (stream.handle(), handle(), key, 0);
+            (object, handle(), data, 0);
         if ( result == 0 )
         {
             const ::DWORD error = ::GetLastError();
@@ -77,15 +78,35 @@ namespace w32 { namespace io {
         }
     }
 
-    void CompletionPort::bind ( const Stream& stream, void * key )
+    void CompletionPort::bind ( ::HANDLE object, void * data )
     {
-        bind(stream, reinterpret_cast<Key>(key));
+        bind(object, reinterpret_cast<Data>(data));
     }
 
-    void CompletionPort::get ( Size& bytes, Key& key, Transfer *& transfer )
+    void CompletionPort::bind ( ::SOCKET object, Data data )
+    {
+        bind(reinterpret_cast<::HANDLE>(object), data);
+    }
+
+    void CompletionPort::bind ( ::SOCKET object, void * data )
+    {
+        bind(reinterpret_cast<::HANDLE>(object), data);
+    }
+
+    void CompletionPort::bind ( const Stream& stream, Data data )
+    {
+        bind(stream.handle(), data);
+    }
+
+    void CompletionPort::bind ( const Stream& stream, void * data )
+    {
+        bind(stream.handle(), reinterpret_cast<Data>(data));
+    }
+
+    void CompletionPort::next ( Size& bytes, Data& data, Transfer *& transfer )
     {
         const ::BOOL result = ::GetQueuedCompletionStatus(
-            handle(), &bytes, &key,
+            handle(), &bytes, &data,
             &reinterpret_cast<::OVERLAPPED*&>(transfer), INFINITE
             );
         if ( result == FALSE )
@@ -93,45 +114,105 @@ namespace w32 { namespace io {
             const ::DWORD error = ::GetLastError();
             if ((error == ERROR_NETNAME_DELETED   )||
                 (error == ERROR_CONNECTION_ABORTED)||
-                (error == ERROR_HANDLE_EOF        ))
+                (error == ERROR_HANDLE_EOF        )||
+                (error == ERROR_OPERATION_ABORTED ))
             {
-                bytes = 0; key = 0; transfer = 0; return;
+                bytes = 0; data = 0; transfer = 0; return;
             }
             UNCHECKED_WIN32C_ERROR(GetQueuedCompletionStatus, error);
         }
     }
 
-    bool CompletionPort::get
-        ( Size& bytes, Key& key, Transfer *& transfer, Timespan timeout )
+    bool CompletionPort::next
+        ( Size& bytes, Data& data, Transfer *& transfer, Timespan timeout )
     {
         const ::BOOL result = ::GetQueuedCompletionStatus(
-            handle(), &bytes, &key,
+            handle(), &bytes, &data,
             &reinterpret_cast<::OVERLAPPED*&>(transfer), timeout.ticks()
             );
         if ( result == FALSE )
         {
             const ::DWORD error = ::GetLastError();
-            //if ( error != !?WHAT_IS_THE_TIMEOUT_CODE?! ) {}
             if ((error == ERROR_NETNAME_DELETED   )||
                 (error == ERROR_CONNECTION_ABORTED)||
-                (error == ERROR_HANDLE_EOF        ))
+                (error == ERROR_HANDLE_EOF        )||
+                (error == ERROR_OPERATION_ABORTED )||
+                (error == WAIT_TIMEOUT            ))
             {
-                bytes = 0; key = 0; transfer = 0; return (true);
+                bytes = 0; data = 0; transfer = 0; return (true);
             }
             UNCHECKED_WIN32C_ERROR(GetQueuedCompletionStatus, error);
         }
         return (result == TRUE);
     }
 
-    void CompletionPort::put ( Size bytes, Key key, Transfer * transfer )
+    void CompletionPort::post ( Size bytes, Data data, Transfer * transfer )
     {
         const ::BOOL result = ::PostQueuedCompletionStatus
-            (handle(), bytes, key, reinterpret_cast<::OVERLAPPED*>(transfer));
+            (handle(), bytes, data, reinterpret_cast<::OVERLAPPED*>(transfer));
         if ( result == FALSE )
         {
             const ::DWORD error = ::GetLastError();
             UNCHECKED_WIN32C_ERROR(PostQueuedCompletionStatus, error);
         }
+    }
+
+    void CompletionPort::unblock_consumers ()
+    {
+        post(0, 0, 0);
+    }
+
+    Notification CompletionPort::next ()
+    {
+        Size size = 0;
+        Data data = 0;
+        ::OVERLAPPED * transfer = 0;
+        const ::BOOL result = ::GetQueuedCompletionStatus
+            (handle(), &size, &data, &transfer, INFINITE);
+        ::DWORD status = NO_ERROR;
+        if ( result == FALSE )
+        {
+            const ::DWORD error = ::GetLastError();
+            if ((error == ERROR_NETNAME_DELETED   )||
+                (error == ERROR_CONNECTION_ABORTED)||
+                (error == ERROR_HANDLE_EOF        )||
+                (error == ERROR_OPERATION_ABORTED ))
+            {
+                status = error;
+            }
+            else {
+                UNCHECKED_WIN32C_ERROR(GetQueuedCompletionStatus, error);
+            }
+        }
+        return (Notification(status, data,
+                             reinterpret_cast<Transfer*>(transfer), size));
+    }
+
+    Notification CompletionPort::next ( Timespan timeout )
+    {
+        Size size = 0;
+        Data data = 0;
+        ::OVERLAPPED * transfer = 0;
+        const ::BOOL result = ::GetQueuedCompletionStatus
+            (handle(), &size, &data, &transfer, timeout.ticks());
+        ::DWORD status = NO_ERROR;
+        if ( result == FALSE )
+        {
+            const ::DWORD error = ::GetLastError();
+            if ((error == ERROR_NETNAME_DELETED   )||
+                (error == ERROR_CONNECTION_ABORTED)||
+                (error == ERROR_HANDLE_EOF        )||
+                (error == WAIT_TIMEOUT            )||
+                (error == ERROR_OPERATION_ABORTED ))
+            {
+                status = error;
+            }
+            else {
+                UNCHECKED_WIN32C_ERROR(GetQueuedCompletionStatus, error);
+            }
+        }
+        return (Notification(status, data,
+                             reinterpret_cast<Transfer*>(transfer), size));
     }
 
 } }

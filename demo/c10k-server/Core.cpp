@@ -74,7 +74,7 @@ namespace server {
         
             // Make all worker threads un-block.
         for ( std::size_t i = 0; (i < myWorkers.size()); ++i ) {
-            myPort.put(0, 0, 0);
+            myPort.unblock_consumers();
         }
         
             // Wait for all threads to complete.
@@ -147,7 +147,7 @@ namespace server {
             w32::dword size = 0;
             w32::ulongptr task = 0;
             w32::io::Transfer * transfer = 0;
-            core.myPort.get(size, task, transfer);
+            core.myPort.next(size, task, transfer);
             
                 // The core sends empty messages to unblock threads,
                 // forcing test of the 'core.closing()' condition.
