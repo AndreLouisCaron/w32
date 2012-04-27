@@ -24,34 +24,13 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include <w32.net.hpp>
-#include <w32.hpp>
-#include <w32.cr.hpp>
-#include <w32.ipc.hpp>
-#include <w32.sy.hpp>
+#include "__configure__.hpp"
+#include "Handler.hpp"
+#include "Service.hpp"
 
 #include <iostream>
-#include <string>
-#include <sstream>
 
 namespace {
-
-    w32::string mangle ( const w32::string& username )
-    {
-        // Get a cryptographic context for user name mangling.
-        w32::cr::Provider::Hints hints;
-        hints
-            .silent()
-            .verifyContext();
-        w32::cr::Provider provider
-            (w32::cr::Provider::Type::rsafull(), hints);
-
-        // Mangle the user name, for security.
-        const w32::astring name(username, w32::Codepage::utf8());
-        const w32::cr::Hash hash =
-            w32::cr::sha1(provider, name.data(), name.size());
-        return (w32::cr::convert(hash.data()));
-    }
 
     std::ostream& usage (std::ostream& stream)
     {
@@ -76,6 +55,30 @@ namespace {
             << std::endl);
     }
 
+    // Shutdown with style, don't die abruptly.
+    volatile bool running = true;
+    io::CompletionPort *volatile completion_port = 0;
+    ::BOOL __stdcall handle_console_event ( w32::dword event )
+    {
+        if ((event == CTRL_C_EVENT)||
+            (event == CTRL_BREAK_EVENT)||
+            (event == CTRL_CLOSE_EVENT))
+        {
+            // let the main loop know we're shutting down.
+            running = false;
+
+            // Make sure the main loop is not indefinitely blocked.
+            if (completion_port) {
+                completion_port->unblock_consumers();
+            }
+
+            return (TRUE);
+        }
+
+        // Let the default handler process all other events.
+        return (FALSE);
+    }
+
 }
 
 #include <w32/app/console-program.hpp>
@@ -84,6 +87,8 @@ namespace {
 
     int run ( int argc, wchar_t ** argv )
     {
+        const w32::ConsoleEventHandler _(&::handle_console_event);
+
         // Respond to usage request.
         if ((argc >= 2) && (::wcscmp(argv[1],L"--help")==0)) {
             std::cout
@@ -92,96 +97,32 @@ namespace {
             return (EXIT_SUCCESS);
         }
 
-        // Parse command-line arguments.
-        ::DWORD client_port = 0;
-        ::DWORD server_port = 0;
-        int errors = 0;
-        if (argc >= 2)
-        {
-            std::wistringstream stream(argv[1]);
-            if (!(stream >> server_port) ||
-                (server_port == 0) || (server_port > 65535))
-            {
-                std::wcerr
-                    << L"Invalid server port: '" << argv[1] << L"'."
-                    << std::endl;
-                ++errors;
+        // Intiialize network I/O services.
+        net::Context network_context;
+        io::CompletionPort completion_port;
+        ::completion_port = &completion_port;
+
+        // Listen for connections on standard port.
+        tcp::Listener listener
+            (ipv4::EndPoint(ipv4::Address::any(), 113));
+        idp::Service service(completion_port, listener);
+
+        // Process I/O completion notifications until we're told to stop.
+        const w32::Timespan timeout =
+            w32::Timespan(1, w32::Timespan::Unit::second());
+        ::running = true;
+        do {
+            // Await and process the next completion notification.
+            io::Notification notification = completion_port.next(timeout);
+            if (idp::Handler* handler = notification.handler<idp::Handler>()) {
+                handler->process(notification);
+            }
+            // On timeout, control handlers for timeouts.
+            if (notification.timeout()) {
+                service.control();
             }
         }
-        else {
-            std::cerr
-                << "No server port."
-                << std::endl;
-            ++errors;
-        }
-        if (argc >= 3)
-        {
-            std::wistringstream stream(argv[2]);
-            if (!(stream >> client_port) ||
-                (client_port == 0) || (client_port > 65535))
-            {
-                std::wcerr
-                    << L"Invalid client port: '" << argv[2] << L"'."
-                    << std::endl;
-                ++errors;
-            }
-        }
-        else {
-            std::cerr
-                << "No client port."
-                << std::endl;
-            ++errors;
-        }
-
-        // Don't execute if validating any argument failed.
-        if (errors > 0) {
-            return (EXIT_FAILURE);
-        }
-
-        // Fetch a snapshot of current TCP connections.
-        w32::net::tcp::Connections connections;
-
-        // Locate a process with a connection that matches the query.
-        std::string username;
-        for (w32::dword i=0; (i < connections.size()); ++i)
-        {
-            // Port numbers in TCP table are in network byte order.
-            const w32::net::tcp::Connection connection = connections[i];
-            if ((connection.state() == w32::net::tcp::State::established())
-                && (connection.host_port() == server_port)
-                && (connection.peer_port() == client_port))
-            {
-                // Find the user account owning the process.
-                w32::ipc::Process::Access access;
-                access
-                    .query_information()
-                    ;
-                w32::ipc::Process process(connection.process(), access);
-                w32::sy::Token token = w32::sy::Token::of(process);
-                w32::sy::User user(token);
-                w32::sy::Account account(user);
-                const w32::string name = account.username();
-
-                // Mangle the name and encode it to ASCII.
-                username = w32::astring(name/*mangle(name)*/);
-            }
-        }
-
-        // Reply.
-        if (username.empty())
-        {
-            std::cout
-                << server_port << ", " << client_port
-                << " : ERROR : UNKNOWN-ERROR"
-                << std::endl;
-        }
-        else
-        {
-            std::cout
-                << server_port << ", " << client_port
-                << " : USERID : OTHER : " << username
-                << std::endl;
-        }
+        while (::running);
 
         return (EXIT_SUCCESS);
     }

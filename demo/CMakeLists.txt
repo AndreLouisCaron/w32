@@ -40,6 +40,7 @@ set(demo-projects
   hardlink
   http-server
   ident
+  ident-client
   installed-products
   junction
   key-generation

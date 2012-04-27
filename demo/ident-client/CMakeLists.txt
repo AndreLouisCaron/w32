@@ -25,35 +25,17 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 set(${demo-project}_headers
-  idp_iwire.h
-  AcceptRequest.hpp
-  Buffer.hpp
-  Handler.hpp
-  Service.hpp
-  Session.hpp
 )
 set(${demo-project}_sources
-  ident.cpp
-  idp_iwire.c
-  AcceptRequest.cpp
-  Buffer.cpp
-  Handler.cpp
-  Service.cpp
-  Session.cpp
+  ident-client.cpp
 )
 set(${demo-project}_libraries
   w32
-  w32.cr
   w32.dbg
   w32.io
-  w32.ipc
-  w32.mt
   w32.net
   w32.net.ipv4
   w32.net.tcp
-  w32.sy
-
-  Mswsock
 )
 
 add_executable(${demo-project}
