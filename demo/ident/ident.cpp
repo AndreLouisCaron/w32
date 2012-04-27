@@ -36,20 +36,15 @@ namespace {
     {
         return (stream
             << std::endl
-            <<   "  Usage: ident server-port client-port                    \n"
+            <<   "  Usage: ident                                            \n"
             <<   "         ident --help                                     \n"
             <<   "                                                          \n"
-            <<   "  Arguments:                                              \n"
-            <<   "    server-port: integer in [0,65536).                    \n"
-            <<   "    client-port: integer in [0,65536).                    \n"
+            <<   "  Runs an ident[1] service, accepting network connections \n"
+            <<   "  on port 113.  Remote computers may query this service   \n"
+            <<   "  for the a unique identifier of the user running the     \n"
+            <<   "  process with which the remote user is connected.        \n"
             <<   "                                                          \n"
-            <<   "  Outputs an ident[1] service response to a query for the \n"
-            <<   "  server (this comptuer) port and client (the remote      \n"
-            <<   "  computer) port provided as arguments to the command.    \n"
-            <<   "                                                          \n"
-            <<   "  In this command, the computer running the process is    \n"
-            <<   "  the server.  This is meant as a diagnostic tool for     \n"
-            <<   "  implementing the ident service, not as a ident client.  \n"
+            <<   "  Press CTRL+C or CTRL+BREAK to shutdown the service.     \n"
             <<   "                                                          \n"
             <<   "  [1]: http://tools.ietf.org/html/rfc1413                 \n"
             << std::endl);
