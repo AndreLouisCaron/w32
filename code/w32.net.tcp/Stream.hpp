@@ -56,6 +56,11 @@ namespace w32 { namespace net { namespace tcp {
     {
         /* construction. */
     public:
+        /*!
+         * @brief Wrap an existing TCP socket stream handle.
+         */
+        explicit Stream ( Handle handle );
+
             /*!
              * @brief Wait for a connection (server side).
              */
@@ -66,6 +71,11 @@ namespace w32 { namespace net { namespace tcp {
              * @brief Connect to a server (client side).
              */
         Stream ( const ipv4::EndPoint& peer );
+
+        /* methods. */
+    public:
+        ipv4::EndPoint host () const;
+        ipv4::EndPoint peer () const;
 
         /* operators . */
     public:

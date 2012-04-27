@@ -85,6 +85,11 @@ namespace {
 
 namespace w32 { namespace net { namespace tcp {
 
+    Stream::Stream ( Handle handle )
+        : StreamSocket(handle)
+    {
+    }
+
     Stream::Stream ( Listener& listener )
         : StreamSocket(claim( ::allocate(listener.handle()) ))
     {
@@ -112,6 +117,30 @@ namespace w32 { namespace net { namespace tcp {
             }
             UNCHECKED_WIN32C_ERROR(connect, error);
         }
+    }
+
+    ipv4::EndPoint Stream::host () const
+    {
+        ipv4::EndPoint endpoint;
+        int size = sizeof(endpoint.data());
+        const int result = ::getsockname(handle(), endpoint.raw(), &size);
+        if (result == SOCKET_ERROR) {
+            const int error = ::WSAGetLastError();
+            UNCHECKED_WIN32C_ERROR(getsockname, error);
+        }
+        return (endpoint);
+    }
+
+    ipv4::EndPoint Stream::peer () const
+    {
+        ipv4::EndPoint endpoint;
+        int size = sizeof(endpoint.data());
+        const int result = ::getpeername(handle(), endpoint.raw(), &size);
+        if (result == SOCKET_ERROR) {
+            const int error = ::WSAGetLastError();
+            UNCHECKED_WIN32C_ERROR(getpeername, error);
+        }
+        return (endpoint);
     }
 
     Stream::operator io::Stream () const
