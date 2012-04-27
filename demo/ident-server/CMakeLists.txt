@@ -33,7 +33,7 @@ set(${demo-project}_headers
   Session.hpp
 )
 set(${demo-project}_sources
-  ident.cpp
+  ident-server.cpp
   idp_iwire.c
   AcceptRequest.cpp
   Buffer.cpp

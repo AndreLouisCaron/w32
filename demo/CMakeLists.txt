@@ -39,8 +39,8 @@ set(demo-projects
   ftp-client
   hardlink
   http-server
-  ident
   ident-client
+  ident-server
   installed-products
   junction
   key-generation

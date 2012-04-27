@@ -36,8 +36,8 @@ namespace {
     {
         return (stream
             << std::endl
-            <<   "  Usage: ident                                            \n"
-            <<   "         ident --help                                     \n"
+            <<   "  Usage: ident-server                                     \n"
+            <<   "         ident-server --help                              \n"
             <<   "                                                          \n"
             <<   "  Runs an ident[1] service, accepting network connections \n"
             <<   "  on port 113.  Remote computers may query this service   \n"
