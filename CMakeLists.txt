@@ -62,6 +62,9 @@ include_directories(
 # Build the core libraries.
 add_subdirectory(code)
 
+# Export list of modules for easy linking.
+set(w32_libraries ${w32_libraries} PARENT_SCOPE)
+
 # Exclude all but the core libraries when built as a dependency.
 if(${PROJECT_NAME} STREQUAL ${CMAKE_PROJECT_NAME})
 

@@ -102,11 +102,18 @@ else()
   endforeach()
 endif()
 
+# Keep list of directly or indirectly selected compoenents.
+set(components)
+
 # Build selected modules.
 foreach(module ${modules})
   if(${build_${module}})
     add_subdirectory(${module})
+    list(APPEND components ${module})
   endif()
   # Special symbol for easy linking to the library and its dependencies.
   set(${module}_library ${module} ${${module}_dependencies})
 endforeach()
+
+# Export list of modules for easy linking.
+set(w32_libraries ${components} PARENT_SCOPE)
