@@ -32,6 +32,7 @@ file(GLOB ${module}_headers
   CompletionPort.hpp
   ConsoleInput.hpp
   ConsoleOutput.hpp
+  Folder.hpp
   InputFile.hpp
   InputStream.hpp
   NamedPipe.hpp
@@ -53,6 +54,7 @@ file(GLOB ${module}_sources
   CompletionPort.cpp
   ConsoleInput.cpp
   ConsoleOutput.cpp
+  Folder.cpp
   InputFile.cpp
   InputStream.cpp
   NamedPipe.cpp

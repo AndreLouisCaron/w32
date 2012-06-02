@@ -1,6 +1,3 @@
-#ifndef _w32_io_hpp__
-#define _w32_io_hpp__
-
 // Copyright (c) 2009-2012, Andre Caron (andre.l.caron@gmail.com)
 // All rights reserved.
 // 
@@ -27,35 +24,35 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include "__configure__.hpp"
-
-namespace w32 {
-    namespace io {}
-}
-
 /*!
- * @defgroup w32-io Input/output services.
+ * @file w32.io/Folder.cpp
+ * @author Andre Caron (andre.l.caron@gmail.com)
  */
 
-#include <w32.io/AnonymousPipe.hpp>
-#include <w32.io/Channel.hpp>
-#include <w32.io/CompletionPort.hpp>
-#include <w32.io/ConsoleInput.hpp>
-#include <w32.io/ConsoleOutput.hpp>
 #include <w32.io/Folder.hpp>
-#include <w32.io/InputFile.hpp>
-#include <w32.io/InputStream.hpp>
-#include <w32.io/NamedPipe.hpp>
-#include <w32.io/Notification.hpp>
-#include <w32.io/Null.hpp>
-#include <w32.io/OutputFile.hpp>
-#include <w32.io/OutputStream.hpp>
-#include <w32.io/SerialPort.hpp>
-#include <w32.io/StandardError.hpp>
-#include <w32.io/StandardInput.hpp>
-#include <w32.io/StandardOutput.hpp>
-#include <w32.io/Stream.hpp>
-#include <w32.io/streambuf.hpp>
-#include <w32.io/Transfer.hpp>
+#include <w32/Error.hpp>
 
-#endif /* _w32_io_hpp__ */
+namespace {
+
+    ::HANDLE open ( ::LPCWSTR path, ::DWORD sharing, ::DWORD mode )
+    {
+        const ::DWORD flags = FILE_FLAG_BACKUP_SEMANTICS;
+        const ::HANDLE handle = ::CreateFileW(
+            path, 0, sharing, 0, mode, flags, 0
+            );
+        if ( handle == INVALID_HANDLE_VALUE ) {
+            UNCHECKED_WIN32C_ERROR(CreateFile,::GetLastError());
+        }
+        return (handle);
+    }
+
+}
+
+namespace w32 { namespace io {
+
+    Folder::Folder ( const string& path )
+        : Object(claim(::open(path.c_str(), FILE_SHARE_READ, OPEN_EXISTING)))
+    {
+    }
+
+} }
