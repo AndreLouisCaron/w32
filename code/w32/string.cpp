@@ -80,14 +80,21 @@ namespace {
     }
 
         // Codepage is source encoding!
-    ::WCHAR * decode ( ::UINT codepage, ::DWORD size, const char * value )
+    ::WCHAR * decode ( ::UINT codepage, ::DWORD& size, const char * value )
     {
         ::WCHAR *const data = allocate<::WCHAR>(size);
-        const int result = ::MultiByteToWideChar(codepage,0,value,-1,data,size+1);
+        const int result = ::MultiByteToWideChar
+            (codepage, 0, value, -1, data, size+1);
         if ( result == 0 ) {
             const ::DWORD error = ::GetLastError();
             UNCHECKED_WIN32C_ERROR(MultiByteToWideChar,error);
         }
+        // The decoded string doesn't forcibly have the same number of code
+        // points as the encoded string.  For example, in UTf-8, "LATIN SMALL
+        // LETTER E WITH ACUTE" is encoded as (0xC3, 0xA9) by is encoded as a
+        // single (0x00e9) in UTF-16, effecively reducing the string length by
+        // 1 codepoint.  Keep the freshly computed string length :-)
+        size = result-1; // (don't count trailing terminator).
         return (data);
     }
 
@@ -318,7 +325,7 @@ namespace w32 {
         }
         string result(length() + rhs.length());
         std::copy(rhs.begin(), rhs.end(),
-            std::copy(begin(), end(), result.begin()));
+                  std::copy(begin(), end(), result.begin()));
         result.swap(*this);
         return (*this);
     }
