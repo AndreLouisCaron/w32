@@ -44,6 +44,7 @@ namespace w32 {
 
 #include <w32.mt/AutoResetEvent.hpp>
 #include <w32.mt/CriticalSection.hpp>
+#include <w32.mt/Fiber.hpp>
 #include <w32.mt/ManualResetEvent.hpp>
 #include <w32.mt/Mutex.hpp>
 #include <w32.mt/Semaphore.hpp>

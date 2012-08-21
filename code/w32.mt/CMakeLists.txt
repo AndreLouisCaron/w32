@@ -32,6 +32,7 @@ file(GLOB ${module}_headers
   Cleanup.hpp
   ConditionVariable.hpp
   CriticalSection.hpp
+  Fiber.hpp
   List.hpp
   ManualResetEvent.hpp
   Mutex.hpp
@@ -49,6 +50,7 @@ file(GLOB ${module}_sources
   Cleanup.cpp
   ConditionVariable.cpp
   CriticalSection.cpp
+  Fiber.cpp
   List.cpp
   ManualResetEvent.cpp
   Mutex.cpp
