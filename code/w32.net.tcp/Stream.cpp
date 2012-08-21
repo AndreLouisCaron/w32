@@ -85,6 +85,27 @@ namespace {
 
 namespace w32 { namespace net { namespace tcp {
 
+     Stream::ConnectEx Stream::lookup_connect_ex (::SOCKET handle)
+     {
+         // TODO: figure out from which SDK version 'ConnectEx()'
+         //       is suitably declared in the SDK headers.
+#if 0
+         return (&::ConnectEx);
+#else
+         ::LPFN_CONNECTEX value = 0;
+         ::GUID field = WSAID_CONNECTEX;
+         ::DWORD size = 0;
+         const int status = ::WSAIoctl(
+             handle, SIO_GET_EXTENSION_FUNCTION_POINTER,
+             &field, sizeof(field), &value, sizeof(value), &size, NULL, NULL);
+         if (status == SOCKET_ERROR) {
+             const int error = ::WSAGetLastError();
+             UNCHECKED_WIN32C_ERROR(WSAIoctl, error);
+         }
+         return (value);
+#endif
+     }
+
     Stream::Stream ( Handle handle )
         : StreamSocket(handle)
     {
@@ -141,6 +162,11 @@ namespace w32 { namespace net { namespace tcp {
             UNCHECKED_WIN32C_ERROR(getpeername, error);
         }
         return (endpoint);
+    }
+
+    Stream::ConnectEx Stream::connect_ex () const
+    {
+        return (lookup_connect_ex(handle()));
     }
 
     Stream::operator io::Stream () const

@@ -48,6 +48,8 @@ namespace w32 { namespace tp {
 
         typedef Reference<::PTP_WORK> Handle;
 
+        typedef ::PTP_WORK_CALLBACK Callback;
+
         /* class methods. */
     private:
         static ::PTP_WORK setup
@@ -65,6 +67,11 @@ namespace w32 { namespace tp {
         /* construction. */
     public:
         explicit Work ( const Handle& handle );
+
+        Work ( Queue& queue, void * context, Callback entry )
+            : myHandle(claim(setup(&queue.data(), entry, context)))
+        {
+        }
 
         template<void(*F)(Hints&,void*)>
         Work ( Queue& queue, function<F> function, void * context=0 )
@@ -91,7 +98,7 @@ namespace w32 { namespace tp {
     template<void(*F)(Hints&,void*)>
     struct Work::function
     {
-        operator ::PTP_WORK_CALLBACK () const
+        operator Work::Callback () const
         {
             return (&work_callback);
         }
@@ -124,7 +131,7 @@ namespace w32 { namespace tp {
     template<typename T, void(T::*M)(Hints&)>
     struct Work::method
     {
-        operator ::PTP_WORK_CALLBACK () const
+        operator Work::Callback () const
         {
             return (&work_callback);
         }

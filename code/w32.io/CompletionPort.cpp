@@ -146,10 +146,10 @@ namespace w32 { namespace io {
         return (result == TRUE);
     }
 
-    void CompletionPort::post ( Size bytes, Data data, Transfer * transfer )
+    void CompletionPort::post ( Size size, Data data, ::OVERLAPPED * transfer )
     {
         const ::BOOL result = ::PostQueuedCompletionStatus
-            (handle(), bytes, data, reinterpret_cast<::OVERLAPPED*>(transfer));
+            (handle(), size, data, transfer);
         if ( result == FALSE )
         {
             const ::DWORD error = ::GetLastError();
@@ -157,9 +157,20 @@ namespace w32 { namespace io {
         }
     }
 
+    void CompletionPort::post ( Size size, void * data,
+                                ::OVERLAPPED * transfer )
+    {
+        return (post(size, reinterpret_cast<Data>(data), transfer));
+    }
+
+    void CompletionPort::post ( Size size, Data data, Transfer * transfer )
+    {
+        return (post(size, data, reinterpret_cast<::OVERLAPPED*>(transfer)));
+    }
+
     void CompletionPort::unblock_consumers ()
     {
-        post(0, 0, 0);
+        post(Size(0), Data(0), static_cast<::OVERLAPPED*>(0));
     }
 
     Notification CompletionPort::next ()
@@ -213,6 +224,11 @@ namespace w32 { namespace io {
         }
         return (Notification(status, data,
                              reinterpret_cast<Transfer*>(transfer), size));
+    }
+
+    Notification CompletionPort::peek ()
+    {
+        return (next(Timespan()));
     }
 
 } }

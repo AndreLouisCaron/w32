@@ -29,6 +29,7 @@
 
 #include "../w32.net/__configure__.hpp"
 
+#include <MsWSock.h>
 #include <Ws2TcpIp.h>
 #include <IpHlpApi.h>
 

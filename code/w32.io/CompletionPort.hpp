@@ -71,11 +71,14 @@ namespace w32 { namespace io {
         void next ( Size& bytes, Data& data, Transfer *& transfer );
         bool next ( Size& bytes, Data& data,
                     Transfer *& transfer, Timespan timeout );
-        void post ( Size bytes, Data data, Transfer * transfer );
+        void post ( Size size, Data data, ::OVERLAPPED * transfer );
+        void post ( Size size, void * data, ::OVERLAPPED * transfer );
+        void post ( Size size, Data data, Transfer * transfer );
 
         void unblock_consumers ();
         Notification next ();
         Notification next ( Timespan timeout );
+        Notification peek ();
     };
 
 } }

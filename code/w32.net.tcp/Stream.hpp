@@ -54,6 +54,14 @@ namespace w32 { namespace net { namespace tcp {
     class Stream :
         public StreamSocket
     {
+        /* nested types. */
+    public:
+        typedef ::LPFN_CONNECTEX ConnectEx;
+
+        /* class methods. */
+    public:
+        static ConnectEx lookup_connect_ex (::SOCKET handle);
+
         /* construction. */
     public:
         /*!
@@ -76,6 +84,8 @@ namespace w32 { namespace net { namespace tcp {
     public:
         ipv4::EndPoint host () const;
         ipv4::EndPoint peer () const;
+
+        ConnectEx connect_ex () const;
 
         /* operators . */
     public:

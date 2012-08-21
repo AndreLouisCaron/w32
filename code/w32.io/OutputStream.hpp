@@ -58,8 +58,9 @@ namespace w32 { namespace io {
             *
             * @return The number of characters successfully written.
             */
-        dword put ( const void * dat, dword size );
+        dword put ( const void * data, dword size );
 
+        bool put ( const void * data, dword size, ::OVERLAPPED& xfer );
         bool put ( const void * data, dword size, Transfer& xfer );
 
         bool put ( const void * data, dword size,

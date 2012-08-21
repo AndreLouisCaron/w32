@@ -27,6 +27,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#include "__configure__.hpp"
 #include <w32.net/Socket.hpp>
 #include <w32.net.ipv4/EndPoint.hpp>
 
@@ -39,10 +40,22 @@ namespace w32 { namespace net { namespace tcp {
     class Listener :
         public Socket
     {
+        /* nested types. */
+    public:
+        typedef ::LPFN_ACCEPTEX AcceptEx;
+
+        /* class methods. */
+    public:
+        static AcceptEx lookup_accept_ex (::SOCKET handle);
+
         /* construction. */
     public:
         explicit Listener ( const Socket::Handle& handle );
         Listener ( const ipv4::EndPoint& name, int backlog = SOMAXCONN );
+
+        /* methods. */
+    public:
+        AcceptEx accept_ex () const;
     };
 
 } } }

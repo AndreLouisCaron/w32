@@ -66,6 +66,7 @@ namespace w32 { namespace io {
             */
         dword get ( void * data, dword size );
 
+        bool get ( void * data, dword size, ::OVERLAPPED& xfer );
         bool get ( void * data, dword size, Transfer& xfer );
 
         bool get ( void * data, dword size, Transfer& xfer, dword& xferred );

@@ -55,7 +55,9 @@ namespace w32 { namespace net {
     public:
         int put ( const void * buffer, int length );
         int get ( void * buffer, int length );
+        bool put ( const void * data, dword size, ::OVERLAPPED& transfer );
         bool put ( const void * data, dword size, io::Transfer& transfer );
+        bool get ( void * data, dword size, ::OVERLAPPED& transfer );
         bool get ( void * data, dword size, io::Transfer& transfer );
         int put ( Buffer& buffer );
         int get ( Buffer& buffer );

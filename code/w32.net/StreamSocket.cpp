@@ -76,11 +76,17 @@ namespace w32 { namespace net {
     bool StreamSocket::put ( const void * data, dword size,
                              io::Transfer& transfer )
     {
+        return (put(data, size, transfer.data()));
+    }
+
+    bool StreamSocket::put ( const void * data, dword size,
+                             ::OVERLAPPED& transfer )
+    {
         const ::SOCKET socket = this->handle();
         const ::HANDLE handle = reinterpret_cast<::HANDLE>(socket);
 
         const ::BOOL result = ::WriteFile
-            (handle, data, size, 0, &transfer.data());
+            (handle, data, size, 0, &transfer);
         if ( result == 0 )
         {
             const ::DWORD error = ::GetLastError();
@@ -93,13 +99,13 @@ namespace w32 { namespace net {
     }
 
     bool StreamSocket::get ( void * data, dword size,
-                             io::Transfer& transfer )
+                             ::OVERLAPPED& transfer )
     {
         const ::SOCKET socket = this->handle();
         const ::HANDLE handle = reinterpret_cast<::HANDLE>(socket);
 
         const ::BOOL result = ::ReadFile
-            (handle, data, size, 0, &transfer.data());
+            (handle, data, size, 0, &transfer);
         if ( result == 0 )
         {
             const ::DWORD error = ::GetLastError();
@@ -109,6 +115,12 @@ namespace w32 { namespace net {
             UNCHECKED_WIN32C_ERROR(ReadFile, error);
         }
         return (true);
+    }
+
+    bool StreamSocket::get ( void * data, dword size,
+                             io::Transfer& transfer )
+    {
+        return (get(data, size, transfer.data()));
     }
 
     int StreamSocket::put ( Buffer& buffer )

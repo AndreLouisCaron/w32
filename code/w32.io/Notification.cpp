@@ -34,6 +34,14 @@
 
 namespace w32 { namespace io {
 
+    Notification::Notification ()
+        : myStatus(0)
+        , myHandler(0)
+        , myTransfer(0)
+        , mySize(0)
+    {
+    }
+
     Notification::Notification (dword status, ulongptr handler,
                                 Transfer * transfer, dword size)
         : myStatus(status), myHandler(handler),

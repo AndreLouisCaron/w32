@@ -50,6 +50,27 @@ namespace {
 
 namespace w32 { namespace net { namespace tcp {
 
+     Listener::AcceptEx Listener::lookup_accept_ex (::SOCKET handle)
+     {
+         // TODO: figure out from which SDK version 'AcceptEx()'
+         //       is suitably declared in the SDK headers.
+#if 0
+         return (&::AcceptEx);
+#else
+         ::LPFN_ACCEPTEX value = 0;
+         ::GUID field = WSAID_ACCEPTEX;
+         ::DWORD size = 0;
+         const int status = ::WSAIoctl(
+             handle, SIO_GET_EXTENSION_FUNCTION_POINTER,
+             &field, sizeof(field), &value, sizeof(value), &size, NULL, NULL);
+         if (status == SOCKET_ERROR) {
+             const int error = ::WSAGetLastError();
+             UNCHECKED_WIN32C_ERROR(WSAIoctl, error);
+         }
+         return (value);
+#endif
+     }
+
     Listener::Listener ( const Socket::Handle& handle )
         : Socket(handle)
     {
@@ -72,6 +93,11 @@ namespace w32 { namespace net { namespace tcp {
             const int error = ::WSAGetLastError();
             UNCHECKED_WIN32C_ERROR(listen, error);
         }
+    }
+
+    Listener::AcceptEx Listener::accept_ex () const
+    {
+        return (lookup_accept_ex(handle()));
     }
 
 } } }

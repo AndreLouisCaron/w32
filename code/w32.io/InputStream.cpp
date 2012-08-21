@@ -58,10 +58,10 @@ namespace w32 { namespace io {
         return (xferred);
     }
 
-    bool InputStream::get ( void * data, dword size, Transfer& xfer )
+    bool InputStream::get ( void * data, dword size, ::OVERLAPPED& xfer )
     {
         const ::BOOL result = ::ReadFile
-            (handle(), data, size, 0, &xfer.data());
+            (handle(), data, size, 0, &xfer);
         if ( result == 0 )
         {
             const ::DWORD error = ::GetLastError();
@@ -71,6 +71,11 @@ namespace w32 { namespace io {
             UNCHECKED_WIN32C_ERROR(ReadFile, error);
         }
         return (true);
+    }
+
+    bool InputStream::get ( void * data, dword size, Transfer& xfer )
+    {
+        return (get(data, size, xfer.data()));
     }
 
     bool InputStream::get

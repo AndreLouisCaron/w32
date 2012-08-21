@@ -54,6 +54,9 @@ namespace w32 { namespace io {
         dword mySize;
 
         /* construction. */
+    public:
+        Notification ();
+
     private:
         Notification (dword status, ulongptr handler,
                       Transfer * transfer, dword size);
