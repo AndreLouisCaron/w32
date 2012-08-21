@@ -34,6 +34,7 @@
 
 #include "__configure__.hpp"
 #include <w32/Object.hpp>
+#include <w32/string.hpp>
 #include <w32/types.hpp>
 
 namespace w32 { namespace io {
@@ -54,6 +55,8 @@ namespace w32 { namespace io {
         class Position;
         class Size;
         class Type;
+
+        class Builder;
 
         /* construction. */
     public:
@@ -159,6 +162,44 @@ namespace w32 { namespace io {
         Value value () const {
             return (myValue);
         }
+    };
+
+    class Stream::Builder
+    {
+        /* data. */
+    private:
+        ::DWORD myDesiredAccess;
+        ::DWORD myShareMode;
+        ::LPSECURITY_ATTRIBUTES mySecurityAttributes;
+        ::DWORD myCreationDisposition;
+        ::DWORD myFlagsAndAttributes;
+        ::HANDLE myTemplateFile;
+
+        /* construction. */
+    public:
+        Builder ();
+
+        /* methods. */
+    public:
+        Builder& generic_read ();
+        Builder& generic_write ();
+
+        Builder& share_read ();
+        Builder& share_write ();
+        Builder& share_delete ();
+
+        Builder& create_always ();
+        Builder& create_new ();
+        Builder& open_always ();
+        Builder& open_existing ();
+        Builder& truncate_existing ();
+
+        Builder& no_buffering ();
+        Builder& overlapped ();
+        Builder& sequential_scan ();
+        Builder& write_through ();
+
+        Stream::Handle open (const string& path) const;
     };
 
 } }

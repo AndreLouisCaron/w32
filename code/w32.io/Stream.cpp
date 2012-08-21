@@ -167,4 +167,113 @@ namespace w32 { namespace io {
         return (xferred);
     }
 
+    Stream::Builder::Builder ()
+        : myDesiredAccess(0)
+        , myShareMode(0)
+        , mySecurityAttributes(0)
+        , myCreationDisposition(0)
+        , myFlagsAndAttributes(0)
+        , myTemplateFile(0)
+    {
+    }
+
+    Stream::Builder& Stream::Builder::generic_read ()
+    {
+        myDesiredAccess |= GENERIC_READ;
+        return (*this);
+    }
+
+    Stream::Builder& Stream::Builder::generic_write ()
+    {
+        myDesiredAccess |= GENERIC_WRITE;
+        return (*this);
+    }
+
+    Stream::Builder& Stream::Builder::share_read ()
+    {
+        myShareMode |= FILE_SHARE_READ;
+        return (*this);
+    }
+
+    Stream::Builder& Stream::Builder::share_write ()
+    {
+        myShareMode |= FILE_SHARE_WRITE;
+        return (*this);
+    }
+
+    Stream::Builder& Stream::Builder::share_delete ()
+    {
+        myShareMode |= FILE_SHARE_DELETE;
+        return (*this);
+    }
+
+    Stream::Builder& Stream::Builder::create_always ()
+    {
+        myCreationDisposition |= CREATE_ALWAYS;
+        return (*this);
+    }
+
+    Stream::Builder& Stream::Builder::create_new ()
+    {
+        myCreationDisposition |= CREATE_NEW;
+        return (*this);
+    }
+
+    Stream::Builder& Stream::Builder::open_always ()
+    {
+        myCreationDisposition |= OPEN_ALWAYS;
+        return (*this);
+    }
+
+    Stream::Builder& Stream::Builder::open_existing ()
+    {
+        myCreationDisposition |= OPEN_EXISTING;
+        return (*this);
+    }
+
+    Stream::Builder& Stream::Builder::truncate_existing ()
+    {
+        myCreationDisposition |= TRUNCATE_EXISTING;
+        return (*this);
+    }
+
+    Stream::Builder& Stream::Builder::no_buffering ()
+    {
+        myFlagsAndAttributes |= FILE_FLAG_NO_BUFFERING;
+        return (*this);
+    }
+
+    Stream::Builder& Stream::Builder::overlapped ()
+    {
+        myFlagsAndAttributes |= FILE_FLAG_OVERLAPPED;
+        return (*this);
+    }
+
+    Stream::Builder& Stream::Builder::sequential_scan ()
+    {
+        myFlagsAndAttributes |= FILE_FLAG_SEQUENTIAL_SCAN;
+        return (*this);
+    }
+
+    Stream::Builder& Stream::Builder::write_through ()
+    {
+        myFlagsAndAttributes |= FILE_FLAG_WRITE_THROUGH;
+        return (*this);
+    }
+
+    Stream::Handle Stream::Builder::open (const string& path) const
+    {
+        const ::HANDLE handle = ::CreateFileW(
+            path.data(), myDesiredAccess, myShareMode, mySecurityAttributes,
+            myCreationDisposition, myFlagsAndAttributes, myTemplateFile);
+        if (handle == INVALID_HANDLE_VALUE)
+        {
+            std::cerr << "Failure!!!" << std::endl;
+            const ::DWORD error = ::GetLastError();
+            UNCHECKED_WIN32C_ERROR(CreateFile, error);
+        }
+        std::cerr << "Stream::Builder::open(): " << handle << std::endl;
+        return (Stream::claim(handle));
+    }
+
 } }
