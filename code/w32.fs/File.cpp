@@ -124,6 +124,8 @@ namespace w32 { namespace fs {
     {
     }
 
+#if 0 //_WIN32_WINNT >= _WIN32_WINNT_VISTA
+
     string File::path () const
     {
         static const ::DWORD format = VOLUME_NAME_DOS;
@@ -137,6 +139,8 @@ namespace w32 { namespace fs {
         }
         return (string(path, result));
     }
+
+#endif
 
     void File::compress ()
     {

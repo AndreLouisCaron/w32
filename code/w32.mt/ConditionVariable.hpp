@@ -29,14 +29,11 @@
 
 #include "__configure__.hpp"
 
-    // Sanity check.
-#if (_WIN32_WINNT < 0x600)
-#   error "Requires Windows Vista or later versions."
-#endif
-
 #include <w32/NotCopyable.hpp>
 #include <w32.mt/CriticalSection.hpp>
 #include <w32.mt/ReadWriteLock.hpp>
+
+#if _WIN32_WINNT >= _WIN32_WINNT_VISTA
 
 namespace w32 { namespace mt {
 
@@ -81,5 +78,7 @@ namespace w32 { namespace mt {
     };
 
 } }
+
+#endif
 
 #endif /* _w32_mt_ConditionVariable_hpp__ */

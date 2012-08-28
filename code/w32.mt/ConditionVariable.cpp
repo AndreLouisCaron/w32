@@ -27,6 +27,8 @@
 #include <w32.mt/ConditionVariable.hpp>
 #include <w32/Error.hpp>
 
+#if _WIN32_WINNT >= _WIN32_WINNT_VISTA
+
 namespace w32 { namespace mt {
 
     ConditionVariable::ConditionVariable ()
@@ -84,3 +86,5 @@ namespace w32 { namespace mt {
     }
 
 } }
+
+#endif

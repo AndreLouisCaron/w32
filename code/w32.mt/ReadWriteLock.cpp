@@ -26,6 +26,8 @@
 
 #include <w32.mt/ReadWriteLock.hpp>
 
+#if _WIN32_WINNT >= _WIN32_WINNT_VISTA
+
 namespace w32 { namespace mt {
 
     ReadWriteLock::ReadGuard::ReadGuard ( ReadWriteLock& lock )
@@ -70,3 +72,5 @@ namespace w32 { namespace mt {
     }
 
 } }
+
+#endif

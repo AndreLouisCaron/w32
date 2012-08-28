@@ -37,10 +37,12 @@ namespace w32 { namespace mt {
         return InterlockedExchange(&x, y);
     }
 
+#if _WIN32_WINNT >= _WIN32_WINNT_VISTA
     inline ::LONGLONG exchange ( volatile ::LONGLONG& x, ::LONGLONG y )
     {
         return InterlockedExchange64(&x, y);
     }
+#endif
 
     inline ::PVOID exchange ( volatile ::PVOID& x, ::PVOID y )
     {
@@ -56,6 +58,7 @@ namespace w32 { namespace mt {
 #endif
     }
 
+#if _WIN32_WINNT >= _WIN32_WINNT_VISTA
     inline ::LONGLONG exchange_acquire ( volatile ::LONGLONG& x, ::LONGLONG y )
     {
 #if defined(_M_IA64)
@@ -64,6 +67,7 @@ namespace w32 { namespace mt {
         return exchange(x, y);
 #endif
     }
+#endif
 
     inline ::PVOID exchange_acquire ( volatile ::PVOID& x, ::PVOID y )
     {

@@ -28,26 +28,19 @@ cmake_minimum_required(VERSION 2.6)
 
 project(w32++)
 
+# Locate custom CMake helper scripts.
 set(CMAKE_MODULE_PATH
   ${CMAKE_CURRENT_SOURCE_DIR}/site
 )
-find_package(MSVCExtras)
-msvc_configure_runtime()
-msvc_enable_se_handling()
 
-if(MSVC)
-  # C and C++ runtime libraries are safe to use.
-  # Don't use non-portable and inconvenient APIs
-  # unless we have a reason to.
-  add_definitions(
-    -D_SCL_SECURE_NO_WARNINGS
-    -D_CRT_SECURE_NO_WARNINGS
-  )
-  # Configure Windows SDK headers.
-  add_definitions(
-    -D_WIN32_WINNT=0x601
-    -DSECURITY_WIN32
-  )
+# In standalone builds, configure the compilation environment.
+if(${PROJECT_NAME} STREQUAL ${CMAKE_PROJECT_NAME})
+  find_package(WindowsExtras)
+  find_package(MSVCExtras)
+  message(STATUS "Windows SDK version: '${W32_WINDOWS_VERSION}'.")
+  configure_windows_sdk(${W32_WINDOWS_VERSION})
+  msvc_configure_runtime()
+  msvc_enable_se_handling()
 endif()
 
 # Put all libraries and executables in the build folder root.

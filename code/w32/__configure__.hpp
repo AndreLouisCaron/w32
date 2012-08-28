@@ -27,9 +27,32 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-    // Define preferred windows version.
-#if (!defined(_WIN32_WINNT))
-#   define _WIN32_WINNT 0x0600
+// Require that the build system provide a target Windows version.
+#ifndef _WIN32_WINNT
+#   error "Can't detect target Windows version."
+#endif
+
+// Older SDK headers can't see in the future.  Define Windows version macros if
+// they're not provided by the SDK headers or the compiler.
+
+#ifndef _WIN32_WINNT_WIN7
+#   define _WIN32_WINNT_WIN7 0x0601
+#endif
+
+#ifndef _WIN32_WINNT_WS08
+#   define _WIN32_WINNT_WS08 0x0600
+#endif
+
+#ifndef _WIN32_WINNT_VISTA
+#   define _WIN32_WINNT_VISTA 0x0600
+#endif
+
+#ifndef _WIN32_WINNT_WS03
+#   define _WIN32_WINNT_WS03 0x0502
+#endif
+
+#ifndef _WIN32_WINNT_WINXP
+#   define _WIN32_WINNT_WINXP 0x0501
 #endif
 
     // API headers.

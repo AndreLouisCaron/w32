@@ -38,11 +38,13 @@ namespace w32 { namespace mt {
         return InterlockedCompareExchange(&x, y, z);
     }
 
+#if _WIN32_WINNT >= _WIN32_WINNT_VISTA
     inline ::LONGLONG compare_exchange
         ( ::LONGLONG z, volatile ::LONGLONG& x, ::LONGLONG y )
     {
         return InterlockedCompareExchange64(&x, y, z);
     }
+#endif
 
     inline ::PVOID compare_exchange
         ( ::PVOID z, volatile ::PVOID& x, ::PVOID y )
@@ -56,11 +58,13 @@ namespace w32 { namespace mt {
         return InterlockedCompareExchangeAcquire(&x, y, z);
     }
 
+#if _WIN32_WINNT >= _WIN32_WINNT_VISTA
     inline ::LONGLONG compare_exchange_acquire
         ( ::LONGLONG z, volatile ::LONGLONG& x, ::LONGLONG y )
     {
         return InterlockedCompareExchangeAcquire64(&x, y, z);
     }
+#endif
 
     inline ::PVOID compare_exchange_acquire
         ( ::PVOID z, volatile ::PVOID& x, ::PVOID y )

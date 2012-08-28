@@ -29,6 +29,7 @@
 
 namespace w32 { namespace fs {
 
+#if _WIN32_WINNT >= _WIN32_WINNT_VISTA
     void symlink ( const string& target, const string& alias )
     {
         ::DWORD flags = 0;
@@ -43,5 +44,6 @@ namespace w32 { namespace fs {
             UNCHECKED_WIN32C_ERROR(CreateSymbolicLink,::GetLastError());
         }
     }
+#endif
 
 } }

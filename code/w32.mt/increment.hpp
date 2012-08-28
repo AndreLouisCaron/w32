@@ -37,10 +37,12 @@ namespace w32 { namespace mt {
         return InterlockedIncrement(&x);
     }
 
+#if _WIN32_WINNT >= _WIN32_WINNT_VISTA
     inline ::LONGLONG increment ( volatile ::LONGLONG& x )
     {
         return InterlockedIncrement64(&x);
     }
+#endif
 
     inline ::LONG increment_acquire ( volatile ::LONG& x )
     {

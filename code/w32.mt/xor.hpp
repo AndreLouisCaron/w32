@@ -51,10 +51,12 @@ namespace w32 { namespace mt {
 #endif
     }
 
+#if _WIN32_WINNT >= _WIN32_WINNT_VISTA
     inline ::LONGLONG xor ( volatile ::LONGLONG& x, ::LONGLONG y )
     {
         return InterlockedXor64(&x, y);
     }
+#endif
 
 } }
 

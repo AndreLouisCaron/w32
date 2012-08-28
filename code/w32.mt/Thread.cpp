@@ -83,6 +83,7 @@ namespace w32 { namespace mt {
     {
     }
 
+#if _WIN32_WINNT >= _WIN32_WINNT_VISTA
     Thread::Identifier Thread::identifier () const
     {
         const ::DWORD identifier = ::GetThreadId(handle());
@@ -92,6 +93,7 @@ namespace w32 { namespace mt {
         }
         return (identifier);
     }
+#endif
 
     void Thread::priority ( const Priority& priority )
     {

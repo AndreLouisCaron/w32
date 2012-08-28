@@ -73,6 +73,7 @@ namespace w32 { namespace fs {
         }
     }
 
+#if _WIN32_WINNT >= _WIN32_WINNT_VISTA
     void Folder::create ( const string& path, Transaction& transaction )
     {
         const ::BOOL result = ::CreateDirectoryTransactedW(
@@ -88,6 +89,7 @@ namespace w32 { namespace fs {
             UNCHECKED_WIN32C_ERROR(CreateDirectoryTransacted, error);
         }
     }
+#endif
 
     void Folder::remove ( const string& path )
     {
@@ -99,6 +101,7 @@ namespace w32 { namespace fs {
         }
     }
 
+#if _WIN32_WINNT >= _WIN32_WINNT_VISTA
     void Folder::remove ( const string& path, Transaction& transaction )
     {
         const ::BOOL result = ::RemoveDirectoryTransactedW
@@ -109,6 +112,7 @@ namespace w32 { namespace fs {
             UNCHECKED_WIN32C_ERROR(RemoveDirectory, error);
         }
     }
+#endif
 
     void Folder::current ( const string& path )
     {
@@ -154,6 +158,7 @@ namespace w32 { namespace fs {
     {
     }
 
+#if _WIN32_WINNT >= _WIN32_WINNT_VISTA
     string Folder::path () const
     {
         static const ::DWORD format = VOLUME_NAME_DOS;
@@ -168,6 +173,7 @@ namespace w32 { namespace fs {
         }
         return (string(path, result));
     }
+#endif
 
     ReparsePoint::ReparsePoint ( const string& path )
         : Folder(path, FILE_FLAG_OPEN_REPARSE_POINT)

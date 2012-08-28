@@ -117,23 +117,24 @@ namespace w32 { namespace io {
 
     void Stream::cancel ()
     {
-        #if _WIN32_WINNT < _WIN32_WINNT_VISTA
+#if _WIN32_WINNT < _WIN32_WINNT_VISTA
         const ::BOOL result = ::CancelIo(handle());
         if (result == FALSE)
         {
             const ::DWORD error = ::GetLastError();
             UNCHECKED_WIN32C_ERROR(CancelIo, error);
         }
-        #else
+#else
         const ::BOOL result = ::CancelIoEx(handle(), 0);
         if (result == FALSE)
         {
             const ::DWORD error = ::GetLastError();
             UNCHECKED_WIN32C_ERROR(CancelIoEx, error);
         }
-        #endif
+#endif
     }
 
+#if _WIN32_WINNT >= _WIN32_WINNT_VISTA
     bool Stream::cancel ( Transfer& transfer )
     {
         const ::BOOL result = ::CancelIoEx(handle(), &transfer.data());
@@ -147,6 +148,7 @@ namespace w32 { namespace io {
         }
         return (true);
     }
+#endif
 
     dword Stream::finish ( Transfer& transfer )
     {

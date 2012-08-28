@@ -140,6 +140,7 @@ namespace w32 { namespace mt {
         }
     };
 
+#if _WIN32_WINNT >= _WIN32_WINNT_VISTA
     /*!
      * @brief Thread-safe 64-bit signed integer.
      */
@@ -238,6 +239,7 @@ namespace w32 { namespace mt {
             xor(myValue, rhs); return (*this);
         }
     };
+#endif
 
     /*!
      * @brief Thread-safe pointer variable.

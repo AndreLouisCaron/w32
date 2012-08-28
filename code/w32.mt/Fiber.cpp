@@ -106,9 +106,11 @@ namespace w32 { namespace mt {
     Fiber start_fiber (Fiber::Context context)
     {
         // Prevent double "conversion".
+#if _WIN32_WINNT >= _WIN32_WINNT_VISTA
         if (::IsThreadAFiber()) {
             return (Fiber::current());
         }
+#endif
 
         void *const handle = ::ConvertThreadToFiberEx
             (context, FIBER_FLAG_FLOAT_SWITCH);
