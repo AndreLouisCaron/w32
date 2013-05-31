@@ -133,6 +133,11 @@ namespace w32 {
         Delta& operator*= ( int rhs );
 
         /*!
+         * @brief Compute a multiple of the delta.
+         */
+        Delta& operator*= ( double rhs );
+
+        /*!
          * @brief Compute an integer fraction of the delta.
          */
         Delta& operator/= ( int rhs );
@@ -167,6 +172,16 @@ namespace w32 {
      * @brief Compute an integer multiple of a delta.
      */
     Delta operator* ( int lhs, const Delta& rhs );
+
+    /*!
+     * @brief Compute a multiple of a delta.
+     */
+    Delta operator* ( const Delta& lhs, double rhs );
+
+    /*!
+     * @brief Compute a multiple of a delta.
+     */
+    Delta operator* ( double lhs, const Delta& rhs );
 
     /*!
      * @brief Compute an integer fraction of a delta.

@@ -90,22 +90,27 @@ namespace w32 {
 
     dword Delta::milliseconds () const
     {
-        return (ticks() / millisecond().ticks());
+        return (static_cast<dword>(ticks() / millisecond().ticks()));
     }
 
     dword Delta::microseconds () const
     {
-        return (ticks() / microsecond().ticks());
+        return (static_cast<dword>(ticks() / microsecond().ticks()));
     }
 
     dword Delta::seconds () const
     {
-        return (ticks() / second().ticks());
+        return (static_cast<dword>(ticks() / second().ticks()));
     }
 
     Delta& Delta::operator*= ( int rhs )
     {
         myTicks *= rhs; return (*this);
+    }
+
+    Delta& Delta::operator*= ( double rhs )
+    {
+        myTicks = static_cast<qword>(double(myTicks)*rhs); return (*this);
     }
 
     Delta& Delta::operator/= ( int rhs )
@@ -139,6 +144,16 @@ namespace w32 {
     }
 
     Delta operator* ( int lhs, const Delta& rhs )
+    {
+        Delta result = rhs; result *= lhs; return (result);
+    }
+
+    Delta operator* ( const Delta& lhs, double rhs )
+    {
+        Delta result = lhs; result *= rhs; return (result);
+    }
+
+    Delta operator* ( double lhs, const Delta& rhs )
     {
         Delta result = rhs; result *= lhs; return (result);
     }
