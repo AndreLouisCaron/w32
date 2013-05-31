@@ -48,6 +48,8 @@ namespace w32 { namespace tp {
 
         typedef Reference<::PTP_WAIT> Handle;
 
+        typedef ::PTP_WAIT_CALLBACK Callback;
+
         /* class methods. */
     private:
         static ::PTP_WAIT setup
@@ -65,6 +67,11 @@ namespace w32 { namespace tp {
         /* construction. */
     public:
         explicit Wait ( const Handle& handle );
+
+        Wait ( Queue& queue, void * context, Callback entry )
+            : myHandle(claim(setup(&queue.data(), entry, context)))
+        {
+        }
 
         template<void(*F)(Hints&,void*)>
         Wait ( Queue& queue, function<F> function, void * context=0 )
