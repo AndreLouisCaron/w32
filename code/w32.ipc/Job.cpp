@@ -111,4 +111,9 @@ namespace w32 { namespace ipc {
         }
     }
 
+    Job::operator Waitable () const
+    {
+        return (Waitable(handle()));
+    }
+
 } }

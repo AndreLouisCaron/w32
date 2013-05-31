@@ -86,6 +86,10 @@ namespace w32 { namespace ipc {
              * @param status Exit code to propagate to all those in the group.
              */
         void terminate ( uint status );
+
+        /* operators. */
+    public:
+        operator Waitable () const;
     };
 
 } }
