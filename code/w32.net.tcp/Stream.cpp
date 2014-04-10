@@ -39,7 +39,7 @@ namespace {
         // Creates a socket for connection attempt.
     ::SOCKET allocate ()
     {
-        const ::SOCKET result = ::socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
+        const ::SOCKET result = ::socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
         if ( result == INVALID_SOCKET ) {
             UNCHECKED_WIN32C_ERROR(socket,::WSAGetLastError());
         }
@@ -108,6 +108,11 @@ namespace w32 { namespace net { namespace tcp {
 
     Stream::Stream ( Handle handle )
         : StreamSocket(handle)
+    {
+    }
+
+    Stream::Stream ()
+        : StreamSocket(claim( ::allocate() ))
     {
     }
 

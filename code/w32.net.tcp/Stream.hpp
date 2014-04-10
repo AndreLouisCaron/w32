@@ -69,6 +69,11 @@ namespace w32 { namespace net { namespace tcp {
          */
         explicit Stream ( Handle handle );
 
+        /*!
+         * @brief Create an unconnected socket (for async connect/accept).
+         */
+        Stream ();
+
             /*!
              * @brief Wait for a connection (server side).
              */

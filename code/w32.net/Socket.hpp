@@ -29,6 +29,7 @@
 
 #include "__configure__.hpp"
 #include <w32/Reference.hpp>
+#include <w32.io/Transfer.hpp>
 #include <w32.net/Context.hpp>
 #include <w32.net/Event.hpp>
 
@@ -79,7 +80,37 @@ namespace w32 { namespace net {
         void shutdown ();
         void shutdown ( const Shutdown& method );
 
+        /*!
+         * @brief Request that @a event be signalled when one of @a events occurs.
+         *
+         * @note Network events are level-triggered: the signaling state is
+         *  held until the event is serviced.  For example, if an incoming
+         *  connection is established, an `accept` event will be recorded even
+         *  if the application doesn't have a pending accept operation; as soon
+         *  as the application issues an accept request, @a event will be
+         *  signaled so that the application knows that an incoming connection
+         *  is ready.
+         *
+         * @see http://msdn.microsoft.com/en-us/library/ms741576.aspx
+         * @see http://en.wikipedia.org/wiki/Interrupt#Level-triggered
+         */
         void select ( mt::ManualResetEvent& event, Event events );
+
+        /*!
+         * @warning This seems to be completely broken in WinSock2.
+         */
+        void dontlinger ();
+
+        /*!
+         * @warning This seems to be completely broken in WinSock2.
+         */
+        void linger ( w32::uint16 seconds );
+
+        ::LPFN_DISCONNECTEX disconnect_ex () const;
+
+        void disconnect ( bool reuse=false );
+        bool disconnect ( io::Transfer& transfer, bool reuse=false );
+        bool disconnect ( ::OVERLAPPED& transfer, bool reuse=false );
     };
 
     class Socket::Type
