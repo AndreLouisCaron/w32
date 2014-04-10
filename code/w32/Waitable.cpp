@@ -128,6 +128,14 @@ namespace w32 {
         return (myData);
     }
 
+    Waitable::Set& Waitable::Set::remove (size_type i)
+    {
+        if (i < mySize) {
+            std::copy(myData+i+1, myData+mySize, myData+i), --mySize;
+        }
+        return (*this);
+    }
+
     Waitable::Set::value_type Waitable::Set::operator[] ( size_type i ) const
     {
         return (myData[i]);
