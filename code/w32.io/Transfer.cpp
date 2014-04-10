@@ -40,6 +40,13 @@ namespace w32 { namespace io {
         ::ZeroMemory(&myData, sizeof(myData));
     }
 
+    Transfer::~Transfer ()
+    {
+        // Clear it to be "safe" (e.g. by forcing an access violation) if the
+        // structure is used after it has been deallocated.
+        ::ZeroMemory(&myData, sizeof(myData));
+    }
+
     Transfer::Data& Transfer::data ()
     {
         return (myData);
