@@ -66,6 +66,7 @@ namespace w32 { namespace io {
         dword status () const;
         bool timeout () const;
         bool aborted () const;
+        bool disconnected () const;
         void report_error () const;
         Transfer * transfer () const;
         dword size () const;
