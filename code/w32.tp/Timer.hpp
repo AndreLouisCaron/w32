@@ -48,6 +48,8 @@ namespace w32 { namespace tp {
 
         typedef Reference<::PTP_TIMER> Handle;
 
+        typedef ::PTP_TIMER_CALLBACK Callback;
+
         /* class methods. */
     private:
         static ::PTP_TIMER setup
@@ -65,6 +67,11 @@ namespace w32 { namespace tp {
         /* construction. */
     public: 
         explicit Timer ( const Handle& handle );
+
+        Timer ( Queue& queue, void * context, Callback entry )
+            : myHandle(claim(setup(&queue.data(), entry, context)))
+        {
+        }
 
         template<void(*F)(Hints&,void*)>
         Timer ( Queue& queue, function<F> function, void * context=0 )
@@ -111,13 +118,13 @@ namespace w32 { namespace tp {
             catch (const w32::Error& error)
             {
                 std::cerr
-                    << "Work handler: windows error " << error.code() << "."
+                    << "Timer handler: windows error " << error.code() << "."
                     << std::endl;
             }
             catch ( ... )
             {
                 std::cerr
-                    << "Exception raised from work handler."
+                    << "Exception raised from timer handler."
                     << std::endl;
             }
         }
@@ -144,13 +151,13 @@ namespace w32 { namespace tp {
             catch (const w32::Error& error)
             {
                 std::cerr
-                    << "Work handler: windows error " << error.code() << "."
+                    << "Timer handler: windows error " << error.code() << "."
                     << std::endl;
             }
             catch ( ... )
             {
                 std::cerr
-                    << "Exception raised from work handler."
+                    << "Exception raised from timer handler."
                     << std::endl;
             }
         }
