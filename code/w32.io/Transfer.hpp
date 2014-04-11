@@ -57,6 +57,7 @@ namespace w32 { namespace io {
         /* construction. */
     public:
         Transfer ();
+        ~Transfer ();
 
         /* methods. */
     public:

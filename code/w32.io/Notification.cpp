@@ -64,10 +64,17 @@ namespace w32 { namespace io {
         return (myStatus == ERROR_OPERATION_ABORTED);
     }
 
+    bool Notification::disconnected () const
+    {
+        // Local diconnection: this often happens after a
+        // pending read on a socket is aborted by the connection being
+        // broken by the peer (e.g. its process crashing).
+        return (myStatus == ERROR_NETNAME_DELETED);
+    }
+
     void Notification::report_error () const
     {
         if (myStatus != 0) {
-            std::cout << "error=" << myStatus << std::endl;
             throw (Error(myStatus));
         }
     }

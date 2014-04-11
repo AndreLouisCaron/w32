@@ -39,6 +39,8 @@
 #   include <WinSock2.h>
 #endif
 
+#include <mswsock.h>
+
     // Exceptionally, include this *after* <WinSock2.h>.
 #include "../w32/__configure__.hpp"
 

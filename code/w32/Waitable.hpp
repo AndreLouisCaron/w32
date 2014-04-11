@@ -122,6 +122,8 @@ namespace w32 {
         bool empty () const { return (size() == 0); }
         bool full () const { return (size() == capacity()); }
 
+        Set& remove (size_type i);
+
     private:
         iterator begin () { return (myData); }
         iterator end () { return (begin()+size()); }

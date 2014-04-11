@@ -74,17 +74,18 @@ namespace w32 { namespace net {
     }
 
     bool StreamSocket::put ( const void * data, dword size,
-                             io::Transfer& transfer )
+                             io::Transfer& transfer, dword& xferred )
     {
-        return (put(data, size, transfer.data()));
+        return (put(data, size, transfer.data(), xferred));
     }
 
     bool StreamSocket::put ( const void * data, dword size,
-                             ::OVERLAPPED& transfer )
+                             ::OVERLAPPED& transfer, dword& xferred )
     {
         const ::SOCKET socket = this->handle();
         const ::HANDLE handle = reinterpret_cast<::HANDLE>(socket);
 
+        xferred = 0;
         const ::BOOL result = ::WriteFile
             (handle, data, size, 0, &transfer);
         if ( result == 0 )
@@ -93,34 +94,53 @@ namespace w32 { namespace net {
             if (error == ERROR_IO_PENDING) {
                 return (false);
             }
+            if (error == ERROR_NETNAME_DELETED) {
+                // Attempting to write to disconnected socket (there's always
+                // the possibility that the peer explicitly resets the
+                // connection during one of our event handlers, so this is not
+                // necessarily an application error).
+                xferred = 0;
+                return (true);
+            }
             UNCHECKED_WIN32C_ERROR(WriteFile, error);
         }
         return (true);
     }
 
     bool StreamSocket::get ( void * data, dword size,
-                             ::OVERLAPPED& transfer )
+                             ::OVERLAPPED& transfer, dword& xferred )
     {
         const ::SOCKET socket = this->handle();
         const ::HANDLE handle = reinterpret_cast<::HANDLE>(socket);
 
+        xferred = 0;
         const ::BOOL result = ::ReadFile
-            (handle, data, size, 0, &transfer);
+            (handle, data, size, &xferred, &transfer);
         if ( result == 0 )
         {
             const ::DWORD error = ::GetLastError();
             if (error == ERROR_IO_PENDING) {
                 return (false);
             }
+            if (error == ERROR_NETNAME_DELETED) {
+                // Attempting to read from disconnected socket (there's always
+                // the possibility that the peer explicitly resets the
+                // connection during one of our event handlers, so this is not
+                // necessarily an application error).
+                xferred = 0;
+                return (true);
+            }
             UNCHECKED_WIN32C_ERROR(ReadFile, error);
         }
+        // WARNING: synchronous completion returning 0 is indistinguishable
+        //          from error case(s) above!
         return (true);
     }
 
     bool StreamSocket::get ( void * data, dword size,
-                             io::Transfer& transfer )
+                             io::Transfer& transfer, dword& xferred )
     {
-        return (get(data, size, transfer.data()));
+        return (get(data, size, transfer.data(), xferred));
     }
 
     int StreamSocket::put ( Buffer& buffer )
@@ -180,6 +200,28 @@ namespace w32 { namespace net {
         }
     }
 
+    void StreamSocket::get_timeout (dword milliseconds)
+    {
+        const int result = ::setsockopt(handle(), SOL_SOCKET, SO_RCVTIMEO,
+            reinterpret_cast<const char*>(&milliseconds), sizeof(dword));
+        if (result == SOCKET_ERROR)
+        {
+            const int error = ::WSAGetLastError();
+            UNCHECKED_WIN32C_ERROR(setsockopt, error);
+        }
+    }
+
+    void StreamSocket::put_timeout (dword milliseconds)
+    {
+        const int result = ::setsockopt(handle(), SOL_SOCKET, SO_SNDTIMEO,
+            reinterpret_cast<const char*>(&milliseconds), sizeof(dword));
+        if (result == SOCKET_ERROR)
+        {
+            const int error = ::WSAGetLastError();
+            UNCHECKED_WIN32C_ERROR(setsockopt, error);
+        }
+    }
+
     void StreamSocket::cancel ()
     {
         const ::SOCKET socket = this->handle();
@@ -204,10 +246,15 @@ namespace w32 { namespace net {
 
     bool StreamSocket::cancel ( io::Transfer& transfer )
     {
+        return (cancel(transfer.data()));
+    }
+
+    bool StreamSocket::cancel ( ::OVERLAPPED& transfer )
+    {
         const ::SOCKET socket = this->handle();
         const ::HANDLE handle = reinterpret_cast<::HANDLE>(socket);
 
-        const ::BOOL result = ::CancelIoEx(handle, &transfer.data());
+        const ::BOOL result = ::CancelIoEx(handle, &transfer);
         if (result == FALSE)
         {
             const ::DWORD error = ::GetLastError();

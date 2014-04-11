@@ -60,11 +60,11 @@ namespace w32 { namespace io {
             */
         dword put ( const void * data, dword size );
 
-        bool put ( const void * data, dword size, ::OVERLAPPED& xfer );
-        bool put ( const void * data, dword size, Transfer& xfer );
+        bool put (const void * data, dword size,
+                  Transfer& xfer, dword& xferred);
 
-        bool put ( const void * data, dword size,
-                   Transfer& xfer, dword& xferred );
+        bool put (const void * data, dword size,
+                  ::OVERLAPPED& xfer, dword& xferred);
     };
 
 } }

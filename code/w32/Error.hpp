@@ -237,6 +237,6 @@ namespace w32 {
 
     // Use this macro to signal errors.
 #define UNCHECKED_WIN32C_ERROR(function,error) \
-    throw (w32::Error(error));
+    { ::DebugBreak(); throw (w32::Error(error)); }
 
 #endif /* _w32_Error_hpp__ */

@@ -58,37 +58,27 @@ namespace w32 { namespace io {
         return (xferred);
     }
 
-    bool InputStream::get ( void * data, dword size, ::OVERLAPPED& xfer )
-    {
-        const ::BOOL result = ::ReadFile
-            (handle(), data, size, 0, &xfer);
-        if ( result == 0 )
-        {
-            const ::DWORD error = ::GetLastError();
-            if (error == ERROR_IO_PENDING) {
-                return (false);
-            }
-            UNCHECKED_WIN32C_ERROR(ReadFile, error);
-        }
-        return (true);
-    }
-
-    bool InputStream::get ( void * data, dword size, Transfer& xfer )
-    {
-        return (get(data, size, xfer.data()));
-    }
-
     bool InputStream::get
         ( void * data, dword size, Transfer& xfer, dword& xferred )
     {
+        return (get(data, size, xfer.data(), xferred));
+    }
+
+    bool InputStream::get ( void * data, dword size, ::OVERLAPPED& xfer, dword& xferred )
+    {
+        xferred = 0;
         const ::BOOL result = ::ReadFile(
-            handle(), data, size, &xferred, &xfer.data()
+            handle(), data, size, &xferred, &xfer
             );
         if ( result == 0 )
         {
             const ::DWORD error = ::GetLastError();
             if (error == ERROR_IO_PENDING) {
                 return (false);
+            }
+            if (error == ERROR_NETNAME_DELETED) {
+                // Peer has shutdown read end of the pipe, make this look like a disconection.
+                return (true);
             }
             UNCHECKED_WIN32C_ERROR(ReadFile, error);
         }

@@ -126,6 +126,92 @@ namespace w32 { namespace net {
         }
     }
 
+    void Socket::dontlinger ()
+    {
+        ::LINGER data;
+        data.l_onoff  = 0;
+        data.l_linger = 0;
+
+        const int result = ::setsockopt(handle(), SOL_SOCKET, SO_LINGER,
+                                        reinterpret_cast<const char*>(&data),
+                                        sizeof(data));
+        if ( result == SOCKET_ERROR )
+        {
+            const int error = ::WSAGetLastError();
+            UNCHECKED_WIN32C_ERROR(setsockopt, error);
+        }
+    }
+
+    void Socket::linger ( w32::uint16 seconds )
+    {
+        ::LINGER data;
+        data.l_onoff  = 1;
+        data.l_linger = seconds;
+
+        const int result = ::setsockopt(handle(), SOL_SOCKET, SO_LINGER,
+                                        reinterpret_cast<const char*>(&data),
+                                        sizeof(data));
+        if ( result == SOCKET_ERROR )
+        {
+            const int error = ::WSAGetLastError();
+            UNCHECKED_WIN32C_ERROR(setsockopt, error);
+        }
+    }
+
+    ::LPFN_DISCONNECTEX Socket::disconnect_ex () const
+    {
+        ::GUID extension = WSAID_DISCONNECTEX;
+        int ioctlcode SIO_GET_EXTENSION_FUNCTION_POINTER;
+
+        ::LPFN_DISCONNECTEX data = 0;
+        ::DWORD size = 0;
+
+        const int result = ::WSAIoctl(handle(), ioctlcode, &extension,
+                                      sizeof(extension), &data,
+                                      sizeof(data), &size, 0, 0);
+        if (result == SOCKET_ERROR)
+        {
+            const int error = ::WSAGetLastError();
+            UNCHECKED_WIN32C_ERROR(WSAIoctl, error);
+        }
+        return (data);
+    }
+
+    void Socket::disconnect ( bool reuse )
+    {
+        ::LPFN_DISCONNECTEX DisconnectEx = disconnect_ex();
+
+        const ::DWORD flags = reuse? TF_REUSE_SOCKET : 0;
+        const ::BOOL result = DisconnectEx(handle(), 0, flags, 0);
+        if ( result == FALSE )
+        {
+            const int error = ::WSAGetLastError();
+            UNCHECKED_WIN32C_ERROR(DisconnectEx, error);
+        }
+    }
+
+    bool Socket::disconnect ( io::Transfer& transfer, bool reuse )
+    {
+        return (disconnect(transfer.data(), reuse));
+    }
+
+    bool Socket::disconnect ( ::OVERLAPPED& transfer, bool reuse )
+    {
+        ::LPFN_DISCONNECTEX DisconnectEx = disconnect_ex();
+
+        const ::DWORD flags = reuse? TF_REUSE_SOCKET : 0;
+        const ::BOOL result = DisconnectEx(handle(), &transfer, flags, 0);
+        if ( result == FALSE )
+        {
+            const int error = ::WSAGetLastError();
+            if ( error == ERROR_IO_PENDING ) {
+                return (false);
+            }
+            UNCHECKED_WIN32C_ERROR(DisconnectEx, error);
+        }
+        return (true);
+    }
+
     const Socket::Type Socket::Type::stream ()
     {
         return (SOCK_STREAM);

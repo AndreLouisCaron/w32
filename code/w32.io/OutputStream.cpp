@@ -57,31 +57,16 @@ namespace w32 { namespace io {
         return (xferred);
     }
 
-    bool OutputStream::put ( const void * data, dword size, ::OVERLAPPED& xfer )
+    bool OutputStream::put ( const void * data, dword size, Transfer& xfer, dword& xferred )
     {
-        const ::BOOL result = ::WriteFile
-            (handle(), data, size, 0, &xfer);
-        if ( result == 0 )
-        {
-            const ::DWORD error = ::GetLastError();
-            if (error == ERROR_IO_PENDING) {
-                return (false);
-            }
-            UNCHECKED_WIN32C_ERROR(WriteFile, error);
-        }
-        return (true);
+        return (put(data, size, xfer.data(), xferred));
     }
 
-    bool OutputStream::put ( const void * data, dword size, Transfer& xfer )
-    {
-        return (put(data, size, xfer.data()));
-    }
-
-    bool OutputStream::put
-        ( const void * data, dword size, Transfer& xfer, dword& xferred )
+    bool OutputStream::put ( const void * data, dword size,
+                             ::OVERLAPPED& xfer, dword& xferred )
     {
         const ::BOOL result = ::WriteFile(
-            handle(), data, size, &xferred, &xfer.data()
+            handle(), data, size, &xferred, &xfer
             );
         if ( result == 0 )
         {
