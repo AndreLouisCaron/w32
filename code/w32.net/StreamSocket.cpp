@@ -50,6 +50,9 @@ namespace w32 { namespace net {
         if ( result == SOCKET_ERROR )
         {
             const int error = ::WSAGetLastError();
+            if (error == WSAECONNABORTED) {
+                return (-1);
+            }
             UNCHECKED_WIN32C_ERROR(shutdown, error);
         }
         return (result);
