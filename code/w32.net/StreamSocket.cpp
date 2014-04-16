@@ -68,6 +68,9 @@ namespace w32 { namespace net {
             if ( error == WSAEWOULDBLOCK ) {
                 return (-1);
             }
+            if ( error == WSAETIMEDOUT ) {
+                return (-1);
+            }
             UNCHECKED_WIN32C_ERROR(recv, error);
         }
         return (result);
