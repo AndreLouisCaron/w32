@@ -166,6 +166,26 @@ namespace w32 {
     std::wostream& operator<<
         ( std::wostream& out, const string& value );
 
+    inline bool operator== ( const wchar_t * lhs, const string& rhs )
+    {
+        return (std::wcscmp(lhs, rhs.data()) == 0);
+    }
+
+    inline bool operator== ( const string& lhs, const wchar_t * rhs )
+    {
+        return (std::wcscmp(lhs.data(), rhs) == 0);
+    }
+
+    inline bool operator!= ( const wchar_t * lhs, const string& rhs )
+    {
+        return (std::wcscmp(lhs, rhs.data()) != 0);
+    }
+
+    inline bool operator!= ( const string& lhs, const wchar_t * rhs )
+    {
+        return (std::wcscmp(lhs.data(), rhs) != 0);
+    }
+
     class string::box
     {
         /* data. */
