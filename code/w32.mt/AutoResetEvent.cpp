@@ -86,6 +86,21 @@ namespace w32 { namespace mt {
         }
     }
 
+    void AutoResetEvent::wait ()
+    {
+        return (Waitable(*this).wait());
+    }
+
+    bool AutoResetEvent::wait (w32::Timespan timeout)
+    {
+        return (Waitable(*this).wait(timeout));
+    }
+
+    bool AutoResetEvent::test ()
+    {
+        return (wait(w32::Timespan(0)));
+    }
+
     AutoResetEvent::operator Waitable () const
     {
         return Waitable(handle());

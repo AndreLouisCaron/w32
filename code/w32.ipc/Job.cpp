@@ -111,6 +111,16 @@ namespace w32 { namespace ipc {
         }
     }
 
+    void Job::join () const
+    {
+        return (Waitable(*this).wait());
+    }
+
+    bool Job::join (w32::Timespan timeout) const
+    {
+        return (Waitable(*this).wait(timeout));
+    }
+
     Job::operator Waitable () const
     {
         return (Waitable(handle()));

@@ -69,7 +69,17 @@ namespace w32 { namespace fs {
     {
     }
 
-    void Changes::next () const
+    void Changes::wait () const
+    {
+        return (Waitable(*this).wait());
+    }
+
+    bool Changes::wait (w32::Timespan timeout) const
+    {
+        return (Waitable(*this).wait(timeout));
+    }
+
+    void Changes::next ()
     {
         const ::BOOL result = ::FindNextChangeNotification(handle());
         if ( result == FALSE ) {

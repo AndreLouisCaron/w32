@@ -63,6 +63,10 @@ namespace w32 { namespace mt {
     public:
         void set ();
 
+        void wait ();
+        bool wait (w32::Timespan timeout);
+        bool test ();
+
         /* operators. */
     public:
         operator Waitable () const;

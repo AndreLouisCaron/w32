@@ -87,6 +87,9 @@ namespace w32 { namespace ipc {
              */
         void terminate ( uint status );
 
+        void join () const;
+        bool join (w32::Timespan timeout) const;
+
         /* operators. */
     public:
         operator Waitable () const;

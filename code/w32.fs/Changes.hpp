@@ -37,6 +37,15 @@ namespace w32 { namespace fs {
     /*!
      * @ingroup w32-fs
      * @brief Registration for notification of changes on the file-system.
+     *
+     * @code
+     *  Changes changes(...);
+     *  do {
+     *    changes.wait();
+     *    // ... refresh view ...
+     *    changes.next();
+     *  } while (...);
+     * @encode
      */
     class Changes :
         public Object
@@ -53,7 +62,21 @@ namespace w32 { namespace fs {
 
         /* methods. */
     public:
-        void next () const;
+        void wait () const;
+        bool wait (w32::Timespan timeout) const;
+
+        /*!
+         * @brief Consumes the next change notification.
+         *
+         * @attention You should wait for the next change notification using
+         *  one of the kernel object wait functions between calls to this
+         *  method.
+         *
+         * @see wait()
+         * @see wait(w32::Timespan)
+         * @see operator Waitable
+         */
+        void next ();
 
         operator Waitable () const;
     };
