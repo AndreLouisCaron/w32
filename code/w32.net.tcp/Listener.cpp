@@ -50,7 +50,8 @@ namespace {
 
 namespace w32 { namespace net { namespace tcp {
 
-     Listener::AcceptEx Listener::lookup_accept_ex (::SOCKET handle)
+    static Listener::AcceptEx
+        lookup_accept_ex (::SOCKET handle)
      {
          // TODO: figure out from which SDK version 'AcceptEx()'
          //       is suitably declared in the SDK headers.
@@ -70,6 +71,28 @@ namespace w32 { namespace net { namespace tcp {
          return (value);
 #endif
      }
+
+    static Listener::GetAcceptExSockAddrs
+        lookup_get_accept_ex_sock_addrs (::SOCKET handle)
+    {
+         // TODO: figure out from which SDK version 'AcceptEx()'
+         //       is suitably declared in the SDK headers.
+#if 0
+         return (&::GetAcceptExSockAddrs);
+#else
+         ::LPFN_GETACCEPTEXSOCKADDRS value = 0;
+         ::GUID field = WSAID_GETACCEPTEXSOCKADDRS;
+         ::DWORD size = 0;
+         const int status = ::WSAIoctl(
+             handle, SIO_GET_EXTENSION_FUNCTION_POINTER,
+             &field, sizeof(field), &value, sizeof(value), &size, NULL, NULL);
+         if (status == SOCKET_ERROR) {
+             const int error = ::WSAGetLastError();
+             UNCHECKED_WIN32C_ERROR(WSAIoctl, error);
+         }
+         return (value);
+#endif
+    }
 
     Listener::Listener ( const Socket::Handle& handle )
         : Socket(handle)
@@ -98,6 +121,33 @@ namespace w32 { namespace net { namespace tcp {
     Listener::AcceptEx Listener::accept_ex () const
     {
         return (lookup_accept_ex(handle()));
+    }
+
+    Listener::GetAcceptExSockAddrs Listener::get_accept_ex_sock_addrs() const
+    {
+        return (lookup_get_accept_ex_sock_addrs(handle()));
+    }
+
+    bool Listener::cancel (::OVERLAPPED& xfer)
+    {
+        const ::SOCKET socket = this->handle();
+        const ::HANDLE handle = reinterpret_cast<::HANDLE>(socket);
+        const ::BOOL result = ::CancelIoEx(handle, &xfer);
+        if (result == FALSE)
+        {
+            const ::DWORD error = ::GetLastError();
+            // May have already completed.
+            if (error == ERROR_NOT_FOUND) {
+                return (false);
+            }
+            UNCHECKED_WIN32C_ERROR(CancelIoEx, error);
+        }
+        return (true);
+    }
+
+    bool Listener::cancel (io::Transfer& xfer)
+    {
+        return (cancel(xfer.data()));
     }
 
 } } }

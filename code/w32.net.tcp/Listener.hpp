@@ -28,6 +28,7 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "__configure__.hpp"
+#include <w32.io/Transfer.hpp>
 #include <w32.net/Socket.hpp>
 #include <w32.net.ipv4/EndPoint.hpp>
 
@@ -43,10 +44,7 @@ namespace w32 { namespace net { namespace tcp {
         /* nested types. */
     public:
         typedef ::LPFN_ACCEPTEX AcceptEx;
-
-        /* class methods. */
-    public:
-        static AcceptEx lookup_accept_ex (::SOCKET handle);
+        typedef ::LPFN_GETACCEPTEXSOCKADDRS GetAcceptExSockAddrs;
 
         /* construction. */
     public:
@@ -56,6 +54,10 @@ namespace w32 { namespace net { namespace tcp {
         /* methods. */
     public:
         AcceptEx accept_ex () const;
+        GetAcceptExSockAddrs get_accept_ex_sock_addrs() const;
+
+        bool cancel (::OVERLAPPED& xfer);
+        bool cancel (io::Transfer& xfer);
     };
 
 } } }
